@@ -24,7 +24,8 @@
 	box-sizing: border-box;
 	font-size: 14px;
 }
-.form button {
+.login-form button,
+.register-form button {
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	outline: 0;
@@ -38,9 +39,12 @@
 	transition: all 0.3 ease;
 	cursor: pointer;
 }
-.form button:hover,
-.form button:active,
-.form button:focus {
+.login-form button:hover,
+.register-form button:hover,
+.login-form button:active,
+.register-form button:active,
+.login-form button:focus,
+.register-form button:focus {
 	background: #43a047;
 }
 .form .message {
@@ -94,4 +98,11 @@ body {
 	font-family: 'Roboto', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+#Btn-kakao {
+	margin: 0;
+	padding: 0;
+	border: none;
+	cursor: pointer;
 }
