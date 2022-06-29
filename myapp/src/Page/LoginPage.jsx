@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import kakaoBtn from '../Image/kakaoBtn.png';
 import '../Style/Page/LoginPage.css';
 
@@ -36,36 +36,40 @@ function LoginPage() {
 	};
 
 	return (
-		<div id="login-page">
-			<div className="form">
+		<div id="loginPage">
+			<div className="loginPageForm">
 				{onSign ? (
-					<form className="register-form">
+					<form className="registerForm">
 						<input type="text" placeholder="name" />
 						<input type="password" placeholder="password" />
 						<input type="text" placeholder="email address" />
-						<button>create</button>
-						<p className="message">
-							Already registered?
-							<button onClick={onClickSign}>Sign In</button>
-						</p>
+						<button> 아이디 생성 </button>
+						<div className="formMessage">
+							<p className="formMessageP">이미 회원이신가요 ? </p>
+							<button onClick={onClickSign}>로그인</button>
+						</div>
 					</form>
 				) : (
 					<div>
-						<form className="login-form">
+						<form className="loginForm">
 							<input type="text" placeholder="username" />
 							<input type="password" placeholder="password" />
-							<button>login</button>
-							<p className="message">
-								Not registered?
-								<button onClick={onClickSign}>Create an account</button>
-							</p>
+							<button>로그인</button>
+							<div className="formMessage">
+								<p className="formMessageP">아이디가 없으신가요 ?</p>
+								<button onClick={onClickSign}> 회원가입 </button>
+							</div>
 						</form>
 						<div>
 							<br />
-							<p> 소셜 로그인 </p>
+							<p className="formMessageP"> 소셜 로그인을 통한 간편 회원가입 </p>
 							<br />
 							<button id="Btn-kakao">
-								<img src={kakaoBtn} onClick={kakaoLoginClickHandler} />
+								<img
+									src={kakaoBtn}
+									alt="kakao login"
+									onClick={kakaoLoginClickHandler}
+								/>
 							</button>
 						</div>
 					</div>

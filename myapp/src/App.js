@@ -1,6 +1,7 @@
 import './Style/App.css';
 import LoginPage from './Page/LoginPage';
 import MainPage from './Page/MainPage';
+import DragDrop from './Component/DragDrop/DragDrop';
 
 import Header from './Component/Header';
 import Footer from './Component/Footer';
@@ -14,6 +15,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<LoginPage />} />
 					<Route path="/main" element={<MainPage />} />
+					<Route path="/dragdrop" element={<DragDrop />} />
 				</Routes>
 				<Footer />
 			</Router>

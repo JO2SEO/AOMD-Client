@@ -1,3 +1,16 @@
+body,
+html,
+#root,
+.App {
+	width: 100%;
+	height: 100%;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
 html,
 body,
 div,
@@ -82,8 +95,8 @@ video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 62.5%;
-	font: inherit;
+	font-size: 100%;
+	/* font: inherit; */
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -121,52 +134,4 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
-
-/* CSS Tools: Reset CSS
-
-<< Eric Meyer's Reset CSS >>
-*/
-
-/* .section {
-	width: 100%;
-	height: 100%;
-} */
-
-/* 이는 폰트 계산을 더 편하게 하기 위함입니다.
-
-브라우저가 지정해주는 기본 폰트 사이즈는 100% = 16px이죠.
-이걸 계산하기 쉽게 62.5% = 10px로 바꿔버리는 거에요.
-
-여기서 다시 복습! '1rem = html 요소에 지정된 폰트 크기'로 계산한다고 했었죠.
-따라서 위 구문이 있다면 '1rem = 10px'이 됩니다.
-
-그래서 128px = 12.8rem, 4px = 0.4rem 처럼 쓸 수 있습니다. (편-안) */
-
-/* rem이 반응형 홈페이지에 사용되는 이유는 
-
-미디어쿼리로 css를 처리할때 브레이크 포인트에서 html의 폰트사이즈만 변경 해주면 하위 rem단위의 크기가 전부 변경 되기 때문에 편리하다.
-
-  */
-
-html {
-	width: 100%;
-	height: 100vh;
-	scroll-behavior: smooth;
-	/* font-family: 'NEXON Lv2 Gothic'; */
-	/* overflow-x: hidden; */
-}
-html {
-	margin-right: -400px;
-	background-color: black;
-}
-* {
-	box-sizing: content-box;
-}
-
-body,
-#root,
-.App {
-	width: 100%;
-	height: 100%;
 }
