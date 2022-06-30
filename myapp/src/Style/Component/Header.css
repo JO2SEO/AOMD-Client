@@ -1,5 +1,22 @@
 #Header-div {
+	width: 100%;
 	height: 15%;
 	border: 5px red solid;
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+}
+.HeaderBox {
+	display: flex;
+	width: 33.3%;
+	height: 100%;
+	border: 5px solid black;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.HeaderMoveHomeBtn {
+	width: 50px;
+	height: 50px;
 }
