@@ -16,7 +16,12 @@
 	align-items: center;
 	text-align: center;
 }
+
 .HeaderMoveHomeBtn {
 	width: 50px;
 	height: 50px;
+}
+
+.HeaderBox h1 {
+	font-size: 3vw;
 }

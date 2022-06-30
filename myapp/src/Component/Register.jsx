@@ -17,7 +17,7 @@ function Register() {
 					<button> 아이디 생성 </button>
 					<div className="formMessage">
 						<p className="formMessageP">이미 회원이신가요 ? </p>
-						<button onClick={onClickSign}>로그인</button>
+						<button onClick={onClickSign}>로그인하러 가기</button>
 					</div>
 				</form>
 			</div>

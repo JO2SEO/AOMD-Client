@@ -18,8 +18,6 @@ function App() {
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/main" element={<MainPage />} />
 						<Route path="/dragdrop" element={<DragDrop />} />
-
-						{/* <Route path="/login" element={<Login />} /> */}
 						<Route path="/register" element={<Register />} />
 					</Routes>
 				</div>

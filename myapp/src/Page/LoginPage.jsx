@@ -1,5 +1,4 @@
 import '../Style/Page/LoginPage.css';
-// import { useState } from 'react';
 import kakaoBtn from '../Image/kakaoBtn.png';
 import { useNavigate } from 'react-router-dom';
 
