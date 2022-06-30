@@ -139,4 +139,9 @@ table {
 .Content-div {
 	width: 100%;
 	height: 75%;
+	border: blue solid 10px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

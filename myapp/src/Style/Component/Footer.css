@@ -1,4 +1,6 @@
 #Footer-div {
+	display: flex;
+	flex-direction: column;
 	height: 10%;
 	border: 5px red solid;
 	box-sizing: border-box;
