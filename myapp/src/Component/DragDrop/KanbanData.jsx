@@ -17,13 +17,10 @@ export const data = [
 	},
 ];
 
-export const columnsFromBackend = {
+export const columnsFromBackend1 = {
 	[uuidv4()]: {
-		title: 'User Data',
+		title: 'Row data',
 		items: data,
 	},
-	[uuidv4()]: {
-		title: '나의 이력서',
-		items: [],
-	},
 };
+// 원본 데이터 -> 변경하지 말기

@@ -21,6 +21,7 @@ function LoginPage() {
 				Kakao.Auth.login({
 					success: auth => {
 						console.log('정상 로그인', auth);
+						console.log('access token = ', auth['access_token']);
 						alert('정상 로그인');
 						// setIsLogin(true);
 						navigate('/main');
