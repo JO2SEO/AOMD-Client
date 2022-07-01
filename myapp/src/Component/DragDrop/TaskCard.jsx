@@ -4,43 +4,22 @@ import '../../Style/Component/Kanban.css';
 
 const TaskCard = ({ item, index, datatype }) => {
 	return (
-		<>
-			{datatype === 'left' ? (
-				<div>
-					<Draggable key={item.id} draggableId={item.id} index={index}>
-						{provided => (
-							<div
-								ref={provided.innerRef}
-								{...provided.draggableProps}
-								{...provided.dragHandleProps}
-							>
-								<div className="TaskInformation">
-									<h1>{item.Type}</h1>
-									{/* <p>{item.Content}</p> */}
-								</div>
-							</div>
-						)}
-					</Draggable>
-				</div>
-			) : (
-				<div>
-					<Draggable key={item.id} draggableId={item.id} index={index}>
-						{provided => (
-							<div
-								ref={provided.innerRef}
-								{...provided.draggableProps}
-								{...provided.dragHandleProps}
-							>
-								<div className="TaskInformation">
-									{/* <h1>{item.Type}</h1> */}
-									<p>{item.Content}</p>
-								</div>
-							</div>
-						)}
-					</Draggable>
-				</div>
-			)}
-		</>
+		<div>
+			<Draggable key={item.id} draggableId={item.id} index={index}>
+				{provided => (
+					<div
+						ref={provided.innerRef}
+						{...provided.draggableProps}
+						{...provided.dragHandleProps}
+					>
+						<div className="TaskInformation">
+							<h1>{item.Type}</h1>
+							<p>{item.Content}</p>
+						</div>
+					</div>
+				)}
+			</Draggable>
+		</div>
 	);
 };
 

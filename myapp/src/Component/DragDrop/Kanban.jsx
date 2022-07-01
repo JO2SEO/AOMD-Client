@@ -51,39 +51,23 @@ const Kanban = () => {
 					{Object.entries(columns).map(([columnId, column], index) => {
 						return (
 							<Droppable key={columnId} droppableId={columnId}>
-								{/* <div>1</div> */}
 								{(provided, snapshot) => (
 									<div
 										className="TaskList"
 										ref={provided.innerRef}
 										{...provided.droppableProps}
 									>
-										{column.title === 'User Data' ? (
-											// <div style={{ width: '50%' }}>
-											<div>
-												<span className="Title">{column.title}</span>
-												{column.items.map((item, index) => (
-													<TaskCard
-														key={item}
-														item={item}
-														index={index}
-														datatype="left"
-													/>
-												))}
-											</div>
-										) : (
-											<div>
-												<span className="Title">{column.title}</span>
-												{column.items.map((item, index) => (
-													<TaskCard
-														key={item}
-														item={item}
-														index={index}
-														datatype="right"
-													/>
-												))}
-											</div>
-										)}
+										<div>
+											<span className="Title">{column.title}</span>
+											{column.items.map((item, index) => (
+												<TaskCard
+													key={item}
+													item={item}
+													index={index}
+													datatype="left"
+												/>
+											))}
+										</div>
 
 										{provided.placeholder}
 									</div>
