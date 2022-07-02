@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 export const data = [
 	{
 		id: '1',
@@ -17,10 +17,13 @@ export const data = [
 	},
 ];
 
-export const columnsFromBackend1 = {
-	[uuidv4()]: {
-		title: 'Row data',
+export const columnsFromBackend = {
+	1: {
+		title: '나의 데이터',
 		items: data,
 	},
+	2: {
+		title: '자기 소개서',
+		items: [],
+	},
 };
-// 원본 데이터 -> 변경하지 말기

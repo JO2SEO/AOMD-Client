@@ -2,51 +2,36 @@ import React, { useState } from 'react';
 // import styled from '@emotion/styled';
 import '../../Style/Component/Kanban.css';
 
-import { columnsFromBackend1 } from './KanbanData';
-import { columnsFromBackend2 } from './KanbanData2';
-
+import { columnsFromBackend } from './KanbanData';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import TaskCard from './TaskCard';
 
 const Kanban = () => {
-	const [columns, setColumns] = useState(columnsFromBackend1);
-	// 이건 바꾸면 안돼
+	const [columns, setColumns] = useState(columnsFromBackend);
 
-	const [columns2, setColumns2] = useState(columnsFromBackend2);
-	// 이건 바꿔도 돼
+	// useEffect(() => {
+	// 	console.log('columns = ', columns);
+	// }, [columns]);
 
-	const onDragEnd = (result, columns, columns2, setColumns, setColumns2) => {
+	const onDragEnd = (result, columns, setColumns) => {
 		if (!result.destination) return;
-
 		const { source, destination } = result;
+		if (source.droppableId !== destination.droppableId) {
+			const sourceColumn = columns[1];
+			// 내 데이터 정보 -> row data
 
-		console.log('result = ', result);
-		// sourse[index] = 0
-		// destinaiton[index] = 1
-
-		if (source.index !== destination.index) {
-			const sourceColumn = columns[source.droppableId];
-			const destColumn = columns2[destination.droppableId];
-			// 바뀌지 않는 데이터 => 로우 데이터
-			console.log('sourceColumn = ', sourceColumn);
-			console.log('destColumn = ', destColumn);
+			const destColumn = columns[2];
+			// 자기소개서에 데이터 정보 -> 새로 추가할 내용
 
 			const sourceItems = [...sourceColumn.items];
-			console.log('sourceItems = ', sourceItems);
-
 			const destItems = [...destColumn.items];
-			console.log('destItems = ', destItems);
-
 			const [removed] = sourceItems.splice(source.index, 1);
-			// 지울거 -> 드래그 한거
 
-			console.log('removed = ', removed);
-
-			sourceItems.splice(source.index, 0, removed);
-			// 원래대로 유지하기
+			sourceItems.splice(destination.index, 0, removed);
+			// 옮겼는거 다시 오리지날에다가 복구
 
 			destItems.splice(destination.index, 0, removed);
-			// 도착지 인덱스에 넣기
+			// 새로 추가
 
 			setColumns({
 				...columns,
@@ -57,103 +42,80 @@ const Kanban = () => {
 				[destination.droppableId]: {
 					...destColumn,
 					items: destItems,
-				},
-			});
-
-			setColumns2({
-				...columns2,
-				[source.droppableId]: {
-					...sourceColumn,
-					items: sourceItems,
-				},
-				[destination.droppableId]: {
-					...destColumn,
-					items: destItems,
-				},
-			});
-		} else {
-			const column = columns[source.droppableId];
-			const copiedItems = [...column.items];
-
-			const [removed] = copiedItems.splice(source.index, 1);
-			// 잘라낸거
-
-			copiedItems.splice(destination.index, 0, removed);
-
-			setColumns({
-				...columns,
-				[source.droppableId]: {
-					...column,
-					items: copiedItems,
 				},
 			});
 		}
+		// else {
+		// const column = columns[source.droppableId];
+		// const copiedItems = [...column.items];
+		// const [removed] = copiedItems.splice(source.index, 1);
+		// copiedItems.splice(destination.index, 0, removed);
+		// setColumns({
+		// 	...columns,
+		// 	[source.droppableId]: {
+		// 		...column,
+		// 		items: copiedItems,
+		// 	},
+		// });
+
+		// 다른 범위에다가 놓으면(같은 곳이던가) => 그냥 리턴
+		// return;
+		// }
 	};
 	return (
-		<>
-			<DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
-				<div className="Container">
-					<div className="TaskColumnStyles">
-						{Object.entries(columns).map(([columnId, column], index) => {
-							return (
-								<>
-									<Droppable key={columnId} droppableId={columnId}>
-										{(provided, snapshot) => (
-											<div
-												className="TaskList"
-												ref={provided.innerRef}
-												{...provided.droppableProps}
-											>
-												<div>
-													<span className="Title">{column.title}</span>
-													{column.items.map((item, index) => (
-														<TaskCard
-															key={item}
-															item={item}
-															index={index}
-														/>
-													))}
-												</div>
-
-												{provided.placeholder}
+		<DragDropContext onDragEnd={result => onDragEnd(result, columns, setColumns)}>
+			<div className="Container">
+				<div className="TaskColumnStyles">
+					{Object.entries(columns).map(([columnId, column], index) => {
+						return (
+							<Droppable key={column.title} droppableId={columnId}>
+								{(provided, snapshot) => (
+									<div
+										className="TaskList"
+										ref={provided.innerRef}
+										{...provided.droppableProps}
+									>
+										{column.title === '나의 데이터' ? (
+											// <div style={{ width: '50%' }}>
+											<div>
+												<span className="Title">{column.title}</span>
+												{column.items.map((item, index) => (
+													<TaskCard
+														key={index}
+														item={item}
+														index={index}
+														datatype="origin"
+														columns={columns}
+														setColumns={setColumns}
+													/>
+												))}
+											</div>
+										) : (
+											<div>
+												<span className="Title">{column.title}</span>
+												{column.items.map((item, index) => (
+													<TaskCard
+														key={item}
+														item={item}
+														index={index}
+														datatype=""
+														columns={columns}
+														setColumns={setColumns}
+														columnId={columnId}
+													/>
+												))}
 											</div>
 										)}
-									</Droppable>
-								</>
-							);
-						})}
-						{Object.entries(columns2).map(([column2Id, column2], index2) => {
-							return (
-								<>
-									<Droppable key={column2Id} droppableId={column2Id}>
-										{(provided, snapshot) => (
-											<div
-												className="TaskList"
-												ref={provided.innerRef}
-												{...provided.droppableProps}
-											>
-												<div>
-													<span className="Title">{column2.title}</span>
-													{column2.items.map((item, index) => (
-														<TaskCard
-															key={item}
-															item={item}
-															index={index}
-														/>
-													))}
-												</div>
 
-												{provided.placeholder}
-											</div>
-										)}
-									</Droppable>
-								</>
-							);
-						})}
-					</div>
+										{provided.placeholder}
+									</div>
+								)}
+							</Droppable>
+						);
+					})}
 				</div>
-			</DragDropContext>
-		</>
+			</div>
+		</DragDropContext>
 	);
 };
 
