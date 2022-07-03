@@ -2,6 +2,8 @@ import './Style/App.css';
 import LoginPage from './Page/LoginPage';
 import MainPage from './Page/MainPage';
 import DragDrop from './Component/DragDrop/DragDrop';
+import DragDropTest from './Component/DragDropTest/DragDropTest';
+
 import Register from './Component/Register';
 import ErrorPage from './Component/ErrorPage';
 
@@ -19,6 +21,9 @@ function App() {
 						<Route path="/" element={<LoginPage />} />
 						<Route path="/main" element={<MainPage />} />
 						<Route path="/dragdrop" element={<DragDrop />} />
+
+						<Route path="/dragdroptest" element={<DragDropTest />} />
+
 						<Route path="/register" element={<Register />} />
 
 						<Route path="/errorpage" element={<ErrorPage />} />
