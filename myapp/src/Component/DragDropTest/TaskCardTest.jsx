@@ -3,9 +3,12 @@ import { Draggable } from 'react-beautiful-dnd';
 import '../../Style/Component/KanbanTest.css';
 
 const TaskCardTest = ({ item, index, datatype, columns, setColumns, columnId }) => {
+	console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
+	console.log('item = ', item);
+	console.log('index = ', index);
+	console.log('datatype = ', datatype);
+	console.log('columns = ', columns);
 	const onClickDelete = itemID => {
-		// console.log('columns = ', columns);
-
 		// console.log('itemID = ', itemID);
 		// console.log('original = ', columns);
 

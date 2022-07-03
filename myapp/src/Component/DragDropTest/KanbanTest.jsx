@@ -16,20 +16,56 @@ const KanbanTest = () => {
 	const [columnsPort2, setColumnsPort2] = useState(port2);
 	const [columnsPort3, setColumnsPort3] = useState(port3);
 
-	const onDragEnd = (result, columns, setColumns, columnsPort1, setColumnsPort1) => {
+	const onDragEnd = (
+		result,
+		columns,
+		setColumns,
+		columnsPort1,
+		setColumnsPort1,
+		columnsPort2,
+		setColumnsPort2,
+		columnsPort3,
+		setColumnsPort3
+	) => {
 		console.log(result);
+		// DND 했을 때
+		// result =>  destination: {droppableId: '1', index: 1}
+		// 			  draggableId: "1"
+		//			  source: {index: 0, droppableId: 'origin'}
+
 		if (!result.destination) return;
+		// 다른 곳에 놔뒀을 때 바로 리턴
+
 		const { source, destination } = result;
 		if (source.droppableId !== destination.droppableId) {
-			const sourceColumn = columns[origin];
+			const sourceColumn = columns[source.droppableId];
+			let destColumn = [];
+			let portNum = 0;
 			// 내 데이터 정보 -> row data
+			if (destination.droppableId === '1') {
+				destColumn = columnsPort1[destination.droppableId];
+				portNum = 1;
+			}
+			if (destination.droppableId === '2') {
+				destColumn = columnsPort2[destination.droppableId];
+				portNum = 2;
+			}
+			if (destination.droppableId === '3') {
+				destColumn = columnsPort3[destination.droppableId];
+				portNum = 3;
+			}
 
-			const destColumn = columns[2];
-			// 자기소개서에 데이터 정보 -> 새로 추가할 내용
+			// console.log('sourceColumn = ', sourceColumn);
+			// console.log('destColumn = ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
+
+			// console.log('sourceItems = ', sourceItems);
+			// console.log('destItems = ', destItems);
+
 			const [removed] = sourceItems.splice(source.index, 1);
+			// console.log('removed = ', removed);
 
 			sourceItems.splice(destination.index, 0, removed);
 			// 옮겼는거 다시 오리지날에다가 복구
@@ -37,17 +73,56 @@ const KanbanTest = () => {
 			destItems.splice(destination.index, 0, removed);
 			// 새로 추가
 
-			setColumns({
-				...columns,
-				[source.droppableId]: {
-					...sourceColumn,
-					items: sourceItems,
-				},
-				[destination.droppableId]: {
-					...destColumn,
-					items: destItems,
-				},
-			});
+			if (portNum === 1) {
+				setColumns({
+					...columns,
+					[source.droppableId]: {
+						...sourceColumn,
+						items: sourceItems,
+					},
+				});
+				setColumnsPort1({
+					...columnsPort1,
+					[destination.droppableId]: {
+						...destColumn,
+						items: destItems,
+					},
+				});
+			}
+
+			if (portNum === 2) {
+				setColumns({
+					...columns,
+					[source.droppableId]: {
+						...sourceColumn,
+						items: sourceItems,
+					},
+				});
+				setColumnsPort2({
+					...columnsPort2,
+					[destination.droppableId]: {
+						...destColumn,
+						items: destItems,
+					},
+				});
+			}
+
+			if (portNum === 3) {
+				setColumns({
+					...columns,
+					[source.droppableId]: {
+						...sourceColumn,
+						items: sourceItems,
+					},
+				});
+				setColumnsPort3({
+					...columnsPort3,
+					[destination.droppableId]: {
+						...destColumn,
+						items: destItems,
+					},
+				});
+			}
 		}
 	};
 
@@ -70,14 +145,24 @@ const KanbanTest = () => {
 	return (
 		<DragDropContext
 			onDragEnd={result =>
-				onDragEnd(result, columns, setColumns, columnsPort1, setColumnsPort1)
+				onDragEnd(
+					result,
+					columns,
+					setColumns,
+					columnsPort1,
+					setColumnsPort1,
+					columnsPort2,
+					setColumnsPort2,
+					columnsPort3,
+					setColumnsPort3
+				)
 			}
 		>
 			<div className="ContainerT">
 				<div className="DragDropBtnBoxT">
-					<button onClick={onClickShowPort1}> port 1 </button>
-					<button onClick={onClickShowPort2}> port 2 </button>
-					<button onClick={onClickShowPort3}> port 3 </button>
+					<button onClick={onClickShowPort1}> 포트폴리오 1 </button>
+					<button onClick={onClickShowPort2}> 포트폴리오 2 </button>
+					<button onClick={onClickShowPort3}> 포트폴리오 3 </button>
 				</div>
 
 				<div className="TaskColumnStylesT">
@@ -94,7 +179,7 @@ const KanbanTest = () => {
 											<span className="TitleT">{column.title}</span>
 											{column.items.map((item, index) => (
 												<TaskCardTest
-													key={index}
+													key={item.id}
 													item={item}
 													index={index}
 													datatype="origin"
@@ -129,7 +214,7 @@ const KanbanTest = () => {
 														</span>
 														{column.items.map((item, index) => (
 															<TaskCardTest
-																key={index}
+																key={item.id}
 																item={item}
 																index={index}
 																datatype=""
@@ -166,7 +251,7 @@ const KanbanTest = () => {
 														</span>
 														{column.items.map((item, index) => (
 															<TaskCardTest
-																key={index}
+																key={item.id}
 																item={item}
 																index={index}
 																datatype=""
@@ -203,7 +288,7 @@ const KanbanTest = () => {
 														</span>
 														{column.items.map((item, index) => (
 															<TaskCardTest
-																key={index}
+																key={item.id}
 																item={item}
 																index={index}
 																datatype=""

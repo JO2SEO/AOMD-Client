@@ -57,13 +57,13 @@ export const port1 = {
 	},
 };
 export const port2 = {
-	1: {
+	2: {
 		title: '포트폴리오 2',
 		items: port2data,
 	},
 };
 export const port3 = {
-	1: {
+	3: {
 		title: '포트폴리오 3',
 		items: port3data,
 	},
