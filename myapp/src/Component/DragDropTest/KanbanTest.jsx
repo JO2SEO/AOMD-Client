@@ -169,7 +169,7 @@ const KanbanTest = () => {
 																key={index}
 																item={item}
 																index={index}
-																datatype="origin"
+																datatype=""
 																columns={columnsPort2}
 																setColumns={setColumnsPort2}
 															/>
@@ -206,7 +206,7 @@ const KanbanTest = () => {
 																key={index}
 																item={item}
 																index={index}
-																datatype="origin"
+																datatype=""
 																columns={columnsPort3}
 																setColumns={setColumnsPort3}
 															/>

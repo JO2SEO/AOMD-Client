@@ -3,28 +3,30 @@ import { Draggable } from 'react-beautiful-dnd';
 import '../../Style/Component/KanbanTest.css';
 
 const TaskCardTest = ({ item, index, datatype, columns, setColumns, columnId }) => {
-	// console.log('column = ', column.items);
-
 	const onClickDelete = itemID => {
+		// console.log('columns = ', columns);
+
 		// console.log('itemID = ', itemID);
 		// console.log('original = ', columns);
 
 		const sourceColumn = columns[1];
-		const destColumn = columns[2];
+		// console.log(sourceColumn);
+		// const destColumn = columns[1];
 
 		const sourceItems = [...sourceColumn.items];
-		const destItems = [...destColumn.items];
+		// const destItems = [...destColumn.items];
 
 		// const items = columns["2"].items;
 		// console.log('before = ', destItems);
+		// console.log('Before : ', columns);
 
-		for (let i = 0; i < destItems.length; i++) {
+		for (let i = 0; i < sourceItems.length; i++) {
 			// console.log('i = ', i);
 			// console.log(destItems[i]);
 
-			if (destItems[i].id === itemID) {
+			if (sourceItems[i].id === itemID) {
 				// console.log('찾았다');
-				destItems.splice(i, 1);
+				sourceItems.splice(i, 1);
 				break;
 			}
 		}
@@ -36,11 +38,8 @@ const TaskCardTest = ({ item, index, datatype, columns, setColumns, columnId }) 
 				...sourceColumn,
 				items: sourceItems,
 			},
-			2: {
-				...destColumn,
-				items: destItems,
-			},
 		});
+		// console.log('After : ', columns);
 	};
 	return (
 		<div>
