@@ -13,16 +13,29 @@ function LoginPage() {
 	// const [isLogin, setIsLogin] = useState(false);
 
 	const kakaoLoginClickHandler = () => {
+		const Swal = require('sweetalert2');
 		try {
 			return new Promise((resolve, reject) => {
 				if (!Kakao) {
+					Swal.fire({
+						title: 'Fail',
+						text: '카카오 인스턴스가 없습니다',
+						icon: 'Fail',
+						confirmButtonText: 'OK',
+					});
 					reject('카카오 인스턴스가 없다');
 				}
 				Kakao.Auth.login({
 					success: auth => {
 						console.log('정상 로그인', auth);
 						console.log('access token = ', auth['access_token']);
-						alert('정상 로그인');
+						Swal.fire({
+							title: 'Login',
+							text: '로그인 성공',
+							icon: 'success',
+							confirmButtonText: 'OK',
+						});
+
 						// setIsLogin(true);
 						navigate('/main');
 					},

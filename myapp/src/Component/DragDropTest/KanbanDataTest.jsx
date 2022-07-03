@@ -1,4 +1,3 @@
-// import { v4 as uuidv4 } from 'uuid';
 export const data = [
 	{
 		id: '1',
@@ -45,10 +44,6 @@ export const columnsFromBackend = {
 		title: '나의 데이터',
 		items: data,
 	},
-	// 2: {
-	// 	title: '자기 소개서',
-	// 	items: [],
-	// },
 };
 export const port1 = {
 	1: {
