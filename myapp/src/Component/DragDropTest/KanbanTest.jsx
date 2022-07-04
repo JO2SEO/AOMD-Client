@@ -59,15 +59,16 @@ const KanbanTest = () => {
 			// console.log('destColumn = ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
+			const lengthSource = sourceItems.length;
 			const destItems = [...destColumn.items];
 
-			// console.log('sourceItems = ', sourceItems);
-			// console.log('destItems = ', destItems);
+			console.log('sourceItems = ', sourceItems);
+			console.log('destItems = ', destItems);
 
 			const [removed] = sourceItems.splice(source.index, 1);
 			// console.log('removed = ', removed);
 
-			sourceItems.splice(destination.index, 0, removed);
+			// sourceItems.splice(source.index, 0, removed);
 			// 옮겼는거 다시 오리지날에다가 복구
 
 			destItems.splice(destination.index, 0, removed);
@@ -168,7 +169,7 @@ const KanbanTest = () => {
 				<div className="TaskColumnStylesT">
 					{Object.entries(columns).map(([columnId, column], index) => {
 						return (
-							<Droppable key={column.title} droppableId={columnId}>
+							<Droppable key={columnId} droppableId={columnId}>
 								{(provided, snapshot) => (
 									<div
 										className="TaskListT"
@@ -201,7 +202,7 @@ const KanbanTest = () => {
 							<>
 								{Object.entries(columnsPort1).map(([columnId, column], index) => {
 									return (
-										<Droppable key={column.title} droppableId={columnId}>
+										<Droppable key={columnId} droppableId={columnId}>
 											{(provided, snapshot) => (
 												<div
 													className="portpolioListT"
@@ -218,8 +219,10 @@ const KanbanTest = () => {
 																item={item}
 																index={index}
 																datatype=""
-																columns={columnsPort1}
-																setColumns={setColumnsPort1}
+																columns={columns}
+																setColumns={setColumns}
+																columnsPort1={columnsPort1}
+																setColumnsPort1={setColumnsPort1}
 															/>
 														))}
 													</div>
@@ -238,7 +241,7 @@ const KanbanTest = () => {
 							<>
 								{Object.entries(columnsPort2).map(([columnId, column], index) => {
 									return (
-										<Droppable key={column.title} droppableId={columnId}>
+										<Droppable key={columnId} droppableId={columnId}>
 											{(provided, snapshot) => (
 												<div
 													className="portpolioListT"
@@ -275,7 +278,7 @@ const KanbanTest = () => {
 							<>
 								{Object.entries(columnsPort3).map(([columnId, column], index) => {
 									return (
-										<Droppable key={column.title} droppableId={columnId}>
+										<Droppable key={columnId} droppableId={columnId}>
 											{(provided, snapshot) => (
 												<div
 													className="portpolioListT"

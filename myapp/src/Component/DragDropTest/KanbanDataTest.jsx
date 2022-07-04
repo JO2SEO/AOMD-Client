@@ -1,16 +1,18 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const data = [
 	{
-		id: '1',
+		id: uuidv4(),
 		Type: '자격증',
 		Content: '정보 처리 기사',
 	},
 	{
-		id: '2',
+		id: uuidv4(),
 		Type: '학력',
 		Content: '부산대학교 졸업',
 	},
 	{
-		id: '3',
+		id: uuidv4(),
 		Type: '학점',
 		Content: '3.5',
 	},
@@ -18,7 +20,7 @@ export const data = [
 
 export const port1data = [
 	{
-		id: '4',
+		id: uuidv4(),
 		Type: 'port1',
 		Content: '포트폴리오1',
 	},
@@ -26,14 +28,14 @@ export const port1data = [
 
 export const port2data = [
 	{
-		id: '5',
+		id: uuidv4(),
 		Type: 'port2',
 		Content: '포트폴리오2',
 	},
 ];
 export const port3data = [
 	{
-		id: '6',
+		id: uuidv4(),
 		Type: 'port3',
 		Content: '포트폴리오3',
 	},
