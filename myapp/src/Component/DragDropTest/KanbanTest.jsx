@@ -59,7 +59,6 @@ const KanbanTest = () => {
 			// console.log('destColumn = ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
-			const lengthSource = sourceItems.length;
 			const destItems = [...destColumn.items];
 
 			console.log('sourceItems = ', sourceItems);
@@ -186,6 +185,8 @@ const KanbanTest = () => {
 													datatype="origin"
 													columns={columns}
 													setColumns={setColumns}
+													columnsPort1={columnsPort1}
+													setColumnsPort1={setColumnsPort1}
 												/>
 											))}
 										</div>

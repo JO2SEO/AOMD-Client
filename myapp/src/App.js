@@ -11,8 +11,12 @@ import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+// import { Provider } from 'react-redux';
+// import Store from './Redux/Store';
+
 function App() {
 	return (
+		// <Provider store={Store}>
 		<div className="App">
 			<Router>
 				<Header />
@@ -33,6 +37,7 @@ function App() {
 				<Footer />
 			</Router>
 		</div>
+		// </Provider>
 	);
 }
 
