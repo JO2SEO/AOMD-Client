@@ -11,12 +11,18 @@ function MainPage() {
 	const onClickMoveDragDrop2 = () => {
 		navigator('/dragdroptest');
 	};
+
+	const onClickMoveDragDrop3 = () => {
+		navigator('/dragdroptestredux');
+	};
 	return (
 		<div id="mainPage">
 			<h1> 드래그 앤 드랍 구현 - origin</h1>
 			<button onClick={onClickMoveDragDrop}>move to DragDrop </button>
 			<h1> 드래그 앤 드랍 구현 - test</h1>
 			<button onClick={onClickMoveDragDrop2}>move to DragDrop - test </button>
+			<h1> 드래그 앤 드랍 구현 - using Redux </h1>
+			<button onClick={onClickMoveDragDrop3}>move to DragDrop Redux- test </button>
 		</div>
 	);
 }
