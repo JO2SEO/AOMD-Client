@@ -1,11 +1,11 @@
 import '../../Style/Component/DragDrop.css';
 import React from 'react';
-import KanbanTestRedux from './KanbanTestRedux';
+import { ChangeData } from '../../Redux/ChangeData';
 
 function DragDropTestRedux() {
 	return (
 		<div id="DragDropPage">
-			<KanbanTestRedux />
+			<ChangeData />
 		</div>
 	);
 }

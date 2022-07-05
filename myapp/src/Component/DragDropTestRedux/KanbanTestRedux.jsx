@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 
-import { ChangeData } from '../../Redux/ChangeData';
+// import { ChangeData } from '../../Redux/ChangeData';
 
-const KanbanTestRedux = () => {
-	return (
-		<div>
-			<ChangeData />
-		</div>
-	);
-};
+// const KanbanTestRedux = () => {
+// 	return (
+// 		<div>
+// 			<ChangeData />
+// 		</div>
+// 	);
+// };
 
-export default KanbanTestRedux;
+// export default KanbanTestRedux;

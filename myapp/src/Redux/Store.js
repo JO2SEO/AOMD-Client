@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rawDataReducer from '../Redux/RawdataSlice';
-import port1DataReducer from '../Redux/Port1dataSlice';
+import rawDataReducer from './RawdataSlice';
+import port1DataReducer from './Port1dataSlice';
 
 export default configureStore({
 	reducer: {
