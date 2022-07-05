@@ -167,6 +167,15 @@ const KanbanTest = () => {
 
 				<div className="TaskColumnStylesT">
 					{Object.entries(columns).map(([columnId, column], index) => {
+						console.log('columns = ', columns);
+						// origin: {title: '나의 데이터', items: Array(3)}
+						console.log('columns columnId= ', columnId);
+						// columnId = origin
+						console.log('columns column= ', column);
+						// column=  {title: '나의 데이터', items: Array(3)}
+						console.log('columns index = ', columns.index);
+						// undefinde
+
 						return (
 							<Droppable key={columnId} droppableId={columnId}>
 								{(provided, snapshot) => (

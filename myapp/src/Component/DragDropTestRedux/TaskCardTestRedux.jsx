@@ -2,36 +2,23 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import '../../Style/Component/KanbanTest.css';
 
-const TaskCardTestRedux = props => {
-	const { item, index, datatype, columns, setColumns, columnsPort1, setColumnsPort1 } = props;
+import { useSelector, useDispatch } from 'react-redux';
+import { DeletedataChange, selectData } from '../../Redux/RawdataSlice';
+import { DeletedataChangePort1, selectDataPort1 } from '../../Redux/Port1dataSlice';
 
-	// console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
-	// console.log('item = ', item);
-	// console.log('index = ', index);
-	// console.log('datatype = ', datatype);
+const TaskCardTestRedux = props => {
+	const { item, index, datatype } = props;
+	const dispatch = useDispatch();
+
+	const originData = useSelector(selectData);
+	const portData1 = useSelector(selectDataPort1);
 
 	const onClickDelete = itemID => {
-		// console.log('itemID = ', itemID);
-
-		// console.log('columns = ', columns);
-
-		const originColumn = columns['origin'];
-		const sourceColumn = columnsPort1['1'];
-		// console.log('originColumn = ', originColumn);
-		// console.log('sourceColumn = ', sourceColumn);
-
-		// const destColumn = columns[1];
-
+		const originColumn = originData['origin'];
+		const sourceColumn = portData1['port1'];
 		const originItems = [...originColumn.items];
 		const sourceItems = [...sourceColumn.items];
-
 		const lengthOrigin = originItems.length;
-
-		// const destItems = [...destColumn.items];
-		// console.log('sourceItems = ', sourceItems);
-		// const items = columns["2"].items;
-		// console.log('before = ', destItems);
-		// console.log('Before : ', columns);
 
 		for (let i = 0; i < sourceItems.length; i++) {
 			// console.log('i = ', i);
@@ -47,24 +34,24 @@ const TaskCardTestRedux = props => {
 			}
 		}
 
-		// console.log('after = ', destItems);
+		dispatch(DeletedataChange(originItems));
+		dispatch(DeletedataChangePort1(sourceItems));
 
-		setColumns({
-			origin: {
-				...originColumn,
-				items: originItems,
-			},
-		});
-		setColumnsPort1({
-			...columnsPort1,
-			1: {
-				...sourceColumn,
-				items: sourceItems,
-			},
-		});
-
-		// console.log('After : ', columns);
+		// setColumns({
+		// 	origin: {
+		// 		...originColumn,
+		// 		items: originItems,
+		// 	},
+		// });
+		// setColumnsPort1({
+		// 	...columnsPort1,
+		// 	1: {
+		// 		...sourceColumn,
+		// 		items: sourceItems,
+		// 	},
+		// });
 	};
+
 	return (
 		<div>
 			{datatype === 'origin' ? (

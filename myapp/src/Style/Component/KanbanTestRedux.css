@@ -11,27 +11,7 @@
 	/* background: ${({ isDragging }) => (isDragging ? 'rgba(255, 59, 59, 0.15)' : 'white')}; */
 	background: rgb(193, 226, 180);
 	margin-top: 10px;
-
-	/* .priority{ */
-	/* margin-right: 12px; */
-	/* align-self: center;
-    svg{
-      width: 12px !important;
-      height: 12px !important;
-      margin-right: 12px; */
-	/* margin-top: 2px; */
-	/* } */
-	/* } */
 }
-/* .secondary-details {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	font-size: 12px;
-	font-weight: 400px;
-	color: #7d7d7d;
-} */
 
 .ContainerT {
 	display: flex;
@@ -39,6 +19,7 @@
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
+	border: 5px solid red;
 }
 
 .TaskListT {
