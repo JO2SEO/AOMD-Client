@@ -9,6 +9,7 @@ import '../Style/Component/KanbanTestRedux.css';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 export function ChangeData() {
+	const Swal = require('sweetalert2');
 	const dispatch = useDispatch();
 
 	const originData = useSelector(selectData);
@@ -141,6 +142,31 @@ export function ChangeData() {
 			</div>
 		);
 	}
+	const onClickStore = () => {
+		Swal.fire({
+			position: 'center',
+			icon: 'success',
+			title: 'Saved',
+			showConfirmButton: false,
+			timer: 1500,
+			heightAuto: false,
+		});
+	};
+	const onClickMakeURL = () => {
+		Swal.fire({
+			title: '생성된 URL',
+			showDenyButton: true,
+			text: 'www.naver.com',
+			icon: 'success',
+			confirmButtonText: 'OK',
+			denyButtonText: `Copy`,
+			heightAuto: false,
+		}).then(result => {
+			if (result.isDenied) {
+				console.log(result.text);
+			}
+		});
+	};
 
 	return (
 		<div className="ContainerT">
@@ -182,16 +208,45 @@ export function ChangeData() {
 													ref={provided.innerRef}
 													{...provided.droppableProps}
 												>
-													<span className="TitleT">{column.title}</span>
-													{column.items.map((item, index) => (
-														<TaskCardTest
-															key={item.id}
-															item={item}
-															index={index}
-															datatype=""
-														/>
-													))}
-
+													<div>
+														<span className="TitleT">
+															{column.title}
+														</span>
+														{column.items.map((item, index) => (
+															<TaskCardTest
+																key={item.id}
+																item={item}
+																index={index}
+																datatype=""
+															/>
+														))}
+													</div>
+													<div className="introduceBox">
+														<h1>자기소개서</h1>
+														<textarea></textarea>
+													</div>
+													<div className="submitBox">
+														<button
+															className="btn"
+															onClick={onClickStore}
+															type="button"
+														>
+															<span className="shadow"></span>
+															<span className="edge"></span>
+															<span className="front">저장하기</span>
+														</button>
+														<button
+															className="btn"
+															onClick={onClickMakeURL}
+															type="button"
+														>
+															<span className="shadow"></span>
+															<span className="edge"></span>
+															<span className="front">
+																URL 생성하기
+															</span>
+														</button>
+													</div>
 													{provided.placeholder}
 												</div>
 											)}

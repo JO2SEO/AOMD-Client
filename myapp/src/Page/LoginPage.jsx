@@ -20,7 +20,7 @@ function LoginPage() {
 					Swal.fire({
 						title: 'Fail',
 						text: '카카오 인스턴스가 없습니다',
-						icon: 'Fail',
+						icon: 'fail',
 						confirmButtonText: 'OK',
 					});
 					reject('카카오 인스턴스가 없다');

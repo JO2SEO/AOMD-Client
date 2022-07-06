@@ -19,6 +19,11 @@
 	box-sizing: border-box;
 	border: solid black 3px;
 }
+.portpolioBoxT {
+	width: 82%;
+	border: solid black 3px;
+	box-sizing: border-box;
+}
 .portpolioListT {
 	display: flex;
 	flex-direction: column;
@@ -27,19 +32,19 @@
 	height: 100%;
 	border-radius: 5px;
 	padding: 15px 15px;
-	margin-right: 45px;
+	/* margin-right: 45px; */
 	box-sizing: border-box;
+	justify-content: space-between;
+	overflow-y: scroll;
 }
-.portpolioBoxT {
-	width: 85%;
-	border: solid black 3px;
-	box-sizing: border-box;
-}
+
 .DragDropBtnBoxT {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 10px;
+	height: 5%;
+	box-sizing: border-box;
 }
 .DragDropBtnBoxT button {
 	margin: 0px 10px 0px 10px;
@@ -50,7 +55,8 @@
 	flex-direction: row;
 	width: 100%;
 	/* min-height: 80vh; */
-	height: 100%;
+	height: 90%;
+	max-height: 90%;
 	box-sizing: border-box;
 }
 
@@ -72,7 +78,7 @@
 	justify-content: center;
 	align-items: flex-start;
 	padding: 10px;
-	margin: 10px;
+	margin-top: 10px;
 	/* min-height: 60px; */
 	border-radius: 5px;
 	/* max-width: 311px; */
@@ -87,7 +93,7 @@
 	box-sizing: border-box;
 	width: 100%;
 	/* height: 50px; */
-	padding: 7px;
+	padding-top: 10px;
 	/* border: 1px red solid; */
 }
 
@@ -122,4 +128,86 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+.introduceBox textarea {
+	width: 100%;
+	height: 200px;
+	padding: 10px;
+	box-sizing: border-box;
+	border: solid 2px #1e90ff;
+	border-radius: 5px;
+	font-size: 16px;
+	resize: none;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.submitBox {
+	width: 100%;
+	/* height: 10%; */
+	min-height: 30px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	/* background-color: white; */
+	box-sizing: content-box;
+}
+
+button.btn {
+	height: 100%;
+	border: 0;
+	padding: 0;
+	border-radius: 15px;
+	background-color: hsl(248, 39%, 39.2%);
+	cursor: pointer;
+	outline-offset: 4px;
+	position: relative;
+	margin-right: 20px;
+}
+button.btn:hover .front {
+	transform: translateY(-10px);
+	transition: transform 0.25s cubic-bezier(0.3, 0.7, 0.4, 1.5);
+}
+button.btn:active .front {
+	transform: translateY(-2px);
+	transition: transform 0.2s;
+}
+button.btn:focus:not(:focus-visible) {
+	outline: none;
+}
+button.btn .front {
+	min-width: 150px;
+	height: 30px;
+	display: block;
+	border-radius: 15px;
+	line-height: 30px;
+	font-size: 17px;
+	font-weight: bold;
+	color: rgb(7, 7, 7);
+	background-color: rgb(135, 199, 110);
+	transform: translateY(-8px);
+	transition: transform 0.4s cubic-bezier(0.3, 0.7, 0.4, 1);
+}
+button.btn .shadow {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	background: hsl(0deg 0% 0% / 0.25);
+	transform: translateY(2px);
+	filter: blur(4px);
+}
+button.btn .edge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+	background: rgb(117, 148, 104);
 }

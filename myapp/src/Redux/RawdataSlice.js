@@ -10,7 +10,12 @@ export const data = [
 	{
 		id: uuidv4(),
 		Type: '자격증',
-		Content: '컴퓨터 활용 능력',
+		Content: '컴퓨터 활용 능력 1급',
+	},
+	{
+		id: uuidv4(),
+		Type: '학력',
+		Content: '대현고등학교 졸업',
 	},
 	{
 		id: uuidv4(),

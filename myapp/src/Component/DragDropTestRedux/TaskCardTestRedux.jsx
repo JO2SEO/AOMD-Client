@@ -48,20 +48,22 @@ const TaskCardTestRedux = props => {
 					)}
 				</Draggable>
 			) : (
-				<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
-					{provided => (
-						<div
-							className="portItem"
-							ref={provided.innerRef}
-							{...provided.draggableProps}
-							{...provided.dragHandleProps}
-						>
-							<h1>{item.Type}</h1>
-							<p>{item.Content}</p>
-							<button onClick={e => onClickDelete(item.id)}>삭제</button>
-						</div>
-					)}
-				</Draggable>
+				<div>
+					<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+						{provided => (
+							<div
+								className="portItem"
+								ref={provided.innerRef}
+								{...provided.draggableProps}
+								{...provided.dragHandleProps}
+							>
+								<h1>{item.Type}</h1>
+								<p>{item.Content}</p>
+								<button onClick={e => onClickDelete(item.id)}>삭제</button>
+							</div>
+						)}
+					</Draggable>
+				</div>
 			)}
 		</div>
 	);
