@@ -13,6 +13,7 @@ function Header() {
 			text: '홈페이지로 이동합니다',
 			icon: 'success',
 			confirmButtonText: 'OK',
+			heightAuto: false,
 		});
 		navigate('/');
 	};
@@ -22,6 +23,7 @@ function Header() {
 			text: '찾을 수 없는 페이지입니다',
 			icon: 'error',
 			confirmButtonText: 'OK',
+			heightAuto: false,
 		});
 		navigate('/errorpage');
 	};

@@ -22,6 +22,7 @@ function LoginPage() {
 						text: '카카오 인스턴스가 없습니다',
 						icon: 'fail',
 						confirmButtonText: 'OK',
+						heightAuto: false,
 					});
 					reject('카카오 인스턴스가 없다');
 				}
@@ -34,6 +35,7 @@ function LoginPage() {
 							text: '로그인 성공',
 							icon: 'success',
 							confirmButtonText: 'OK',
+							heightAuto: false,
 						});
 
 						// setIsLogin(true);
