@@ -9,6 +9,11 @@ export const data = [
 	},
 	{
 		id: uuidv4(),
+		Type: '자격증',
+		Content: '컴퓨터 활용 능력',
+	},
+	{
+		id: uuidv4(),
 		Type: '학력',
 		Content: '부산대학교 졸업',
 	},
@@ -16,6 +21,16 @@ export const data = [
 		id: uuidv4(),
 		Type: '학점',
 		Content: '3.5',
+	},
+	{
+		id: uuidv4(),
+		Type: '수상내역',
+		Content: '아이디어 해커톤 1위',
+	},
+	{
+		id: uuidv4(),
+		Type: '수상내역',
+		Content: '졸업과제 1위',
 	},
 ];
 

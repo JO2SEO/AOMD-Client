@@ -14,45 +14,21 @@ export function ChangeData() {
 	const originData = useSelector(selectData);
 	const portData1 = useSelector(selectDataPort1);
 
-	// console.log('originData = ', originData);
-	// originData =  origin: {title: '나의 데이터', items: Array(3)}
-
-	// console.log('portData = ', portData1);
-	// portData =  {port1: {…}}port1: {title: '포트폴리오1', items: Array(1)}
-
 	const onDragEnd = result => {
-		// console.log(result);
-
 		if (!result.destination) return;
-		// 다른 곳에 놔뒀을 때 바로 리턴
 
 		const { source, destination } = result;
-		// console.log('source = ', source);
-		// source =  {index: 0, droppableId: 'origin'}
-		// console.log('destination = ', destination);
-		// destination =  {droppableId: 'port1', index: 1}
 
 		if (source.droppableId !== destination.droppableId) {
 			const sourceColumn = originData[source.droppableId];
-			// console.log('sourceColumn = ', sourceColumn);
-
 			const destColumn = portData1[destination.droppableId];
-			// console.log('destColumn = ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
 
-			// console.log('sourceItems = ', sourceItems);
-			// console.log('destItems = ', destItems);
-
 			const [removed] = sourceItems.splice(source.index, 1);
-			// console.log('removed = ', removed);
-
-			// sourceItems.splice(source.index, 0, removed);
-			// 옮겼는거 다시 오리지날에다가 복구
 
 			destItems.splice(destination.index, 0, removed);
-			// 새로 추가
 
 			dispatch(DragdataChange(sourceItems));
 			dispatch(DragdataChangePort1(destItems));
@@ -81,6 +57,91 @@ export function ChangeData() {
 		setPort3State(true);
 	};
 
+	function returnTaskCard(column) {
+		const info1 = []; // 자격증
+		const info2 = []; // 수상내역
+		const info3 = []; // 학점
+		const info4 = []; // 학력
+
+		column.items.map((item, index) => {
+			if (item.Type === '자격증') {
+				info1.push(item);
+			}
+			if (item.Type === '수상내역') {
+				info2.push(item);
+			}
+			if (item.Type === '학점') {
+				info3.push(item);
+			}
+			if (item.Type === '학력') {
+				info4.push(item);
+			}
+		});
+
+		// console.log('info1 = ', info1);
+		// console.log('info2 = ', info2);
+		// console.log('info3 = ', info3);
+		// console.log('info4 = ', info4);
+
+		return (
+			<div>
+				<div className="TaskCardTestBox">
+					<h1> 자격증 </h1>
+
+					{info1.map((item, index) => {
+						return (
+							<TaskCardTest
+								key={item.id}
+								item={item}
+								index={index}
+								datatype="origin"
+							/>
+						);
+					})}
+				</div>
+				<div className="TaskCardTestBox">
+					<h1> 수상내역 </h1>
+					{info2.map((item, index) => {
+						return (
+							<TaskCardTest
+								key={item.id}
+								item={item}
+								index={index}
+								datatype="origin"
+							/>
+						);
+					})}
+				</div>
+				<div className="TaskCardTestBox">
+					<h1> 학점 </h1>
+					{info3.map((item, index) => {
+						return (
+							<TaskCardTest
+								key={item.id}
+								item={item}
+								index={index}
+								datatype="origin"
+							/>
+						);
+					})}
+				</div>
+				<div className="TaskCardTestBox">
+					<h1> 학력 </h1>
+					{info4.map((item, index) => {
+						return (
+							<TaskCardTest
+								key={item.id}
+								item={item}
+								index={index}
+								datatype="origin"
+							/>
+						);
+					})}
+				</div>
+			</div>
+		);
+	}
+
 	return (
 		<div className="ContainerT">
 			<DragDropContext onDragEnd={result => onDragEnd(result)}>
@@ -91,14 +152,6 @@ export function ChangeData() {
 				</div>
 				<div className="TaskColumnStylesT">
 					{Object.entries(originData).map(([columnId, column], index) => {
-						// console.log('originData = ', originData);
-						// // origin: {title: '나의 데이터', items: Array(3)}
-						// console.log('originData columnId= ', columnId);
-						// // columnId = origin
-						// console.log('originData column= ', column);
-						// // column=  {title: '나의 데이터', items: Array(3)}
-						// console.log('originData index = ', originData.index);
-
 						return (
 							<Droppable key={columnId} droppableId={columnId}>
 								{(provided, snapshot) => (
@@ -107,17 +160,8 @@ export function ChangeData() {
 										ref={provided.innerRef}
 										{...provided.droppableProps}
 									>
-										<div>
-											<span className="TitleT">{column.title}</span>
-											{column.items.map((item, index) => (
-												<TaskCardTest
-													key={item.id}
-													item={item}
-													index={index}
-													datatype="origin"
-												/>
-											))}
-										</div>
+										<span className="TitleT">{column.title}</span>
+										{returnTaskCard(column)}
 
 										{provided.placeholder}
 									</div>
@@ -130,13 +174,6 @@ export function ChangeData() {
 						{port1State ? (
 							<>
 								{Object.entries(portData1).map(([columnId, column], index) => {
-									// console.log('portData1 = ', portData1);
-									// // origin: {title: '나의 데이터', items: Array(3)}
-									// console.log('portData1 columnId= ', columnId);
-									// // columnId = origin
-									// console.log('portData1 column= ', column);
-									// // column=  {title: '나의 데이터', items: Array(3)}
-									// console.log('portData1 index = ', portData1.index);
 									return (
 										<Droppable key={columnId} droppableId={columnId}>
 											{(provided, snapshot) => (
@@ -145,19 +182,15 @@ export function ChangeData() {
 													ref={provided.innerRef}
 													{...provided.droppableProps}
 												>
-													<div>
-														<span className="TitleT">
-															{column.title}
-														</span>
-														{column.items.map((item, index) => (
-															<TaskCardTest
-																key={item.id}
-																item={item}
-																index={index}
-																datatype=""
-															/>
-														))}
-													</div>
+													<span className="TitleT">{column.title}</span>
+													{column.items.map((item, index) => (
+														<TaskCardTest
+															key={item.id}
+															item={item}
+															index={index}
+															datatype=""
+														/>
+													))}
 
 													{provided.placeholder}
 												</div>
@@ -171,34 +204,6 @@ export function ChangeData() {
 						)}
 					</div>
 				</div>
-
-				{/* </div> */}
-				{/* <div>
-				<h1>Hello</h1>
-				<button onClick={() => dispatch(typeChange())}>Type Change - Rowdata</button>
-				<button onClick={() => dispatch(typeChangePort1())}>Type Change - Port1</button>
-
-				<div>
-					<h1>originData - Title (using selectData) :</h1>
-					{originData.title}
-				</div>
-				<div>
-					<h1>originData - itmes (using selectData) :</h1>
-					{originData.origin.items.map(item => (
-						<div key={item.id}>{item.id}</div>
-					))}
-				</div>
-				<div>
-					<h1>portData - Title (using selectData) :</h1>
-					{portData.title}
-				</div>
-				<div>
-					<h1>portData - itmes (using selectData) :</h1>
-					{/* {portData.port1.items.map(item => (
-						<div key={item.id}>{item.id}</div>
-					))} */}
-				{/* </div> */}
-				{/* </div>  */}
 			</DragDropContext>
 		</div>
 	);

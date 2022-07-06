@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import '../../Style/Component/KanbanTest.css';
+import '../../Style/Component/KanbanTestRedux.css';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { DeletedataChange, selectData } from '../../Redux/RawdataSlice';
@@ -21,14 +21,8 @@ const TaskCardTestRedux = props => {
 		const lengthOrigin = originItems.length;
 
 		for (let i = 0; i < sourceItems.length; i++) {
-			// console.log('i = ', i);
-			// console.log(destItems[i]);
-
 			if (sourceItems[i].id === itemID) {
 				const [removed] = sourceItems.splice(i, 1);
-				// console.log('removed = ', removed);
-				// console.log('찾았다');
-				// sourceItems.splice(i, 1);
 				originItems.splice(lengthOrigin, 0, removed);
 				break;
 			}
@@ -36,57 +30,38 @@ const TaskCardTestRedux = props => {
 
 		dispatch(DeletedataChange(originItems));
 		dispatch(DeletedataChangePort1(sourceItems));
-
-		// setColumns({
-		// 	origin: {
-		// 		...originColumn,
-		// 		items: originItems,
-		// 	},
-		// });
-		// setColumnsPort1({
-		// 	...columnsPort1,
-		// 	1: {
-		// 		...sourceColumn,
-		// 		items: sourceItems,
-		// 	},
-		// });
 	};
 
 	return (
-		<div>
+		<div className="oneItemContentBox">
 			{datatype === 'origin' ? (
 				<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
 					{provided => (
 						<div
+							className="oneItemContent fromLeft"
 							ref={provided.innerRef}
 							{...provided.draggableProps}
 							{...provided.dragHandleProps}
 						>
-							<div className="TaskInformationT">
-								<h1>{item.Type}</h1>
-								<p>{item.Content}</p>
-							</div>
+							<p className="oneItemContentP">{item.Content}</p>
 						</div>
 					)}
 				</Draggable>
 			) : (
-				<div>
-					<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
-						{provided => (
-							<div
-								ref={provided.innerRef}
-								{...provided.draggableProps}
-								{...provided.dragHandleProps}
-							>
-								<div className="TaskInformationT">
-									<h1>{item.Type}</h1>
-									<p>{item.Content}</p>
-								</div>
-								<button onClick={e => onClickDelete(item.id)}>삭제</button>
-							</div>
-						)}
-					</Draggable>
-				</div>
+				<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+					{provided => (
+						<div
+							className="portItem"
+							ref={provided.innerRef}
+							{...provided.draggableProps}
+							{...provided.dragHandleProps}
+						>
+							<h1>{item.Type}</h1>
+							<p>{item.Content}</p>
+							<button onClick={e => onClickDelete(item.id)}>삭제</button>
+						</div>
+					)}
+				</Draggable>
 			)}
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import '../../Style/Component/KanbanTest.css';
+// import '../../Style/Component/KanbanTest.css';
 
 const TaskCardTest = props => {
 	const { item, index, datatype, columns, setColumns, columnsPort1, setColumnsPort1 } = props;

@@ -15,7 +15,7 @@
 .DragDropPage_upBoxLeft {
 	width: 50%;
 	height: 100%;
-	border: 10px solid black;
+	border: 3px solid black;
 
 	margin: 10px;
 	box-sizing: border-box;
@@ -24,7 +24,7 @@
 .DragDropPage_upBoxRight {
 	width: 50%;
 	height: 100%;
-	border: 10px solid black;
+	border: 3px solid black;
 	margin: 10px;
 
 	box-sizing: border-box;

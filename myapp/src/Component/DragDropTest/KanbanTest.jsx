@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import styled from '@emotion/styled';
-import '../../Style/Component/KanbanTest.css';
+// import '../../Style/Component/KanbanTest.css';
 
 import { columnsFromBackend, port1, port2, port3 } from './KanbanDataTest';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';

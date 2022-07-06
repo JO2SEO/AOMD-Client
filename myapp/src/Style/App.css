@@ -138,8 +138,8 @@ table {
 
 .Content-div {
 	width: 100%;
-	height: 75%;
-	border: blue solid 10px;
+	height: 85%;
+	/* border: black solid 2px; */
 	box-sizing: border-box;
 	display: flex;
 	justify-content: center;
