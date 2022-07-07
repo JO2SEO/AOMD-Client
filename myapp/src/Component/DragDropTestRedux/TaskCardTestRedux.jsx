@@ -35,7 +35,7 @@ const TaskCardTestRedux = props => {
 	return (
 		<div className="oneItemContentBox">
 			{datatype === 'origin' ? (
-				<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+				<Draggable key={item.id} draggableId={item.id} index={index}>
 					{provided => (
 						<div
 							className="oneItemContent fromLeft"
@@ -49,7 +49,7 @@ const TaskCardTestRedux = props => {
 				</Draggable>
 			) : (
 				<div>
-					<Draggable key={item.id} draggableId={item.id.toString()} index={index}>
+					<Draggable key={item.id} draggableId={item.id} index={index}>
 						{provided => (
 							<div
 								className="portItem"

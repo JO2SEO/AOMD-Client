@@ -26,12 +26,9 @@ function App() {
 							<Route path="/" element={<LoginPage />} />
 							<Route path="/main" element={<MainPage />} />
 							<Route path="/dragdrop" element={<DragDrop />} />
-
 							<Route path="/dragdroptest" element={<DragDropTest />} />
 							<Route path="/dragdroptestredux" element={<DragDropTestRedux />} />
-
 							<Route path="/register" element={<Register />} />
-
 							<Route path="/errorpage" element={<ErrorPage />} />
 						</Routes>
 					</div>

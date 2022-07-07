@@ -39,7 +39,8 @@ function LoginPage() {
 						});
 
 						// setIsLogin(true);
-						navigate('/main');
+						// navigate('/main');
+						navigate('/dragdroptestredux');
 					},
 					fail: err => {
 						console.error(err);
