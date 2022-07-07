@@ -1,4 +1,3 @@
-import '../Style/Page/MainPage.css';
 import { useNavigate } from 'react-router-dom';
 
 function MainPage() {

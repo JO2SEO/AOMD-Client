@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { DragdataChange, selectData } from '../../Redux/RawdataSlice';
-import { DragdataChangePort1, selectDataPort1 } from '../../Redux/Port1dataSlice';
+import React, { Fragment } from 'react';
 import TaskCardTest from './TaskCardTestRedux';
-
-import '../../Style/Component/KanbanTestRedux.css';
 import { Droppable } from 'react-beautiful-dnd';
+import styled from 'styled-components';
+
+export const DataBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 10px;
+	margin-top: 10px;
+	border-radius: 5px;
+	background: rgb(193, 226, 180);
+	box-sizing: border-box;
+`;
+export const ColumnTitle = styled.h1`
+	font-size: larger;
+	font-weight: bolder;
+	margin-bottom: 10px;
+	text-align: center;
+`;
+export const ProvidedPlaceholder = styled.span`
+	display: 'none';
+`;
 
 const RawDataComponent = props => {
 	const { originData } = props;
@@ -31,14 +47,9 @@ const RawDataComponent = props => {
 			}
 		});
 
-		// console.log('info1 = ', info1);
-		// console.log('info2 = ', info2);
-		// console.log('info3 = ', info3);
-		// console.log('info4 = ', info4);
-
 		return (
-			<>
-				<div className="TaskCardTestBox">
+			<Fragment>
+				<DataBox>
 					<h1> 자격증 </h1>
 
 					{info1.map((item, index) => {
@@ -51,8 +62,8 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</div>
-				<div className="TaskCardTestBox">
+				</DataBox>
+				<DataBox>
 					<h1> 수상내역 </h1>
 					{info2.map((item, index) => {
 						return (
@@ -64,8 +75,8 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</div>
-				<div className="TaskCardTestBox">
+				</DataBox>
+				<DataBox>
 					<h1> 학점 </h1>
 					{info3.map((item, index) => {
 						return (
@@ -77,8 +88,8 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</div>
-				<div className="TaskCardTestBox">
+				</DataBox>
+				<DataBox>
 					<h1> 학력 </h1>
 					{info4.map((item, index) => {
 						return (
@@ -90,26 +101,26 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</div>
-			</>
+				</DataBox>
+			</Fragment>
 		);
 	}
 	return (
-		<div>
+		<Fragment>
 			{Object.entries(originData).map(([columnId, column], index) => {
 				return (
 					<Droppable key={columnId} droppableId={columnId}>
 						{(provided, snapshot) => (
 							<div ref={provided.innerRef} {...provided.droppableProps}>
-								<span className="TitleT">{column.title}</span>
+								<ColumnTitle>{column.title}</ColumnTitle>
 								{returnTaskCard(column)}
-								<span style={{ display: 'none' }}>{provided.placeholder}</span>
+								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 							</div>
 						)}
 					</Droppable>
 				);
 			})}
-		</div>
+		</Fragment>
 	);
 };
 

@@ -1,4 +1,4 @@
-import './Style/App.css';
+import './App.css';
 import LoginPage from './Page/LoginPage';
 import MainPage from './Page/MainPage';
 import DragDrop from './Component/DragDrop/DragDrop';
@@ -14,6 +14,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
+import styled from 'styled-components';
+
+export const ContentDiv = styled.div`
+	width: 100%;
+	height: 85%;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
 
 function App() {
 	return (
@@ -21,7 +31,7 @@ function App() {
 			<div className="App">
 				<Router>
 					<Header />
-					<div className="Content-div">
+					<ContentDiv>
 						<Routes>
 							<Route path="/" element={<LoginPage />} />
 							<Route path="/main" element={<MainPage />} />
@@ -31,7 +41,7 @@ function App() {
 							<Route path="/register" element={<Register />} />
 							<Route path="/errorpage" element={<ErrorPage />} />
 						</Routes>
-					</div>
+					</ContentDiv>
 
 					<Footer />
 				</Router>

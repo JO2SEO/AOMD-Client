@@ -1,5 +1,5 @@
-import '../Style/Page/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
+import { LoginPageDiv, LoginPageForm, LoginFormInput, FormButton } from '../Page/LoginPage';
 
 function Register() {
 	const navigate = useNavigate();
@@ -8,20 +8,20 @@ function Register() {
 		navigate('/');
 	};
 	return (
-		<div id="loginPage">
-			<div className="loginPageForm">
-				<form className="registerForm">
-					<input type="text" placeholder="name" />
-					<input type="password" placeholder="password" />
-					<input type="text" placeholder="email address" />
-					<button> 아이디 생성 </button>
-					<div className="formMessage">
-						<p className="formMessageP">이미 회원이신가요 ? </p>
-						<button onClick={onClickSign}>로그인하러 가기</button>
+		<LoginPageDiv>
+			<LoginPageForm>
+				<form>
+					<LoginFormInput type="text" placeholder="name" />
+					<LoginFormInput type="password" placeholder="password" />
+					<LoginFormInput type="text" placeholder="email address" />
+					<FormButton> 아이디 생성 </FormButton>
+					<div style={{ color: '#757575', fontSize: '12px' }}>
+						<p style={{ padding: '15px' }}>이미 회원이신가요 ? </p>
+						<FormButton onClick={onClickSign}>로그인하러 가기</FormButton>
 					</div>
 				</form>
-			</div>
-		</div>
+			</LoginPageForm>
+		</LoginPageDiv>
 	);
 }
 

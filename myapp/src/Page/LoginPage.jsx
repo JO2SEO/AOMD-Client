@@ -1,6 +1,58 @@
-import '../Style/Page/LoginPage.css';
+// import '../Style/Page/LoginPage.css';
 import kakaoBtn from '../Image/kakaoBtn.png';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+export const LoginPageDiv = styled.div`
+	height: 100%;
+	width: 100%;
+	box-sizing: content-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+export const LoginPageForm = styled.div`
+	position: relative;
+	z-index: 1;
+	background: #ffffff;
+	max-width: 300px;
+	padding: 45px;
+	text-align: center;
+	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	box-sizing: content-box;
+`;
+export const LoginFormInput = styled.input`
+	font-family: 'Roboto', sans-serif;
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	margin: 0 0 15px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+`;
+export const FormButton = styled.button`
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #4caf50;
+	width: 100%;
+	border: 0;
+	padding: 15px;
+	color: #ffffff;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+
+	&:hover {
+		background: #43a047;
+	}
+	&:focus {
+		background: #43a047;
+	}
+`;
 
 function LoginPage() {
 	const navigate = useNavigate();
@@ -10,7 +62,6 @@ function LoginPage() {
 	};
 
 	const { Kakao } = window;
-	// const [isLogin, setIsLogin] = useState(false);
 
 	const kakaoLoginClickHandler = () => {
 		const Swal = require('sweetalert2');
@@ -53,27 +104,29 @@ function LoginPage() {
 	};
 
 	return (
-		<div id="loginPage">
-			<div className="loginPageForm">
-				<form className="loginForm">
-					<input type="text" placeholder="username" />
-					<input type="password" placeholder="password" />
-					<button>로그인</button>
-					<div className="formMessage">
-						<p className="formMessageP">아이디가 없으신가요 ?</p>
-						<button onClick={onClickSign}> 회원가입 </button>
+		<LoginPageDiv>
+			<LoginPageForm>
+				<form>
+					<LoginFormInput type="text" placeholder="username" />
+					<LoginFormInput type="password" placeholder="password" />
+					<FormButton>로그인</FormButton>
+					<div style={{ color: '#757575', fontSize: '12px' }}>
+						<p style={{ padding: '15px' }}>아이디가 없으신가요 ?</p>
+						<FormButton onClick={onClickSign}> 회원가입 </FormButton>
 					</div>
 				</form>
 				<div>
 					<br />
-					<p className="formMessageP"> 소셜 로그인을 통한 간편 회원가입 </p>
+					<p style={{ padding: '15px' }}> 소셜 로그인을 통한 간편 회원가입 </p>
 					<br />
-					<button id="Btn-kakao">
+					<button
+						style={{ margin: '0', padding: '0', border: 'none', cursor: 'pointer' }}
+					>
 						<img src={kakaoBtn} alt="kakao login" onClick={kakaoLoginClickHandler} />
 					</button>
 				</div>
-			</div>
-		</div>
+			</LoginPageForm>
+		</LoginPageDiv>
 	);
 }
 

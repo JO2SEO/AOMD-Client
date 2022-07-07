@@ -1,6 +1,6 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import '../../Style/Component/Kanban.css';
+// import '../../Style/Component/Kanban.css';
 
 const TaskCard = ({ item, index, datatype, columns, setColumns, columnId }) => {
 	// console.log('column = ', column.items);

@@ -1,8 +1,29 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import '../Style/Component/Header.css';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 
+export const HeaderDiv = styled.div`
+	width: 100%;
+	height: 10%;
+	border: 2px black solid;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+`;
+export const HeaderBox = styled.div`
+	display: flex;
+	width: 33.3%;
+	height: 100%;
+	border: 2px solid black;
+	box-sizing: border-box;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+`;
+export const HeaderMoveHomeBtn = styled.button`
+	width: 50px;
+	height: 50px;
+`;
 function Header() {
 	const navigate = useNavigate();
 	const Swal = require('sweetalert2');
@@ -28,24 +49,19 @@ function Header() {
 		navigate('/errorpage');
 	};
 	return (
-		<div id="Header-div">
-			<div className="HeaderBox">
-				<button className="HeaderMoveHomeBtn" onClick={onClickMoveHome}>
-					Home
-				</button>
-			</div>
-			<div className="HeaderBox">
-				{' '}
-				<h1> AOMD </h1>{' '}
-			</div>
-			<div className="HeaderBox">
-				<div>
-					<button className="HeaderMoveErrorBtn" onClick={onClickMoveError}>
-						Error
-					</button>
-				</div>
-			</div>
-		</div>
+		<HeaderDiv>
+			<HeaderBox>
+				<HeaderMoveHomeBtn onClick={onClickMoveHome}>Home</HeaderMoveHomeBtn>
+			</HeaderBox>
+			<HeaderBox>
+				<h1 style={{ fontSize: '3vw' }}> AOMD </h1>
+			</HeaderBox>
+			<HeaderBox>
+				<HeaderMoveHomeBtn className="HeaderMoveErrorBtn" onClick={onClickMoveError}>
+					Error
+				</HeaderMoveHomeBtn>
+			</HeaderBox>
+		</HeaderDiv>
 	);
 }
 

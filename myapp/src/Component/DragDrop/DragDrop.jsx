@@ -1,4 +1,4 @@
-import '../../Style/Component/DragDrop.css';
+// import '../../Style/Component/DragDrop.css';
 import React from 'react';
 import Kanban from './Kanban';
 

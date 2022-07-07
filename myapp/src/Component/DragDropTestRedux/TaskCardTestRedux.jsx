@@ -1,11 +1,39 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import '../../Style/Component/KanbanTestRedux.css';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { DeletedataChange, selectData } from '../../Redux/RawdataSlice';
 import { DeletedataChangePort1, selectDataPort1 } from '../../Redux/Port1dataSlice';
+import styled from 'styled-components';
 
+export const OneItemContentBox = styled.div`
+	box-sizing: border-box;
+	width: 100%;
+	padding-top: 10px;
+`;
+export const OneItemContent = styled.div`
+	color: #000;
+	display: inline-block;
+	margin: 0;
+	text-transform: uppercase;
+
+	&:after {
+		display: block;
+		content: '';
+		border-bottom: solid 3px #613a3a;
+		transform: scaleX(0);
+		transition: transform 150ms ease-in-out;
+		transform-origin: 0% 50%;
+	}
+	&:hover:after {
+		transform: scaleX(1);
+	}
+`;
+export const PortItem = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+`;
 const TaskCardTestRedux = props => {
 	const { item, index, datatype } = props;
 	const dispatch = useDispatch();
@@ -33,39 +61,35 @@ const TaskCardTestRedux = props => {
 	};
 
 	return (
-		<div className="oneItemContentBox">
+		<OneItemContentBox>
 			{datatype === 'origin' ? (
 				<Draggable key={item.id} draggableId={item.id} index={index}>
 					{provided => (
-						<div
-							className="oneItemContent fromLeft"
+						<OneItemContent
 							ref={provided.innerRef}
 							{...provided.draggableProps}
 							{...provided.dragHandleProps}
 						>
-							<p className="oneItemContentP">{item.Content}</p>
-						</div>
+							<p>{item.Content}</p>
+						</OneItemContent>
 					)}
 				</Draggable>
 			) : (
-				<div>
-					<Draggable key={item.id} draggableId={item.id} index={index}>
-						{provided => (
-							<div
-								className="portItem"
-								ref={provided.innerRef}
-								{...provided.draggableProps}
-								{...provided.dragHandleProps}
-							>
-								<h1>{item.Type}</h1>
-								<p>{item.Content}</p>
-								<button onClick={e => onClickDelete(item.id)}>삭제</button>
-							</div>
-						)}
-					</Draggable>
-				</div>
+				<Draggable key={item.id} draggableId={item.id} index={index}>
+					{provided => (
+						<PortItem
+							ref={provided.innerRef}
+							{...provided.draggableProps}
+							{...provided.dragHandleProps}
+						>
+							<h1>{item.Type}</h1>
+							<p>{item.Content}</p>
+							<button onClick={e => onClickDelete(item.id)}>삭제</button>
+						</PortItem>
+					)}
+				</Draggable>
 			)}
-		</div>
+		</OneItemContentBox>
 	);
 };
 

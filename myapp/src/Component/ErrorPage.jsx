@@ -1,6 +1,14 @@
 import React from 'react';
 import error_img from '../Image/error_img.jpeg';
-import '../Style/ErrorPage.css';
+
+// .errorpage {
+// 	width: 100%;
+// 	height: 100%;
+// 	text-align: center;
+// }
+// .errorpage img {
+// 	width: 50%;
+// }
 
 function ErrorPage() {
 	return (
