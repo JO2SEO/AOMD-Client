@@ -1,7 +1,7 @@
-// import '../Style/Page/LoginPage.css';
 import kakaoBtn from '../Image/kakaoBtn.png';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import GoogleLoginButton from '../Component/GoogleLoginButton';
 
 export const LoginPageDiv = styled.div`
 	height: 100%;
@@ -53,8 +53,7 @@ export const FormButton = styled.button`
 		background: #43a047;
 	}
 `;
-
-function LoginPage() {
+export function LoginPage() {
 	const navigate = useNavigate();
 
 	const onClickSign = () => {
@@ -62,7 +61,6 @@ function LoginPage() {
 	};
 
 	const { Kakao } = window;
-
 	const kakaoLoginClickHandler = () => {
 		const Swal = require('sweetalert2');
 		try {
@@ -108,7 +106,12 @@ function LoginPage() {
 			<LoginPageForm>
 				<form>
 					<LoginFormInput type="text" placeholder="username" />
-					<LoginFormInput type="password" placeholder="password" />
+					<LoginFormInput
+						type="password"
+						id="password"
+						placeholder="password"
+						autoComplete="off"
+					/>
 					<FormButton>로그인</FormButton>
 					<div style={{ color: '#757575', fontSize: '12px' }}>
 						<p style={{ padding: '15px' }}>아이디가 없으신가요 ?</p>
@@ -116,14 +119,28 @@ function LoginPage() {
 					</div>
 				</form>
 				<div>
-					<br />
-					<p style={{ padding: '15px' }}> 소셜 로그인을 통한 간편 회원가입 </p>
-					<br />
-					<button
-						style={{ margin: '0', padding: '0', border: 'none', cursor: 'pointer' }}
-					>
-						<img src={kakaoBtn} alt="kakao login" onClick={kakaoLoginClickHandler} />
-					</button>
+					<div style={{ color: '#757575', fontSize: '12px' }}>
+						<p style={{ padding: '15px' }}> 소셜 로그인을 통한 간편 회원가입 </p>
+					</div>
+					<div style={{ display: 'flex' }}>
+						<button
+							style={{
+								margin: '5px',
+								padding: '0',
+								border: 'none',
+								cursor: 'pointer',
+								backgroundColor: 'white',
+							}}
+						>
+							<img
+								src={kakaoBtn}
+								alt="kakao login"
+								onClick={kakaoLoginClickHandler}
+								style={{ width: '140px' }}
+							/>
+						</button>
+						<GoogleLoginButton />
+					</div>
 				</div>
 			</LoginPageForm>
 		</LoginPageDiv>

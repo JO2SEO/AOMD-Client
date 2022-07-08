@@ -12,7 +12,7 @@ function Register() {
 			<LoginPageForm>
 				<form>
 					<LoginFormInput type="text" placeholder="name" />
-					<LoginFormInput type="password" placeholder="password" />
+					<LoginFormInput type="password" placeholder="password" autoComplete="off" />
 					<LoginFormInput type="text" placeholder="email address" />
 					<FormButton> 아이디 생성 </FormButton>
 					<div style={{ color: '#757575', fontSize: '12px' }}>
