@@ -14,7 +14,7 @@ export const LoginPageDiv = styled.div`
 export const LoginPageForm = styled.div`
 	position: relative;
 	z-index: 1;
-	background: #ffffff;
+	// background: #ffffff;
 	max-width: 300px;
 	padding: 45px;
 	text-align: center;
@@ -89,7 +89,7 @@ export function LoginPage() {
 
 						// setIsLogin(true);
 						// navigate('/main');
-						navigate('/dragdroptestredux');
+						navigate('/main');
 					},
 					fail: err => {
 						console.error(err);
@@ -136,7 +136,7 @@ export function LoginPage() {
 								src={kakaoBtn}
 								alt="kakao login"
 								onClick={kakaoLoginClickHandler}
-								style={{ width: '140px' }}
+								style={{ width: '140px', height: '40px' }}
 							/>
 						</button>
 						<GoogleLoginButton />

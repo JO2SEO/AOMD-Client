@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -25,6 +26,12 @@ export const HeaderMoveHomeBtn = styled.button`
 	height: 50px;
 `;
 function Header() {
+	const [isDarkMode, setIsDarkMode] = useState(false);
+
+	const toggleDarkMode = () => {
+		setIsDarkMode(prev => !prev);
+	};
+
 	const navigate = useNavigate();
 	const Swal = require('sweetalert2');
 

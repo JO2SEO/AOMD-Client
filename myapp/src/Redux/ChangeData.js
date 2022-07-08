@@ -13,7 +13,6 @@ export const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
-	border: 3px solid red;
 `;
 export const DragDropBtnBox = styled.div`
 	display: flex;
@@ -35,7 +34,6 @@ export const DragDropContentBox = styled.div`
 export const RawDataBox = styled.div`
 	display: flex;
 	flex-direction: column;
-	background: #f3f3f3;
 	width: 15%;
 	border-radius: 5px;
 	padding: 10px;

@@ -11,7 +11,8 @@ export const DataBox = styled.div`
 	padding: 10px;
 	margin-top: 10px;
 	border-radius: 5px;
-	background: rgb(193, 226, 180);
+	background-color: white;
+	border: 2px solid black;
 	box-sizing: border-box;
 `;
 export const ColumnTitle = styled.h1`
@@ -23,7 +24,10 @@ export const ColumnTitle = styled.h1`
 export const ProvidedPlaceholder = styled.span`
 	display: 'none';
 `;
-
+export const DataBoxh1 = styled.p`
+	font-weight: bolder;
+	color: black;
+`;
 const RawDataComponent = props => {
 	const { originData } = props;
 	function returnTaskCard(column) {
@@ -50,7 +54,7 @@ const RawDataComponent = props => {
 		return (
 			<Fragment>
 				<DataBox>
-					<h1> 자격증 </h1>
+					<DataBoxh1> 수상내역 </DataBoxh1>
 
 					{info1.map((item, index) => {
 						return (
@@ -64,7 +68,7 @@ const RawDataComponent = props => {
 					})}
 				</DataBox>
 				<DataBox>
-					<h1> 수상내역 </h1>
+					<DataBoxh1> 수상내역 </DataBoxh1>
 					{info2.map((item, index) => {
 						return (
 							<TaskCardTest
@@ -77,7 +81,7 @@ const RawDataComponent = props => {
 					})}
 				</DataBox>
 				<DataBox>
-					<h1> 학점 </h1>
+					<DataBoxh1>학점 </DataBoxh1>
 					{info3.map((item, index) => {
 						return (
 							<TaskCardTest
@@ -90,7 +94,7 @@ const RawDataComponent = props => {
 					})}
 				</DataBox>
 				<DataBox>
-					<h1> 학력 </h1>
+					<DataBoxh1> 학력 </DataBoxh1>
 					{info4.map((item, index) => {
 						return (
 							<TaskCardTest

@@ -33,7 +33,7 @@ const GoogleLoginButton = () => {
 		// setIsLogin(true);
 		// navigate('/main');
 		// console.log('response = ', response);
-		navigate('/dragdroptestredux');
+		navigate('/main');
 	};
 
 	// const onSuccess = response => {
