@@ -14,7 +14,6 @@ export const LoginPageDiv = styled.div`
 export const LoginPageForm = styled.div`
 	position: relative;
 	z-index: 1;
-	// background: #ffffff;
 	max-width: 300px;
 	padding: 45px;
 	text-align: center;
@@ -36,7 +35,8 @@ export const FormButton = styled.button`
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	outline: 0;
-	background: #4caf50;
+	background: black;
+
 	width: 100%;
 	border: 0;
 	padding: 15px;
@@ -47,10 +47,15 @@ export const FormButton = styled.button`
 	cursor: pointer;
 
 	&:hover {
-		background: #43a047;
+		// background: #43a047;
+		background: gray;
+		color: black;
+		font-weight: bolder;
 	}
 	&:focus {
-		background: #43a047;
+		background: gray;
+		color: black;
+		font-weight: bolder;
 	}
 `;
 export function LoginPage() {
