@@ -20,15 +20,6 @@ import reset from 'styled-reset';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 import { darkTheme, lightTheme } from './Component/theme';
 
-export const ContentDiv = styled.div`
-	width: 100%;
-	height: 85%;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-
 export const GlobalStyle = createGlobalStyle`
 	${reset}  	
 	body {        
@@ -41,6 +32,16 @@ export const GlobalStyle = createGlobalStyle`
     color: ${props => props.theme.textColor};
 	}
 `;
+
+export const ContentDiv = styled.div`
+	width: 100%;
+	height: 85%;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
 export const DarkModeButton = styled.button`
 	position: fixed;
 	right: 30px;
