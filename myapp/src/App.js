@@ -1,6 +1,8 @@
 import './App.css';
 import LoginPage from './Page/LoginPage';
 import MainPage from './Page/MainPage';
+import FirstPage from './Page/FirstPage';
+
 import DragDrop from './Component/DragDrop/DragDrop';
 import DragDropTest from './Component/DragDropTest/DragDropTest';
 import DragDropTestRedux from './Component/DragDropTestRedux/DragDropTestRedux';
@@ -74,7 +76,8 @@ function App() {
 
 						<ContentDiv>
 							<Routes>
-								<Route path="/" element={<LoginPage />} />
+								<Route path="/" element={<FirstPage />} />
+								<Route path="/login" element={<LoginPage />} />
 								<Route path="/main" element={<MainPage />} />
 								<Route path="/dragdrop" element={<DragDrop />} />
 								<Route path="/dragdroptest" element={<DragDropTest />} />

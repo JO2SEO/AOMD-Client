@@ -55,18 +55,19 @@ function Header() {
 		});
 		navigate('/errorpage');
 	};
+	const onClickMoveLogin = () => {
+		navigate('/login');
+	};
 	return (
 		<HeaderDiv>
-			<HeaderBox>
-				<HeaderMoveHomeBtn onClick={onClickMoveHome}>Home</HeaderMoveHomeBtn>
-			</HeaderBox>
+			<HeaderBox></HeaderBox>
 			<HeaderBox>
 				<h1 style={{ fontSize: '3vw' }}> AOMD </h1>
 			</HeaderBox>
 			<HeaderBox>
-				<HeaderMoveHomeBtn className="HeaderMoveErrorBtn" onClick={onClickMoveError}>
-					Error
-				</HeaderMoveHomeBtn>
+				<HeaderMoveHomeBtn onClick={onClickMoveHome}>Home</HeaderMoveHomeBtn>
+				<HeaderMoveHomeBtn onClick={onClickMoveError}>Error</HeaderMoveHomeBtn>
+				<HeaderMoveHomeBtn onClick={onClickMoveLogin}>Login</HeaderMoveHomeBtn>
 			</HeaderBox>
 		</HeaderDiv>
 	);
