@@ -38,30 +38,31 @@ const RawDataComponent = props => {
 
 		column.items.map((item, index) => {
 			if (item.Type === '자격증') {
-				info1.push(item);
+				info1.push([item, index]);
+				console.log(info1);
 			}
 			if (item.Type === '수상내역') {
-				info2.push(item);
+				info2.push([item, index]);
 			}
 			if (item.Type === '학점') {
-				info3.push(item);
+				info3.push([item, index]);
 			}
 			if (item.Type === '학력') {
-				info4.push(item);
+				info4.push([item, index]);
 			}
 		});
 
 		return (
 			<Fragment>
 				<DataBox>
-					<DataBoxh1> 수상내역 </DataBoxh1>
+					<DataBoxh1> 자격증 </DataBoxh1>
 
-					{info1.map((item, index) => {
+					{info1.map(items => {
 						return (
 							<TaskCardTest
-								key={item.id}
-								item={item}
-								index={index}
+								key={items[0].id}
+								item={items[0]}
+								index={items[1]}
 								datatype="origin"
 							/>
 						);
@@ -69,12 +70,12 @@ const RawDataComponent = props => {
 				</DataBox>
 				<DataBox>
 					<DataBoxh1> 수상내역 </DataBoxh1>
-					{info2.map((item, index) => {
+					{info2.map(items => {
 						return (
 							<TaskCardTest
-								key={item.id}
-								item={item}
-								index={index}
+								key={items[0].id}
+								item={items[0]}
+								index={items[1]}
 								datatype="origin"
 							/>
 						);
@@ -82,12 +83,12 @@ const RawDataComponent = props => {
 				</DataBox>
 				<DataBox>
 					<DataBoxh1>학점 </DataBoxh1>
-					{info3.map((item, index) => {
+					{info3.map(items => {
 						return (
 							<TaskCardTest
-								key={item.id}
-								item={item}
-								index={index}
+								key={items[0].id}
+								item={items[0]}
+								index={items[1]}
 								datatype="origin"
 							/>
 						);
@@ -95,12 +96,12 @@ const RawDataComponent = props => {
 				</DataBox>
 				<DataBox>
 					<DataBoxh1> 학력 </DataBoxh1>
-					{info4.map((item, index) => {
+					{info4.map(items => {
 						return (
 							<TaskCardTest
-								key={item.id}
-								item={item}
-								index={index}
+								key={items[0].id}
+								item={items[0]}
+								index={items[1]}
 								datatype="origin"
 							/>
 						);
