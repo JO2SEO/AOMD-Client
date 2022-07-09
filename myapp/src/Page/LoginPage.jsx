@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import GoogleLoginButton from '../Component/GoogleLoginButton';
 import KakaoLoginButton from '../Component/KakaoLoginButton';
+import { useState } from 'react';
 
 export const LoginPageDiv = styled.div`
 	height: 100%;
@@ -60,7 +61,22 @@ export const FormButton = styled.button`
 `;
 
 export function LoginPage() {
+	const [logintext, setlogintext] = useState({ id: '', pwd: '' });
+	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
+
+	const onClickLogin = e => {
+		if (logintext.id === '1' && logintext.pwd === '1') {
+			Swal.fire({
+				title: 'Login',
+				text: '로그인 성공',
+				icon: 'success',
+				confirmButtonText: 'OK',
+				heightAuto: false,
+			});
+			navigate('/main');
+		}
+	};
 
 	const onClickSign = () => {
 		navigate('/register');
@@ -70,14 +86,18 @@ export function LoginPage() {
 		<LoginPageDiv>
 			<LoginPageForm>
 				<form>
-					<LoginFormInput type="text" placeholder="username" />
+					<LoginFormInput
+						type="text"
+						placeholder="id"
+						onChange={e => setlogintext({ ...logintext, id: e.target.value })}
+					/>
 					<LoginFormInput
 						type="password"
-						id="password"
 						placeholder="password"
 						autoComplete="off"
+						onChange={e => setlogintext({ ...logintext, pwd: e.target.value })}
 					/>
-					<FormButton>로그인</FormButton>
+					<FormButton onClick={onClickLogin}> 로그인 </FormButton>
 					<div style={{ color: '#757575', fontSize: '12px' }}>
 						<p style={{ padding: '15px' }}>아이디가 없으신가요 ?</p>
 						<FormButton onClick={onClickSign}> 회원가입 </FormButton>
