@@ -2,7 +2,7 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import { DeletedataChange, selectData } from '../../Redux/RawdataSlice';
-import { DeletedataChangePort1, selectDataPort1 } from '../../Redux/Port1dataSlice';
+import { DeletedataChangePort, selectDataPort } from '../../Redux/PortdataSlice';
 import styled from 'styled-components';
 
 export const OneItemContentBox = styled.div`
@@ -39,11 +39,11 @@ const TaskCardTestRedux = props => {
 	const dispatch = useDispatch();
 
 	const originData = useSelector(selectData);
-	const portData1 = useSelector(selectDataPort1);
+	const portData = useSelector(selectDataPort);
 
 	const onClickDelete = itemID => {
 		const originColumn = originData['origin'];
-		const sourceColumn = portData1['port1'];
+		const sourceColumn = portData['port1'];
 		const originItems = [...originColumn.items];
 		const sourceItems = [...sourceColumn.items];
 		const lengthOrigin = originItems.length;
@@ -57,7 +57,7 @@ const TaskCardTestRedux = props => {
 		}
 
 		dispatch(DeletedataChange(originItems));
-		dispatch(DeletedataChangePort1(sourceItems));
+		dispatch(DeletedataChangePort(sourceItems));
 	};
 
 	return (

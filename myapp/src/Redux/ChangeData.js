@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DragdataChange, selectData } from './RawdataSlice';
-import { DragdataChangePort1, selectDataPort1 } from './Port1dataSlice';
+import { DragdataChangePort, selectDataPort } from './PortdataSlice';
 import { DragDropContext } from 'react-beautiful-dnd';
 import PortPolioComponent from '../Component/DragDropTestRedux/PortPolioComponent';
 import RawDataComponent from '../Component/DragDropTestRedux/RawDataComponent';
@@ -49,8 +49,9 @@ export const PortPolioBox = styled.div`
 export function ChangeData() {
 	const dispatch = useDispatch();
 	const originData = useSelector(selectData);
-	const portData1 = useSelector(selectDataPort1);
+	const portData = useSelector(selectDataPort);
 
+	console.log('Load portData = ', portData);
 	const onDragEnd = result => {
 		if (!result.destination) return;
 
@@ -60,12 +61,15 @@ export function ChangeData() {
 		// console.log('portData1 => ', portData1);
 		if (source.droppableId !== destination.droppableId) {
 			const sourceColumn = originData['origin'];
-			const destColumn = portData1[destination.droppableId];
+
+			const destColumn = portData['port1'];
+
 			// console.log('sourceColumn => ', sourceColumn);
 			// console.log('destColumn => ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
+
 			// console.log('sourceItems => ', sourceItems);
 			// console.log('destItems => ', destItems);
 
@@ -97,35 +101,45 @@ export function ChangeData() {
 			// console.log('findindex_2 = ', findindex_2);
 
 			const removedData = sourceItems[findindex_1][findindex_2];
-			// console.log('removedData = ', removedData);
-			destItems.push(removedData);
-			// console.log(destItems);
-			dispatch(DragdataChange(sourceItems));
-			dispatch(DragdataChangePort1(destItems));
+			console.log('removedData = ', removedData);
+
+			removed = {};
+			findindex_1 = 0;
+
+			// console.log('Before destItems=> ', destItems);
+			destItems.map((Data, index_1) => {
+				if (Data[0].Type === removedData.Type) {
+					// console.log('Type = ', removedData.Type);
+					// console.log('index_1 = ', index_1);
+					findindex_1 = index_1;
+				}
+			});
+
+			console.log('Before State = ', destItems);
+			const Before = [destItems[findindex_1][0]];
+			Before.push(removedData);
+			console.log(Before);
+			destItems[findindex_1] = Before;
+			console.log('After State = ', destItems);
+
+			dispatch(DragdataChangePort(destItems));
 		} else {
 			return;
 		}
 	};
 
-	const [port1State, setPort1State] = useState(true);
-	const [port2State, setPort2State] = useState(false);
-	const [port3State, setPort3State] = useState(false);
+	const [portState, setPortState] = useState([true, false, false]);
 
 	const onClickShowPort1 = () => {
-		setPort1State(true);
-		setPort2State(false);
-		setPort3State(false);
+		setPortState([true, false, false]);
 	};
 	const onClickShowPort2 = () => {
-		setPort1State(false);
-		setPort2State(true);
-		setPort3State(false);
+		setPortState([false, true, false]);
 	};
 	const onClickShowPort3 = () => {
-		setPort1State(false);
-		setPort2State(false);
-		setPort3State(true);
+		setPortState([false, false, true]);
 	};
+
 	const onClickAddPort = () => {
 		console.log('포트폴리오 추가');
 	};
@@ -151,7 +165,7 @@ export function ChangeData() {
 						<RawDataComponent originData={originData} />
 					</RawDataBox>
 					<PortPolioBox>
-						<PortPolioComponent showState={port1State} portData={portData1} />
+						<PortPolioComponent showState={portState} portData={portData} />
 					</PortPolioBox>
 				</DragDropContentBox>
 			</DragDropContext>

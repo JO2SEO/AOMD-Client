@@ -46,18 +46,19 @@ const RawDataComponent = props => {
 			// console.log('item => ', item);
 
 			if (index === 0) {
-				item.map((innerItem, index) => {
-					info0.push([innerItem, index]);
+				item.map((innerItem, innerindex) => {
+					info0.push([innerItem, 1 + index + innerindex]);
+					// info0.push([innerItem, innerindex]);
 				});
 			}
 			if (index === 1) {
-				item.map((innerItem, index) => {
-					info1.push([innerItem, index]);
+				item.map((innerItem, innerindex) => {
+					info1.push([innerItem, 2 + index + innerindex]);
 				});
 			}
 			if (index === 2) {
-				item.map((innerItem, index) => {
-					info2.push([innerItem, index]);
+				item.map((innerItem, innerindex) => {
+					info2.push([innerItem, 3 + index + innerindex]);
 				});
 			}
 		});
@@ -66,7 +67,9 @@ const RawDataComponent = props => {
 			<Fragment>
 				<DataBox>
 					<DataBoxh1> 자격증 </DataBoxh1>
+					{/* {console.log('자격증')} */}
 					{info0.map(items => {
+						// console.log('items = ', items);
 						return (
 							<TaskCardTest
 								key={items[0].id}
@@ -79,7 +82,11 @@ const RawDataComponent = props => {
 				</DataBox>
 				<DataBox>
 					<DataBoxh1> 학력 </DataBoxh1>
+					{/* {console.log('학력')} */}
+
 					{info1.map(items => {
+						// console.log('items = ', items);
+
 						return (
 							<TaskCardTest
 								key={items[0].id}
@@ -93,7 +100,11 @@ const RawDataComponent = props => {
 
 				<DataBox>
 					<DataBoxh1> 수상내역 </DataBoxh1>
+					{/* {console.log('수상내역')} */}
+
 					{info2.map(items => {
+						// console.log('items = ', items);
+
 						return (
 							<TaskCardTest
 								key={items[0].id}
