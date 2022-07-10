@@ -55,18 +55,51 @@ export function ChangeData() {
 		if (!result.destination) return;
 
 		const { source, destination } = result;
-
+		// console.log('result => ', result);
+		// console.log('originData => ', originData);
+		// console.log('portData1 => ', portData1);
 		if (source.droppableId !== destination.droppableId) {
-			const sourceColumn = originData[source.droppableId];
+			const sourceColumn = originData['origin'];
 			const destColumn = portData1[destination.droppableId];
+			// console.log('sourceColumn => ', sourceColumn);
+			// console.log('destColumn => ', destColumn);
 
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
+			// console.log('sourceItems => ', sourceItems);
+			// console.log('destItems => ', destItems);
 
-			const [removed] = sourceItems.splice(source.index, 1);
+			// console.log('금마 ID => ', result.draggableId);
 
-			destItems.splice(destination.index, 0, removed);
+			let removed = {};
+			let findindex_1 = 0;
+			let findindex_2 = 0;
 
+			sourceItems.map((Data, index_1) => {
+				Data.map((data, index_2) => {
+					if (data.id === result.draggableId) {
+						// console.log('data = ', data);
+						// 객체 형식 : { id : ~ , Type : ~ ~}
+						removed = data;
+						// console.log('index_1 = ', index_1);
+						// 0 -> 자격증
+						// 1 -> 학력
+						// 2 -> 수상내역
+						findindex_1 = index_1;
+						// console.log('index_2 = ', index_2);
+						// 데이터 순서 : 0 ~
+						findindex_2 = index_2;
+					}
+				});
+			});
+			// console.log('removed = ', removed);
+			// console.log('findindex_1 = ', findindex_1);
+			// console.log('findindex_2 = ', findindex_2);
+
+			const removedData = sourceItems[findindex_1][findindex_2];
+			// console.log('removedData = ', removedData);
+			destItems.push(removedData);
+			// console.log(destItems);
 			dispatch(DragdataChange(sourceItems));
 			dispatch(DragdataChangePort1(destItems));
 		} else {
@@ -93,7 +126,9 @@ export function ChangeData() {
 		setPort2State(false);
 		setPort3State(true);
 	};
-
+	const onClickAddPort = () => {
+		console.log('포트폴리오 추가');
+	};
 	return (
 		<Container>
 			<DragDropContext onDragEnd={result => onDragEnd(result)}>
@@ -106,6 +141,9 @@ export function ChangeData() {
 					</button>
 					<button style={{ margin: '10px' }} onClick={onClickShowPort3}>
 						포트폴리오 3
+					</button>
+					<button style={{ margin: '10px' }} onClick={onClickAddPort}>
+						포트폴리오 추가
 					</button>
 				</DragDropBtnBox>
 				<DragDropContentBox>
