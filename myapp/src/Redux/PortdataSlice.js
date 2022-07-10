@@ -54,15 +54,15 @@ export const PortdataSlice = createSlice({
 			title: '포트폴리오1',
 			items: data1,
 		},
-		port2: {
-			title: '포트폴리오2',
-			items: data2,
-		},
+		// port2: {
+		// 	title: '포트폴리오2',
+		// 	items: data2,
+		// },
 	},
 	reducers: {
 		DragdataChangePort: (state, action) => {
 			// console.log('state ==> ', state);
-			state = action.payload;
+			state.port1.items = action.payload;
 		},
 		DeletedataChangePort: (state, action) => {
 			state = action.payload;

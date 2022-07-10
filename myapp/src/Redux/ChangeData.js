@@ -51,81 +51,106 @@ export function ChangeData() {
 	const originData = useSelector(selectData);
 	const portData = useSelector(selectDataPort);
 
-	console.log('Load portData = ', portData);
+	// console.log('Load portData = ', portData);
 	const onDragEnd = result => {
 		if (!result.destination) return;
 
-		const { source, destination } = result;
-		// console.log('result => ', result);
-		// console.log('originData => ', originData);
-		// console.log('portData1 => ', portData1);
-		if (source.droppableId !== destination.droppableId) {
-			const sourceColumn = originData['origin'];
+		// 	const { source, destination } = result;
+		// 	// console.log('result => ', result);
+		// 	// console.log('originData => ', originData);
+		// 	// console.log('portData1 => ', portData1);
+		// 	if (source.droppableId !== destination.droppableId) {
+		// 		const sourceColumn = originData['origin'];
 
-			const destColumn = portData['port1'];
+		// 		const destColumn = portData['port1'];
 
-			// console.log('sourceColumn => ', sourceColumn);
-			// console.log('destColumn => ', destColumn);
+		// 		// console.log('sourceColumn => ', sourceColumn);
+		// 		// console.log('destColumn => ', destColumn);
 
-			const sourceItems = [...sourceColumn.items];
-			const destItems = [...destColumn.items];
+		// 		const sourceItems = [...sourceColumn.items];
+		// 		const destItems = [...destColumn.items];
 
-			// console.log('sourceItems => ', sourceItems);
-			// console.log('destItems => ', destItems);
+		// 		console.log('sourceItems => ', sourceItems);
+		// 		console.log('destItems => ', destItems);
 
-			// console.log('금마 ID => ', result.draggableId);
+		// 		// console.log('금마 ID => ', result.draggableId);
 
-			let removed = {};
-			let findindex_1 = 0;
-			let findindex_2 = 0;
+		// 		let removed = {};
+		// 		let findindex_1 = 0;
+		// 		let findindex_2 = 0;
 
-			sourceItems.map((Data, index_1) => {
-				Data.map((data, index_2) => {
-					if (data.id === result.draggableId) {
-						// console.log('data = ', data);
-						// 객체 형식 : { id : ~ , Type : ~ ~}
-						removed = data;
-						// console.log('index_1 = ', index_1);
-						// 0 -> 자격증
-						// 1 -> 학력
-						// 2 -> 수상내역
-						findindex_1 = index_1;
-						// console.log('index_2 = ', index_2);
-						// 데이터 순서 : 0 ~
-						findindex_2 = index_2;
-					}
-				});
-			});
-			// console.log('removed = ', removed);
-			// console.log('findindex_1 = ', findindex_1);
-			// console.log('findindex_2 = ', findindex_2);
+		// 		sourceItems.map((Data, index_1) => {
+		// 			Data.map((data, index_2) => {
+		// 				if (data.id === result.draggableId) {
+		// 					// console.log('data = ', data);
+		// 					// 객체 형식 : { id : ~ , Type : ~ ~}
+		// 					removed = data;
+		// 					// console.log('index_1 = ', index_1);
+		// 					// 0 -> 자격증
+		// 					// 1 -> 학력
+		// 					// 2 -> 수상내역
+		// 					findindex_1 = index_1;
+		// 					// console.log('index_2 = ', index_2);
+		// 					// 데이터 순서 : 0 ~
+		// 					findindex_2 = index_2;
+		// 				}
+		// 			});
+		// 		});
+		// 		// console.log('removed = ', removed);
+		// 		// console.log('findindex_1 = ', findindex_1);
+		// 		// console.log('findindex_2 = ', findindex_2);
 
-			const removedData = sourceItems[findindex_1][findindex_2];
-			console.log('removedData = ', removedData);
+		// 		const removedData = sourceItems[findindex_1][findindex_2];
+		// 		console.log('removedData = ', removedData);
 
-			removed = {};
-			findindex_1 = 0;
+		// 		findindex_1 = 0;
 
-			// console.log('Before destItems=> ', destItems);
-			destItems.map((Data, index_1) => {
-				if (Data[0].Type === removedData.Type) {
-					// console.log('Type = ', removedData.Type);
-					// console.log('index_1 = ', index_1);
-					findindex_1 = index_1;
-				}
-			});
+		// 		// console.log('Before destItems=> ', destItems);
+		// 		destItems.map((Data, index_1) => {
+		// 			if (Data[0].Type === removedData.Type) {
+		// 				// console.log('Type = ', removedData.Type);
+		// 				// console.log('index_1 = ', index_1);
+		// 				findindex_1 = index_1;
+		// 			}
+		// 		});
 
-			console.log('Before State = ', destItems);
-			const Before = [destItems[findindex_1][0]];
-			Before.push(removedData);
-			console.log(Before);
-			destItems[findindex_1] = Before;
-			console.log('After State = ', destItems);
+		// 		console.log('Before State = ', destItems);
+		// 		const Before = destItems[findindex_1];
+		// 		console.log(' 넣기 전 : ', Before);
 
-			dispatch(DragdataChangePort(destItems));
-		} else {
-			return;
-		}
+		// 		// Before.push(removedData);
+		// 		console.log('넣고 난 후 : ', Before);
+		// 		destItems[findindex_1] = Before;
+		// 		console.log('After State = ', destItems);
+
+		// 		dispatch(DragdataChangePort(destItems));
+		// 	} else {
+		// 		return;
+		// 	}
+		// };
+
+		// @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@2
+
+		// if (!result.destination) return;
+
+		// const { source, destination } = result;
+
+		// if (source.droppableId !== destination.droppableId) {
+		// 	const sourceColumn = originData[source.droppableId];
+		// 	const destColumn = portData1[destination.droppableId];
+
+		// 	const sourceItems = [...sourceColumn.items];
+		// 	const destItems = [...destColumn.items];
+
+		// 	const [removed] = sourceItems.splice(source.index, 1);
+
+		// 	destItems.splice(destination.index, 0, removed);
+
+		// 	dispatch(DragdataChange(sourceItems));
+		// 	dispatch(DragdataChangePort1(destItems));
+		// } else {
+		// 	return;
+		// }
 	};
 
 	const [portState, setPortState] = useState([true, false, false]);

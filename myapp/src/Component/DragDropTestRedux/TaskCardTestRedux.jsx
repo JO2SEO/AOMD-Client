@@ -42,21 +42,24 @@ const TaskCardTestRedux = props => {
 	const portData = useSelector(selectDataPort);
 
 	const onClickDelete = itemID => {
-		const originColumn = originData['origin'];
+		// const originColumn = originData['origin'];
 		const sourceColumn = portData['port1'];
-		const originItems = [...originColumn.items];
+		// console.log('originColumn = ', originColumn);
+		console.log('sourceColumn = ', sourceColumn);
+		// const originItems = [...originColumn.items];
 		const sourceItems = [...sourceColumn.items];
-		const lengthOrigin = originItems.length;
+		console.log('sourceItems = ', sourceItems);
+		// const lengthOrigin = originItems.length;
 
-		for (let i = 0; i < sourceItems.length; i++) {
-			if (sourceItems[i].id === itemID) {
-				const [removed] = sourceItems.splice(i, 1);
-				originItems.splice(lengthOrigin, 0, removed);
-				break;
-			}
-		}
+		// for (let i = 0; i < sourceItems.length; i++) {
+		// 	if (sourceItems[i].id === itemID) {
+		// 		const [removed] = sourceItems.splice(i, 1);
+		// 		sourceItems.splice(lengthOrigin, 0, removed);
+		// 		break;
+		// 	}
+		// }
 
-		dispatch(DeletedataChange(originItems));
+		// dispatch(DeletedataChange(originItems));
 		dispatch(DeletedataChangePort(sourceItems));
 	};
 
