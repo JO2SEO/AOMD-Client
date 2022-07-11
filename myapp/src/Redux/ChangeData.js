@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { DragdataChange, selectData } from './RawdataSlice';
-import { DragdataChangePort, selectDataPort } from './PortdataSlice';
+import { DragdataChange, selectRawData } from './RawdataSlice';
+import { DragdataChangePort, selectPortData } from './PortdataSlice';
 import { DragDropContext } from 'react-beautiful-dnd';
 import PortPolioComponent from '../Component/DragDropTestRedux/PortPolioComponent';
 import RawDataComponent from '../Component/DragDropTestRedux/RawDataComponent';
@@ -47,9 +47,9 @@ export const PortPolioBox = styled.div`
 	box-sizing: border-box;
 `;
 export function ChangeData() {
-	const dispatch = useDispatch();
-	const originData = useSelector(selectData);
-	const portData = useSelector(selectDataPort);
+	// const dispatch = useDispatch();
+	const originData = useSelector(selectRawData);
+	const portData = useSelector(selectPortData);
 
 	// console.log('Load portData = ', portData);
 	const onDragEnd = result => {

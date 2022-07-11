@@ -1,12 +1,12 @@
 import GoogleLogin from 'react-google-login';
-import { gapi } from 'gapi-script';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { SuccessLogin } from '../Redux/LoginCheck';
 
 const GoogleLoginButton = () => {
 	const clientID = '57988589193-h09ghivls1ie0affm6curnh446lhbjpl.apps.googleusercontent.com';
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
 	const onSuccess = response => {
 		const Swal = require('sweetalert2');
 
@@ -33,6 +33,7 @@ const GoogleLoginButton = () => {
 		// setIsLogin(true);
 		// navigate('/main');
 		// console.log('response = ', response);
+		dispatch(SuccessLogin(true));
 		navigate('/main');
 	};
 

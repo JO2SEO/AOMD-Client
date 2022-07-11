@@ -1,8 +1,8 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
-import { DeletedataChange, selectData } from '../../Redux/RawdataSlice';
-import { DeletedataChangePort, selectDataPort } from '../../Redux/PortdataSlice';
+import { DeletedataChange, selectRawData } from '../../Redux/RawdataSlice';
+import { DeletedataChangePort, selectPortData } from '../../Redux/PortdataSlice';
 import styled from 'styled-components';
 
 export const OneItemContentBox = styled.div`
@@ -38,8 +38,8 @@ const TaskCardTestRedux = props => {
 	const { item, index, datatype } = props;
 	const dispatch = useDispatch();
 
-	const originData = useSelector(selectData);
-	const portData = useSelector(selectDataPort);
+	const originData = useSelector(selectRawData);
+	const portData = useSelector(selectPortData);
 
 	const onClickDelete = itemID => {
 		// const originColumn = originData['origin'];

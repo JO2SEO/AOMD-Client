@@ -1,8 +1,12 @@
 import kakaoBtn from '../Image/kakaoBtn.png';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { SuccessLogin } from '../Redux/LoginCheck';
 
 const KakaoLoginButton = () => {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	const { Kakao } = window;
 	const kakaoLoginClickHandler = () => {
 		const Swal = require('sweetalert2');
@@ -30,8 +34,8 @@ const KakaoLoginButton = () => {
 							heightAuto: false,
 						});
 
-						// setIsLogin(true);
-						// navigate('/main');
+						dispatch(SuccessLogin(true));
+
 						navigate('/main');
 					},
 					fail: err => {

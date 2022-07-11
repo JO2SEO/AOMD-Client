@@ -2,13 +2,13 @@ import './App.css';
 import LoginPage from './Page/LoginPage';
 import MainPage from './Page/MainPage';
 import FirstPage from './Page/FirstPage';
+import RegisterPage from './Page/RegisterPage';
+import ErrorPage from './Page/ErrorPage';
+import IntroducePage from './Page/IntroducePage';
 
 import DragDrop from './Component/DragDrop/DragDrop';
 import DragDropTest from './Component/DragDropTest/DragDropTest';
 import DragDropTestRedux from './Component/DragDropTestRedux/DragDropTestRedux';
-
-import Register from './Component/Register';
-import ErrorPage from './Component/ErrorPage';
 
 import Header from './Component/Header';
 import Footer from './Component/Footer';
@@ -77,12 +77,15 @@ function App() {
 						<ContentDiv>
 							<Routes>
 								<Route path="/" element={<FirstPage />} />
+								<Route path="/introduce" element={<IntroducePage />} />
+
 								<Route path="/login" element={<LoginPage />} />
+								<Route path="/register" element={<RegisterPage />} />
+
 								<Route path="/main" element={<MainPage />} />
 								<Route path="/dragdrop" element={<DragDrop />} />
 								<Route path="/dragdroptest" element={<DragDropTest />} />
 								<Route path="/dragdroptestredux" element={<DragDropTestRedux />} />
-								<Route path="/register" element={<Register />} />
 								<Route path="/errorpage" element={<ErrorPage />} />
 							</Routes>
 						</ContentDiv>

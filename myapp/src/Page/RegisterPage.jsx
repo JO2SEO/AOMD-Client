@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { LoginPageDiv, LoginPageForm, LoginFormInput, FormButton } from '../Page/LoginPage';
+import { LoginPageDiv, LoginPageForm, LoginFormInput, FormButton } from './LoginPage';
 
-function Register() {
+function RegisterPage() {
 	const navigate = useNavigate();
 
 	const onClickSign = () => {
@@ -25,4 +25,4 @@ function Register() {
 	);
 }
 
-export default Register;
+export default RegisterPage;

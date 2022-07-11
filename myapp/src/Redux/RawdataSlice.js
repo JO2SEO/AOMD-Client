@@ -65,6 +65,6 @@ export const RawdataSlice = createSlice({
 
 export const { DragdataChange, DeletedataChange } = RawdataSlice.actions;
 
-export const selectData = state => state.rawData;
+export const selectRawData = state => state.rawData;
 
 export default RawdataSlice.reducer;

@@ -72,6 +72,6 @@ export const PortdataSlice = createSlice({
 
 export const { DragdataChangePort, DeletedataChangePort } = PortdataSlice.actions;
 
-export const selectDataPort = state => state.portData;
+export const selectPortData = state => state.portData;
 
 export default PortdataSlice.reducer;

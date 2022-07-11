@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import GoogleLoginButton from '../Component/GoogleLoginButton';
 import KakaoLoginButton from '../Component/KakaoLoginButton';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { SuccessLogin } from '../Redux/LoginCheck';
 
 export const LoginPageDiv = styled.div`
 	height: 100%;
@@ -64,6 +66,7 @@ export function LoginPage() {
 	const [logintext, setlogintext] = useState({ id: '', pwd: '' });
 	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	const onClickLogin = e => {
 		if (logintext.id === '1' && logintext.pwd === '1') {
@@ -74,6 +77,8 @@ export function LoginPage() {
 				confirmButtonText: 'OK',
 				heightAuto: false,
 			});
+			dispatch(SuccessLogin(true));
+
 			navigate('/main');
 		}
 	};
