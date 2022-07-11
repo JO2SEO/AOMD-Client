@@ -1,10 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Category from './Category';
 import { selectLoginData } from '../Redux/LoginCheck';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 export const HeaderDiv = styled.div`
@@ -113,11 +111,14 @@ function Header() {
 
 			<HeaderRightBox>
 				{loginState ? (
-					<h1>로그인 성공! 환영합니다 지원 님</h1>
+					<div>
+						<p>로그인 성공!</p>
+						<p>환영합니다 지원 님</p>
+					</div>
 				) : (
 					<>
 						<HeaderLoginBtn onClick={onClickMoveLogin}>로그인</HeaderLoginBtn>
-						<HeaderLoginBtn onClick={onClickMoveRegister}>회원가입</HeaderLoginBtn>{' '}
+						<HeaderLoginBtn onClick={onClickMoveRegister}>회원가입</HeaderLoginBtn>
 					</>
 				)}
 			</HeaderRightBox>

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { selectLoginData } from '../Redux/LoginCheck';
 
 export const CategoryDiv = styled.div`
 	width: 75%;
@@ -34,12 +36,35 @@ export const CategoryBoxBtn = styled.button`
 
 function Category() {
 	const navigate = useNavigate();
+	const [loginState, setLoginState] = useState(false);
+	const currentLogin = useSelector(selectLoginData);
+
+	useEffect(() => {
+		if (currentLogin.loginState) {
+			setLoginState(true);
+		} else {
+			setLoginState(false);
+		}
+	});
 
 	const onClickMoveIntroduce = () => {
 		navigate('/introduce');
 	};
+	const Swal = require('sweetalert2');
+
 	const onClickMoveMain = () => {
-		navigate('/main');
+		if (loginState) {
+			navigate('/main');
+		} else {
+			Swal.fire({
+				title: 'Login',
+				text: '로그인을 먼저 하셔야 합니다',
+				icon: 'success',
+				confirmButtonText: 'OK',
+				heightAuto: false,
+			});
+			navigate('/login');
+		}
 	};
 	return (
 		<CategoryDiv>
