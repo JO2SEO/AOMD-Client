@@ -76,7 +76,7 @@ function App() {
 
 						<ContentDiv>
 							<Routes>
-								<Route path="/" element={<FirstPage />} />
+								<Route path="/AOMD-Client" element={<FirstPage />} />
 								<Route path="/introduce" element={<IntroducePage />} />
 
 								<Route path="/login" element={<LoginPage />} />
