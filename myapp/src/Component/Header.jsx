@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Category from './Category';
-import { selectLoginData } from '../Redux/LoginCheck';
-import { useSelector } from 'react-redux';
+import { selectLoginData, SuccessLogout } from '../Redux/LoginCheck';
+import { useSelector, useDispatch } from 'react-redux';
 
 export const HeaderDiv = styled.div`
 	width: 100%;
@@ -76,31 +76,38 @@ function Header() {
 		});
 		navigate('/');
 	};
-	const onClickMoveError = () => {
-		Swal.fire({
-			title: 'Error',
-			text: '찾을 수 없는 페이지입니다',
-			icon: 'error',
-			confirmButtonText: 'OK',
-			heightAuto: false,
-		});
-		navigate('/errorpage');
-	};
+	// const onClickMoveError = () => {
+	// 	Swal.fire({
+	// 		title: 'Error',
+	// 		text: '찾을 수 없는 페이지입니다',
+	// 		icon: 'error',
+	// 		confirmButtonText: 'OK',
+	// 		heightAuto: false,
+	// 	});
+	// 	navigate('/errorpage');
+	// };
 	const onClickMoveLogin = () => {
 		navigate('/login');
 	};
 	const onClickMoveRegister = () => {
 		navigate('/register');
 	};
+	const dispatch = useDispatch();
+
+	const onClickLogout = () => {
+		dispatch(SuccessLogout(true));
+		navigate('/');
+	};
+
 	useEffect(() => {
-		console.log('Load 될 때 리덕스로 불러온 로그인 정보 = ', currentLogin.loginState);
-		console.log('이거 가지고 loginState set 할거임');
+		// console.log('Load 될 때 리덕스로 불러온 로그인 정보 = ', currentLogin.loginState);
+		// console.log('이거 가지고 loginState set 할거임');
 		if (currentLogin.loginState) {
 			setLoginState(true);
 		} else {
 			setLoginState(false);
 		}
-	});
+	}, [currentLogin.loginState]);
 
 	return (
 		<HeaderDiv>
@@ -111,10 +118,13 @@ function Header() {
 
 			<HeaderRightBox>
 				{loginState ? (
-					<div>
-						<p>로그인 성공!</p>
-						<p>환영합니다 지원 님</p>
-					</div>
+					<>
+						<div>
+							<p>환영합니다</p>
+							<p>지원 님</p>
+						</div>
+						<HeaderLoginBtn onClick={onClickLogout}>로그아웃</HeaderLoginBtn>
+					</>
 				) : (
 					<>
 						<HeaderLoginBtn onClick={onClickMoveLogin}>로그인</HeaderLoginBtn>

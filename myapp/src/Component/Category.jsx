@@ -45,7 +45,7 @@ function Category() {
 		} else {
 			setLoginState(false);
 		}
-	});
+	}, [currentLogin.loginState]);
 
 	const onClickMoveIntroduce = () => {
 		navigate('/introduce');
