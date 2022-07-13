@@ -74,7 +74,7 @@ function Header() {
 			confirmButtonText: 'OK',
 			heightAuto: false,
 		});
-		navigate('/');
+		navigate('/AOMD-Client');
 	};
 	// const onClickMoveError = () => {
 	// 	Swal.fire({
