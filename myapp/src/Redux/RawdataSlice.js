@@ -56,14 +56,14 @@ export const RawdataSlice = createSlice({
 			state.origin.items = action.payload;
 			// state.items = action.payload;
 		},
-		DeletedataChange: (state, action) => {
-			state.origin.items = action.payload;
-			// state.items = action.payload;
-		},
+		// DeletedataChange: (state, action) => {
+		// 	state.origin.items = action.payload;
+		// 	// state.items = action.payload;
+		// },
 	},
 });
 
-export const { DragdataChange, DeletedataChange } = RawdataSlice.actions;
+export const { DragdataChange } = RawdataSlice.actions;
 
 export const selectRawData = state => state.rawData;
 

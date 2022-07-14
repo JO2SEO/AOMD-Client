@@ -5,10 +5,7 @@ import FirstPage from './Page/FirstPage';
 import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
-
-import DragDrop from './Component/DragDrop/DragDrop';
-import DragDropTest from './Component/DragDropTest/DragDropTest';
-import DragDropTestRedux from './Component/DragDropTestRedux/DragDropTestRedux';
+import ManagePortPolioPage from './Component/DragDropTestRedux/DragDropTestRedux';
 
 import Header from './Component/Header';
 import Footer from './Component/Footer';
@@ -33,15 +30,6 @@ export const GlobalStyle = createGlobalStyle`
 		background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};
 	}
-`;
-
-export const ContentDiv = styled.div`
-	width: 100%;
-	height: 85%;
-	box-sizing: border-box;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 `;
 
 export const DarkModeButton = styled.button`
@@ -72,25 +60,27 @@ function App() {
 				<Router>
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 						<GlobalStyle />
-						<Header />
+						{/* <Header /> */}
 
-						<ContentDiv>
+						<>
 							<Routes>
-								<Route path="/AOMD-Client" element={<FirstPage />} />
-								<Route path="/introduce" element={<IntroducePage />} />
+								<Route path="/" element={<FirstPage />} />
+								<Route path="/introducepage" element={<IntroducePage />} />
 
-								<Route path="/login" element={<LoginPage />} />
-								<Route path="/register" element={<RegisterPage />} />
+								<Route path="/loginpage" element={<LoginPage />} />
+								<Route path="/registerpage" element={<RegisterPage />} />
 
-								<Route path="/main" element={<MainPage />} />
-								<Route path="/dragdrop" element={<DragDrop />} />
-								<Route path="/dragdroptest" element={<DragDropTest />} />
-								<Route path="/dragdroptestredux" element={<DragDropTestRedux />} />
+								{/* <Route path="/main" element={<MainPage />} /> */}
+
+								<Route
+									path="/manageportpoliopage"
+									element={<ManagePortPolioPage />}
+								/>
 								<Route path="/errorpage" element={<ErrorPage />} />
 							</Routes>
-						</ContentDiv>
+						</>
 
-						<Footer />
+						{/* <Footer /> */}
 					</ThemeProvider>
 				</Router>
 			</div>

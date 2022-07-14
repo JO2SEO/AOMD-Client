@@ -64,27 +64,27 @@ export const FormButton = styled.button`
 
 export function LoginPage() {
 	const [logintext, setlogintext] = useState({ id: '', pwd: '' });
-	const Swal = require('sweetalert2');
+	// const Swal = require('sweetalert2');
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
 	const onClickLogin = e => {
 		if (logintext.id === '1' && logintext.pwd === '1') {
-			Swal.fire({
-				title: 'Login',
-				text: '로그인 성공',
-				icon: 'success',
-				confirmButtonText: 'OK',
-				heightAuto: false,
-			});
+			// Swal.fire({
+			// 	title: 'Login',
+			// 	text: '로그인 성공',
+			// 	icon: 'success',
+			// 	confirmButtonText: 'OK',
+			// 	heightAuto: false,
+			// });
 			dispatch(SuccessLogin(true));
 
-			navigate('/AOMD-Client');
+			navigate('/');
 		}
 	};
 
 	const onClickSign = () => {
-		navigate('/register');
+		navigate('/registerpage');
 	};
 
 	return (

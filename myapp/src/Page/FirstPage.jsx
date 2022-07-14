@@ -1,47 +1,94 @@
-import FirstPageImage from '../Image/FirstPageImg.png';
 import upArrow from '../Image/upArrow.svg';
 import { useState } from 'react';
 import styled from 'styled-components';
+import Header from '../Component/Header';
+import Category from '../Component/Category';
+import loginIcon from '../Image/logoImg.png';
+import Footer from '../Component/Footer';
+import { useEffect } from 'react';
 
-const FirstPageDiv = styled.div`
+const FirstPageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	height: 100%;
 	overflow-y: scroll;
 `;
-
-const FristPageBox = styled.div`
+const ContentBox1 = styled.div`
 	display: flex;
 	flex-direction: row;
+	width: 100%;
+	height: 400px;
+	background-color: #7483a1;
 `;
-const LeftBox = styled.div`
+const ArrowBox = styled.div`
+	width: 20%;
 	display: flex;
-	flex-direction: column;
-	width: 50%;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-weight: lighter;
+	font-size: 200px;
 `;
-
 const TextBox = styled.div`
+	color: white;
+	width: 60%;
+	padding: 30px;
+	background: gray;
+	& h1 {
+		font-size: 35px;
+		font-weight: bolder;
+		margin-bottom: 15px;
+	}
+
+	& p {
+		font-size: 15px;
+		margin-bottom: 10px;
+	}
+
+	& button {
+		background: white;
+		width: 300px;
+		height: 50px;
+		margin-top: 20px;
+		border-radius: 20px;
+	}
+`;
+const ContentBox2 = styled.div`
+	width: 100%;
 	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+`;
+const ContentBox2Image = styled.div`
+	margin: 50px;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+const ContentBox2Text = styled.div`
+	height: 200px;
+	width: fit-content;
+
+	display: flex;
+	justify-content: center;
 	flex-direction: column;
-	padding: 100px 0px 0px 100px;
 
 	& h1 {
-		font-weight: bold;
-		font-size: 60px;
-		margin-top: 20px;
+		font-size: 40px;
+		font-weight: bolder;
+		margin-bottom: 15px;
 	}
-	& p {
-		width: 85%;
-		font-size: 20px;
-		margin-top: 30px;
-	}
-`;
 
-const RightBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 50%;
+	& h2 {
+		font-size: 20px;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	& h3 {
+		font-size: 15px;
+	}
 `;
 
 export const MoveTopBtn = styled.button`
@@ -64,84 +111,111 @@ export const MoveTopBtn = styled.button`
 
 function FirstPage() {
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
-	// 스크롤값을 저장하기 위한 state
-
 	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
-	// 버튼 상태
 
-	const moveToTop = () => {
-		let div = document.querySelector('#FirstPageDiv');
-		// console.log('moveToTopBtn Click');
-		div.scrollTop = 0;
-		setScrollValueOfY(0); // ScrollY 의 값을 초기화
-		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
-	};
-
-	const onScroll = e => {
-		// setScrollValueOfY(window.pageYOffset);
-		let div = document.querySelector('#FirstPageDiv');
-		// console.log('div = ', div.scrollTop);
-		setScrollValueOfY(div.scrollTop);
-
+	const handleFollow = () => {
+		setScrollValueOfY(window.pageYOffset);
 		if (ScrollValueOfY > 150) {
-			// 100 이상이면 버튼이 보이게
 			setMoveToTopBtnStatus(true);
 		} else {
-			// 100 이하면 버튼이 사라지게
 			setMoveToTopBtnStatus(false);
 		}
 	};
 
+	const moveToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		});
+		setScrollValueOfY(0); // ScrollY 의 값을 초기화
+		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
+	};
+
+	useEffect(() => {
+		const watch = () => {
+			window.addEventListener('scroll', handleFollow);
+		};
+		watch();
+		return () => {
+			window.removeEventListener('scroll', handleFollow);
+		};
+	});
+
 	return (
-		<FirstPageDiv id="FirstPageDiv" onScroll={onScroll}>
-			<FristPageBox style={{ marginTop: '50px' }}>
-				<LeftBox>
-					<TextBox>
-						<h1> Archive Of My Data </h1>
-						<h1> 포트폴리오 관리 플랫폼 </h1>
-						<p>
-							AOMD는 단순한 학습 이력 관리 플랫폼이 아닙니다. 블록체인 네트워크를 통해
-							당신의 데이터를 안전하게 보관해드립니다.
-						</p>
-					</TextBox>
-				</LeftBox>
-				<RightBox>
-					<div style={{ padding: '40px 0px 0px 40px' }}>
-						<img
-							src={FirstPageImage}
-							alt="kakao login"
-							style={{ width: '550px', height: '350px' }}
-						/>
-					</div>
-				</RightBox>
-			</FristPageBox>
-			<FristPageBox style={{ margin: '100px 0px 300px 0px' }}>
-				<LeftBox style={{ padding: '50px' }}>
-					<p style={{ fontSize: '50px', fontWeight: 'bold' }}> 포트폴리오란? </p>
-					<p style={{ marginTop: '50px', fontSize: '20px' }}>
-						AOMD는 단순한 학습 이력 관리 플랫폼이 아닙니다. 블록체인 네트워크를 통해
-						당신의 데이터를 안전하게 보관해드립니다.
-					</p>
-				</LeftBox>
-				<RightBox style={{ padding: '50px' }}>
-					<p style={{ fontSize: '50px', fontWeight: 'bold' }}>
-						포트폴리오 관리 플랫폼이란?
-					</p>
-					<p style={{ marginTop: '50px', fontSize: '20px' }}>
-						AOMD는 단순한 학습 이력 관리 플랫폼이 아닙니다. 블록체인 네트워크를 통해
-						당신의 데이터를 안전하게 보관해드립니다.
-					</p>
-				</RightBox>
-			</FristPageBox>
-			<div style={{ padding: '50px' }}>
-				<img alt="move to top" src={upArrow}></img>
-				<img alt="move to top" src={upArrow}></img>
-				<img alt="move to top" src={upArrow}></img>
-			</div>
+		<FirstPageContainer>
 			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTop}>
 				<img src={upArrow} alt="upArrow" style={{ width: '20px' }}></img>
 			</MoveTopBtn>
-		</FirstPageDiv>
+			<Header />
+			<Category />
+			<ContentBox1>
+				<ArrowBox> &lt;</ArrowBox>
+				<TextBox>
+					<h1> 편하게 관리하는 포트폴리오 </h1>
+					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
+					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
+					<button> 포트폴리오 작성하러 가기 -------&gt; </button>
+				</TextBox>
+				<ArrowBox> &gt; </ArrowBox>
+			</ContentBox1>
+			<ContentBox2>
+				<ContentBox2Image>
+					<img src={loginIcon} alt="" style={{ width: '300px' }} />
+				</ContentBox2Image>
+				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
+					<h1> 쉽게 관리하는 포트폴리오 </h1>
+					<h2> 자신만의 포트폴리오를 작성해보세요 !</h2>
+					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
+					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+				</ContentBox2Text>
+			</ContentBox2>
+			<ContentBox2>
+				<ContentBox2Text style={{ alignItems: 'flex-end' }}>
+					<h1> 포트폴리오를 한눈에 </h1>
+					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
+					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+				</ContentBox2Text>
+				<ContentBox2Image>
+					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
+				</ContentBox2Image>
+			</ContentBox2>
+			<ContentBox2>
+				<ContentBox2Image>
+					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
+				</ContentBox2Image>
+				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
+					<h1> 블록체인 기반 관리 시스템</h1>
+					<h2> 블록체인을 이용하여 데이터를 관리합니다.</h2>
+					<h3> 하이퍼레저 패브릭을 이용하여 데이터의 신뢰성을 보장합니다. </h3>
+					<h3> 소중한 당신의 데이터 믿고 맡겨주셔도 됩니다. </h3>
+				</ContentBox2Text>
+			</ContentBox2>
+			<ContentBox2>
+				<ContentBox2Text style={{ alignItems: 'flex-end' }}>
+					<h1> 포트폴리오를 한눈에 </h1>
+					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
+					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+				</ContentBox2Text>
+				<ContentBox2Image>
+					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
+				</ContentBox2Image>
+			</ContentBox2>
+			<ContentBox2>
+				<ContentBox2Image>
+					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
+				</ContentBox2Image>
+				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
+					<h1> 블록체인 기반 관리 시스템</h1>
+					<h2> 블록체인을 이용하여 데이터를 관리합니다.</h2>
+					<h3> 하이퍼레저 패브릭을 이용하여 데이터의 신뢰성을 보장합니다. </h3>
+					<h3> 소중한 당신의 데이터 믿고 맡겨주셔도 됩니다. </h3>
+				</ContentBox2Text>
+			</ContentBox2>
+
+			<Footer />
+		</FirstPageContainer>
 	);
 }
 

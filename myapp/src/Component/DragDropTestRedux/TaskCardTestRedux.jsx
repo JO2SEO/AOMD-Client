@@ -1,7 +1,7 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
-import { DeletedataChange, selectRawData } from '../../Redux/RawdataSlice';
+// import { selectRawData } from '../../Redux/RawdataSlice';
 import { DeletedataChangePort, selectPortData } from '../../Redux/PortdataSlice';
 import styled from 'styled-components';
 
@@ -37,29 +37,25 @@ export const PortItem = styled.div`
 const TaskCardTestRedux = props => {
 	const { item, index, datatype } = props;
 	const dispatch = useDispatch();
-
-	const originData = useSelector(selectRawData);
 	const portData = useSelector(selectPortData);
 
 	const onClickDelete = itemID => {
-		// const originColumn = originData['origin'];
 		const sourceColumn = portData['port1'];
-		// console.log('originColumn = ', originColumn);
-		console.log('sourceColumn = ', sourceColumn);
-		// const originItems = [...originColumn.items];
 		const sourceItems = [...sourceColumn.items];
-		console.log('sourceItems = ', sourceItems);
-		// const lengthOrigin = originItems.length;
 
-		// for (let i = 0; i < sourceItems.length; i++) {
-		// 	if (sourceItems[i].id === itemID) {
-		// 		const [removed] = sourceItems.splice(i, 1);
-		// 		sourceItems.splice(lengthOrigin, 0, removed);
-		// 		break;
-		// 	}
-		// }
-
-		// dispatch(DeletedataChange(originItems));
+		// 3까지만 돌면 돼, 항목이 3개니까 => 고정
+		for (let i = 0; i < 3; i++) {
+			let Before = sourceItems[i];
+			for (let j = 0; j < Before.length; j++) {
+				if (Before[j].id === itemID) {
+					let First = Before.slice(0, j);
+					let Second = Before.slice(j + 1);
+					Before = [...First, ...Second];
+					break;
+				}
+			}
+			sourceItems[i] = Before;
+		}
 		dispatch(DeletedataChangePort(sourceItems));
 	};
 

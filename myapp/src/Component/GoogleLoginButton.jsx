@@ -8,33 +8,33 @@ const GoogleLoginButton = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const onSuccess = response => {
-		const Swal = require('sweetalert2');
+		// const Swal = require('sweetalert2');
 
-		const profile = response.getBasicProfile();
+		// const profile = response.getBasicProfile();
 
-		const userdata = {
-			email: profile.getEmail(),
-			image: profile.getImageUrl(),
-			name: profile.getName(),
-		};
+		// const userdata = {
+		// 	email: profile.getEmail(),
+		// 	image: profile.getImageUrl(),
+		// 	name: profile.getName(),
+		// };
 
 		console.log('response = ', response);
 		// console.log('userdata = ', userdata);
 		console.log('access token = ', response['accessToken']);
 
-		Swal.fire({
-			title: 'Login',
-			text: '로그인 성공',
-			icon: 'success',
-			confirmButtonText: 'OK',
-			heightAuto: false,
-		});
+		// Swal.fire({
+		// 	title: 'Login',
+		// 	text: '로그인 성공',
+		// 	icon: 'success',
+		// 	confirmButtonText: 'OK',
+		// 	heightAuto: false,
+		// });
 
 		// setIsLogin(true);
 		// navigate('/main');
 		// console.log('response = ', response);
 		dispatch(SuccessLogin(true));
-		navigate('/main');
+		navigate('/');
 	};
 
 	// const onSuccess = response => {

@@ -1,97 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Category from './Category';
 import { selectLoginData, SuccessLogout } from '../Redux/LoginCheck';
 import { useSelector, useDispatch } from 'react-redux';
+import logoImg from '../Image/logoImg.png';
+import loginIcon from '../Image/loginIcon.png';
 
-export const HeaderDiv = styled.div`
+const HeaderContainer = styled.div`
 	width: 100%;
-	height: 10%;
-	box-sizing: border-box;
+	height: 70px;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-`;
-export const HeaderLeftBox = styled.div`
-	display: flex;
-	width: 15%;
-	height: 100%;
-	border: 2px solid black;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-`;
-export const HeaderRightBox = styled.div`
-	display: flex;
-	width: 15%;
-	height: 100%;
-	border: 2px solid black;
-	box-sizing: border-box;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 `;
 
-export const HeaderMoveHomeBtn = styled.button`
-	width: 80px;
-	height: 50px;
-	background: white;
-	border: 3px solid black;
-
-	&:hover {
-		cursor: pointer;
-		background: gray;
-		color: white;
-	}
-`;
-export const HeaderLoginBtn = styled.button`
-	width: 70px;
-	height: 50px;
-	border: 3px solid black;
-	margin: 10px;
-	background: white;
-
-	&:hover {
-		cursor: pointer;
-		background: gray;
-		color: white;
-	}
-`;
 function Header() {
 	const [loginState, setLoginState] = useState(false);
 	const currentLogin = useSelector(selectLoginData);
 
 	const navigate = useNavigate();
-	const Swal = require('sweetalert2');
 
 	const onClickMoveHome = () => {
-		Swal.fire({
-			title: 'Move to Home',
-			text: '홈페이지로 이동합니다',
-			icon: 'success',
-			confirmButtonText: 'OK',
-			heightAuto: false,
-		});
-		navigate('/AOMD-Client');
+		navigate('/');
 	};
-	// const onClickMoveError = () => {
-	// 	Swal.fire({
-	// 		title: 'Error',
-	// 		text: '찾을 수 없는 페이지입니다',
-	// 		icon: 'error',
-	// 		confirmButtonText: 'OK',
-	// 		heightAuto: false,
-	// 	});
-	// 	navigate('/errorpage');
-	// };
+
 	const onClickMoveLogin = () => {
-		navigate('/login');
+		navigate('/loginpage');
 	};
-	const onClickMoveRegister = () => {
-		navigate('/register');
-	};
+
 	const dispatch = useDispatch();
 
 	const onClickLogout = () => {
@@ -100,8 +35,6 @@ function Header() {
 	};
 
 	useEffect(() => {
-		// console.log('Load 될 때 리덕스로 불러온 로그인 정보 = ', currentLogin.loginState);
-		// console.log('이거 가지고 loginState set 할거임');
 		if (currentLogin.loginState) {
 			setLoginState(true);
 		} else {
@@ -110,29 +43,72 @@ function Header() {
 	}, [currentLogin.loginState]);
 
 	return (
-		<HeaderDiv>
-			<HeaderLeftBox>
-				<HeaderMoveHomeBtn onClick={onClickMoveHome}>AOMD</HeaderMoveHomeBtn>
-			</HeaderLeftBox>
-			<Category />
+		<HeaderContainer>
+			<div
+				style={{
+					display: 'flex',
+					width: '40%',
+					paddingLeft: '100px',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<h1> 다양한 포트폴리오를 검색해보세요</h1>
+			</div>
 
-			<HeaderRightBox>
+			<div
+				style={{
+					display: 'flex',
+					width: '20%',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<button
+					onClick={onClickMoveHome}
+					style={{ width: '50%', background: 'white', border: 'none' }}
+				>
+					<img src={logoImg} alt="logoImg" style={{ width: '100%' }} />
+				</button>
+			</div>
+
+			<div
+				style={{
+					display: 'flex',
+					width: '40%',
+					paddingRight: '100px',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
 				{loginState ? (
 					<>
-						<div>
-							<p>환영합니다</p>
-							<p>지원 님</p>
-						</div>
-						<HeaderLoginBtn onClick={onClickLogout}>로그아웃</HeaderLoginBtn>
+						<button> 햄버거 버튼 </button>
+						<button onClick={onClickLogout}>로그아웃</button>
 					</>
 				) : (
 					<>
-						<HeaderLoginBtn onClick={onClickMoveLogin}>로그인</HeaderLoginBtn>
-						<HeaderLoginBtn onClick={onClickMoveRegister}>회원가입</HeaderLoginBtn>
+						<button
+							onClick={onClickMoveLogin}
+							style={{
+								display: 'flex',
+								width: '50px',
+								background: 'white',
+								border: 'none',
+							}}
+						>
+							<img
+								src={loginIcon}
+								alt="loginIcon"
+								style={{
+									width: '100%',
+								}}
+							/>
+						</button>
 					</>
 				)}
-			</HeaderRightBox>
-		</HeaderDiv>
+			</div>
+		</HeaderContainer>
 	);
 }
 

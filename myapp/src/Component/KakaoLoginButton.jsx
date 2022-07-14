@@ -26,17 +26,17 @@ const KakaoLoginButton = () => {
 					success: auth => {
 						console.log('정상 로그인', auth);
 						console.log('access token = ', auth['access_token']);
-						Swal.fire({
-							title: 'Login',
-							text: '로그인 성공',
-							icon: 'success',
-							confirmButtonText: 'OK',
-							heightAuto: false,
-						});
+						// Swal.fire({
+						// 	title: 'Login',
+						// 	text: '로그인 성공',
+						// 	icon: 'success',
+						// 	confirmButtonText: 'OK',
+						// 	heightAuto: false,
+						// });
 
 						dispatch(SuccessLogin(true));
 
-						navigate('/main');
+						navigate('/');
 					},
 					fail: err => {
 						console.error(err);

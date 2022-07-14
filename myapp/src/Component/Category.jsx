@@ -4,34 +4,25 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { selectLoginData } from '../Redux/LoginCheck';
 
-export const CategoryDiv = styled.div`
-	width: 75%;
-	border: 2px solid black;
-	display: flex;
-	justify-content: space-around; ;
-`;
-
-export const CategoryBox = styled.div`
-	width: 120px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 10px;
-`;
-export const CategoryBoxBtn = styled.button`
-	border: none;
-	justify-content: center;
-	align-items: center;
+const CategoryContainer = styled.div`
 	width: 100%;
-	height: 50px;
-	background: white;
-	border: 3px solid black;
-
-	&:hover {
-		cursor: pointer;
-		background: gray;
-		color: white;
-	}
+	height: 70px;
+	display: flex;
+	background: #1f3864;
+	padding: 5px 20px 5px 20px;
+`;
+const CategoryBox = styled.div`
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+`;
+const CategoryBoxBtn = styled.button`
+	border: none;
+	color: white;
+	font-weight: bolder;
+	font-size: 15px;
+	background: transparent;
 `;
 
 function Category() {
@@ -47,40 +38,56 @@ function Category() {
 		}
 	}, [currentLogin.loginState]);
 
-	const onClickMoveIntroduce = () => {
-		navigate('/introduce');
+	const onClickMoveIntroducePage = () => {
+		navigate('/introducepage');
 	};
-	const Swal = require('sweetalert2');
 
-	const onClickMoveMain = () => {
+	const onClickMovePortPolioPage = () => {
 		if (loginState) {
-			navigate('/main');
+			navigate('/manageportpoliopage');
 		} else {
-			Swal.fire({
-				title: 'Login',
-				text: '로그인을 먼저 하셔야 합니다',
-				icon: 'success',
-				confirmButtonText: 'OK',
-				heightAuto: false,
-			});
-			navigate('/login');
+			// Swal.fire({
+			// 	title: 'Login',
+			// 	text: '로그인을 먼저 하셔야 합니다',
+			// 	icon: 'success',
+			// 	confirmButtonText: 'OK',
+			// 	heightAuto: false,
+			// });
+			navigate('/loginpage');
 		}
 	};
+
 	return (
-		<CategoryDiv>
+		<CategoryContainer>
+			<div
+				style={{
+					display: 'flex',
+					width: '30%',
+					paddingLeft: '100px',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<CategoryBoxBtn> 카테고리 </CategoryBoxBtn>
+			</div>
 			<CategoryBox>
-				<CategoryBoxBtn onClick={onClickMoveIntroduce}>서비스 소개</CategoryBoxBtn>
+				<CategoryBoxBtn onClick={onClickMovePortPolioPage}> 포트폴리오 작성</CategoryBoxBtn>
+				<CategoryBoxBtn onClick={onClickMoveIntroducePage}> 커뮤니티 </CategoryBoxBtn>
+				<CategoryBoxBtn onClick={onClickMoveIntroducePage}> 마이페이지 </CategoryBoxBtn>
+				<CategoryBoxBtn onClick={onClickMoveIntroducePage}> 설정 </CategoryBoxBtn>
 			</CategoryBox>
-			<CategoryBox>
-				<CategoryBoxBtn>제휴기관</CategoryBoxBtn>
-			</CategoryBox>
-			<CategoryBox>
-				<CategoryBoxBtn onClick={onClickMoveMain}>포트폴리오 관리</CategoryBoxBtn>
-			</CategoryBox>
-			<CategoryBox>
-				<CategoryBoxBtn onClick={onClickMoveMain}>고객센터</CategoryBoxBtn>
-			</CategoryBox>
-		</CategoryDiv>
+			<div
+				style={{
+					display: 'flex',
+					width: '30%',
+					paddingRight: '100px',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<CategoryBoxBtn onClick={onClickMoveIntroducePage}> 고객센터</CategoryBoxBtn>
+			</div>
+		</CategoryContainer>
 	);
 }
 

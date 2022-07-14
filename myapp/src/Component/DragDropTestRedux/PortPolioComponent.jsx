@@ -73,7 +73,9 @@ const PortPolioComponent = props => {
 			}
 		});
 	};
+
 	function returnTaskCard(column) {
+		// console.log('column => ', column);
 		// RawdataSlice.js -> data
 		// data[0] => 자격증
 		// data[1] => 학력
