@@ -3,6 +3,7 @@ import TaskCard from './TaskCard';
 import { Droppable } from 'react-beautiful-dnd';
 import { ColumnTitle, ProvidedPlaceholder, DataBox, DataBoxh1 } from './RawDataComponent';
 import styled from 'styled-components';
+import { useState } from 'react';
 
 export const Portpolio = styled.div`
 	display: flex;
@@ -91,26 +92,46 @@ const PortPolioComponent = props => {
 		const info1 = []; // 학력
 		const info2 = []; // 수상내역
 
-		column.map((item, index) => {
-			// console.log('index => ', index);
-			// console.log('item => ', item);
+		for (let i = 0; i < 3; i++) {
+			if (i === 0) {
+				const arrLength = column[i].length;
 
-			if (index === 0) {
-				item.map((innerItem, innerindex) => {
-					info0.push([innerItem, 1 + index + innerindex]);
-				});
+				for (let j = 0; j < arrLength; j++) {
+					info0.push([column[i][j], 1 + i + j]);
+				}
 			}
-			if (index === 1) {
-				item.map((innerItem, innerindex) => {
-					info1.push([innerItem, 2 + index + innerindex]);
-				});
+			if (i === 1) {
+				const arrLength = column[i].length;
+
+				for (let j = 0; j < arrLength; j++) {
+					info1.push([column[i][j], 2 + i + j]);
+				}
 			}
-			if (index === 2) {
-				item.map((innerItem, innerindex) => {
-					info2.push([innerItem, 3 + index + innerindex]);
-				});
+			if (i === 2) {
+				const arrLength = column[i].length;
+
+				for (let j = 0; j < arrLength; j++) {
+					info2.push([column[i][j], 3 + i + j]);
+				}
 			}
-		});
+		}
+		// column.map((item, index) => {
+		// 	if (index === 0) {
+		// 		item.map((innerItem, innerindex) => {
+		// 			info0.push([innerItem, 1 + index + innerindex]);
+		// 		});
+		// 	}
+		// 	if (index === 1) {
+		// 		item.map((innerItem, innerindex) => {
+		// 			info1.push([innerItem, 2 + index + innerindex]);
+		// 		});
+		// 	}
+		// 	if (index === 2) {
+		// 		item.map((innerItem, innerindex) => {
+		// 			info2.push([innerItem, 3 + index + innerindex]);
+		// 		});
+		// 	}
+		// });
 
 		return (
 			<Fragment>
@@ -162,6 +183,75 @@ const PortPolioComponent = props => {
 			</Fragment>
 		);
 	}
+
+	const [storingState, setStoringState] = useState(false);
+	const [question, setQuestion] = useState('');
+	const [content, setContent] = useState('');
+
+	const Storing = styled.div`
+		display: ${({ active }) => {
+			if (active) {
+				return 'flex';
+			}
+			return 'none';
+		}};
+		padding-left: 30px;
+		margin: 0px;
+		align-items: center;
+
+		& span {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			background-color: gray;
+			border-radius: 50%;
+			animation: loading 1s 0s linear infinite;
+		}
+
+		& span:nth-child(1) {
+			animation-delay: 0s;
+			background-color: red;
+		}
+
+		& span:nth-child(2) {
+			animation-delay: 0.2s;
+			background-color: orange;
+		}
+
+		& span:nth-child(3) {
+			animation-delay: 0.4s;
+			background-color: yellowgreen;
+		}
+
+		@keyframes loading {
+			0%,
+			100% {
+				opacity: 0;
+				transform: scale(0.5);
+			}
+			50% {
+				opacity: 1;
+				transform: scale(1.2);
+			}
+		}
+	`;
+
+	const questionChangeFunc = e => {
+		setQuestion(e.target.value);
+		setStoringState(true);
+		setTimeout(function () {
+			setStoringState(false);
+		}, 5000);
+	};
+
+	const contentChangeFunc = e => {
+		setContent(e.target.value);
+		setStoringState(true);
+		setTimeout(function () {
+			setStoringState(false);
+		}, 5000);
+	};
+
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -172,26 +262,34 @@ const PortPolioComponent = props => {
 								<div ref={provided.innerRef} {...provided.droppableProps}>
 									<ColumnTitle>{portData.port1.title}</ColumnTitle>
 									{returnTaskCard(portData.port1.items)}
-
-									<ProvidedPlaceholder>
-										{provided.placeholder}
-									</ProvidedPlaceholder>
 								</div>
 								<div style={{ marginTop: '50px' }}>
-									<h1
+									<div
 										style={{
-											fontWeight: 'bold',
-											fontSize: '20px',
-											marginBottom: '20px',
+											display: 'flex',
+											alignContent: 'center',
+											marginBottom: '30px',
 										}}
 									>
-										자기소개서
-									</h1>
+										<h1
+											style={{
+												fontWeight: 'bold',
+												fontSize: '20px',
+											}}
+										>
+											자기소개서
+										</h1>
+										<Storing active={storingState}>
+											<span></span>
+											<span></span>
+											<span></span>
+											<p style={{ marginLeft: '10px' }}>저장 중...</p>
+										</Storing>
+									</div>
 									<div
 										style={{
 											display: 'flex',
 											marginBottom: '20px',
-											// alignContent: 'center',
 											justifyContent: 'center',
 										}}
 									>
@@ -204,15 +302,25 @@ const PortPolioComponent = props => {
 										>
 											질문 1
 										</p>
+
 										<input
 											style={{
 												width: '300px',
 												height: '30px',
 											}}
+											value={question}
+											type="text"
+											onChange={questionChangeFunc}
+											placeholder="자기소개서 문항"
 										/>
 									</div>
 
-									<IntroduceBox />
+									<IntroduceBox
+										value={content}
+										type="text"
+										onChange={contentChangeFunc}
+										placeholder="..."
+									></IntroduceBox>
 								</div>
 								<SubmitBox>
 									<SubmitBoxBtn onClick={onClickStore}>
