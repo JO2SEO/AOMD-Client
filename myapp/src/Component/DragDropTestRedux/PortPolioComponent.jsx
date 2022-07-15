@@ -82,12 +82,6 @@ const PortPolioComponent = props => {
 	};
 
 	function returnTaskCard(column) {
-		// console.log('column => ', column);
-		// RawdataSlice.js -> data
-		// data[0] => 자격증
-		// data[1] => 학력
-		// data[2] => 수상내역
-
 		const info0 = []; // 자격증
 		const info1 = []; // 학력
 		const info2 = []; // 수상내역
@@ -115,23 +109,6 @@ const PortPolioComponent = props => {
 				}
 			}
 		}
-		// column.map((item, index) => {
-		// 	if (index === 0) {
-		// 		item.map((innerItem, innerindex) => {
-		// 			info0.push([innerItem, 1 + index + innerindex]);
-		// 		});
-		// 	}
-		// 	if (index === 1) {
-		// 		item.map((innerItem, innerindex) => {
-		// 			info1.push([innerItem, 2 + index + innerindex]);
-		// 		});
-		// 	}
-		// 	if (index === 2) {
-		// 		item.map((innerItem, innerindex) => {
-		// 			info2.push([innerItem, 3 + index + innerindex]);
-		// 		});
-		// 	}
-		// });
 
 		return (
 			<Fragment>

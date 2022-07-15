@@ -5,7 +5,7 @@ import { selectLoginData, SuccessLogout } from '../Redux/LoginCheck';
 import { useSelector, useDispatch } from 'react-redux';
 import logoImg from '../Image/logoImg.png';
 import loginIcon from '../Image/loginIcon.png';
-
+import '../HBG.css';
 const HeaderContainer = styled.div`
 	width: 100%;
 	height: 70px;
@@ -21,10 +21,44 @@ const MoveHomeBtn = styled.div`
 		cursor: pointer;
 	}
 `;
+const ToggleMenuBox = styled.div`
+	width: 50px;
+	display: flex;
+	flex-direction: column;
+`;
+const OnToggleList = styled.div`
+	display: ${({ active }) => {
+		if (active) {
+			return 'flex';
+		}
+		return 'none';
+	}};
+	z-index: 2;
+	background: white;
+`;
+const HBGToggleBtn = styled.button`
+	width: 50px;
+	border: none;
+	background: gray;
+	z-index: 1;
+	position: absolute;
+	height: 30px;
+	top: 0px;
+
+	&: hover {
+		cursor: pointer;
+	}
+`;
 
 function Header() {
 	const [loginState, setLoginState] = useState(false);
 	const currentLogin = useSelector(selectLoginData);
+
+	const [menuToggle, setMenuToggle] = useState(false);
+
+	const onClickToggleMenu = () => {
+		setMenuToggle(!menuToggle);
+	};
 
 	const navigate = useNavigate();
 
@@ -64,7 +98,6 @@ function Header() {
 			>
 				<h1> 다양한 포트폴리오를 검색해보세요</h1>
 			</div>
-
 			<div
 				style={{
 					display: 'flex',
@@ -77,7 +110,6 @@ function Header() {
 					<img src={logoImg} alt="logoImg" style={{ width: '100%' }} />
 				</MoveHomeBtn>
 			</div>
-
 			<div
 				style={{
 					display: 'flex',
@@ -89,8 +121,18 @@ function Header() {
 			>
 				{loginState ? (
 					<>
-						<button> 햄버거 버튼 </button>
 						<button onClick={onClickLogout}>로그아웃</button>
+						<ToggleMenuBox>
+							<HBGToggleBtn onClick={onClickToggleMenu}>햄버거</HBGToggleBtn>
+
+							<OnToggleList active={menuToggle}>
+								<ul className="header-category-btn-mypage-ul">
+									<li className="header-category-btn-mypage-li">토글 1</li>
+									<li className="header-category-btn-mypage-li">토글 2</li>
+									<li className="header-category-btn-mypage-li">토글 3</li>
+								</ul>
+							</OnToggleList>
+						</ToggleMenuBox>
 					</>
 				) : (
 					<>
