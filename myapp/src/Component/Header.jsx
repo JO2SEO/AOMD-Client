@@ -12,6 +12,15 @@ const HeaderContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 `;
+const MoveHomeBtn = styled.div`
+	width: 50%;
+	background: white;
+	border: none;
+
+	&: hover {
+		cursor: pointer;
+	}
+`;
 
 function Header() {
 	const [loginState, setLoginState] = useState(false);
@@ -20,7 +29,7 @@ function Header() {
 	const navigate = useNavigate();
 
 	const onClickMoveHome = () => {
-		navigate('/');
+		navigate('/AOMD-Client');
 	};
 
 	const onClickMoveLogin = () => {
@@ -31,7 +40,7 @@ function Header() {
 
 	const onClickLogout = () => {
 		dispatch(SuccessLogout(true));
-		navigate('/');
+		navigate('/AOMD-Client');
 	};
 
 	useEffect(() => {
@@ -64,12 +73,9 @@ function Header() {
 					alignItems: 'center',
 				}}
 			>
-				<button
-					onClick={onClickMoveHome}
-					style={{ width: '50%', background: 'white', border: 'none' }}
-				>
+				<MoveHomeBtn onClick={onClickMoveHome}>
 					<img src={logoImg} alt="logoImg" style={{ width: '100%' }} />
-				</button>
+				</MoveHomeBtn>
 			</div>
 
 			<div

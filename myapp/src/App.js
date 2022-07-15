@@ -64,7 +64,7 @@ function App() {
 
 						<>
 							<Routes>
-								<Route path="/" element={<FirstPage />} />
+								<Route path="/AOMD-Client" element={<FirstPage />} />
 								<Route path="/introducepage" element={<IntroducePage />} />
 
 								<Route path="/loginpage" element={<LoginPage />} />
