@@ -7,11 +7,13 @@ export const data1 = [
 			id: uuidv4(),
 			Type: '자격증',
 			Content: '통신 기사',
+			Date: '2020-12-34',
 		},
 		{
 			id: uuidv4(),
 			Type: '자격증',
 			Content: '통신 기사 22 ',
+			Date: '2021-56-78',
 		},
 	],
 	[
@@ -19,11 +21,13 @@ export const data1 = [
 			id: uuidv4(),
 			Type: '학력',
 			Content: '부산대학교 석사 졸업',
+			Date: '2022-9-10',
 		},
 		{
 			id: uuidv4(),
 			Type: '학력',
 			Content: '부산대학교 석사 졸업 22',
+			Date: '1998-12-07',
 		},
 	],
 	[
@@ -31,11 +35,13 @@ export const data1 = [
 			id: uuidv4(),
 			Type: '수상내역',
 			Content: '부산대학교 해커톤 1위',
+			Date: '1998-12-07',
 		},
 		{
 			id: uuidv4(),
 			Type: '수상내역',
 			Content: '부산대학교 해커톤 1위 22',
+			Date: '1998-12-07',
 		},
 	],
 ];
@@ -45,6 +51,7 @@ export const data2 = [
 			id: uuidv4(),
 			Type: '자격증',
 			Content: '통신 기사222',
+			Date: '2020-12-34',
 		},
 	],
 	[
@@ -52,6 +59,7 @@ export const data2 = [
 			id: uuidv4(),
 			Type: '학력',
 			Content: '부산대학교 석사 졸업222',
+			Date: '2020-12-34',
 		},
 	],
 	[
@@ -59,6 +67,7 @@ export const data2 = [
 			id: uuidv4(),
 			Type: '수상내역',
 			Content: '부산대학교 해커톤 1위222',
+			Date: '2020-12-34',
 		},
 	],
 ];
@@ -76,12 +85,14 @@ export const PortdataSlice = createSlice({
 	},
 	reducers: {
 		DragdataChangePort: (state, action) => {
-			// console.log('before state ==> ', state.port1.items);
 			state.port1.items = action.payload;
-			// console.log('after state ==> ', state.port1.items);
+			console.log('드래그 앤 드랍 이벤트가 발생');
+			console.log('서버에 리퀘스트 보내 정보 바꼈다고');
 		},
 		DeletedataChangePort: (state, action) => {
 			state.port1.items = action.payload;
+			console.log('삭제 이벤트가 발생');
+			console.log('서버에 리퀘스트 보내 정보 바꼈다고');
 		},
 	},
 });

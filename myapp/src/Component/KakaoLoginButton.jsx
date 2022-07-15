@@ -36,7 +36,7 @@ const KakaoLoginButton = () => {
 
 						dispatch(SuccessLogin(true));
 
-						navigate('/');
+						navigate('/AOMD-Client');
 					},
 					fail: err => {
 						console.error(err);

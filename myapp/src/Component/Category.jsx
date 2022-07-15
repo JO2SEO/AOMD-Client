@@ -44,7 +44,7 @@ function Category() {
 
 	const onClickMovePortPolioPage = () => {
 		if (loginState) {
-			navigate('/manageportpoliopage');
+			navigate('/dragdroppage');
 		} else {
 			// Swal.fire({
 			// 	title: 'Login',

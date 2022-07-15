@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import TaskCardTest from './TaskCardTestRedux';
+import TaskCard from './TaskCard';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
@@ -16,9 +16,9 @@ export const DataBox = styled.div`
 	box-sizing: border-box;
 `;
 export const ColumnTitle = styled.h1`
-	font-size: larger;
+	font-size: 20px;
 	font-weight: bolder;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	text-align: center;
 `;
 export const ProvidedPlaceholder = styled.span`
@@ -71,7 +71,7 @@ const RawDataComponent = props => {
 					{info0.map(items => {
 						// console.log('items = ', items);
 						return (
-							<TaskCardTest
+							<TaskCard
 								key={items[0].id}
 								item={items[0]}
 								index={items[1]}
@@ -88,7 +88,7 @@ const RawDataComponent = props => {
 						// console.log('items = ', items);
 
 						return (
-							<TaskCardTest
+							<TaskCard
 								key={items[0].id}
 								item={items[0]}
 								index={items[1]}
@@ -106,7 +106,7 @@ const RawDataComponent = props => {
 						// console.log('items = ', items);
 
 						return (
-							<TaskCardTest
+							<TaskCard
 								key={items[0].id}
 								item={items[0]}
 								index={items[1]}

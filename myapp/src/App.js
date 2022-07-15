@@ -5,7 +5,7 @@ import FirstPage from './Page/FirstPage';
 import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
-import ManagePortPolioPage from './Component/DragDropTestRedux/DragDropTestRedux';
+import DragDropPage from './Page/DragDropPage';
 
 import Header from './Component/Header';
 import Footer from './Component/Footer';
@@ -66,16 +66,9 @@ function App() {
 							<Routes>
 								<Route path="/AOMD-Client" element={<FirstPage />} />
 								<Route path="/introducepage" element={<IntroducePage />} />
-
 								<Route path="/loginpage" element={<LoginPage />} />
 								<Route path="/registerpage" element={<RegisterPage />} />
-
-								{/* <Route path="/main" element={<MainPage />} /> */}
-
-								<Route
-									path="/manageportpoliopage"
-									element={<ManagePortPolioPage />}
-								/>
+								<Route path="/dragdroppage" element={<DragDropPage />} />
 								<Route path="/errorpage" element={<ErrorPage />} />
 							</Routes>
 						</>

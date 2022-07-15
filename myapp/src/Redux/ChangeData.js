@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { DragdataChange, selectRawData } from './RawdataSlice';
 import { DragdataChangePort, selectPortData } from './PortdataSlice';
+import { selectLoginData, SuccessLogout } from './LoginCheck';
+import { useNavigate } from 'react-router-dom';
 import { DragDropContext } from 'react-beautiful-dnd';
 import PortPolioComponent from '../Component/DragDropTestRedux/PortPolioComponent';
 import RawDataComponent from '../Component/DragDropTestRedux/RawDataComponent';
@@ -50,6 +52,7 @@ export function ChangeData() {
 	const dispatch = useDispatch();
 	const originData = useSelector(selectRawData);
 	const portData = useSelector(selectPortData);
+	const navigate = useNavigate();
 
 	const onDragEnd = result => {
 		if (!result.destination) return;
@@ -63,7 +66,7 @@ export function ChangeData() {
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
 
-			let removed = {};
+			let removed;
 			let findindex_1 = 0;
 			let findindex_2 = 0;
 
@@ -111,6 +114,16 @@ export function ChangeData() {
 	const onClickAddPort = () => {
 		console.log('포트폴리오 추가');
 	};
+
+	const onClickMoveHome = () => {
+		navigate('/AOMD-Client');
+	};
+
+	const onClickLogout = () => {
+		dispatch(SuccessLogout(true));
+		navigate('/AOMD-Client');
+	};
+
 	return (
 		<Container>
 			<DragDropContext onDragEnd={result => onDragEnd(result)}>
@@ -126,6 +139,14 @@ export function ChangeData() {
 					</button>
 					<button style={{ margin: '10px' }} onClick={onClickAddPort}>
 						포트폴리오 추가 - X
+					</button>
+
+					<button style={{ margin: '10px' }} onClick={onClickMoveHome}>
+						홈으로
+					</button>
+
+					<button style={{ margin: '10px' }} onClick={onClickLogout}>
+						로그아웃
 					</button>
 				</DragDropBtnBox>
 				<DragDropContentBox>
