@@ -5,7 +5,8 @@ import { selectLoginData, SuccessLogout } from '../Redux/LoginCheck';
 import { useSelector, useDispatch } from 'react-redux';
 import logoImg from '../Image/logoImg.png';
 import loginIcon from '../Image/loginIcon.png';
-import '../HBG.css';
+import HBG_JS from './HambergerToggle/HBG_JS';
+
 const HeaderContainer = styled.div`
 	width: 100%;
 	height: 70px;
@@ -23,8 +24,11 @@ const MoveHomeBtn = styled.div`
 `;
 const ToggleMenuBox = styled.div`
 	width: 50px;
+	height: 200px;
 	display: flex;
+	z-index: 2;
 	flex-direction: column;
+	box-sizing: content-box;
 `;
 const OnToggleList = styled.div`
 	display: ${({ active }) => {
@@ -35,15 +39,19 @@ const OnToggleList = styled.div`
 	}};
 	z-index: 2;
 	background: white;
+	padding-top: 10px;
+
+	& li {
+		padding-top: 10px;
+	}
 `;
 const HBGToggleBtn = styled.button`
 	width: 50px;
+	height: 50px;
+
 	border: none;
 	background: gray;
-	z-index: 1;
-	position: absolute;
-	height: 30px;
-	top: 0px;
+	z-index: 2;
 
 	&: hover {
 		cursor: pointer;
@@ -91,7 +99,6 @@ function Header() {
 				style={{
 					display: 'flex',
 					width: '40%',
-					paddingLeft: '100px',
 					justifyContent: 'center',
 					alignItems: 'center',
 				}}
@@ -114,22 +121,32 @@ function Header() {
 				style={{
 					display: 'flex',
 					width: '40%',
-					paddingRight: '100px',
 					justifyContent: 'center',
-					alignItems: 'center',
+					paddingTop: '10px',
 				}}
 			>
 				{loginState ? (
 					<>
-						<button onClick={onClickLogout}>로그아웃</button>
+						<button
+							style={{
+								width: '80px',
+								height: '30px',
+								marginRight: '30px',
+								marginTop: '10px',
+							}}
+							onClick={onClickLogout}
+						>
+							로그아웃
+						</button>
 						<ToggleMenuBox>
 							<HBGToggleBtn onClick={onClickToggleMenu}>햄버거</HBGToggleBtn>
-
 							<OnToggleList active={menuToggle}>
-								<ul className="header-category-btn-mypage-ul">
-									<li className="header-category-btn-mypage-li">토글 1</li>
-									<li className="header-category-btn-mypage-li">토글 2</li>
-									<li className="header-category-btn-mypage-li">토글 3</li>
+								<ul>
+									<li>토글 1</li>
+									<li>토글 2</li>
+									<li>토글 3</li>
+									<li>토글 4</li>
+									<li>토글 5</li>
 								</ul>
 							</OnToggleList>
 						</ToggleMenuBox>
@@ -143,6 +160,7 @@ function Header() {
 								width: '50px',
 								background: 'white',
 								border: 'none',
+								cursor: 'pointer',
 							}}
 						>
 							<img
@@ -153,6 +171,9 @@ function Header() {
 								}}
 							/>
 						</button>
+						<div>
+							<HBG_JS />
+						</div>
 					</>
 				)}
 			</div>
