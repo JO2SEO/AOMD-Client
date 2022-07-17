@@ -15,7 +15,7 @@ export const Portpolio = styled.div`
 	justify-content: space-between;
 	overflow-y: scroll;
 `;
-const DataBoxContent = styled.div`
+export const DataBoxContent = styled.div`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
@@ -52,18 +52,28 @@ export const SubmitBoxBtnFront = styled.span`
 
 const PortPolioComponent = props => {
 	const { showState, portData } = props;
-	// console.log(portData.port1);
 	const Swal = require('sweetalert2');
+	// console.log(portData.port1.introductions[0]);
+	// {question: '자기소개서 1번 문항', Content: '저는 화목한 집안에서 태어나'}
+	// console.log(portData.port1.introductions[1]);
+	// {question: '자기소개서 2번 문항', Content: '학교 잘 다니고 공부 잘하고 착실하게'}
 
 	const onClickStore = () => {
-		Swal.fire({
-			position: 'center',
-			icon: 'success',
-			title: 'Saved',
-			showConfirmButton: false,
-			timer: 1500,
-			heightAuto: false,
-		});
+		// Swal.fire({
+		// 	position: 'center',
+		// 	icon: 'success',
+		// 	title: 'Saved',
+		// 	showConfirmButton: false,
+		// 	timer: 1500,
+		// 	heightAuto: false,
+		// });
+		// setQuestion(e.target.value);
+		setStoringState(true);
+		// console.log(1);
+		setTimeout(function () {
+			setStoringState(false);
+		}, 2000);
+		// console.log(1);
 	};
 	const onClickMakeURL = () => {
 		Swal.fire({
@@ -80,7 +90,13 @@ const PortPolioComponent = props => {
 			}
 		});
 	};
+	const onClickLoad = () => {
+		setQuestion(portData.port1.introductions[0].question);
+		setContent(portData.port1.introductions[0].content);
 
+		setQuestion2(portData.port1.introductions[1].question);
+		setContent2(portData.port1.introductions[1].content);
+	};
 	function returnTaskCard(column) {
 		const info0 = []; // 자격증
 		const info1 = []; // 학력
@@ -165,6 +181,9 @@ const PortPolioComponent = props => {
 	const [question, setQuestion] = useState('');
 	const [content, setContent] = useState('');
 
+	const [question2, setQuestion2] = useState('');
+	const [content2, setContent2] = useState('');
+
 	const Storing = styled.div`
 		display: ${({ active }) => {
 			if (active) {
@@ -215,20 +234,44 @@ const PortPolioComponent = props => {
 
 	const questionChangeFunc = e => {
 		setQuestion(e.target.value);
-		setStoringState(true);
-		setTimeout(function () {
-			setStoringState(false);
-		}, 5000);
+		// setStoringState(true);
+		// console.log(1);
+		// setTimeout(function () {
+		// 	setStoringState(false);
+		// }, 1000);
+		// console.log(1);
 	};
 
 	const contentChangeFunc = e => {
 		setContent(e.target.value);
-		setStoringState(true);
-		setTimeout(function () {
-			setStoringState(false);
-		}, 5000);
+		// setStoringState(true);
+		// console.log(1);
+
+		// setTimeout(function () {
+		// 	setStoringState(false);
+		// 	console.log(1);
+		// }, 1000);
+	};
+	const questionChangeFunc2 = e => {
+		setQuestion2(e.target.value);
+		// setStoringState(true);
+		// console.log(1);
+		// setTimeout(function () {
+		// 	setStoringState(false);
+		// }, 1000);
+		// console.log(1);
 	};
 
+	const contentChangeFunc2 = e => {
+		setContent2(e.target.value);
+		// setStoringState(true);
+		// console.log(1);
+
+		// setTimeout(function () {
+		// 	setStoringState(false);
+		// 	console.log(1);
+		// }, 1000);
+	};
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -277,7 +320,7 @@ const PortPolioComponent = props => {
 												fontWeight: 'bold',
 											}}
 										>
-											질문 1
+											문항 1
 										</p>
 
 										<input
@@ -285,21 +328,69 @@ const PortPolioComponent = props => {
 												width: '300px',
 												height: '30px',
 											}}
+											// value={portData.port1.introductions.question}
+
+											// value={portData.port1.introductions[0].question}
 											value={question}
 											type="text"
 											onChange={questionChangeFunc}
-											placeholder="자기소개서 문항"
+											placeholder="자기소개서 질문"
 										/>
 									</div>
 
 									<IntroduceBox
+										// value={portData.port1.introductions[0].Content}
 										value={content}
 										type="text"
 										onChange={contentChangeFunc}
 										placeholder="..."
 									></IntroduceBox>
+									<div
+										style={{
+											display: 'flex',
+											marginTop: '20px',
+											marginBottom: '20px',
+											justifyContent: 'center',
+										}}
+									>
+										<p
+											style={{
+												marginRight: '20px',
+												marginTop: '10px',
+												fontWeight: 'bold',
+											}}
+										>
+											문항 2
+										</p>
+
+										<input
+											style={{
+												width: '300px',
+												height: '30px',
+											}}
+											// value={portData.port1.introductions.question}
+
+											// value={portData.port1.introductions[0].question}
+											value={question2}
+											type="text"
+											onChange={questionChangeFunc2}
+											placeholder="자기소개서 질문"
+										/>
+									</div>
+
+									<IntroduceBox
+										// value={portData.port1.introductions[0].Content}
+										value={content2}
+										type="text"
+										onChange={contentChangeFunc2}
+										placeholder="..."
+									></IntroduceBox>
 								</div>
+
 								<SubmitBox>
+									<SubmitBoxBtn onClick={onClickLoad}>
+										<SubmitBoxBtnFront>불러오기</SubmitBoxBtnFront>
+									</SubmitBoxBtn>
 									<SubmitBoxBtn onClick={onClickStore}>
 										<SubmitBoxBtnFront>저장하기</SubmitBoxBtnFront>
 									</SubmitBoxBtn>

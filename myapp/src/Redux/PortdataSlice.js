@@ -45,6 +45,16 @@ export const data1 = [
 		},
 	],
 ];
+export const introdata1 = [
+	{
+		question: '자기소개서 1번 문항',
+		content: '저는 화목한 집안에서 태어나',
+	},
+	{
+		question: '자기소개서 2번 문항',
+		content: '학교 잘 다니고 공부 잘하고 착실하게',
+	},
+];
 export const data2 = [
 	[
 		{
@@ -77,10 +87,12 @@ export const PortdataSlice = createSlice({
 		port1: {
 			title: '포트폴리오1',
 			items: data1,
+			introductions: introdata1,
 		},
 		port2: {
 			title: '포트폴리오2',
 			items: data2,
+			introductions: introdata1,
 		},
 	},
 	reducers: {
