@@ -1,16 +1,16 @@
 import './App.css';
 import LoginPage from './Page/LoginPage';
-import MainPage from './Page/MainPage';
+// import MainPage from './Page/MainPage';
 import FirstPage from './Page/FirstPage';
 import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
 import DragDropPage from './Page/DragDropPage';
 import OauthPage from './Component/OauthPage/OauthPage';
-import Header from './Component/Header';
-import Footer from './Component/Footer';
+// import Header from './Component/Header';
+// import Footer from './Component/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import upArrow from './Image/upArrow.svg';
+import Darkmode from './Image/darkmode.svg';
 
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
@@ -37,16 +37,13 @@ export const DarkModeButton = styled.button`
 	position: fixed;
 	right: 20px;
 	bottom: 30px;
-	background-color: white;
-	border-radius: 50px;
-	width: 50px;
-	height: 50px;
 	cursor: pointer;
 	border: none;
+	background: transparent;
 
 	& img {
-		filter: black;
-		width: 25px;
+		width: 50px;
+		height: 50px;
 	}
 `;
 
@@ -62,7 +59,7 @@ function App() {
 		<Provider store={store}>
 			<div className="App">
 				<DarkModeButton onClick={toggleDarkMode}>
-					<img src={upArrow} alt="upArrow"></img>
+					<img src={Darkmode} alt="darkmode"></img>
 				</DarkModeButton>
 
 				<Router>

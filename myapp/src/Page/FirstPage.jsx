@@ -2,9 +2,12 @@ import upArrow from '../Image/upArrow.svg';
 import { useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Component/Header';
-import Category from '../Component/Category';
-import loginIcon from '../Image/logoImg.png';
+// import Category from '../Component/Category';
+// import loginIcon from '../Image/logoImg.png';
 import contentImage from '../Image/contentImg.png';
+import contentBack from '../Image/contentBack.svg';
+import contentChar from '../Image/contentChar.svg';
+import contentFolder from '../Image/contentFolder.svg';
 import down_arrow_icon1 from '../Image/down-arrow_icon1.svg';
 import './downArrow.css';
 import Footer from '../Component/Footer';
@@ -71,7 +74,6 @@ const ContentBox2 = styled.div`
 	align-items: center;
 	justify-content: center;
 	box-sizing: border-box;
-	background-color: #e0e3e9;
 `;
 const ContentBox2Image = styled.div`
 	display: flex;
@@ -118,7 +120,7 @@ export const MoveTopBtn = styled.button`
 	& img {
 		filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(62deg) brightness(103%)
 			contrast(105%);
-		width: 25px;
+		width: 19px;
 	}
 `;
 
@@ -169,13 +171,15 @@ function FirstPage() {
 					<button> 포트폴리오 작성하러 가기 -------&gt; </button>
 				</TextBox>
 				<ImageBox>
-					<img src={contentImage} style={{ width: '100%' }} />
+					<img src={contentBack} alt="contentImage" style={{ width: '100%' }} />
+					{/* <img src={contentChar} alt="contentImage" style={{ width: '100%' }} /> */}
+					{/* <img src={contentFolder} alt="contentImage" style={{ width: '100%' }} /> */}
 				</ImageBox>
 			</ContentBox1>
 			<div className="right_box_down_icon">
-				<img className="down_arrow_icon" src={down_arrow_icon1}></img>
+				<img className="down_arrow_icon" alt="contentImage" src={down_arrow_icon1}></img>
 			</div>
-			<ContentBox2>
+			<ContentBox2 style={{ background: '#e0e3e9' }}>
 				<ContentBox2Text style={{ alignItems: 'center' }}>
 					<h1> 포트폴리오를 한눈에 </h1>
 					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
@@ -183,11 +187,11 @@ function FirstPage() {
 					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
 				</ContentBox2Text>
 				<ContentBox2Image>
-					<img src={contentImage} style={{ width: '400px' }} />
+					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
 				</ContentBox2Image>
 			</ContentBox2>
 
-			<ContentBox2>
+			<ContentBox2 style={{ background: 'white' }}>
 				<ContentBox2Text style={{ alignItems: 'center' }}>
 					<h1> 포트폴리오를 한눈에 </h1>
 					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
@@ -195,7 +199,7 @@ function FirstPage() {
 					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
 				</ContentBox2Text>
 				<ContentBox2Image>
-					<img src={contentImage} style={{ width: '400px' }} />
+					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
 				</ContentBox2Image>
 			</ContentBox2>
 			<Footer />
