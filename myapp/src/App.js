@@ -6,7 +6,7 @@ import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
 import DragDropPage from './Page/DragDropPage';
-
+import OauthPage from './Component/OauthPage';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -70,6 +70,7 @@ function App() {
 								<Route path="/registerpage" element={<RegisterPage />} />
 								<Route path="/dragdroppage" element={<DragDropPage />} />
 								<Route path="/errorpage" element={<ErrorPage />} />
+								<Route path="/oauth" element={<OauthPage />} />
 							</Routes>
 						</>
 

@@ -2,50 +2,92 @@ import kakaoBtn from '../Image/kakaoBtn.png';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SuccessLogin } from '../Redux/LoginCheck';
+import Axios from 'axios';
 
 const KakaoLoginButton = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
+	Axios.defaults.withCredentials = true;
+
 	const { Kakao } = window;
 	const kakaoLoginClickHandler = () => {
-		const Swal = require('sweetalert2');
-		try {
-			return new Promise((resolve, reject) => {
-				if (!Kakao) {
-					Swal.fire({
-						title: 'Fail',
-						text: '카카오 인스턴스가 없습니다',
-						icon: 'fail',
-						confirmButtonText: 'OK',
-						heightAuto: false,
-					});
-					reject('카카오 인스턴스가 없다');
-				}
-				Kakao.Auth.login({
-					success: auth => {
-						console.log('정상 로그인', auth);
-						console.log('access token = ', auth['access_token']);
-						// Swal.fire({
-						// 	title: 'Login',
-						// 	text: '로그인 성공',
-						// 	icon: 'success',
-						// 	confirmButtonText: 'OK',
-						// 	heightAuto: false,
-						// });
-
-						dispatch(SuccessLogin(true));
-
-						navigate('/AOMD-Client');
-					},
-					fail: err => {
-						console.error(err);
-					},
-				});
+		function loginWithKakao() {
+			Kakao.Auth.authorize({
+				redirectUri: 'http://localhost:3000/oauth',
 			});
-		} catch (err) {
-			console.error(err);
 		}
+		loginWithKakao();
+
+		// 아래는 데모를 위한 UI 코드입니다.
+		// function displayToken() {
+		// 	const token = getCookie('authorize-access-token');
+		// 	if (token) {
+		// 		Kakao.Auth.setAccessToken(token);
+		// 		Kakao.Auth.getStatusInfo(({ status }) => {
+		// 			if (status === 'connected') {
+		// 				document.getElementById('token-result').innerText =
+		// 					'login success. token: ' + Kakao.Auth.getAccessToken();
+		// 			} else {
+		// 				Kakao.Auth.setAccessToken(null);
+		// 			}
+		// 		});
+		// 	}
+		// }
+		// function getCookie(name) {
+		// 	const value = '; ' + document.cookie;
+		// 	const parts = value.split('; ' + name + '=');
+		// 	if (parts.length === 2) return parts.pop().split(';').shift();
+		// }
+		// displayToken();
+		// console.log(getAccessToken());
+
+		// const Swal = require('sweetalert2');
+		// try {
+		// 	return new Promise((resolve, reject) => {
+		// 		if (!Kakao) {
+		// 			Swal.fire({
+		// 				title: 'Fail',
+		// 				text: '카카오 인스턴스가 없습니다',
+		// 				icon: 'fail',
+		// 				confirmButtonText: 'OK',
+		// 				heightAuto: false,
+		// 			});
+		// 			reject('카카오 인스턴스가 없다');
+		// 		}
+
+		// 		Kakao.Auth.login({
+		// 			success: auth => {
+		// 				console.log('정상 로그인', auth);
+
+		// 				const accessToken = auth['access_token'];
+		// 				console.log('accessToken = ', accessToken);
+
+		// 				Axios.get('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
+		// 					// http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
+		// 					params: {
+		// 						code: accessToken,
+		// 					},
+		// 				})
+		// 					.then(response => {
+		// 						console.log('response = ', response);
+		// 					})
+		// 					.catch(error => {
+		// 						console.log('error = ', error);
+		// 					});
+
+		// 				dispatch(SuccessLogin(true));
+
+		// 				navigate('/AOMD-Client');
+		// 			},
+		// 			fail: err => {
+		// 				console.error(err);
+		// 			},
+		// 		});
+		// 	});
+		// } catch (err) {
+		// 	console.error(err);
+		// }
 	};
 	return (
 		<button
