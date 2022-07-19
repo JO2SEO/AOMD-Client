@@ -46,11 +46,13 @@ const HBG_JS = () => {
 			<div
 				id="toggle"
 				onClick={onClickToggle}
-				style={{ cursor: 'pointer', border: 'black 5px solid' }}
-			>
-				{/* <span></span> */}
-				햄버거 라이브러리
-			</div>
+				style={{
+					cursor: 'pointer',
+					border: 'black 3px solid',
+					width: '50px',
+					height: '50px',
+				}}
+			></div>
 
 			<div id="menu">
 				<ul>

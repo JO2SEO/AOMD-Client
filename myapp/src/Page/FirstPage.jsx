@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import Header from '../Component/Header';
 import Category from '../Component/Category';
 import loginIcon from '../Image/logoImg.png';
+import contentImage from '../Image/contentImg.png';
+import down_arrow_icon1 from '../Image/down-arrow_icon1.svg';
+import './downArrow.css';
 import Footer from '../Component/Footer';
 import { useEffect } from 'react';
 
@@ -17,77 +20,80 @@ const ContentBox1 = styled.div`
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 400px;
-	background-color: #7483a1;
+
+	padding: 15% 15% 0% 15%;
+	box-sizing: border-box;
 `;
-const ArrowBox = styled.div`
-	width: 20%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: white;
-	font-weight: lighter;
-	font-size: 200px;
-`;
+
 const TextBox = styled.div`
-	color: white;
-	width: 60%;
-	padding: 30px;
-	background: gray;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	color: black;
+	width: 70%;
+	height: 100%;
+
 	& h1 {
-		font-size: 35px;
-		font-weight: bolder;
+		font-size: 60px;
+		font-weight: 900;
 		margin-bottom: 15px;
 	}
 
 	& p {
-		font-size: 15px;
+		font-size: 20px;
 		margin-bottom: 10px;
+		font-weight: bolder;
 	}
 
 	& button {
-		background: white;
+		background: #203864;
+		color: white;
 		width: 300px;
-		height: 50px;
+		height: 40px;
 		margin-top: 20px;
 		border-radius: 20px;
 	}
 `;
-const ContentBox2 = styled.div`
-	width: 100%;
+const ImageBox = styled.div`
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	justify-content: center;
+	color: black;
+	width: 30%;
+	height: 100%;
+`;
+const ContentBox2 = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 90vh;
 	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	background-color: #e0e3e9;
 `;
 const ContentBox2Image = styled.div`
-	margin: 50px;
-	height: 200px;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 `;
 const ContentBox2Text = styled.div`
-	height: 200px;
-	width: fit-content;
-
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 
 	& h1 {
-		font-size: 40px;
-		font-weight: bolder;
+		font-size: 60px;
+		font-weight: 900;
 		margin-bottom: 15px;
 	}
 
 	& h2 {
-		font-size: 20px;
-		font-weight: bold;
+		font-size: 25px;
 		margin-bottom: 10px;
+		font-weight: bolder;
 	}
 	& h3 {
-		font-size: 15px;
+		font-size: 20px;
 	}
 `;
 
@@ -98,15 +104,22 @@ export const MoveTopBtn = styled.button`
 		}
 		return 'none';
 	}};
-	color: black;
+	border: none;
+
 	position: fixed;
-	right: 100px;
+	right: 80px;
 	bottom: 30px;
-	background-color: rgb(180, 180, 180);
-	border-radius: 10px;
-	width: 70px;
+	background-color: #203864;
+	border-radius: 50px;
+	width: 50px;
 	height: 50px;
 	cursor: pointer;
+
+	& img {
+		filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(62deg) brightness(103%)
+			contrast(105%);
+		width: 25px;
+	}
 `;
 
 function FirstPage() {
@@ -144,76 +157,47 @@ function FirstPage() {
 	return (
 		<FirstPageContainer>
 			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTop}>
-				<img src={upArrow} alt="upArrow" style={{ width: '20px' }}></img>
+				<img src={upArrow} alt="upArrow"></img>
 			</MoveTopBtn>
 			<Header />
-			<Category />
+
 			<ContentBox1>
-				<ArrowBox> &lt;</ArrowBox>
 				<TextBox>
-					<h1> 편하게 관리하는 포트폴리오 </h1>
+					<h1> 포트폴리오 관리 플랫폼 </h1>
 					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
 					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
 					<button> 포트폴리오 작성하러 가기 -------&gt; </button>
 				</TextBox>
-				<ArrowBox> &gt; </ArrowBox>
+				<ImageBox>
+					<img src={contentImage} style={{ width: '100%' }} />
+				</ImageBox>
 			</ContentBox1>
+			<div className="right_box_down_icon">
+				<img className="down_arrow_icon" src={down_arrow_icon1}></img>
+			</div>
 			<ContentBox2>
-				<ContentBox2Image>
-					<img src={loginIcon} alt="" style={{ width: '300px' }} />
-				</ContentBox2Image>
-				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
-					<h1> 쉽게 관리하는 포트폴리오 </h1>
-					<h2> 자신만의 포트폴리오를 작성해보세요 !</h2>
-					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
-					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
-				</ContentBox2Text>
-			</ContentBox2>
-			<ContentBox2>
-				<ContentBox2Text style={{ alignItems: 'flex-end' }}>
+				<ContentBox2Text style={{ alignItems: 'center' }}>
 					<h1> 포트폴리오를 한눈에 </h1>
 					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
 					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
 					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
 				</ContentBox2Text>
 				<ContentBox2Image>
-					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
+					<img src={contentImage} style={{ width: '400px' }} />
 				</ContentBox2Image>
-			</ContentBox2>
-			<ContentBox2>
-				<ContentBox2Image>
-					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
-				</ContentBox2Image>
-				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
-					<h1> 블록체인 기반 관리 시스템</h1>
-					<h2> 블록체인을 이용하여 데이터를 관리합니다.</h2>
-					<h3> 하이퍼레저 패브릭을 이용하여 데이터의 신뢰성을 보장합니다. </h3>
-					<h3> 소중한 당신의 데이터 믿고 맡겨주셔도 됩니다. </h3>
-				</ContentBox2Text>
-			</ContentBox2>
-			<ContentBox2>
-				<ContentBox2Text style={{ alignItems: 'flex-end' }}>
-					<h1> 포트폴리오를 한눈에 </h1>
-					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
-					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
-				</ContentBox2Text>
-				<ContentBox2Image>
-					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
-				</ContentBox2Image>
-			</ContentBox2>
-			<ContentBox2>
-				<ContentBox2Image>
-					<img src={loginIcon} alt="loginIcon" style={{ width: '300px' }} />
-				</ContentBox2Image>
-				<ContentBox2Text style={{ alignItems: 'flex-start' }}>
-					<h1> 블록체인 기반 관리 시스템</h1>
-					<h2> 블록체인을 이용하여 데이터를 관리합니다.</h2>
-					<h3> 하이퍼레저 패브릭을 이용하여 데이터의 신뢰성을 보장합니다. </h3>
-					<h3> 소중한 당신의 데이터 믿고 맡겨주셔도 됩니다. </h3>
-				</ContentBox2Text>
 			</ContentBox2>
 
+			<ContentBox2>
+				<ContentBox2Text style={{ alignItems: 'center' }}>
+					<h1> 포트폴리오를 한눈에 </h1>
+					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
+					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+				</ContentBox2Text>
+				<ContentBox2Image>
+					<img src={contentImage} style={{ width: '400px' }} />
+				</ContentBox2Image>
+			</ContentBox2>
 			<Footer />
 		</FirstPageContainer>
 	);

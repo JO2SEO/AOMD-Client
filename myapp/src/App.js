@@ -6,10 +6,11 @@ import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
 import DragDropPage from './Page/DragDropPage';
-import OauthPage from './Component/OauthPage';
+import OauthPage from './Component/OauthPage/OauthPage';
 import Header from './Component/Header';
 import Footer from './Component/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import upArrow from './Image/upArrow.svg';
 
 import { Provider } from 'react-redux';
 import store from './Redux/Store';
@@ -34,14 +35,19 @@ export const GlobalStyle = createGlobalStyle`
 
 export const DarkModeButton = styled.button`
 	position: fixed;
-	right: 30px;
+	right: 20px;
 	bottom: 30px;
-	background-color: rgb(180, 180, 180);
-	border-radius: 10px;
-	// z-index: 100;
-	width: 70px;
+	background-color: white;
+	border-radius: 50px;
+	width: 50px;
 	height: 50px;
 	cursor: pointer;
+	border: none;
+
+	& img {
+		filter: black;
+		width: 25px;
+	}
 `;
 
 function App() {
@@ -55,7 +61,9 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
-				<DarkModeButton onClick={toggleDarkMode}>다크모드</DarkModeButton>
+				<DarkModeButton onClick={toggleDarkMode}>
+					<img src={upArrow} alt="upArrow"></img>
+				</DarkModeButton>
 
 				<Router>
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
