@@ -16,6 +16,7 @@ export const LoginPageDiv = styled.div`
 `;
 export const LoginPageForm = styled.div`
 	position: relative;
+	background: #f2f6fa;
 	z-index: 1;
 	max-width: 300px;
 	padding: 45px;
@@ -26,33 +27,37 @@ export const LoginPageForm = styled.div`
 export const LoginFormInput = styled.input`
 	font-family: 'Roboto', sans-serif;
 	outline: 0;
-	background: #f2f2f2;
+	background: #d5dbe6;
 	width: 100%;
-	border: 0;
+	border: none;
+	border-radius: 30px;
 	margin: 0 0 15px;
 	padding: 15px;
 	box-sizing: border-box;
-	font-size: 14px;
+	font-size: 12px;
+
+	&:hover {
+		background: #bdc0c7;
+	}
 `;
 export const FormButton = styled.button`
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 	outline: 0;
-	background: black;
+	background: #203864;
+	border-radius: 30px;
 
 	width: 100%;
 	border: 0;
 	padding: 15px;
-	color: #ffffff;
+	color: white;
 	font-size: 14px;
 	-webkit-transition: all 0.3 ease;
 	transition: all 0.3 ease;
 	cursor: pointer;
 
 	&:hover {
-		// background: #43a047;
-		background: gray;
-		color: black;
+		background: #6c7c97;
 		font-weight: bolder;
 	}
 	&:focus {
@@ -93,12 +98,12 @@ export function LoginPage() {
 				<form>
 					<LoginFormInput
 						type="text"
-						placeholder="id"
+						placeholder="ID"
 						onChange={e => setlogintext({ ...logintext, id: e.target.value })}
 					/>
 					<LoginFormInput
 						type="password"
-						placeholder="password"
+						placeholder="PASSWORD"
 						autoComplete="off"
 						onChange={e => setlogintext({ ...logintext, pwd: e.target.value })}
 					/>

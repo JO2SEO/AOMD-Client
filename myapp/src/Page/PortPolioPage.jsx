@@ -1,5 +1,4 @@
 import { ChangeData } from '../Redux/ChangeData';
-import styled from 'styled-components';
 import React from 'react';
 
 function PortPolioPage() {
