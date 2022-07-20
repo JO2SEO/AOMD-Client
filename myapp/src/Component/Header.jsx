@@ -33,7 +33,6 @@ const MoveHomeBtn = styled.div`
 const ToggleMenuBox = styled.div`
 	width: 40px;
 	padding: 20px 0px 0px 0px;
-	height: 250px;
 	display: flex;
 	z-index: 2;
 	flex-direction: column;
@@ -49,13 +48,15 @@ const OnToggleList = styled.div`
 	position: absolute;
 	flex-direction: row;
 	left: 0;
-	top: 100px;
+	top: 110px;
 	z-index: 2;
 	padding: 10px;
 	width: 100vw;
-	height: 200px;
+	height: 170px;
 	background-color: white;
 	border-bottom: black 3px solid;
+	// border: black 3px solid;
+
 	justify-content: space-around;
 
 	& div {
@@ -98,7 +99,25 @@ const HBGToggleBtn = styled.button`
 		width: 50%;
 	}
 `;
+const LeftBox = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 
+	& p {
+		display: flex;
+		font-size: 15px;
+		align-items: center;
+		justify-content: center;
+		width: 150px;
+		height: 30px;
+		border-radius: 10px;
+		cursor: pointer;
+	}
+	& p:hover {
+		background: #dfdfdf;
+	}
+`;
 function Header() {
 	const [loginState, setLoginState] = useState(false);
 	const [menuToggle, setMenuToggle] = useState(false);
@@ -150,14 +169,24 @@ function Header() {
 			navigate('/loginpage');
 		}
 	};
+	const onClickMoveEnterprise = () => {
+		navigate('/enterprisepage');
+	};
+	const onClickMovePractice = () => {
+		navigate('/practicepage');
+	};
 
 	return (
 		<HeaderContainer>
-			<div
+			<LeftBox
 				style={{
 					width: '30%',
 				}}
-			></div>
+				onClick={onClickMoveEnterprise}
+			>
+				<p>영업팀에 문의하기</p>
+			</LeftBox>
+
 			<div
 				style={{
 					display: 'flex',
@@ -170,7 +199,11 @@ function Header() {
 					<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
 					{/* <img src={AOMD_logo_light} alt="logoImg" style={{ width: '50%' }} /> */}
 				</MoveHomeBtn>
+				<button style={{ width: '80px', height: '20px' }} onClick={onClickMovePractice}>
+					CSS 연습
+				</button>
 			</div>
+
 			<div
 				style={{
 					display: 'flex',

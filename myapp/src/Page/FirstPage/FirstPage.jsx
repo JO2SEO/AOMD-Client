@@ -1,17 +1,18 @@
-import upArrow from '../Image/upArrow.svg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Header from '../Component/Header';
+
+import Header from '../../Component/Header';
+import Footer from '../../Component/Footer';
 // import Category from '../Component/Category';
+
 // import loginIcon from '../Image/logoImg.png';
-import contentImage from '../Image/contentImg.png';
-import contentBack from '../Image/contentBack.svg';
-import contentChar from '../Image/contentChar.svg';
-import contentFolder from '../Image/contentFolder.svg';
-import down_arrow_icon1 from '../Image/down-arrow_icon1.svg';
-import './downArrow.css';
-import Footer from '../Component/Footer';
-import { useEffect } from 'react';
+import contentImage from '../../Image/contentImg.png';
+import contentBack from '../../Image/contentBack.svg';
+import contentChar from '../../Image/contentChar.svg';
+import contentFolder from '../../Image/contentFolder.svg';
+import upArrow from '../../Image/upArrow.svg';
+import down_arrow_icon1 from '../../Image/down-arrow_icon1.svg';
+import './FirstPage.css';
 
 const FirstPageContainer = styled.div`
 	display: flex;
@@ -27,7 +28,6 @@ const ContentBox1 = styled.div`
 	padding: 15% 15% 0% 15%;
 	box-sizing: border-box;
 `;
-
 const TextBox = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -36,6 +36,7 @@ const TextBox = styled.div`
 	color: black;
 	width: 70%;
 	height: 100%;
+	z-index: 6;
 
 	& h1 {
 		font-size: 60px;
@@ -58,48 +59,7 @@ const TextBox = styled.div`
 		border-radius: 20px;
 	}
 `;
-const ImageBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	color: black;
-	width: 30%;
-	height: 100%;
-`;
-const ContentBox2 = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 90vh;
-	align-items: center;
-	justify-content: center;
-	box-sizing: border-box;
-`;
-const ContentBox2Image = styled.div`
-	display: flex;
-`;
-const ContentBox2Text = styled.div`
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-
-	& h1 {
-		font-size: 60px;
-		font-weight: 900;
-		margin-bottom: 15px;
-	}
-
-	& h2 {
-		font-size: 25px;
-		margin-bottom: 10px;
-		font-weight: bolder;
-	}
-	& h3 {
-		font-size: 20px;
-	}
-`;
-
-export const MoveTopBtn = styled.button`
+const MoveTopBtn = styled.button`
 	display: ${({ active }) => {
 		if (active) {
 			return 'block';
@@ -107,7 +67,6 @@ export const MoveTopBtn = styled.button`
 		return 'none';
 	}};
 	border: none;
-
 	position: fixed;
 	right: 80px;
 	bottom: 30px;
@@ -123,7 +82,14 @@ export const MoveTopBtn = styled.button`
 		width: 19px;
 	}
 `;
-
+const MovePortPolioBtn = styled.button`
+	cursor: pointer;
+	font-weight: bold;
+	&: hover {
+		background: #dfdfdf;
+		color: black;
+	}
+`;
 function FirstPage() {
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
 	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
@@ -138,12 +104,13 @@ function FirstPage() {
 	};
 
 	const moveToTop = () => {
+		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
+		setScrollValueOfY(0); // ScrollY 의 값을 초기화
+
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		});
-		setScrollValueOfY(0); // ScrollY 의 값을 초기화
-		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
 	};
 
 	useEffect(() => {
@@ -168,40 +135,41 @@ function FirstPage() {
 					<h1> 포트폴리오 관리 플랫폼 </h1>
 					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
 					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
-					<button> 포트폴리오 작성하러 가기 -------&gt; </button>
+					<MovePortPolioBtn>포트폴리오 작성하러 가기 -------&gt; </MovePortPolioBtn>
 				</TextBox>
-				<ImageBox>
-					<img src={contentBack} alt="contentImage" style={{ width: '100%' }} />
-					{/* <img src={contentChar} alt="contentImage" style={{ width: '100%' }} /> */}
-					{/* <img src={contentFolder} alt="contentImage" style={{ width: '100%' }} /> */}
-				</ImageBox>
+				<div className="imageBox">
+					<img src={contentBack} alt="contentImage" className="one" />
+					<img src={contentChar} alt="contentImage" className="two" />
+					<img src={contentFolder} alt="contentImage" className="three" />
+				</div>
 			</ContentBox1>
+
 			<div className="right_box_down_icon">
 				<img className="down_arrow_icon" alt="contentImage" src={down_arrow_icon1}></img>
 			</div>
-			<ContentBox2 style={{ background: '#e0e3e9' }}>
-				<ContentBox2Text style={{ alignItems: 'center' }}>
+			<div className="contentBox2">
+				<div className="contentBox2Text">
 					<h1> 포트폴리오를 한눈에 </h1>
 					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
 					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
 					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
-				</ContentBox2Text>
-				<ContentBox2Image>
+				</div>
+				<div className="contentBox2Image">
 					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
-				</ContentBox2Image>
-			</ContentBox2>
+				</div>
+			</div>
+			<div className="contentBox2" style={{ background: 'white' }}>
+				<div className="contentBox2Text">
+					<h1> 포트폴리오를 한눈에 </h1>
+					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
+					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+				</div>
+				<div className="contentBox2Image">
+					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+				</div>
+			</div>
 
-			<ContentBox2 style={{ background: 'white' }}>
-				<ContentBox2Text style={{ alignItems: 'center' }}>
-					<h1> 포트폴리오를 한눈에 </h1>
-					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
-					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
-				</ContentBox2Text>
-				<ContentBox2Image>
-					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
-				</ContentBox2Image>
-			</ContentBox2>
 			<Footer />
 		</FirstPageContainer>
 	);
