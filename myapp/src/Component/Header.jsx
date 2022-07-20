@@ -55,7 +55,7 @@ const OnToggleList = styled.div`
 	height: 170px;
 	background-color: white;
 	border-bottom: black 3px solid;
-	border: black 3px solid;
+	// border: black 3px solid;
 
 	justify-content: space-around;
 
@@ -196,7 +196,7 @@ function Header() {
 
 	return (
 		<>
-			{infoLocation === '/AOMD-Client' ? (
+			{infoLocation === '/AOMD-Client' || infoLocation === '/AOMD-Client/' ? (
 				<>
 					<HeaderContainer style={{ background: 'white' }}>
 						<LeftBox
