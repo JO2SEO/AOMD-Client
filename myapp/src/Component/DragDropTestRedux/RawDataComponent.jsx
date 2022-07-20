@@ -10,33 +10,27 @@ export const DataBox = styled.div`
 	align-items: flex-start;
 	padding: 10px;
 	margin-top: 10px;
-	border-radius: 5px;
-	background-color: white;
-	border: 2px solid black;
+	border-radius: 10px;
+	background-color: #eceff5;
 	box-sizing: border-box;
 `;
-export const ColumnTitle = styled.h1`
-	font-size: 20px;
-	font-weight: bolder;
-	margin-bottom: 30px;
-	text-align: center;
+export const ColumnTitle1 = styled.h1`
+	font-size: 25px;
+	font-weight: 900;
+	margin-bottom: 20px;
 `;
 export const ProvidedPlaceholder = styled.span`
 	display: 'none';
 `;
 export const DataBoxh1 = styled.p`
-	font-weight: bolder;
-	color: black;
+	font-size: 18px;
+	font-weight: 900;
+	padding: 10px;
 `;
 const RawDataComponent = props => {
 	const { originData } = props;
 
 	function returnTaskCard(column) {
-		// RawdataSlice.js -> data
-		// data[0] => 자격증
-		// data[1] => 학력
-		// data[2] => 수상내역
-
 		const info0 = []; // 자격증
 		const info1 = []; // 학력
 		const info2 = []; // 수상내역
@@ -97,7 +91,6 @@ const RawDataComponent = props => {
 						);
 					})}
 				</DataBox>
-
 				<DataBox>
 					<DataBoxh1> 수상내역 </DataBoxh1>
 					{/* {console.log('수상내역')} */}
@@ -121,16 +114,16 @@ const RawDataComponent = props => {
 
 	return (
 		<Fragment>
-			{/* {console.log(originData.origin)} */}
 			<Droppable key={originData.origin.title} droppableId={originData.origin.title}>
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
-						<ColumnTitle>{originData.origin.title}</ColumnTitle>
+						<ColumnTitle1>{originData.origin.title}</ColumnTitle1>
 						{returnTaskCard(originData.origin.items)}
 						<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 					</div>
 				)}
 			</Droppable>
+
 			{/* {console.log(' originData => ', originData)}
 			{
 					return (

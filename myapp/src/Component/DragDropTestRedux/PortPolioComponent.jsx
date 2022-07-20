@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import TaskCard from './TaskCard';
 import { Droppable } from 'react-beautiful-dnd';
-import { ColumnTitle, ProvidedPlaceholder, DataBox, DataBoxh1 } from './RawDataComponent';
+import { ProvidedPlaceholder } from './RawDataComponent';
 import styled from 'styled-components';
 import { useState } from 'react';
 
-export const Portpolio = styled.div`
+const Portpolio = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -15,48 +15,95 @@ export const Portpolio = styled.div`
 	justify-content: space-between;
 	overflow-y: scroll;
 `;
-export const DataBoxContent = styled.div`
+const ColumnTitle2 = styled.h1`
+	font-size: 25px;
+	font-weight: 900;
+	padding: 20px;
+	margin-bottom: 10px;
+`;
+const DataBoxContent = styled.div`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 `;
-export const IntroduceBox = styled.textarea`
-	width: 100%;
-	height: 200px;
-	padding: 10px;
+const IntroduceBox = styled.textarea`
+	width: 80%;
+	height: 180px;
+	margin: 0px 50px 0px 50px;
+	padding: 20px;
 	box-sizing: border-box;
-	border: solid 3px black;
+	border: solid 1px gray;
 	border-radius: 5px;
-	font-size: 16px;
+	font-size: 14px;
 	resize: none;
 `;
-export const SubmitBox = styled.div`
-	width: 100%;
-	height: 30px;
+const SubmitBox = styled.div`
 	display: flex;
 	justify-content: center;
-	margin-top: 50px;
+	margin: 80px 0px 30px 0px;
 `;
-export const SubmitBoxBtn = styled.button`
+const SubmitBoxBtn = styled.button`
 	cursor: pointer;
 	margin-right: 20px;
-`;
-export const SubmitBoxBtnFront = styled.span`
-	width: 150px;
-	height: 30px;
-	display: block;
+	border: none;
+	background: #203864;
 	border-radius: 15px;
-	font-size: 17px;
-	font-weight: bold;
+	width: 100px;
+	height: 30px;
+
+	&:hover {
+		color: black;
+		background: #d8dce4;
+	}
+	&:hover span {
+		color: black;
+		background: #d8dce4;
+	}
+`;
+const SubmitBoxBtnFront = styled.span`
+	font-size: 15px;
+	font-weight: 500;
+	color: white;
+`;
+const SubmitBoxBtn2 = styled.button`
+	cursor: pointer;
+	margin-right: 20px;
+	border: none;
+	background: #d8dce4;
+	border-radius: 15px;
+	width: 100px;
+	height: 30px;
+	margin-left: 50px;
+
+	&:hover {
+		background: #203864;
+	}
+	&:hover span {
+		color: white;
+		background: #203864;
+	}
+`;
+const SubmitBoxBtnFront2 = styled.span`
+	font-size: 12px;
+	font-weight: 500;
+	color: black;
+`;
+const DataBox2 = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 0px 20px 20px 30px;
+`;
+const DataBoxh2 = styled.p`
+	font-size: 18px;
+	font-weight: 900;
+	padding: 10px;
 `;
 
 const PortPolioComponent = props => {
 	const { showState, portData } = props;
 	const Swal = require('sweetalert2');
-	// console.log(portData.port1.introductions[0]);
-	// {question: '자기소개서 1번 문항', Content: '저는 화목한 집안에서 태어나'}
-	// console.log(portData.port1.introductions[1]);
-	// {question: '자기소개서 2번 문항', Content: '학교 잘 다니고 공부 잘하고 착실하게'}
 
 	const onClickStore = () => {
 		// Swal.fire({
@@ -93,9 +140,11 @@ const PortPolioComponent = props => {
 	const onClickLoad = () => {
 		setQuestion(portData.port1.introductions[0].question);
 		setContent(portData.port1.introductions[0].content);
+		setTextLength1(portData.port1.introductions[0].content.length);
 
 		setQuestion2(portData.port1.introductions[1].question);
 		setContent2(portData.port1.introductions[1].content);
+		setTextLength2(portData.port1.introductions[1].content.length);
 	};
 	function returnTaskCard(column) {
 		const info0 = []; // 자격증
@@ -128,8 +177,8 @@ const PortPolioComponent = props => {
 
 		return (
 			<Fragment>
-				<DataBox>
-					<DataBoxh1> 자격증 </DataBoxh1>
+				<DataBox2>
+					<DataBoxh2> 자격증 </DataBoxh2>
 					<DataBoxContent>
 						{info0.map(items => {
 							return (
@@ -142,9 +191,9 @@ const PortPolioComponent = props => {
 							);
 						})}
 					</DataBoxContent>
-				</DataBox>
-				<DataBox>
-					<DataBoxh1> 학력 </DataBoxh1>
+				</DataBox2>
+				<DataBox2>
+					<DataBoxh2> 학력 </DataBoxh2>
 					<DataBoxContent>
 						{info1.map(items => {
 							return (
@@ -157,9 +206,9 @@ const PortPolioComponent = props => {
 							);
 						})}
 					</DataBoxContent>
-				</DataBox>
-				<DataBox>
-					<DataBoxh1> 수상내역 </DataBoxh1>
+				</DataBox2>
+				<DataBox2>
+					<DataBoxh2> 수상내역 </DataBoxh2>
 					<DataBoxContent>
 						{info2.map(items => {
 							return (
@@ -172,7 +221,7 @@ const PortPolioComponent = props => {
 							);
 						})}
 					</DataBoxContent>
-				</DataBox>
+				</DataBox2>
 			</Fragment>
 		);
 	}
@@ -180,9 +229,10 @@ const PortPolioComponent = props => {
 	const [storingState, setStoringState] = useState(false);
 	const [question, setQuestion] = useState('');
 	const [content, setContent] = useState('');
-
 	const [question2, setQuestion2] = useState('');
 	const [content2, setContent2] = useState('');
+	const [textLength1, setTextLength1] = useState(0);
+	const [textLength2, setTextLength2] = useState(0);
 
 	const Storing = styled.div`
 		display: ${({ active }) => {
@@ -241,16 +291,9 @@ const PortPolioComponent = props => {
 		// }, 1000);
 		// console.log(1);
 	};
-
 	const contentChangeFunc = e => {
 		setContent(e.target.value);
-		// setStoringState(true);
-		// console.log(1);
-
-		// setTimeout(function () {
-		// 	setStoringState(false);
-		// 	console.log(1);
-		// }, 1000);
+		setTextLength1(e.target.value.length);
 	};
 	const questionChangeFunc2 = e => {
 		setQuestion2(e.target.value);
@@ -261,16 +304,9 @@ const PortPolioComponent = props => {
 		// }, 1000);
 		// console.log(1);
 	};
-
 	const contentChangeFunc2 = e => {
 		setContent2(e.target.value);
-		// setStoringState(true);
-		// console.log(1);
-
-		// setTimeout(function () {
-		// 	setStoringState(false);
-		// 	console.log(1);
-		// }, 1000);
+		setTextLength2(e.target.value.length);
 	};
 	return (
 		<Fragment>
@@ -280,44 +316,39 @@ const PortPolioComponent = props => {
 						{(provided, snapshot) => (
 							<Portpolio ref={provided.innerRef} {...provided.droppableProps}>
 								<div ref={provided.innerRef} {...provided.droppableProps}>
-									<ColumnTitle>{portData.port1.title}</ColumnTitle>
+									<ColumnTitle2>{portData.port1.title}</ColumnTitle2>
 									{returnTaskCard(portData.port1.items)}
 								</div>
-								<div style={{ marginTop: '50px' }}>
+								<div style={{ marginTop: '20px' }}>
 									<div
 										style={{
 											display: 'flex',
 											alignContent: 'center',
-											marginBottom: '30px',
+											marginBottom: '20px',
 										}}
 									>
 										<h1
 											style={{
-												fontWeight: 'bold',
-												fontSize: '20px',
+												fontWeight: '900',
+												marginLeft: '45px',
+												fontSize: '18px',
 											}}
 										>
 											자기소개서
 										</h1>
-										<Storing active={storingState}>
-											<span></span>
-											<span></span>
-											<span></span>
-											<p style={{ marginLeft: '10px' }}>저장 중...</p>
-										</Storing>
 									</div>
 									<div
 										style={{
 											display: 'flex',
-											marginBottom: '20px',
-											justifyContent: 'center',
+											margin: '0px 0px 20px 60px',
 										}}
 									>
 										<p
 											style={{
 												marginRight: '20px',
-												marginTop: '10px',
-												fontWeight: 'bold',
+												marginTop: '5px',
+												fontWeight: '700',
+												fontSize: '15px',
 											}}
 										>
 											문항 1
@@ -325,8 +356,12 @@ const PortPolioComponent = props => {
 
 										<input
 											style={{
-												width: '300px',
-												height: '30px',
+												width: '250px',
+												height: '20px',
+												background: '#e9e9e9',
+												border: 'none',
+												borderRadius: '20px',
+												paddingLeft: '15px',
 											}}
 											// value={portData.port1.introductions.question}
 
@@ -345,19 +380,30 @@ const PortPolioComponent = props => {
 										onChange={contentChangeFunc}
 										placeholder="..."
 									></IntroduceBox>
+									<p
+										style={{
+											display: 'flex',
+											justifyContent: 'flex-end',
+											alignItems: 'center',
+											width: '85%',
+											marginTop: '5px',
+											textAlign: 'right',
+										}}
+									>
+										{textLength1} 자
+									</p>
 									<div
 										style={{
 											display: 'flex',
-											marginTop: '20px',
-											marginBottom: '20px',
-											justifyContent: 'center',
+											margin: '20px 0px 20px 60px',
 										}}
 									>
 										<p
 											style={{
 												marginRight: '20px',
-												marginTop: '10px',
-												fontWeight: 'bold',
+												marginTop: '5px',
+												fontWeight: '700',
+												fontSize: '15px',
 											}}
 										>
 											문항 2
@@ -365,8 +411,12 @@ const PortPolioComponent = props => {
 
 										<input
 											style={{
-												width: '300px',
-												height: '30px',
+												width: '250px',
+												height: '20px',
+												background: '#e9e9e9',
+												border: 'none',
+												borderRadius: '20px',
+												paddingLeft: '15px',
 											}}
 											// value={portData.port1.introductions.question}
 
@@ -385,9 +435,33 @@ const PortPolioComponent = props => {
 										onChange={contentChangeFunc2}
 										placeholder="..."
 									></IntroduceBox>
+									<p
+										style={{
+											display: 'flex',
+											justifyContent: 'flex-end',
+											alignItems: 'center',
+											width: '85%',
+											marginTop: '5px',
+											textAlign: 'right',
+										}}
+									>
+										{textLength2} 자
+									</p>
 								</div>
-
+								<div>
+									<SubmitBoxBtn2>
+										<SubmitBoxBtnFront2>
+											<p>문항 추가하기</p>
+										</SubmitBoxBtnFront2>
+									</SubmitBoxBtn2>
+								</div>
 								<SubmitBox>
+									<Storing active={storingState}>
+										<span></span>
+										<span></span>
+										<span></span>
+										<p style={{ marginLeft: '10px' }}>저장 중...</p>
+									</Storing>
 									<SubmitBoxBtn onClick={onClickLoad}>
 										<SubmitBoxBtnFront>불러오기</SubmitBoxBtnFront>
 									</SubmitBoxBtn>
@@ -397,7 +471,19 @@ const PortPolioComponent = props => {
 									<SubmitBoxBtn onClick={onClickMakeURL}>
 										<SubmitBoxBtnFront>URL 생성하기</SubmitBoxBtnFront>
 									</SubmitBoxBtn>
+									<Storing active={storingState}>
+										<span></span>
+										<span></span>
+										<span></span>
+										<p style={{ marginLeft: '10px' }}>저장 중...</p>
+									</Storing>
 								</SubmitBox>
+								<Storing active={storingState}>
+									<span></span>
+									<span></span>
+									<span></span>
+									<p style={{ marginLeft: '10px' }}>저장 중...</p>
+								</Storing>
 								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 							</Portpolio>
 						)}
@@ -410,7 +496,7 @@ const PortPolioComponent = props => {
 						{(provided, snapshot) => (
 							<Portpolio ref={provided.innerRef} {...provided.droppableProps}>
 								<div ref={provided.innerRef} {...provided.droppableProps}>
-									<ColumnTitle>{portData.port2.title}</ColumnTitle>
+									<ColumnTitle2>{portData.port2.title}</ColumnTitle2>
 									{returnTaskCard(portData.port2.items)}
 									<ProvidedPlaceholder>
 										{provided.placeholder}

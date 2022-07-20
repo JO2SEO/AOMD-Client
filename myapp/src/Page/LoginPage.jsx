@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { SuccessLogin } from '../Redux/LoginCheck';
 
 export const LoginPageDiv = styled.div`
-	height: 100%;
+	height: 80%;
 	width: 100%;
 	box-sizing: content-box;
 	display: flex;

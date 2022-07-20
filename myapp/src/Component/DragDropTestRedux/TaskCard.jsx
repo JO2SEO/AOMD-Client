@@ -4,30 +4,34 @@ import { useSelector, useDispatch } from 'react-redux';
 import { DeletedataChangePort, selectPortData } from '../../Redux/PortdataSlice';
 import styled from 'styled-components';
 
-export const OriginDataBox = styled.div`
+const OriginDataBox = styled.div`
 	box-sizing: border-box;
 	width: 100%;
 	padding-top: 10px;
 `;
-export const OriginDataContent = styled.div`
-	color: #000;
-	display: inline-block;
-	margin: 0;
-	text-transform: uppercase;
+const OriginDataContent = styled.div`
+	display: flex;
+	border-radius: 10px;
 
-	&:after {
-		display: block;
-		content: '';
-		border-bottom: solid 3px black;
-		transform: scaleX(0);
-		transition: transform 150ms ease-in-out;
-		transform-origin: 0% 50%;
+	& p {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: #d2d8e2;
+		margin: 0px 10px 0px 10px;
+		width: 100%;
+		height: 30px;
+		border: none;
+		border-radius: 10px;
+		font-size: 13px;
+		font-weight: 900;
 	}
-	&:hover:after {
-		transform: scaleX(1);
+	& p:hover {
+		color: white;
+		background: #203864;
 	}
 `;
-export const PortItem = styled.div`
+const PortItem = styled.div`
 	width: 30%;
 	height: 70px;
 	padding: 5px;
@@ -36,7 +40,13 @@ export const PortItem = styled.div`
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	border: 2px dashed black;
+	background: #ebeff4;
+	border-radius: 20px;
+
+	& button {
+		cursor: pointer;
+		border: none;
+	}
 `;
 
 const TaskCard = props => {
@@ -83,11 +93,13 @@ const TaskCard = props => {
 			) : (
 				<PortItem>
 					<div>
-						<p style={{ margin: '5px' }}>{item.Content}</p>
-						<p style={{ margin: '5px' }}>{item.Date}</p>
+						<p style={{ fontSize: '18px', fontWeight: '900', margin: '5px' }}>
+							{item.Content}
+						</p>
+						<p style={{ fontSize: '13px', margin: '5px' }}>{item.Date}</p>
 					</div>
 					<div>
-						<button onClick={e => onClickDelete(item.id)}>삭제</button>
+						<button onClick={e => onClickDelete(item.id)}>x</button>
 					</div>
 				</PortItem>
 				// {/* <Draggable key={item.id} draggableId={item.id} index={index}>

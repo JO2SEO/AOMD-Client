@@ -9,10 +9,10 @@ import EnterprisePage from './Page/EnterprisePage/EnterprisePage';
 import RegisterPage from './Page/RegisterPage';
 import ErrorPage from './Page/ErrorPage';
 import IntroducePage from './Page/IntroducePage';
-import DragDropPage from './Page/DragDropPage';
+import PortPolioPage from './Page/PortPolioPage';
 import OauthPage from './Component/OauthPage/OauthPage';
 
-// import Header from './Component/Header';
+import Header from './Component/Header';
 // import Footer from './Component/Footer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Darkmode from './Image/darkmode.svg';
@@ -70,7 +70,7 @@ function App() {
 				<Router>
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 						<GlobalStyle />
-						{/* <Header /> */}
+						<Header />
 
 						<>
 							<Routes>
@@ -78,7 +78,7 @@ function App() {
 								<Route path="/introducepage" element={<IntroducePage />} />
 								<Route path="/loginpage" element={<LoginPage />} />
 								<Route path="/registerpage" element={<RegisterPage />} />
-								<Route path="/dragdroppage" element={<DragDropPage />} />
+								<Route path="/portpoliopage" element={<PortPolioPage />} />
 								<Route path="/errorpage" element={<ErrorPage />} />
 								<Route path="/oauth" element={<OauthPage />} />
 								<Route path="/practicepage" element={<PracticePage />} />

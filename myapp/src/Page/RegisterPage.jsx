@@ -5,7 +5,7 @@ function RegisterPage() {
 	const navigate = useNavigate();
 
 	const onClickSign = () => {
-		navigate('/login');
+		navigate('/loginpage');
 	};
 	return (
 		<LoginPageDiv>

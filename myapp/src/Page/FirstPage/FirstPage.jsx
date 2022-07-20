@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-import Header from '../../Component/Header';
+// import Header from '../../Component/Header';
 import Footer from '../../Component/Footer';
 // import Category from '../Component/Category';
 
@@ -112,6 +113,12 @@ function FirstPage() {
 			behavior: 'smooth',
 		});
 	};
+	const navigate = useNavigate();
+
+	const onClickMovePortPolioPage = () => {
+		navigate('/portpoliopage');
+	};
+	// 로그인 체크 안하고 바로 이동
 
 	useEffect(() => {
 		const watch = () => {
@@ -128,14 +135,15 @@ function FirstPage() {
 			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTop}>
 				<img src={upArrow} alt="upArrow"></img>
 			</MoveTopBtn>
-			<Header />
 
 			<ContentBox1>
 				<TextBox>
 					<h1> 포트폴리오 관리 플랫폼 </h1>
 					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
 					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
-					<MovePortPolioBtn>포트폴리오 작성하러 가기 -------&gt; </MovePortPolioBtn>
+					<MovePortPolioBtn onClick={onClickMovePortPolioPage}>
+						포트폴리오 작성하러 가기 -------&gt;{' '}
+					</MovePortPolioBtn>
 				</TextBox>
 				<div className="imageBox">
 					<img src={contentBack} alt="contentImage" className="one" />
