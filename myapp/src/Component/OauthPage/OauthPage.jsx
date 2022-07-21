@@ -3,13 +3,16 @@ import React from 'react';
 import queryString from 'query-string';
 import './OauthPage.css';
 import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { SuccessLogin } from '../../Redux/LoginCheck';
 
 function OauthPage() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const location = useLocation();
+	console.log('location = ', location);
 
 	const params = new URLSearchParams(window.location.search);
 	console.log('params = ', params);

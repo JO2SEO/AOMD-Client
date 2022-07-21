@@ -1,13 +1,7 @@
 import kakaoBtn from '../Image/kakaoBtn.png';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { SuccessLogin } from '../Redux/LoginCheck';
 import Axios from 'axios';
 
 const KakaoLoginButton = () => {
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
-
 	Axios.defaults.withCredentials = true;
 
 	const { Kakao } = window;
@@ -15,6 +9,7 @@ const KakaoLoginButton = () => {
 		function loginWithKakao() {
 			Kakao.Auth.authorize({
 				redirectUri: 'http://localhost:3000/oauth',
+				// redirectUri: 'https://jo2seo.github.io/oauth',
 			});
 		}
 		loginWithKakao();
