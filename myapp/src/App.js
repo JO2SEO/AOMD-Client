@@ -48,8 +48,12 @@ export const DarkModeButton = styled.button`
 
 	& img {
 		width: 50px;
+		// background: black;
 		height: 50px;
 	}
+	// &:hover img {
+	// 	background: black;
+	// }
 `;
 
 function App() {

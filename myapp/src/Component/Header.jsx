@@ -214,17 +214,16 @@ function Header() {
 								width: '40%',
 								justifyContent: 'center',
 								alignItems: 'center',
-								border: 'red solid 3px',
 							}}
 						>
 							<MoveHomeBtn onClick={onClickMoveHome}>
 								<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
 							</MoveHomeBtn>
 							<button
-								style={{ width: '80px', height: '20px' }}
+								style={{ width: '80px', height: '50px' }}
 								onClick={onClickMovePractice}
 							>
-								CSS 연습
+								페이지 스크롤 애니메이션
 							</button>
 						</div>
 
@@ -384,7 +383,6 @@ function Header() {
 							style={{
 								display: 'flex',
 								width: '40%',
-								border: 'red solid 3px',
 							}}
 						></div>
 

@@ -130,6 +130,66 @@ function FirstPage() {
 		};
 	});
 
+	function reveal() {
+		var reveals = document.querySelectorAll('.reveal');
+		var reveals1 = document.querySelectorAll('.reveal1');
+		var reveals2 = document.querySelectorAll('.reveal2');
+		var reveals3 = document.querySelectorAll('.reveal3');
+
+		for (var i = 0; i < reveals.length; i++) {
+			var windowHeight = window.innerHeight;
+			var elementTop = reveals[i].getBoundingClientRect().top;
+			var elementVisible = 10;
+			// console.log('elementTop = ', elementTop);
+			// console.log('windowHeight = ', windowHeight);
+			// console.log('elementVisible = ', elementVisible);
+
+			if (elementTop < windowHeight - elementVisible) {
+				reveals[i].classList.add('active');
+			}
+
+			// else {
+			// 	reveals[i].classList.remove('active');
+			// }
+		}
+		for (var i = 0; i < reveals1.length; i++) {
+			var windowHeight = window.innerHeight;
+			var elementTop = reveals1[i].getBoundingClientRect().top;
+			var elementVisible = 30;
+			if (elementTop < windowHeight - elementVisible) {
+				reveals1[i].classList.add('active');
+			}
+			// else {
+			// 	reveals1[i].classList.remove('active');
+			// }
+		}
+		for (var i = 0; i < reveals2.length; i++) {
+			var windowHeight = window.innerHeight;
+			var elementTop = reveals2[i].getBoundingClientRect().top;
+			var elementVisible = 50;
+			if (elementTop < windowHeight - elementVisible) {
+				reveals2[i].classList.add('active');
+			}
+			// else {
+			// 	reveals2[i].classList.remove('active');
+			// }
+		}
+		for (var i = 0; i < reveals3.length; i++) {
+			var windowHeight = window.innerHeight;
+			var elementTop = reveals3[i].getBoundingClientRect().top;
+			var elementVisible = 70;
+			if (elementTop < windowHeight - elementVisible) {
+				reveals3[i].classList.add('active');
+			}
+			// else {
+			// 	reveals3[i].classList.remove('active');
+			// }
+		}
+	}
+	window.addEventListener('scroll', reveal);
+	// To check the scroll position on page load
+	reveal();
+
 	return (
 		<FirstPageContainer>
 			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTop}>
@@ -155,15 +215,19 @@ function FirstPage() {
 			<div className="right_box_down_icon">
 				<img className="down_arrow_icon" alt="contentImage" src={down_arrow_icon1}></img>
 			</div>
-			<div className="contentBox2">
+			<div className="contentBox2 ">
 				<div className="contentBox2Text">
-					<h1> 포트폴리오를 한눈에 </h1>
-					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
-					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
-				</div>
-				<div className="contentBox2Image">
-					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
+					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3 className="reveal2">
+						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+					</h3>
+					<h3 className="reveal2">
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+					</h3>
+					<div className="reveal3">
+						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+					</div>
 				</div>
 			</div>
 			<div className="contentBox2" style={{ background: 'white' }}>

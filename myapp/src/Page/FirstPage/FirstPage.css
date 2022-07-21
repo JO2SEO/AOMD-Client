@@ -86,7 +86,9 @@
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+	opacity: 1;
 }
+
 .contentBox2Text h1 {
 	font-size: 60px;
 	font-weight: 900;
@@ -100,7 +102,58 @@
 .contentBox2Text h3 {
 	font-size: 20px;
 }
-.contentBox2 .contentBox2Image {
+.contentBox2 img {
 	align-items: center;
 	display: flex;
+}
+
+.reveal {
+	position: relative;
+	transform: translateY(200px);
+	opacity: 0;
+	transition: 1s all ease;
+}
+.reveal1 {
+	position: relative;
+	transform: translateY(200px);
+	opacity: 0;
+	transition: 1.5s all ease;
+}
+.reveal2 {
+	position: relative;
+	transform: translateY(200px);
+	opacity: 0;
+	transition: 1.7s all ease;
+}
+.reveal3 {
+	opacity: 0;
+}
+.reveal.active {
+	transform: translateY(0);
+	opacity: 1;
+}
+.reveal1.active {
+	transform: translateY(0);
+	opacity: 1;
+}
+.reveal2.active {
+	transform: translateY(0);
+	opacity: 1;
+}
+.reveal3.active {
+	/* transform: translateY(0); */
+	/* opacity: 1; */
+	animation: fadeInUpImage 2s ease;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeInUpImage {
+	from {
+		transform: translateY(200px);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
 }
