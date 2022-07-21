@@ -12,7 +12,7 @@ function OauthPage() {
 	const navigate = useNavigate();
 
 	const location = useLocation();
-	console.log('location = ', location);
+	console.log('location in Oauth page = ', location);
 
 	const params = new URLSearchParams(window.location.search);
 	console.log('params = ', params);
