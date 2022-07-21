@@ -13,8 +13,8 @@ const KakaoLoginButton = () => {
 		console.log('location in KakaoLoginButton = ', location);
 		function loginWithKakao() {
 			Kakao.Auth.authorize({
-				redirectUri: '../oauth',
-				// redirectUri: 'http://localhost:3000/oauth',
+				// redirectUri: './oauth',
+				redirectUri: 'http://localhost:3000/oauth',
 				// redirectUri: 'https://jo2seo.github.io/oauth',
 			});
 		}

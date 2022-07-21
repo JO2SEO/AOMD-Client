@@ -20,10 +20,11 @@ function OauthPage() {
 	console.log('인가코드 = ', qs.code);
 	qs = qs.code;
 
-	Axios.get('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
+	Axios.post('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
 		// http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
 		params: {
 			code: qs,
+			callbackUrl: 'https://jo2seo.github.io/oauth',
 		},
 	})
 		.then(response => {
