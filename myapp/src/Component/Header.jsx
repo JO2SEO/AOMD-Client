@@ -214,6 +214,7 @@ function Header() {
 								width: '40%',
 								justifyContent: 'center',
 								alignItems: 'center',
+								border: 'red solid 3px',
 							}}
 						>
 							<MoveHomeBtn onClick={onClickMoveHome}>
@@ -383,24 +384,25 @@ function Header() {
 							style={{
 								display: 'flex',
 								width: '40%',
+								border: 'red solid 3px',
 							}}
 						></div>
 
 						<RightBox>
-							{!loginState ? (
-								<>
-									<div
-										style={{
-											width: '110px',
-											height: '40px',
-											background: 'white',
-											cursor: 'pointer',
-											display: 'flex',
-											borderRadius: '10px',
-											backgroundColor: 'white',
-											marginTop: '25px',
-										}}
-									>
+							<div
+								style={{
+									width: '110px',
+									height: '40px',
+									background: 'white',
+									cursor: 'pointer',
+									display: 'flex',
+									borderRadius: '10px',
+									backgroundColor: 'white',
+									marginTop: '25px',
+								}}
+							>
+								{!loginState ? (
+									<>
 										<button
 											onClick={onClickMoveLogin}
 											style={{
@@ -420,89 +422,20 @@ function Header() {
 													height: '30px',
 												}}
 											/>
+											<p
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													fontSize: '15px',
+													marginLeft: '10px',
+												}}
+											>
+												로그인
+											</p>
 										</button>
-										<p
-											style={{
-												display: 'flex',
-												alignItems: 'center',
-												fontSize: '15px',
-											}}
-										>
-											로그인
-										</p>
-									</div>
-
-									<ToggleMenuBox>
-										<HBGToggleBtn onClick={onClickToggleMenu}>
-											<img src={HBGIcon} alt="HbgToggle"></img>
-										</HBGToggleBtn>
-
-										<OnToggleList
-											active={menuToggle}
-											onMouseLeave={() => setMenuToggle(false)}
-										>
-											<div>
-												<h1>소개</h1>
-												<ul>
-													<li onClick={onClickMoveIntroducePage}>
-														블록체인{' '}
-													</li>
-													{/* <li onClick={onClickMoveIntroducePage}>포트폴리오 </li> */}
-												</ul>
-											</div>
-											<div>
-												<h1>포트폴리오</h1>
-												<ul>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 목록
-													</li>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 작성
-													</li>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 관리
-													</li>
-												</ul>
-											</div>
-											<div>
-												<h1>커뮤니티</h1>
-												<ul>
-													<li>커뮤니티</li>
-													<li>만들 수 있겠나</li>
-												</ul>
-											</div>
-											<div>
-												<h1>설정</h1>
-												<ul>
-													<li>마이페이지</li>
-													<li>관리자 페이지</li>
-												</ul>
-											</div>
-											<div>
-												<h1>고객센터</h1>
-												<ul>
-													<li>공지사항</li>
-													<li>1:1 문의</li>
-													<li>이메일 문의</li>
-												</ul>
-											</div>
-										</OnToggleList>
-									</ToggleMenuBox>
-								</>
-							) : (
-								<>
-									<div
-										style={{
-											width: '110px',
-											height: '40px',
-											background: 'white',
-											cursor: 'pointer',
-											display: 'flex',
-											borderRadius: '10px',
-											backgroundColor: 'white',
-											marginTop: '25px',
-										}}
-									>
+									</>
+								) : (
+									<>
 										<button
 											onClick={onClickLogout}
 											style={{
@@ -522,71 +455,75 @@ function Header() {
 													height: '30px',
 												}}
 											/>
+											<p
+												style={{
+													display: 'flex',
+													alignItems: 'center',
+													fontSize: '15px',
+													marginLeft: '10px',
+												}}
+											>
+												로그아웃
+											</p>
 										</button>
-										<p
-											style={{
-												display: 'flex',
-												alignItems: 'center',
-												fontSize: '15px',
-											}}
-										>
-											로그아웃
-										</p>
-									</div>
-									<ToggleMenuBox>
-										<HBGToggleBtn onClick={onClickToggleMenu}>
-											<img src={HBGIcon} alt="HbgToggle"></img>
-										</HBGToggleBtn>
+									</>
+								)}
+							</div>
 
-										<OnToggleList
-											active={menuToggle}
-											onMouseLeave={() => setMenuToggle(false)}
-										>
-											<div>
-												<h1>소개</h1>
-												<ul>
-													<li onClick={onClickMoveIntroducePage}>
-														블록체인{' '}
-													</li>
-													{/* <li onClick={onClickMoveIntroducePage}>포트폴리오 </li> */}
-												</ul>
-											</div>
-											<div>
-												<h1>포트폴리오</h1>
-												<ul>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 목록
-													</li>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 작성
-													</li>
-													<li onClick={onClickMovePortPolioPage}>
-														포트폴리오 관리
-													</li>
-												</ul>
-											</div>
-											<div>
-												<h1>애국가</h1>
-												<ul>
-													<li>동해물과</li>
-													<li>백두산이</li>
-													<li>마르고</li>
-													<li>닳도록</li>
-												</ul>
-											</div>
-											<div>
-												<h1>애국가</h1>
-												<ul>
-													<li>동해물과</li>
-													<li>백두산이</li>
-													<li>마르고</li>
-													<li>닳도록</li>
-												</ul>
-											</div>
-										</OnToggleList>
-									</ToggleMenuBox>
-								</>
-							)}
+							<ToggleMenuBox>
+								<HBGToggleBtn onClick={onClickToggleMenu}>
+									<img src={HBGIcon} alt="HbgToggle"></img>
+								</HBGToggleBtn>
+
+								<OnToggleList
+									active={menuToggle}
+									onMouseLeave={() => setMenuToggle(false)}
+								>
+									<div>
+										<h1>소개</h1>
+										<ul>
+											<li onClick={onClickMoveIntroducePage}>블록체인 </li>
+											{/* <li onClick={onClickMoveIntroducePage}>포트폴리오 </li> */}
+										</ul>
+									</div>
+									<div>
+										<h1>포트폴리오</h1>
+										<ul>
+											<li onClick={onClickMovePortPolioPage}>
+												포트폴리오 목록
+											</li>
+											<li onClick={onClickMovePortPolioPage}>
+												포트폴리오 작성
+											</li>
+											<li onClick={onClickMovePortPolioPage}>
+												포트폴리오 관리
+											</li>
+										</ul>
+									</div>
+									<div>
+										<h1>커뮤니티</h1>
+										<ul>
+											<li>커뮤니티</li>
+											<li>만들 수 있겠나</li>
+										</ul>
+									</div>
+									<div>
+										<h1>설정</h1>
+										<ul>
+											<li>마이페이지</li>
+											<li>관리자 페이지</li>
+										</ul>
+									</div>
+									<div>
+										<h1>고객센터</h1>
+										<ul>
+											<li>공지사항</li>
+											<li>1:1 문의</li>
+											<li>이메일 문의</li>
+										</ul>
+									</div>
+								</OnToggleList>
+							</ToggleMenuBox>
 						</RightBox>
 					</HeaderContainer>
 				</>
