@@ -1,12 +1,17 @@
 import kakaoBtn from '../Image/kakaoBtn.png';
 import Axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const KakaoLoginButton = () => {
 	Axios.defaults.withCredentials = true;
 
 	const { Kakao } = window;
 	const kakaoLoginClickHandler = () => {
+		const location = useLocation();
+
 		function loginWithKakao() {
+			console.log('location = ', location);
+
 			Kakao.Auth.authorize({
 				redirectUri: 'http://localhost:3000/oauth',
 				// redirectUri: 'https://jo2seo.github.io/oauth',
