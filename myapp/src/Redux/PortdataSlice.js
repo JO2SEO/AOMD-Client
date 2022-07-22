@@ -98,13 +98,13 @@ export const PortdataSlice = createSlice({
 	reducers: {
 		DragdataChangePort: (state, action) => {
 			state.port1.items = action.payload;
-			console.log('드래그 앤 드랍 이벤트가 발생');
-			console.log('서버에 리퀘스트 보내 정보 바꼈다고');
+			// console.log('드래그 앤 드랍 이벤트가 발생');
+			// console.log('서버에 리퀘스트 보내 정보 바꼈다고');
 		},
 		DeletedataChangePort: (state, action) => {
 			state.port1.items = action.payload;
-			console.log('삭제 이벤트가 발생');
-			console.log('서버에 리퀘스트 보내 정보 바꼈다고');
+			// console.log('삭제 이벤트가 발생');
+			// console.log('서버에 리퀘스트 보내 정보 바꼈다고');
 		},
 	},
 });

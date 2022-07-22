@@ -91,6 +91,7 @@ export function ChangeData() {
 		if (!result.destination) return;
 
 		const { source, destination } = result;
+		console.log('result = ', result);
 
 		if (source.droppableId !== destination.droppableId) {
 			const sourceColumn = originData['origin'];
@@ -99,7 +100,16 @@ export function ChangeData() {
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
 
-			// let removed;
+			for (var index_11 = 0; index_11 < 3; index_11++) {
+				var forLen11 = destItems[index_11].length;
+				for (var index_22 = 0; index_22 < forLen11; index_22++) {
+					if (destItems[index_11][index_22].id === result.draggableId) {
+						alert('이미 추가한 데이터입니다.');
+						return;
+					}
+				}
+			}
+
 			var findindex_1 = 0;
 			var findindex_2 = 0;
 

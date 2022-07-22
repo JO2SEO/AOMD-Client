@@ -101,7 +101,53 @@ const DataBoxh2 = styled.p`
 	font-weight: 900;
 	padding: 10px;
 `;
+const Storing = styled.div`
+	display: ${({ active }) => {
+		if (active) {
+			return 'flex';
+		}
+		return 'none';
+	}};
+	padding-left: 30px;
+	margin: 0px;
+	align-items: center;
 
+	& span {
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		background-color: gray;
+		border-radius: 50%;
+		animation: loading 1s 0s linear infinite;
+	}
+
+	& span:nth-child(1) {
+		animation-delay: 0s;
+		background-color: red;
+	}
+
+	& span:nth-child(2) {
+		animation-delay: 0.2s;
+		background-color: orange;
+	}
+
+	& span:nth-child(3) {
+		animation-delay: 0.4s;
+		background-color: yellowgreen;
+	}
+
+	@keyframes loading {
+		0%,
+		100% {
+			opacity: 0;
+			transform: scale(0.5);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1.2);
+		}
+	}
+`;
 const PortPolioComponent = props => {
 	const { showState, portData } = props;
 	const Swal = require('sweetalert2');
@@ -234,54 +280,6 @@ const PortPolioComponent = props => {
 	const [content2, setContent2] = useState('');
 	const [textLength1, setTextLength1] = useState(0);
 	const [textLength2, setTextLength2] = useState(0);
-
-	const Storing = styled.div`
-		display: ${({ active }) => {
-			if (active) {
-				return 'flex';
-			}
-			return 'none';
-		}};
-		padding-left: 30px;
-		margin: 0px;
-		align-items: center;
-
-		& span {
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-			background-color: gray;
-			border-radius: 50%;
-			animation: loading 1s 0s linear infinite;
-		}
-
-		& span:nth-child(1) {
-			animation-delay: 0s;
-			background-color: red;
-		}
-
-		& span:nth-child(2) {
-			animation-delay: 0.2s;
-			background-color: orange;
-		}
-
-		& span:nth-child(3) {
-			animation-delay: 0.4s;
-			background-color: yellowgreen;
-		}
-
-		@keyframes loading {
-			0%,
-			100% {
-				opacity: 0;
-				transform: scale(0.5);
-			}
-			50% {
-				opacity: 1;
-				transform: scale(1.2);
-			}
-		}
-	`;
 
 	const questionChangeFunc = e => {
 		setQuestion(e.target.value);
