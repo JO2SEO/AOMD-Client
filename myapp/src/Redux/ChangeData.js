@@ -99,28 +99,30 @@ export function ChangeData() {
 			const sourceItems = [...sourceColumn.items];
 			const destItems = [...destColumn.items];
 
-			let removed;
-			let findindex_1 = 0;
-			let findindex_2 = 0;
+			// let removed;
+			var findindex_1 = 0;
+			var findindex_2 = 0;
 
-			sourceItems.map((Data, index_1) => {
-				Data.map((data, index_2) => {
-					if (data.id === result.draggableId) {
-						removed = data;
+			for (var index_1 = 0; index_1 < 3; index_1++) {
+				var forLen = sourceItems[index_1].length;
+				for (var index_2 = 0; index_2 < forLen; index_2++) {
+					if (sourceItems[index_1][index_2].id === result.draggableId) {
 						findindex_1 = index_1;
 						findindex_2 = index_2;
 					}
-				});
-			});
+				}
+			}
 
 			const removedData = sourceItems[findindex_1][findindex_2];
 			findindex_1 = 0;
 
-			destItems.map((Data, index_1) => {
-				if (Data[0].Type === removedData.Type) {
+			forLen = destItems.length;
+
+			for (index_1 = 0; index_1 < forLen; index_1++) {
+				if (destItems[index_1][0].Type === removedData.Type) {
 					findindex_1 = index_1;
 				}
-			});
+			}
 
 			let Before = destItems[findindex_1];
 			let After = [...Before, removedData];
