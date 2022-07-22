@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-
 import styled from 'styled-components';
-import { selectLoginData, SuccessLogout } from '../Redux/LoginCheck';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { selectLoginData, SuccessLogout } from 'Redux/LoginCheck';
 // import logoImg from '../Image/logoImg.png';
-import AOMD_logo from '../Image/AOMD_logo.svg';
+import AOMD_logo from 'Image/AOMD_logo.svg';
 // import AOMD_logo_light from '../Image/AOMD_logo_light.svg';
 // import HbgToggle from '../Image/HbgIcon.svg';
 // import HbgToggle from '../Image/HbgIcon.svg';
-import HBGIcon from '../Image/HBGIcon.svg';
-import loginIcon from '../Image/loginIcon.svg';
+// import HBGIcon from '../Image/HBGIcon.svg';
+import HBGIcon from 'Image/HBGIcon.svg';
+// import loginIcon from '../Image/loginIcon.svg';
+import loginIcon from 'Image/loginIcon.svg';
 
 export const HeaderContainer = styled.div`
 	width: 100%;
@@ -189,7 +191,7 @@ function Header() {
 
 	return (
 		<>
-			{infoLocation === '/AOMD-Client' || infoLocation === '/AOMD-Client//' ? (
+			{infoLocation === '/' ? (
 				<>
 					<HeaderContainer style={{ background: 'white' }}>
 						<LeftBox
