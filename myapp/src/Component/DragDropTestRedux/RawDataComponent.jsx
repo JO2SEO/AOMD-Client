@@ -36,27 +36,27 @@ const RawDataComponent = props => {
 		const info1 = []; // 학력
 		const info2 = []; // 수상내역
 
-		column.map((item, index) => {
-			// console.log('index => ', index);
-			// console.log('item => ', item);
-
+		// console.log('column = ', column);
+		for (var index = 0; index < 3; index++) {
 			if (index === 0) {
-				item.map((innerItem, innerindex) => {
-					info0.push([innerItem, 1 + index + innerindex]);
-					// info0.push([innerItem, innerindex]);
-				});
+				var innerLen = column[index].length;
+				for (var innerindex = 0; innerindex < innerLen; innerindex++) {
+					info0.push([column[index][innerindex], 1 + index + innerindex]);
+				}
 			}
 			if (index === 1) {
-				item.map((innerItem, innerindex) => {
-					info1.push([innerItem, 2 + index + innerindex]);
-				});
+				innerLen = column[index].length;
+				for (innerindex = 0; innerindex < innerLen; innerindex++) {
+					info1.push([column[index][innerindex], 2 + index + innerindex]);
+				}
 			}
 			if (index === 2) {
-				item.map((innerItem, innerindex) => {
-					info2.push([innerItem, 3 + index + innerindex]);
-				});
+				innerLen = column[index].length;
+				for (innerindex = 0; innerindex < innerLen; innerindex++) {
+					info2.push([column[index][innerindex], 3 + index + innerindex]);
+				}
 			}
-		});
+		}
 
 		return (
 			<Fragment>
