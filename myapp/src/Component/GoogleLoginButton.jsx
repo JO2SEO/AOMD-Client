@@ -1,7 +1,8 @@
 import GoogleLogin from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { SuccessLogin } from '../Redux/LoginCheck';
+
+import { SuccessLogin } from 'Redux/LoginCheck';
 
 const GoogleLoginButton = () => {
 	const clientID = '57988589193-h09ghivls1ie0affm6curnh446lhbjpl.apps.googleusercontent.com';

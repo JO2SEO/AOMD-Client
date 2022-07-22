@@ -1,5 +1,5 @@
 import React from 'react';
-import error_img from '../Image/error_img.jpeg';
+import error_img from 'Image/error_img.jpeg';
 
 // .errorpage {
 // 	width: 100%;

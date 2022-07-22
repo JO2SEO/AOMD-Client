@@ -22,7 +22,6 @@ function Footer() {
 		<FooterDiv>
 			<FooterMenu> Footer </FooterMenu>
 			<p style={{ fontSize: '20px', padding: '30px' }}>
-				{' '}
 				부산대학교 졸업 과제 - AOMD : 하이퍼레저 패브릭을 이용한 포트폴리오 관리 플랫폼
 			</p>
 		</FooterDiv>

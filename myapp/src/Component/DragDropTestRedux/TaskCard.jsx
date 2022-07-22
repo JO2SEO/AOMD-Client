@@ -1,8 +1,9 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
-import { DeletedataChangePort, selectPortData } from '../../Redux/PortdataSlice';
 import styled from 'styled-components';
+
+import { DeletedataChangePort, selectPortData } from 'Redux/PortdataSlice';
 
 const OriginDataBox = styled.div`
 	box-sizing: border-box;

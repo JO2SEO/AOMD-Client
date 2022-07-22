@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import { selectLoginData } from '../Redux/LoginCheck';
+
+import { selectLoginData } from 'Redux/LoginCheck';
 
 const CategoryContainer = styled.div`
 	width: 100%;

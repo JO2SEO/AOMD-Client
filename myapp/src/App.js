@@ -1,29 +1,27 @@
-import './App.css';
-import LoginPage from './Page/LoginPage';
-// import MainPage from './Page/MainPage';
-import FirstPage from './Page/FirstPage/FirstPage';
-
-import PracticePage from './Page/PracticePage/PracticePage';
-import EnterprisePage from './Page/EnterprisePage/EnterprisePage';
-
-import RegisterPage from './Page/RegisterPage';
-import ErrorPage from './Page/ErrorPage';
-import IntroducePage from './Page/IntroducePage';
-import PortPolioPage from './Page/PortPolioPage';
-import OauthPage from './Component/OauthPage/OauthPage';
-
-import Header from './Component/Header';
-// import Footer from './Component/Footer';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Darkmode from './Image/darkmode.svg';
-
-import { Provider } from 'react-redux';
-import store from './Redux/Store';
-
 import { useState } from 'react';
-import reset from 'styled-reset';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { darkTheme, lightTheme } from './Component/theme';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import reset from 'styled-reset';
+import { Provider } from 'react-redux';
+
+import LoginPage from 'Page/LoginPage';
+import FirstPage from 'Page/FirstPage/FirstPage';
+import PracticePage from 'Page/PracticePage/PracticePage';
+import EnterprisePage from 'Page/EnterprisePage/EnterprisePage';
+import RegisterPage from 'Page/RegisterPage';
+import ErrorPage from 'Page/ErrorPage';
+import IntroducePage from 'Page/IntroducePage';
+import PortPolioPage from 'Page/PortPolioPage';
+
+import { darkTheme, lightTheme } from 'Component/theme';
+import OauthPage from 'Component/OauthPage/OauthPage';
+import Header from 'Component/Header';
+
+import Darkmode from 'Image/darkmode.svg';
+
+import store from 'Redux/Store';
+
+import './App.css';
 
 export const GlobalStyle = createGlobalStyle`
 	${reset}  	
@@ -60,7 +58,7 @@ function App() {
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	const toggleDarkMode = () => {
-		console.log('is dark ? = ', isDarkMode);
+		// console.log('is dark ? = ', isDarkMode);
 		setIsDarkMode(prev => !prev);
 	};
 
@@ -72,7 +70,6 @@ function App() {
 				</DarkModeButton>
 
 				<Router basename={process.env.PUBLIC_URL}>
-					{/* <Router> */}
 					{/* 참고로, PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 						<GlobalStyle />
@@ -89,8 +86,6 @@ function App() {
 							<Route path="/practicepage" element={<PracticePage />} />
 							<Route path="/enterprisepage" element={<EnterprisePage />} />
 						</Routes>
-
-						{/* <Footer /> */}
 					</ThemeProvider>
 				</Router>
 			</div>

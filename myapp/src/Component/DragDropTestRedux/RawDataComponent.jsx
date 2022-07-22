@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import TaskCard from './TaskCard';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
+
+import TaskCard from './TaskCard';
 
 export const DataBox = styled.div`
 	display: flex;

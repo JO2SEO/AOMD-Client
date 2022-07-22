@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+
 import { LoginPageDiv, LoginPageForm, LoginFormInput, FormButton } from './LoginPage';
 
 function RegisterPage() {

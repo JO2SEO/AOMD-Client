@@ -1,10 +1,11 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import GoogleLoginButton from '../Component/GoogleLoginButton';
-import KakaoLoginButton from '../Component/KakaoLoginButton';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SuccessLogin } from '../Redux/LoginCheck';
+
+import { SuccessLogin } from 'Redux/LoginCheck';
+import GoogleLoginButton from 'Component/GoogleLoginButton';
+import KakaoLoginButton from 'Component/KakaoLoginButton';
 
 export const LoginPageDiv = styled.div`
 	height: 80%;

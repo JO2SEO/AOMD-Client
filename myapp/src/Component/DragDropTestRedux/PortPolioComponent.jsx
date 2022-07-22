@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
-import TaskCard from './TaskCard';
 import { Droppable } from 'react-beautiful-dnd';
-import { ProvidedPlaceholder } from './RawDataComponent';
 import styled from 'styled-components';
 import { useState } from 'react';
+
+import TaskCard from './TaskCard';
+import { ProvidedPlaceholder } from './RawDataComponent';
 
 const Portpolio = styled.div`
 	display: flex;

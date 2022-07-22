@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { DragDropContext } from 'react-beautiful-dnd';
+
 import { selectRawData } from './RawdataSlice';
 import { DragdataChangePort, selectPortData } from './PortdataSlice';
-import { DragDropContext } from 'react-beautiful-dnd';
-import PortPolioComponent from '../Component/DragDropTestRedux/PortPolioComponent';
-import RawDataComponent from '../Component/DragDropTestRedux/RawDataComponent';
-import styled from 'styled-components';
+import PortPolioComponent from 'Component/DragDropTestRedux/PortPolioComponent';
+import RawDataComponent from 'Component/DragDropTestRedux/RawDataComponent';
 
 const Container = styled.div`
 	display: flex;

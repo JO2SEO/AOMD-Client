@@ -1,11 +1,11 @@
 import React from 'react';
-// import styled from 'styled-components';
 import queryString from 'query-string';
-import './OauthPage.css';
 import Axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { SuccessLogin } from '../../Redux/LoginCheck';
+
+import { SuccessLogin } from 'Redux/LoginCheck';
+import './OauthPage.css';
 
 function OauthPage() {
 	const dispatch = useDispatch();

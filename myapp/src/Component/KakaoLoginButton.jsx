@@ -1,7 +1,8 @@
 import React from 'react';
-import kakaoBtn from '../Image/kakaoBtn.png';
 import Axios from 'axios';
 import { useLocation } from 'react-router-dom';
+
+import kakaoBtn from 'Image/kakaoBtn.png';
 
 const KakaoLoginButton = () => {
 	Axios.defaults.withCredentials = true;

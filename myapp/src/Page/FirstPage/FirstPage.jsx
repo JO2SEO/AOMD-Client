@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from '../../Component/Footer';
+import Footer from 'Component/Footer';
 
-import contentImage from '../../Image/contentImg.png';
-import contentBack from '../../Image/contentBack.svg';
-import contentChar from '../../Image/contentChar.svg';
-import contentFolder from '../../Image/contentFolder.svg';
-import upArrow from '../../Image/upArrow.svg';
-import down_arrow_icon1 from '../../Image/down-arrow_icon1.svg';
+import contentImage from 'Image/contentImg.png';
+import contentBack from 'Image/contentBack.svg';
+import contentChar from 'Image/contentChar.svg';
+import contentFolder from 'Image/contentFolder.svg';
+import upArrow from 'Image/upArrow.svg';
+import down_arrow_icon1 from 'Image/down-arrow_icon1.svg';
 
 import './FirstPage.css';
 
