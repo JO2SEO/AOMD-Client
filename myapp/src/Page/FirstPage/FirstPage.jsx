@@ -124,35 +124,39 @@ function FirstPage() {
 		var reveals2 = document.querySelectorAll('.reveal2');
 		var reveals3 = document.querySelectorAll('.reveal3');
 
+		var windowHeight = 0;
+		var elementTop = 0;
+		var elementVisible = 0;
+
 		for (var i = 0; i < reveals.length; i++) {
-			var windowHeight = window.innerHeight;
-			var elementTop = reveals[i].getBoundingClientRect().top;
-			var elementVisible = 10;
+			windowHeight = window.innerHeight;
+			elementTop = reveals[i].getBoundingClientRect().top;
+			elementVisible = 10;
 
 			if (elementTop < windowHeight - elementVisible) {
 				reveals[i].classList.add('active');
 			}
 		}
-		for (var i = 0; i < reveals1.length; i++) {
-			var windowHeight = window.innerHeight;
-			var elementTop = reveals1[i].getBoundingClientRect().top;
-			var elementVisible = 30;
+		for (i = 0; i < reveals1.length; i++) {
+			windowHeight = window.innerHeight;
+			elementTop = reveals1[i].getBoundingClientRect().top;
+			elementVisible = 30;
 			if (elementTop < windowHeight - elementVisible) {
 				reveals1[i].classList.add('active');
 			}
 		}
-		for (var i = 0; i < reveals2.length; i++) {
-			var windowHeight = window.innerHeight;
-			var elementTop = reveals2[i].getBoundingClientRect().top;
-			var elementVisible = 50;
+		for (i = 0; i < reveals2.length; i++) {
+			windowHeight = window.innerHeight;
+			elementTop = reveals2[i].getBoundingClientRect().top;
+			elementVisible = 50;
 			if (elementTop < windowHeight - elementVisible) {
 				reveals2[i].classList.add('active');
 			}
 		}
-		for (var i = 0; i < reveals3.length; i++) {
-			var windowHeight = window.innerHeight;
-			var elementTop = reveals3[i].getBoundingClientRect().top;
-			var elementVisible = 70;
+		for (i = 0; i < reveals3.length; i++) {
+			windowHeight = window.innerHeight;
+			elementTop = reveals3[i].getBoundingClientRect().top;
+			elementVisible = 70;
 			if (elementTop < windowHeight - elementVisible) {
 				reveals3[i].classList.add('active');
 			}
@@ -212,7 +216,7 @@ function FirstPage() {
 					</div>
 				</div>
 			</div>
-			<div className="contentBox2 ">
+			<div className="contentBox2" style={{ background: 'white' }}>
 				<div className="contentBox2Text">
 					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
 					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
