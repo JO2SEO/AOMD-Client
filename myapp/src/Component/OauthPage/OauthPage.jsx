@@ -30,7 +30,7 @@ function OauthPage() {
 		.then(response => {
 			console.log('response = ', response);
 			dispatch(SuccessLogin(true));
-			navigate('/AOMD-Client');
+			navigate('/');
 		})
 		.catch(error => {
 			console.log('error = ', error);

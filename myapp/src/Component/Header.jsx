@@ -155,7 +155,7 @@ function Header() {
 	};
 	const onClickMoveHome = () => {
 		setMenuToggle(false);
-		navigate('/AOMD-Client');
+		navigate('/');
 	};
 	const onClickMoveLogin = () => {
 		setMenuToggle(false);
@@ -164,7 +164,7 @@ function Header() {
 	const onClickLogout = () => {
 		setMenuToggle(false);
 		dispatch(SuccessLogout(true));
-		navigate('/AOMD-Client');
+		navigate('/');
 	};
 	const onClickMoveIntroducePage = () => {
 		setMenuToggle(false);
@@ -175,13 +175,6 @@ function Header() {
 		if (loginState) {
 			navigate('/portpoliopage');
 		} else {
-			// Swal.fire({
-			// 	title: 'Login',
-			// 	text: '로그인을 먼저 하셔야 합니다',
-			// 	icon: 'success',
-			// 	confirmButtonText: 'OK',
-			// 	heightAuto: false,
-			// });
 			navigate('/loginpage');
 		}
 	};
@@ -196,7 +189,7 @@ function Header() {
 
 	return (
 		<>
-			{infoLocation === '/AOMD-Client' || infoLocation === '/AOMD-Client/' ? (
+			{infoLocation === '/AOMD-Client' || infoLocation === '/AOMD-Client//' ? (
 				<>
 					<HeaderContainer style={{ background: 'white' }}>
 						<LeftBox

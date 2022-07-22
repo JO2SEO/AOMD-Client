@@ -84,7 +84,7 @@ export function LoginPage() {
 			// });
 			dispatch(SuccessLogin(true));
 
-			navigate('/AOMD-Client');
+			navigate('/');
 		}
 	};
 

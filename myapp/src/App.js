@@ -71,24 +71,24 @@ function App() {
 					<img src={Darkmode} alt="darkmode"></img>
 				</DarkModeButton>
 
-				<Router>
+				<Router basename={process.env.PUBLIC_URL}>
+					{/* <Router> */}
+					{/* 참고로, PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 						<GlobalStyle />
 						<Header />
 
-						<>
-							<Routes>
-								<Route path="/AOMD-Client" element={<FirstPage />} />
-								<Route path="/introducepage" element={<IntroducePage />} />
-								<Route path="/loginpage" element={<LoginPage />} />
-								<Route path="/registerpage" element={<RegisterPage />} />
-								<Route path="/portpoliopage" element={<PortPolioPage />} />
-								<Route path="/errorpage" element={<ErrorPage />} />
-								<Route path="/oauth" element={<OauthPage />} />
-								<Route path="/practicepage" element={<PracticePage />} />
-								<Route path="/enterprisepage" element={<EnterprisePage />} />
-							</Routes>
-						</>
+						<Routes>
+							<Route path="/" element={<FirstPage />} />
+							<Route path="/introducepage" element={<IntroducePage />} />
+							<Route path="/loginpage" element={<LoginPage />} />
+							<Route path="/registerpage" element={<RegisterPage />} />
+							<Route path="/portpoliopage" element={<PortPolioPage />} />
+							<Route path="/errorpage" element={<ErrorPage />} />
+							<Route path="/oauth" element={<OauthPage />} />
+							<Route path="/practicepage" element={<PracticePage />} />
+							<Route path="/enterprisepage" element={<EnterprisePage />} />
+						</Routes>
 
 						{/* <Footer /> */}
 					</ThemeProvider>

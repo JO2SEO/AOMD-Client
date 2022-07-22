@@ -2,17 +2,15 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-// import Header from '../../Component/Header';
 import Footer from '../../Component/Footer';
-// import Category from '../Component/Category';
 
-// import loginIcon from '../Image/logoImg.png';
 import contentImage from '../../Image/contentImg.png';
 import contentBack from '../../Image/contentBack.svg';
 import contentChar from '../../Image/contentChar.svg';
 import contentFolder from '../../Image/contentFolder.svg';
 import upArrow from '../../Image/upArrow.svg';
 import down_arrow_icon1 from '../../Image/down-arrow_icon1.svg';
+
 import './FirstPage.css';
 
 const FirstPageContainer = styled.div`
@@ -92,19 +90,12 @@ const MovePortPolioBtn = styled.button`
 	}
 `;
 function FirstPage() {
+	const navigate = useNavigate();
+
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
 	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
 
-	const handleFollow = () => {
-		setScrollValueOfY(window.pageYOffset);
-		if (ScrollValueOfY > 150) {
-			setMoveToTopBtnStatus(true);
-		} else {
-			setMoveToTopBtnStatus(false);
-		}
-	};
-
-	const moveToTop = () => {
+	const moveToTopFunc = () => {
 		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
 		setScrollValueOfY(0); // ScrollY 의 값을 초기화
 
@@ -113,24 +104,21 @@ function FirstPage() {
 			behavior: 'smooth',
 		});
 	};
-	const navigate = useNavigate();
 
 	const onClickMovePortPolioPage = () => {
 		navigate('/portpoliopage');
 	};
-	// 로그인 체크 안하고 바로 이동
+	// 로그인 체크 안하고 바로 이동 => 나중에 로그인 체크하게 해야 함
 
-	useEffect(() => {
-		const watch = () => {
-			window.addEventListener('scroll', handleFollow);
-		};
-		watch();
-		return () => {
-			window.removeEventListener('scroll', handleFollow);
-		};
-	});
-
-	function reveal() {
+	const scrollCheckFunc = () => {
+		setScrollValueOfY(window.pageYOffset);
+		if (ScrollValueOfY > 150) {
+			setMoveToTopBtnStatus(true);
+		} else {
+			setMoveToTopBtnStatus(false);
+		}
+	};
+	const animationToggleFunc = () => {
 		var reveals = document.querySelectorAll('.reveal');
 		var reveals1 = document.querySelectorAll('.reveal1');
 		var reveals2 = document.querySelectorAll('.reveal2');
@@ -140,17 +128,10 @@ function FirstPage() {
 			var windowHeight = window.innerHeight;
 			var elementTop = reveals[i].getBoundingClientRect().top;
 			var elementVisible = 10;
-			// console.log('elementTop = ', elementTop);
-			// console.log('windowHeight = ', windowHeight);
-			// console.log('elementVisible = ', elementVisible);
 
 			if (elementTop < windowHeight - elementVisible) {
 				reveals[i].classList.add('active');
 			}
-
-			// else {
-			// 	reveals[i].classList.remove('active');
-			// }
 		}
 		for (var i = 0; i < reveals1.length; i++) {
 			var windowHeight = window.innerHeight;
@@ -159,9 +140,6 @@ function FirstPage() {
 			if (elementTop < windowHeight - elementVisible) {
 				reveals1[i].classList.add('active');
 			}
-			// else {
-			// 	reveals1[i].classList.remove('active');
-			// }
 		}
 		for (var i = 0; i < reveals2.length; i++) {
 			var windowHeight = window.innerHeight;
@@ -170,9 +148,6 @@ function FirstPage() {
 			if (elementTop < windowHeight - elementVisible) {
 				reveals2[i].classList.add('active');
 			}
-			// else {
-			// 	reveals2[i].classList.remove('active');
-			// }
 		}
 		for (var i = 0; i < reveals3.length; i++) {
 			var windowHeight = window.innerHeight;
@@ -181,18 +156,25 @@ function FirstPage() {
 			if (elementTop < windowHeight - elementVisible) {
 				reveals3[i].classList.add('active');
 			}
-			// else {
-			// 	reveals3[i].classList.remove('active');
-			// }
 		}
-	}
-	window.addEventListener('scroll', reveal);
-	// To check the scroll position on page load
-	reveal();
+	};
+
+	useEffect(() => {
+		// console.log(123);
+		const watch = () => {
+			window.addEventListener('scroll', scrollCheckFunc);
+			window.addEventListener('scroll', animationToggleFunc);
+		};
+		watch();
+		return () => {
+			window.removeEventListener('scroll', scrollCheckFunc);
+			window.removeEventListener('scroll', animationToggleFunc);
+		};
+	});
 
 	return (
 		<FirstPageContainer>
-			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTop}>
+			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTopFunc}>
 				<img src={upArrow} alt="upArrow"></img>
 			</MoveTopBtn>
 
@@ -230,15 +212,34 @@ function FirstPage() {
 					</div>
 				</div>
 			</div>
-			<div className="contentBox2" style={{ background: 'white' }}>
+			<div className="contentBox2 ">
 				<div className="contentBox2Text">
-					<h1> 포트폴리오를 한눈에 </h1>
-					<h2> 다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3> 여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다. </h3>
-					<h3> 다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요. </h3>
+					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
+					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3 className="reveal2">
+						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+					</h3>
+					<h3 className="reveal2">
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+					</h3>
+					<div className="reveal3">
+						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+					</div>
 				</div>
-				<div className="contentBox2Image">
-					<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+			</div>
+			<div className="contentBox2 ">
+				<div className="contentBox2Text">
+					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
+					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3 className="reveal2">
+						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+					</h3>
+					<h3 className="reveal2">
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+					</h3>
+					<div className="reveal3">
+						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
+					</div>
 				</div>
 			</div>
 

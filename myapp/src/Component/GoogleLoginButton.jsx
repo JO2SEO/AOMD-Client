@@ -34,7 +34,7 @@ const GoogleLoginButton = () => {
 		// navigate('/main');
 		// console.log('response = ', response);
 		dispatch(SuccessLogin(true));
-		navigate('/AOMD-Client');
+		navigate('/');
 	};
 
 	// const onSuccess = response => {
