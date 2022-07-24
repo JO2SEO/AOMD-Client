@@ -143,9 +143,7 @@ export function ChangeData() {
 			return;
 		}
 	};
-
 	const [portState, setPortState] = useState([true, false, false]);
-
 	const onClickShowPort1 = () => {
 		setPortState([true, false, false]);
 	};
@@ -155,7 +153,6 @@ export function ChangeData() {
 	const onClickShowPort3 = () => {
 		setPortState([false, false, true]);
 	};
-
 	const onClickAddPort = () => {
 		console.log('포트폴리오 추가');
 	};

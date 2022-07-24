@@ -93,7 +93,8 @@ function FirstPage() {
 	const navigate = useNavigate();
 
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
-	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
+	// const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
+	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(true);
 
 	const moveToTopFunc = () => {
 		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김

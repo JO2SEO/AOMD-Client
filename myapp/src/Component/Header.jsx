@@ -214,12 +214,12 @@ function Header() {
 							<MoveHomeBtn onClick={onClickMoveHome}>
 								<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
 							</MoveHomeBtn>
-							<button
+							{/* <button
 								style={{ width: '80px', height: '50px' }}
 								onClick={onClickMovePractice}
 							>
 								페이지 스크롤 애니메이션
-							</button>
+							</button> */}
 						</div>
 
 						<RightBox>

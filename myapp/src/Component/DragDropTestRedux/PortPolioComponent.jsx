@@ -455,12 +455,6 @@ const PortPolioComponent = props => {
 									</SubmitBoxBtn2>
 								</div>
 								<SubmitBox>
-									<Storing active={storingState}>
-										<span></span>
-										<span></span>
-										<span></span>
-										<p style={{ marginLeft: '10px' }}>저장 중...</p>
-									</Storing>
 									<SubmitBoxBtn onClick={onClickLoad}>
 										<SubmitBoxBtnFront>불러오기</SubmitBoxBtnFront>
 									</SubmitBoxBtn>
@@ -477,12 +471,7 @@ const PortPolioComponent = props => {
 										<p style={{ marginLeft: '10px' }}>저장 중...</p>
 									</Storing>
 								</SubmitBox>
-								<Storing active={storingState}>
-									<span></span>
-									<span></span>
-									<span></span>
-									<p style={{ marginLeft: '10px' }}>저장 중...</p>
-								</Storing>
+
 								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 							</Portpolio>
 						)}
