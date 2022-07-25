@@ -18,14 +18,24 @@ function OauthPage() {
 	console.log('params = ', params);
 	let qs = queryString.parse(window.location.search);
 	console.log('인가코드 = ', qs.code);
-	qs = qs.code;
+	// qs = qs.code;
+
+	// axios.post('/user', {
+	// 	firstName: 'Fred',
+	// 	lastName: 'Flintstone',
+	// });
 
 	Axios.post('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
-		// http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
-		params: {
-			code: qs,
-			callbackUrl: 'https://jo2seo.github.io/oauth',
-		},
+		code: qs.code,
+		// callbackUrl: 'https://jo2seo.github.io/oauth',
+		callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
+
+		// // http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
+		// params: {
+		// 	code: qs.code,
+		// 	// callbackUrl: 'https://jo2seo.github.io/oauth',
+		// 	callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
+		// },
 	})
 		.then(response => {
 			console.log('response = ', response);

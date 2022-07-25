@@ -42,7 +42,8 @@ const SubmitBox = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 80px 0px 30px 0px;
-	border: red 3px solid;
+	border: blue 3px solid;
+	width: 90%;
 `;
 const SubmitBoxBtn = styled.button`
 	cursor: pointer;
