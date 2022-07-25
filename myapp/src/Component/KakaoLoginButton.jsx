@@ -15,8 +15,8 @@ const KakaoLoginButton = () => {
 		function loginWithKakao() {
 			Kakao.Auth.authorize({
 				// redirectUri: './oauth',
-				redirectUri: 'http://localhost:3000/oauth',
-				// redirectUri: 'https://jo2seo.github.io/oauth',
+				// redirectUri: 'http://localhost:3000/oauth',
+				redirectUri: 'https://jo2seo.github.io/oauth',
 			});
 		}
 		loginWithKakao();

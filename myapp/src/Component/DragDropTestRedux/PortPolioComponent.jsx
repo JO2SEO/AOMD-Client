@@ -42,6 +42,7 @@ const SubmitBox = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 80px 0px 30px 0px;
+	border: red 3px solid;
 `;
 const SubmitBoxBtn = styled.button`
 	cursor: pointer;
@@ -106,11 +107,14 @@ const Storing = styled.div`
 		if (active) {
 			return 'flex';
 		}
-		return 'none';
+		return 'flex';
 	}};
-	padding-left: 30px;
-	margin: 0px;
-	align-items: center;
+	border: red solid 3px;
+	// padding-left: 30px;
+	// padding-left: 30px;
+	// margin: 0px;
+	// align-items: center;
+	width: 150px;
 
 	& span {
 		display: inline-block;
@@ -307,6 +311,9 @@ const PortPolioComponent = props => {
 		setContent2(e.target.value);
 		setTextLength2(e.target.value.length);
 	};
+	const onClickAddContent = e => {
+		alert('아직 개발중인 기능입니다');
+	};
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -450,27 +457,29 @@ const PortPolioComponent = props => {
 								<div>
 									<SubmitBoxBtn2>
 										<SubmitBoxBtnFront2>
-											<p>문항 추가하기</p>
+											<p onClick={onClickAddContent}>문항 추가하기</p>
 										</SubmitBoxBtnFront2>
 									</SubmitBoxBtn2>
 								</div>
-								<SubmitBox>
-									<SubmitBoxBtn onClick={onClickLoad}>
-										<SubmitBoxBtnFront>불러오기</SubmitBoxBtnFront>
-									</SubmitBoxBtn>
-									<SubmitBoxBtn onClick={onClickStore}>
-										<SubmitBoxBtnFront>저장하기</SubmitBoxBtnFront>
-									</SubmitBoxBtn>
-									<SubmitBoxBtn onClick={onClickMakeURL}>
-										<SubmitBoxBtnFront>URL 생성하기</SubmitBoxBtnFront>
-									</SubmitBoxBtn>
+								<div style={{ display: 'flex', width: '100%' }}>
+									<SubmitBox>
+										<SubmitBoxBtn onClick={onClickLoad}>
+											<SubmitBoxBtnFront>불러오기</SubmitBoxBtnFront>
+										</SubmitBoxBtn>
+										<SubmitBoxBtn onClick={onClickStore}>
+											<SubmitBoxBtnFront>저장하기</SubmitBoxBtnFront>
+										</SubmitBoxBtn>
+										<SubmitBoxBtn onClick={onClickMakeURL}>
+											<SubmitBoxBtnFront>URL 생성하기</SubmitBoxBtnFront>
+										</SubmitBoxBtn>
+									</SubmitBox>
 									<Storing active={storingState}>
 										<span></span>
 										<span></span>
 										<span></span>
 										<p style={{ marginLeft: '10px' }}>저장 중...</p>
 									</Storing>
-								</SubmitBox>
+								</div>
 
 								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 							</Portpolio>

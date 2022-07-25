@@ -24,7 +24,7 @@ function OauthPage() {
 		// http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
 		params: {
 			code: qs,
-			callbackUrl: 'https://jo2seo.github.io/oauth',
+			redirectUrl: 'https://jo2seo.github.io/oauth',
 		},
 	})
 		.then(response => {

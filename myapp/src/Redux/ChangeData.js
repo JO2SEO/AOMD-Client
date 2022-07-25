@@ -148,13 +148,18 @@ export function ChangeData() {
 		setPortState([true, false, false]);
 	};
 	const onClickShowPort2 = () => {
-		setPortState([false, true, false]);
+		alert('아직 개발중인 기능입니다');
+
+		// setPortState([false, true, false]);
 	};
 	const onClickShowPort3 = () => {
-		setPortState([false, false, true]);
+		alert('아직 개발중인 기능입니다');
+
+		// setPortState([false, false, true]);
 	};
 	const onClickAddPort = () => {
 		console.log('포트폴리오 추가');
+		alert('아직 개발중인 기능입니다');
 	};
 
 	return (
