@@ -249,7 +249,6 @@ function FirstPage() {
 			</div>
 
 			<Footer />
-			<Footer />
 		</FirstPageContainer>
 	);
 }
