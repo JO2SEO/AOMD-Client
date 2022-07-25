@@ -240,7 +240,7 @@ function FirstPage() {
 						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
 					</h3>
 					<h3 className="reveal2">
-						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요
 					</h3>
 					<div className="reveal3">
 						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
