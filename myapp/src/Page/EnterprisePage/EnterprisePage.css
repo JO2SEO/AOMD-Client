@@ -1,30 +1,105 @@
-.header {
-	position: fixed;
-	top: 0;
-	z-index: 1;
+#EnterprisePageTotalDiv {
 	width: 100%;
-	background-color: #f1f1f1;
-	height: 50px;
+	display: flex;
+	flex-direction: row;
+}
+#leftBox {
+	width: 50%;
+	padding: 6% 0% 0% 20%;
+}
+#leftBox h1 {
+	font-weight: 900;
+	font-size: 50px;
+}
+#rightBox {
+	width: 50%;
+	padding: 70px;
 }
 
-.header h2 {
-	text-align: center;
+.leftTextBox {
+	display: flex;
+	flex-direction: column;
+	color: black;
+	width: 100%;
+	height: 100%;
+	z-index: 6;
+}
+.leftTextBox h1 {
+	font-size: 60px;
+	font-weight: 900;
+	margin-bottom: 15px;
 }
 
-.progress-container {
+.leftTextBox p {
+	font-size: 20px;
+	margin-bottom: 10px;
+	font-weight: bolder;
+	color: gray;
+}
+
+.oneBox {
 	width: 100%;
-	height: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.oneBox p {
+	width: 400px;
+	margin-bottom: 13px;
+}
+.oneBox input {
+	/* margin-bottom: 10px; */
+	width: 400px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px gray solid;
+}
+
+#oneBoxName_p {
+	width: 150px;
+}
+#oneBoxName_input {
+	width: 170px;
+}
+#oneBoxselect {
+	width: 400px;
+	height: 30px;
+}
+#oneBoxtextarea {
+	width: 400px;
+	height: 100px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+#submitDescription {
+	margin-top: 10px;
+}
+#submitBtn {
+	margin-top: 30px;
+	width: 150px;
+	height: 40px;
+
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #203864;
+	border-radius: 30px;
+
+	border: 0;
+	padding: 15px;
+	color: white;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+#submitBtn:hover {
+	background: #6c7c97;
+	font-weight: bolder;
+}
+#submitBtn:focus {
 	background: gray;
-}
-
-.progress-bar {
-	height: 20px;
-	background: black;
-	width: 0%;
-}
-
-.content {
-	padding: 100px 0;
-	margin: 50px auto 0 auto;
-	width: 80%;
+	color: black;
+	font-weight: bolder;
 }
