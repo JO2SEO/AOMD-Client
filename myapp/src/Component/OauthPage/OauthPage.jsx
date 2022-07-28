@@ -28,7 +28,8 @@ function OauthPage() {
 	Axios.post('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
 		code: qs.code,
 		// callbackUrl: 'https://jo2seo.github.io/oauth',
-		callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
+		// callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
+		callbackUrl: 'http://15.164.231.60:8000/oauth',
 
 		// // http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
 		// params: {
