@@ -5,9 +5,26 @@ import { useNavigate } from 'react-router-dom';
 import Footer from 'Component/Footer';
 
 import contentImage from 'Image/contentImg.png';
-import contentBack from 'Image/contentBack.svg';
-import contentChar from 'Image/contentChar.svg';
-import contentFolder from 'Image/contentFolder.svg';
+
+import contentBack from 'Image/ILER1/contentBack.svg';
+import contentChar from 'Image/ILER1/contentChar.svg';
+import contentFolder from 'Image/ILER1/contentFolder.svg';
+
+import contentBack2 from 'Image/ILER2/contentBack.svg';
+import contentChar2 from 'Image/ILER2/contentChar.svg';
+import contentFolder2 from 'Image/ILER2/contentFolder.svg';
+
+import contentBack3 from 'Image/ILER3/contentBack.svg';
+import contentWindow3 from 'Image/ILER3/contentWindow.svg';
+import contentFolder3 from 'Image/ILER3/contentFolder.svg';
+import contentChar3 from 'Image/ILER3/contentChar.svg';
+import contentTree3 from 'Image/ILER3/contentTree.svg';
+
+import contentBack4 from 'Image/ILER4/contentBack.svg';
+import contentChar4 from 'Image/ILER4/contentChar.svg';
+import contentDesk4 from 'Image/ILER4/contentDesk.svg';
+import contentGear4 from 'Image/ILER4/contentGear.svg';
+
 import upArrow from 'Image/upArrow.svg';
 import down_arrow_icon1 from 'Image/down-arrow_icon1.svg';
 
@@ -202,6 +219,7 @@ function FirstPage() {
 			<div className="right_box_down_icon">
 				<img className="down_arrow_icon" alt="contentImage" src={down_arrow_icon1}></img>
 			</div>
+
 			<div className="contentBox2 ">
 				<div className="contentBox2Text">
 					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
@@ -212,42 +230,52 @@ function FirstPage() {
 					<h3 className="reveal2">
 						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
 					</h3>
-					<div className="reveal3">
-						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
-					</div>
 				</div>
-			</div>
-			<div className="contentBox2" style={{ background: 'white' }}>
-				<div className="contentBox2Text">
-					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
-					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3 className="reveal2">
-						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
-					</h3>
-					<h3 className="reveal2">
-						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
-					</h3>
-					<div className="reveal3">
-						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
-					</div>
-				</div>
-			</div>
-			<div className="contentBox2 ">
-				<div className="contentBox2Text">
-					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
-					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
-					<h3 className="reveal2">
-						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
-					</h3>
-					<h3 className="reveal2">
-						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요
-					</h3>
-					<div className="reveal3">
-						<img src={contentImage} alt="contentImage" style={{ width: '400px' }} />
-					</div>
+				<div className="contentBox2Img">
+					<img src={contentBack2} alt="contentImage" className="one" />
+					<img src={contentChar2} alt="contentImage" className="two" />
+					<img src={contentFolder2} alt="contentImage" className="three" />
 				</div>
 			</div>
 
+			<div className="contentBox2 ">
+				<div className="contentBox2Text">
+					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
+					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3 className="reveal2">
+						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+					</h3>
+					<h3 className="reveal2">
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+					</h3>
+				</div>
+				<div className="contentBox2Img">
+					<img src={contentBack3} alt="contentImage" className="one" />
+					<img src={contentWindow3} alt="contentImage" className="two" />
+					<img src={contentFolder3} alt="contentImage" className="three" />
+					<img src={contentChar3} alt="contentImage" className="four" />
+					<img src={contentTree3} alt="contentImage" className="five" />
+				</div>
+			</div>
+
+			<div className="contentBox2 ">
+				<div className="contentBox2Text">
+					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
+					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h3 className="reveal2">
+						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+					</h3>
+					<h3 className="reveal2">
+						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+					</h3>
+				</div>
+				<div className="contentBox2Img">
+					<img src={contentBack4} alt="contentImage" className="one" />
+					<img src={contentDesk4} alt="contentImage" className="two" />
+					<img src={contentChar4} alt="contentImage" className="three" />
+					<img src={contentGear4} alt="contentImage" className="four" />
+				</div>
+			</div>
 			<Footer />
 		</FirstPageContainer>
 	);
