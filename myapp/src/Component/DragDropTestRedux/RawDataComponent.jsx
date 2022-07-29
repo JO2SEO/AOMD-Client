@@ -9,7 +9,7 @@ export const DataBox = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	padding: 10px;
+	padding: 5px;
 	margin-top: 10px;
 	border-radius: 10px;
 	background-color: #eceff5;

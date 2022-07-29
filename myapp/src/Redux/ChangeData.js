@@ -12,18 +12,18 @@ const Container = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 0% 5% 0% 5%;
-	padding-top: 10px;
-	height: 100%;
-	box-sizing: border-box;
-	border-top: black solid 1px;
+	padding-top: 70px;
+	height: 90%;
+	box-sizing: content-box;
 `;
 const DragDropBtnBox = styled.div`
 	display: flex;
-	margin-left: 22%;
+	padding: 2% 0% 0% 21%;
 	justify-content: flex-start;
 	align-items: center;
-	height: 5%;
+	height: 7%;
 	box-sizing: border-box;
+	border-top: black solid 2px;
 `;
 const DragDropContentBox = styled.div`
 	display: flex;
@@ -43,6 +43,7 @@ const RawDataBox = styled.div`
 `;
 const PortPolioBox = styled.div`
 	width: 80%;
+	height: 75vh;
 	border: solid black 1px;
 	box-sizing: content-box;
 	margin: 20px;
