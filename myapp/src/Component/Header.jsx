@@ -370,18 +370,18 @@ function Header() {
 					<HeaderContainer style={{ background: 'white' }}>
 						<LeftBox
 							style={{
-								width: '30%',
+								width: '40%',
 							}}
 						>
 							<MoveHomeBtn onClick={onClickMoveHome}>
-								<img src={AOMD_logo} alt="logoImg" style={{ width: '100%' }} />
+								<img src={AOMD_logo} alt="logoImg" style={{ width: '80%' }} />
 							</MoveHomeBtn>
 						</LeftBox>
 
 						<div
 							style={{
 								display: 'flex',
-								width: '40%',
+								width: '30%',
 							}}
 						/>
 

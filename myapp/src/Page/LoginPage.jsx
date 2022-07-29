@@ -8,7 +8,7 @@ import GoogleLoginButton from 'Component/GoogleLoginButton';
 import KakaoLoginButton from 'Component/KakaoLoginButton';
 
 export const LoginPageDiv = styled.div`
-	height: 80%;
+	height: 100%;
 	width: 100%;
 	box-sizing: content-box;
 	display: flex;
@@ -19,7 +19,7 @@ export const LoginPageForm = styled.div`
 	position: relative;
 	background: #f2f6fa;
 	z-index: 1;
-	max-width: 300px;
+	max-width: 270px;
 	padding: 45px;
 	text-align: center;
 	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
