@@ -37,21 +37,23 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const DarkModeButton = styled.button`
-	position: fixed;
-	right: 20px;
-	bottom: 30px;
-	cursor: pointer;
 	border: none;
-	background: transparent;
+	position: fixed;
+	right: 60px;
+	bottom: 50px;
+	background-color: transparent;
+	border-radius: 100px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	z-index: 100;
+	filler: blue;
 
 	& img {
+		// filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(62deg) brightness(103%)
+		// 	contrast(105%);
 		width: 50px;
-		// background: black;
-		height: 50px;
 	}
-	// &:hover img {
-	// 	background: black;
-	// }
 `;
 
 function App() {

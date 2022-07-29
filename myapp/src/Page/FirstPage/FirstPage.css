@@ -1,38 +1,47 @@
-.right_box_down_icon {
-	/* width: 100vw; */
+.ContentBox1 {
 	display: flex;
+	flex-direction: row;
+	width: 100%;
+	padding: 20% 15% 0% 15%;
+	box-sizing: border-box;
+}
+.TextBox {
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	/* background-color: black; */
-	opacity: 1;
-	padding-bottom: 10%;
+	align-items: flex-start;
+	color: black;
+	width: 80%;
+	z-index: 4;
 }
-.down_arrow_icon {
-	width: 2vw;
-	padding-top: 100px;
-	filter: black;
-	position: relative;
-	animation: fadeInDown 2s infinite;
+.TextBox h1 {
+	font-size: 4.5vw;
+	font-weight: 900;
+	margin-bottom: 30px;
+	letter-spacing: 4px;
 }
-@keyframes fadeInDown {
-	0% {
-		opacity: 0;
-		transform: translate3d(0, -50%, 0);
-	}
-	to {
-		opacity: 1;
-		transform: translateZ(0);
-	}
+
+.TextBox p {
+	font-size: 1.3vw;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+.TextBox button {
+	background: #203864;
+	color: white;
+	width: 250px;
+	height: 40px;
+	margin-top: 20px;
+	border-radius: 20px;
 }
 
 .imageBox {
 	display: flex;
-	flex-direction: column;
-	justify-content: center;
 	color: black;
-	width: 30%;
-	margin-left: -100px;
+	width: 20%;
+
+	margin-left: -200px;
 	margin-top: -100px;
-	height: 100%;
 	position: relative;
 	z-index: 1;
 }
@@ -49,7 +58,7 @@
 	position: absolute;
 	top: 0;
 	z-index: 3;
-	animation: fadeInUp 1.5s ease;
+	animation: fadeInUp 1s ease;
 	animation-fill-mode: forwards;
 }
 .imageBox .three {
@@ -62,7 +71,7 @@
 }
 @keyframes fadeInUp {
 	from {
-		transform: translateY(100%);
+		transform: translateY(10%);
 		opacity: 0;
 	}
 	to {
@@ -71,111 +80,133 @@
 	}
 }
 
-.contentBox2 {
-	background: #e0e3e9;
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.down_iconBox {
 	display: flex;
-	flex-direction: row;
+	justify-content: center;
+	opacity: 1;
+	height: 200px;
+	padding-top: 100px;
+	/* padding-bottom: 100px; */
+}
+.down_arrow_icon {
+	width: 2vw;
+	padding-top: 70px;
+	filter: black;
+	/* position: relative; */
+	animation: fadeInDown 2s infinite;
+}
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -50%, 0);
+	}
+	to {
+		opacity: 1;
+		transform: translateZ(0);
+	}
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.contentBox2 {
+	display: flex;
+	flex-direction: column;
 	width: 100%;
-	height: 90vh;
+	padding: 15% 0% 0% 0%;
 	align-items: center;
+	box-sizing: border-box;
 }
 .contentBox2 .contentBox2Text {
 	display: flex;
+	align-items: center;
 	flex-direction: column;
 	opacity: 1;
-	width: 50%;
+	width: 100%;
+}
+.contentBox2Text h1 {
+	font-size: 65px;
+	font-weight: 900;
+	margin-bottom: 20px;
+}
+.contentBox2Text h2 {
+	font-size: 20px;
+	margin-bottom: 15px;
+	font-weight: bolder;
+}
+.contentBox2Text h3 {
+	font-size: 15px;
+}
+.contentBox2 img {
+	align-items: center;
+	display: flex;
 }
 .contentBox2 .contentBox2Img {
-	width: 50%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	color: black;
-	/* margin-left: -100px; */
-	/* margin-top: 200px; */
-	height: 50%;
 	position: relative;
+	/* relative	: 자기 자신을 기준으로 배치 */
+
 	z-index: 1;
 }
+
 .contentBox2Img .one {
 	width: 400px;
-	position: absolute;
 	top: 0;
+	/* position: absolute; */
+	/* absolute	: 부모(조상) 요소를 기준으로 배치 */
+
 	z-index: 2;
-	animation: fadeInUp 0.5s ease;
-	animation-fill-mode: forwards;
 }
 .contentBox2Img .two {
 	width: 400px;
 	position: absolute;
+	/* absolute	: 부모(조상) 요소를 기준으로 배치 */
+
 	top: 0;
 	z-index: 3;
-	animation: fadeInUp 1.5s ease;
-	animation-fill-mode: forwards;
 }
 .contentBox2Img .three {
 	width: 400px;
 	position: absolute;
 	top: 0;
 	z-index: 4;
-	animation: fadeInUp 2s ease;
-	animation-fill-mode: forwards;
 }
 .contentBox2Img .four {
 	width: 400px;
 	position: absolute;
 	top: 0;
 	z-index: 5;
-	animation: fadeInUp 2.5s ease;
-	animation-fill-mode: forwards;
 }
 .contentBox2Img .five {
 	width: 400px;
 	position: absolute;
 	top: 0;
-	z-index: 5;
-	animation: fadeInUp 3s ease;
-	animation-fill-mode: forwards;
-}
-
-.contentBox2Text h1 {
-	font-size: 60px;
-	font-weight: 900;
-	margin-bottom: 15px;
-}
-.contentBox2Text h2 {
-	font-size: 25px;
-	margin-bottom: 10px;
-	font-weight: bolder;
-}
-.contentBox2Text h3 {
-	font-size: 20px;
-}
-.contentBox2 img {
-	align-items: center;
-	display: flex;
+	z-index: 6;
 }
 
 .reveal {
 	position: relative;
-	transform: translateY(200px);
+	transform: translateY(50px);
 	opacity: 0;
 	transition: 1s all ease;
 }
 .reveal1 {
 	position: relative;
-	transform: translateY(200px);
+	transform: translateY(50px);
 	opacity: 0;
-	transition: 1.5s all ease;
+	transition: 1.3s all ease;
 }
 .reveal2 {
 	position: relative;
-	transform: translateY(200px);
+	transform: translateY(50px);
 	opacity: 0;
-	transition: 1.7s all ease;
-}
-.reveal3 {
-	opacity: 0;
+	transition: 1.5s all ease;
 }
 .reveal.active {
 	transform: translateY(0);
@@ -189,20 +220,35 @@
 	transform: translateY(0);
 	opacity: 1;
 }
-.reveal3.active {
-	/* transform: translateY(0); */
-	/* opacity: 1; */
-	animation: fadeInUpImage 2s ease;
+
+.reveal3.active > .one {
+	animation: fadeInUpImg 1s ease;
+	animation-fill-mode: forwards;
+}
+.reveal3.active > .two {
+	animation: fadeInUpImg 1.3s ease;
+	animation-fill-mode: forwards;
+}
+.reveal3.active > .three {
+	animation: fadeInUpImg 1.6s ease;
+	animation-fill-mode: forwards;
+}
+.reveal3.active > .four {
+	animation: fadeInUpImg 1.9s ease;
+	animation-fill-mode: forwards;
+}
+.reveal3.active > .five {
+	animation: fadeInUpImg 2.2s ease;
 	animation-fill-mode: forwards;
 }
 
-@keyframes fadeInUpImage {
+@keyframes fadeInUpImg {
 	from {
-		transform: translateY(200px);
+		transform: translateY(20%);
 		opacity: 0;
 	}
 	to {
-		transform: translateY(0);
+		transform: translateY(0%);
 		opacity: 1;
 	}
 }

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from 'Component/Footer';
+import Footer from 'Component/Footer/Footer';
 
-import contentImage from 'Image/contentImg.png';
+// import contentImage from 'Image/contentImg.png';
 
 import contentBack from 'Image/ILER1/contentBack.svg';
 import contentChar from 'Image/ILER1/contentChar.svg';
@@ -34,47 +34,10 @@ const FirstPageContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	// height: 100vh;
 	overflow-y: scroll;
 `;
-const ContentBox1 = styled.div`
-	display: flex;
-	flex-direction: row;
-	width: 100%;
 
-	padding: 15% 15% 0% 15%;
-	box-sizing: border-box;
-`;
-const TextBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	color: black;
-	width: 70%;
-	height: 100%;
-	z-index: 6;
-
-	& h1 {
-		font-size: 60px;
-		font-weight: 900;
-		margin-bottom: 15px;
-	}
-
-	& p {
-		font-size: 20px;
-		margin-bottom: 10px;
-		font-weight: bolder;
-	}
-
-	& button {
-		background: #203864;
-		color: white;
-		width: 300px;
-		height: 40px;
-		margin-top: 20px;
-		border-radius: 20px;
-	}
-`;
 const MoveTopBtn = styled.button`
 	display: ${({ active }) => {
 		if (active) {
@@ -84,13 +47,14 @@ const MoveTopBtn = styled.button`
 	}};
 	border: none;
 	position: fixed;
-	right: 80px;
+	right: 90px;
 	bottom: 30px;
 	background-color: #203864;
 	border-radius: 50px;
 	width: 50px;
 	height: 50px;
 	cursor: pointer;
+	z-index: 100;
 
 	& img {
 		filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(62deg) brightness(103%)
@@ -111,7 +75,7 @@ function FirstPage() {
 
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
 	// const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
-	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(true);
+	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
 
 	const moveToTopFunc = () => {
 		setMoveToTopBtnStatus(false); // BtnStatus의 값을 false로 바꿈 => 버튼 숨김
@@ -129,6 +93,7 @@ function FirstPage() {
 	// 로그인 체크 안하고 바로 이동 => 나중에 로그인 체크하게 해야 함
 
 	const scrollCheckFunc = () => {
+		// console.log('window.pageYOffset = ', window.pageYOffset);
 		setScrollValueOfY(window.pageYOffset);
 		if (ScrollValueOfY > 150) {
 			setMoveToTopBtnStatus(true);
@@ -200,27 +165,27 @@ function FirstPage() {
 				<img src={upArrow} alt="upArrow"></img>
 			</MoveTopBtn>
 
-			<ContentBox1>
-				<TextBox>
+			<div className="ContentBox1">
+				<div className="TextBox">
 					<h1> 포트폴리오 관리 플랫폼 </h1>
 					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
 					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
 					<MovePortPolioBtn onClick={onClickMovePortPolioPage}>
 						포트폴리오 작성하러 가기 -------&gt;{' '}
 					</MovePortPolioBtn>
-				</TextBox>
+				</div>
 				<div className="imageBox">
 					<img src={contentBack} alt="contentImage" className="one" />
 					<img src={contentChar} alt="contentImage" className="two" />
 					<img src={contentFolder} alt="contentImage" className="three" />
 				</div>
-			</ContentBox1>
+			</div>
 
-			<div className="right_box_down_icon">
+			<div className="down_iconBox">
 				<img className="down_arrow_icon" alt="contentImage" src={down_arrow_icon1}></img>
 			</div>
 
-			<div className="contentBox2 ">
+			<div className="contentBox2">
 				<div className="contentBox2Text">
 					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
 					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
@@ -231,17 +196,17 @@ function FirstPage() {
 						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
 					</h3>
 				</div>
-				<div className="contentBox2Img">
+				<div className="contentBox2Img reveal3">
 					<img src={contentBack2} alt="contentImage" className="one" />
 					<img src={contentChar2} alt="contentImage" className="two" />
 					<img src={contentFolder2} alt="contentImage" className="three" />
 				</div>
 			</div>
 
-			<div className="contentBox2 ">
+			<div className="contentBox2">
 				<div className="contentBox2Text">
-					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
-					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h1 className="reveal"> 쉽게 관리하는 포트폴리오 </h1>
+					<h2 className="reveal1">포트폴리오를 쉽게 관리할 수 있습니다.</h2>
 					<h3 className="reveal2">
 						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
 					</h3>
@@ -249,7 +214,7 @@ function FirstPage() {
 						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
 					</h3>
 				</div>
-				<div className="contentBox2Img">
+				<div className="contentBox2Img reveal3">
 					<img src={contentBack3} alt="contentImage" className="one" />
 					<img src={contentWindow3} alt="contentImage" className="two" />
 					<img src={contentFolder3} alt="contentImage" className="three" />
@@ -260,8 +225,8 @@ function FirstPage() {
 
 			<div className="contentBox2 ">
 				<div className="contentBox2Text">
-					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
-					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h1 className="reveal"> 블록체인 기반 관리 시스템 </h1>
+					<h2 className="reveal1">블록체인을 통해 당신의 정보를 안전하게 관리합니다.</h2>
 					<h3 className="reveal2">
 						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
 					</h3>
@@ -269,13 +234,14 @@ function FirstPage() {
 						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
 					</h3>
 				</div>
-				<div className="contentBox2Img">
+				<div className="contentBox2Img reveal3">
 					<img src={contentBack4} alt="contentImage" className="one" />
 					<img src={contentDesk4} alt="contentImage" className="two" />
 					<img src={contentChar4} alt="contentImage" className="three" />
 					<img src={contentGear4} alt="contentImage" className="four" />
 				</div>
 			</div>
+			<div style={{ paddingBottom: '150px' }}>.</div>
 			<Footer />
 		</FirstPageContainer>
 	);

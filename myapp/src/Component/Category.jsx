@@ -11,7 +11,9 @@ const CategoryContainer = styled.div`
 	display: flex;
 	background: #1f3864;
 	padding: 5px 20px 5px 20px;
+	z-index: 4;
 `;
+
 const CategoryBox = styled.div`
 	width: 40%;
 	display: flex;

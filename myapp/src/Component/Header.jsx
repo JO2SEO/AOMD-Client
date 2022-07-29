@@ -16,29 +16,30 @@ import loginIcon from 'Image/loginIcon.svg';
 
 export const HeaderContainer = styled.div`
 	width: 100%;
-	height: 95px;
-	padding-botton: 100px;
 	display: flex;
 	flex-direction: row;
+	padding-top: 10px;
+	position: fixed;
+	z-index: 100;
 `;
 const MoveHomeBtn = styled.div`
-	width: 50%;
+	width: 35%;
 	background: white;
 	border: none;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	&: hover {
-		cursor: pointer;
-	}
+	cursor: pointer;
 `;
 const ToggleMenuBox = styled.div`
-	width: 40px;
-	padding: 20px 0px 0px 0px;
+	width: 30px;
+	padding: 0px 0px 0px 20px;
+	justify-content: center;
 	display: flex;
-	z-index: 2;
+	z-index: 5;
 	flex-direction: column;
 	box-sizing: content-box;
+	// border: red solid 3px;
 `;
 const OnToggleList = styled.div`
 	display: ${({ active }) => {
@@ -108,11 +109,11 @@ const HBGToggleBtn = styled.button`
 const LeftBox = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	padding-left: 14vw;
 
 	& p {
 		display: flex;
-		font-size: 15px;
+		font-size: 16px;
 		align-items: center;
 		justify-content: center;
 		width: 150px;
@@ -184,10 +185,10 @@ function Header() {
 		setMenuToggle(false);
 		navigate('/enterprisepage');
 	};
-	const onClickMovePractice = () => {
-		setMenuToggle(false);
-		navigate('/practicepage');
-	};
+	// const onClickMovePractice = () => {
+	// 	setMenuToggle(false);
+	// 	navigate('/practicepage');
+	// };
 
 	return (
 		<>
@@ -226,48 +227,48 @@ function Header() {
 							<div
 								style={{
 									width: '110px',
-									height: '40px',
+									// height: '40px',
 									background: 'white',
 									cursor: 'pointer',
 									display: 'flex',
 									borderRadius: '10px',
 									backgroundColor: 'white',
-									marginTop: '25px',
 								}}
 							>
 								{!loginState ? (
-									<>
-										<button
-											onClick={onClickMoveLogin}
+									<button
+										onClick={onClickMoveLogin}
+										style={{
+											display: 'flex',
+											background: 'white',
+											border: 'none',
+											cursor: 'pointer',
+											alignItems: 'center',
+											paddingLeft: '50px',
+										}}
+									>
+										<img
+											src={loginIcon}
+											alt="loginIcon"
 											style={{
 												display: 'flex',
-												background: 'white',
-												border: 'none',
-												cursor: 'pointer',
-												alignItems: 'center',
+												width: '25px',
+												height: '25px',
+											}}
+										/>
+										<p
+											style={{
+												display: 'flex',
+												width: '50px',
+												// alignItems: 'center',
+												// textAlign: 'center',
+												fontSize: '13px',
+												marginLeft: '5px',
 											}}
 										>
-											<img
-												src={loginIcon}
-												alt="loginIcon"
-												style={{
-													display: 'flex',
-													width: '30px',
-													height: '30px',
-												}}
-											/>
-											<p
-												style={{
-													display: 'flex',
-													alignItems: 'center',
-													fontSize: '15px',
-													marginLeft: '10px',
-												}}
-											>
-												로그인
-											</p>
-										</button>
-									</>
+											로그인
+										</p>
+									</button>
 								) : (
 									<>
 										<button
@@ -278,6 +279,7 @@ function Header() {
 												border: 'none',
 												cursor: 'pointer',
 												alignItems: 'center',
+												paddingLeft: '50px',
 											}}
 										>
 											<img
@@ -285,16 +287,18 @@ function Header() {
 												alt="loginIcon"
 												style={{
 													display: 'flex',
-													width: '30px',
-													height: '30px',
+													width: '25px',
+													height: '25px',
 												}}
 											/>
 											<p
 												style={{
 													display: 'flex',
-													alignItems: 'center',
-													fontSize: '15px',
-													marginLeft: '10px',
+													width: '50px',
+													// alignItems: 'center',
+													// textAlign: 'center',
+													fontSize: '13px',
+													marginLeft: '5px',
 												}}
 											>
 												로그아웃
@@ -370,7 +374,7 @@ function Header() {
 							}}
 						>
 							<MoveHomeBtn onClick={onClickMoveHome}>
-								<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
+								<img src={AOMD_logo} alt="logoImg" style={{ width: '100%' }} />
 							</MoveHomeBtn>
 						</LeftBox>
 
@@ -379,19 +383,18 @@ function Header() {
 								display: 'flex',
 								width: '40%',
 							}}
-						></div>
+						/>
 
 						<RightBox>
 							<div
 								style={{
 									width: '110px',
-									height: '40px',
+									// height: '40px',
 									background: 'white',
 									cursor: 'pointer',
 									display: 'flex',
 									borderRadius: '10px',
 									backgroundColor: 'white',
-									marginTop: '25px',
 								}}
 							>
 								{!loginState ? (
@@ -404,6 +407,7 @@ function Header() {
 												border: 'none',
 												cursor: 'pointer',
 												alignItems: 'center',
+												paddingLeft: '50px',
 											}}
 										>
 											<img
@@ -411,16 +415,18 @@ function Header() {
 												alt="loginIcon"
 												style={{
 													display: 'flex',
-													width: '30px',
-													height: '30px',
+													width: '25px',
+													height: '25px',
 												}}
 											/>
 											<p
 												style={{
 													display: 'flex',
-													alignItems: 'center',
-													fontSize: '15px',
-													marginLeft: '10px',
+													width: '50px',
+													// alignItems: 'center',
+													// textAlign: 'center',
+													fontSize: '13px',
+													marginLeft: '5px',
 												}}
 											>
 												로그인
@@ -437,6 +443,7 @@ function Header() {
 												border: 'none',
 												cursor: 'pointer',
 												alignItems: 'center',
+												paddingLeft: '50px',
 											}}
 										>
 											<img
@@ -444,16 +451,18 @@ function Header() {
 												alt="loginIcon"
 												style={{
 													display: 'flex',
-													width: '30px',
-													height: '30px',
+													width: '25px',
+													height: '25px',
 												}}
 											/>
 											<p
 												style={{
 													display: 'flex',
-													alignItems: 'center',
-													fontSize: '15px',
-													marginLeft: '10px',
+													width: '50px',
+													// alignItems: 'center',
+													// textAlign: 'center',
+													fontSize: '13px',
+													marginLeft: '5px',
 												}}
 											>
 												로그아웃
