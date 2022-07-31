@@ -27,6 +27,7 @@ import contentGear4 from 'Image/ILER4/contentGear.svg';
 
 import upArrow from 'Image/upArrow.svg';
 import down_arrow_icon1 from 'Image/down-arrow_icon1.svg';
+import ArrowMovePort from 'Image/ArrowMovePort.svg';
 
 import './FirstPage.css';
 
@@ -70,6 +71,11 @@ const MovePortPolioBtn = styled.button`
 		color: black;
 	}
 `;
+const MovePortPolioBtnArrowImg = styled.img`
+	width: 40px;
+	padding: 0px 0px 3px 5px;
+`;
+
 function FirstPage() {
 	const navigate = useNavigate();
 
@@ -171,7 +177,8 @@ function FirstPage() {
 					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
 					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
 					<MovePortPolioBtn onClick={onClickMovePortPolioPage}>
-						포트폴리오 작성하러 가기 -------&gt;{' '}
+						포트폴리오 작성하러 가기{' '}
+						<MovePortPolioBtnArrowImg src={ArrowMovePort}></MovePortPolioBtnArrowImg>
 					</MovePortPolioBtn>
 				</div>
 				<div className="imageBox">

@@ -40,20 +40,30 @@ export const DarkModeButton = styled.button`
 	border: none;
 	position: fixed;
 	right: 60px;
-	bottom: 50px;
-	background-color: transparent;
+	bottom: 60px;
+	background-color: white;
 	border-radius: 100px;
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
 	z-index: 100;
-	filler: blue;
-
+	// filler: blue;
+	box-shadow: 20px 20px 20px 8px #000;
 	& img {
 		// filter: invert(95%) sepia(100%) saturate(0%) hue-rotate(62deg) brightness(103%)
 		// 	contrast(105%);
 		width: 50px;
 	}
+`;
+export const DarkModeButtonIMG = styled.img`
+	position: fixed;
+
+	right: 30px;
+	bottom: 30px;
+	width: 50px;
+	cursor: pointer;
+	box-shadow: 0px 0px 20px 1px #000;
+	border-radius: 100px;
 `;
 
 function App() {
@@ -67,9 +77,15 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
-				<DarkModeButton onClick={toggleDarkMode}>
+				{/* <DarkModeButton onClick={toggleDarkMode}>
 					<img src={Darkmode} alt="darkmode"></img>
-				</DarkModeButton>
+				</DarkModeButton> */}
+
+				<DarkModeButtonIMG
+					src={Darkmode}
+					onClick={toggleDarkMode}
+					alt="darkmode"
+				></DarkModeButtonIMG>
 
 				<Router basename={process.env.PUBLIC_URL}>
 					{/* 참고로, PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}
