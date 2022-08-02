@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
 import { SuccessLogin } from 'Redux/LoginCheck';
-import GoogleLoginButton from 'Component/GoogleLoginButton';
-import KakaoLoginButton from 'Component/KakaoLoginButton';
+import GoogleLoginButton from 'Component/SocialLogin/GoogleLoginButton';
+import KakaoLoginButton from 'Component/SocialLogin/KakaoLoginButton';
 
 export const LoginPageDiv = styled.div`
 	height: 100%;

@@ -56,6 +56,21 @@
 	position: absolute;
 	flex-direction: row;
 	left: 0;
+	top: 50px;
+	z-index: 7;
+	padding: 10px;
+	margin-top: 50px;
+
+	width: 100vw;
+	height: 170px;
+	background-color: white;
+	border-bottom: black 3px solid;
+	justify-content: space-around;
+}
+/* .OnToggleList {
+	position: absolute;
+	flex-direction: row;
+	left: 0;
 	top: 110px;
 	z-index: 7;
 	padding: 10px;
@@ -64,7 +79,7 @@
 	background-color: white;
 	border-bottom: black 3px solid;
 	justify-content: space-around;
-}
+} */
 .OnToggleList div {
 	display: flex;
 	flex-direction: column;
