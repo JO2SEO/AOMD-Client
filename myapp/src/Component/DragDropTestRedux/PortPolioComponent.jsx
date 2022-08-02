@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import TaskCard from './TaskCard';
 import { ProvidedPlaceholder } from './RawDataComponent';
@@ -153,9 +154,11 @@ const Storing = styled.div`
 		}
 	}
 `;
+
 const PortPolioComponent = props => {
 	const { showState, portData } = props;
 	const Swal = require('sweetalert2');
+	const navigate = useNavigate();
 
 	const onClickStore = () => {
 		// Swal.fire({
@@ -174,6 +177,7 @@ const PortPolioComponent = props => {
 		}, 2000);
 		// console.log(1);
 	};
+
 	const onClickMakeURL = () => {
 		Swal.fire({
 			title: '생성된 URL',
@@ -188,6 +192,7 @@ const PortPolioComponent = props => {
 				console.log(result);
 			}
 		});
+		navigate('/portpolio');
 	};
 	const onClickLoad = () => {
 		setQuestion(portData.port1.introductions[0].question);

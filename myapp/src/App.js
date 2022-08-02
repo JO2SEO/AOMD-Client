@@ -15,13 +15,14 @@ import PortPolioPage from 'Page/PortPolioPage';
 
 import { darkTheme, lightTheme } from 'Component/theme';
 import OauthPage from 'Component/OauthPage/OauthPage';
-import Header from 'Component/Header';
+import Header from 'Component/Header/Header';
 
 import Darkmode from 'Image/darkmode.svg';
 
 import store from 'Redux/Store';
 
 import './App.css';
+import PortPolio from 'Page/URL_PortPolio/PortPolio';
 
 export const GlobalStyle = createGlobalStyle`
 	${reset}  	
@@ -77,10 +78,6 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
-				{/* <DarkModeButton onClick={toggleDarkMode}>
-					<img src={Darkmode} alt="darkmode"></img>
-				</DarkModeButton> */}
-
 				<DarkModeButtonIMG
 					src={Darkmode}
 					onClick={toggleDarkMode}
@@ -103,6 +100,7 @@ function App() {
 							<Route path="/oauth" element={<OauthPage />} />
 							<Route path="/practicepage" element={<PracticePage />} />
 							<Route path="/enterprisepage" element={<EnterprisePage />} />
+							<Route path="/portpolio" element={<PortPolio />} />
 						</Routes>
 					</ThemeProvider>
 				</Router>
