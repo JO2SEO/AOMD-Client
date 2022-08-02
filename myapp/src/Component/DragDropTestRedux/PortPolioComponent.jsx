@@ -159,7 +159,6 @@ const PortPolioComponent = props => {
 	const { showState, portData } = props;
 	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
-
 	const onClickStore = () => {
 		// Swal.fire({
 		// 	position: 'center',
@@ -177,7 +176,6 @@ const PortPolioComponent = props => {
 		}, 2000);
 		// console.log(1);
 	};
-
 	const onClickMakeURL = () => {
 		Swal.fire({
 			title: '생성된 URL',

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ChangeData } from 'Redux/ChangeData';
+import ChangeData from 'Redux/ChangeData';
 
 function PortPolioPage() {
 	return (

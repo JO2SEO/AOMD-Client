@@ -4,3 +4,47 @@
 	-ms-user-select: none;
 	user-select: none;
 }
+
+.PortPolioDiv {
+	width: 100%;
+	height: 100%;
+	padding: 5% 20% 5% 20%;
+	box-sizing: border-box;
+	background-color: gray;
+}
+.PortPolioMainBox {
+	width: 100%;
+	height: 100%;
+	background-color: azure;
+	border: black solid 3px;
+	border-radius: 20px;
+	padding: 10px;
+}
+.PortPolioUpBox {
+	height: 30%;
+	display: flex;
+	flex-direction: row;
+}
+.PortPolioUpBoxContent {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.PortPolioDownBox {
+	height: 70%;
+	padding: 30px;
+	background-color: gray;
+}
+.PortPolioOneCategory {
+	display: flex;
+	flex-direction: column;
+}
+.PortPolioOneCategoryContent {
+	display: flex;
+	flex-direction: row;
+}
+.PortPolioOneCategoryContentRecord {
+	margin: 10px;
+	padding: 10px;
+	border-bottom: gray 3px solid;
+}

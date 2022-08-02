@@ -8,47 +8,8 @@ import { DragdataChangePort, selectPortData } from './PortdataSlice';
 import PortPolioComponent from 'Component/DragDropTestRedux/PortPolioComponent';
 import RawDataComponent from 'Component/DragDropTestRedux/RawDataComponent';
 
-const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin: 0% 5% 0% 5%;
-	padding-top: 70px;
-	height: 90%;
-	box-sizing: content-box;
-`;
-const DragDropBtnBox = styled.div`
-	display: flex;
-	padding: 2% 0% 0% 21%;
-	justify-content: flex-start;
-	align-items: center;
-	height: 7%;
-	box-sizing: border-box;
-	border-top: black solid 2px;
-`;
-const DragDropContentBox = styled.div`
-	display: flex;
-	flex-direction: row;
-	width: 100%;
-	height: 80%;
-	box-sizing: border-box;
-`;
-const RawDataBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 20%;
-	height: 100%;
-	border-radius: 5px;
-	box-sizing: border-box;
-	margin-top: -25px;
-`;
-const PortPolioBox = styled.div`
-	width: 80%;
-	height: 75vh;
-	border: solid black 1px;
-	box-sizing: content-box;
-	margin: 20px;
-	border-radius: 10px;
-`;
+import './ChangeData.css';
+
 const PortBtn = styled.div`
 	background: ${({ active }) => {
 		if (active) {
@@ -56,37 +17,13 @@ const PortBtn = styled.div`
 		}
 		return '#9fa9bc';
 	}};
-	font-size: 12px;
-	margin: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	width: 130px;
-	height: 25px;
-	border-radius: 20px;
-	color: white;
-	font-weight: 700;
-	cursor: pointer;
 `;
-const PlusBtn = styled.div`
-	margin: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	background: #9fa9bc;
-	width: 25px;
-	height: 25px;
-	border-radius: 20px;
-	color: white;
-	font-weight: 700;
-	cursor: pointer;
-`;
-export function ChangeData() {
+
+function ChangeData() {
 	const dispatch = useDispatch();
 	const originData = useSelector(selectRawData);
 	const portData = useSelector(selectPortData);
+	const [portState, setPortState] = useState([true, false, false]);
 
 	const onDragEnd = result => {
 		if (!result.destination) return;
@@ -144,7 +81,6 @@ export function ChangeData() {
 			return;
 		}
 	};
-	const [portState, setPortState] = useState([true, false, false]);
 	const onClickShowPort1 = () => {
 		setPortState([true, false, false]);
 	};
@@ -159,34 +95,37 @@ export function ChangeData() {
 		// setPortState([false, false, true]);
 	};
 	const onClickAddPort = () => {
-		console.log('포트폴리오 추가');
 		alert('아직 개발중인 기능입니다');
 	};
 
 	return (
-		<Container>
-			<DragDropBtnBox>
-				<PortBtn active={portState[0]} onClick={onClickShowPort1}>
+		<div className="Container">
+			<div className="DragDropBtnBox">
+				<PortBtn className="PortBtn" active={portState[0]} onClick={onClickShowPort1}>
 					포트폴리오 1
 				</PortBtn>
-				<PortBtn active={portState[1]} onClick={onClickShowPort2}>
+				<PortBtn className="PortBtn" active={portState[1]} onClick={onClickShowPort2}>
 					포트폴리오 2
 				</PortBtn>
-				<PortBtn active={portState[2]} onClick={onClickShowPort3}>
+				<PortBtn className="PortBtn" active={portState[2]} onClick={onClickShowPort3}>
 					포트폴리오 3
 				</PortBtn>
-				<PlusBtn onClick={onClickAddPort}>+</PlusBtn>
-			</DragDropBtnBox>
+				<button className="PlusBtn" onClick={onClickAddPort}>
+					+
+				</button>
+			</div>
 			<DragDropContext onDragEnd={result => onDragEnd(result)}>
-				<DragDropContentBox>
-					<RawDataBox>
+				<div className="DragDropContentBox">
+					<div className="RawDataBox">
 						<RawDataComponent originData={originData} />
-					</RawDataBox>
-					<PortPolioBox>
+					</div>
+					<div className="PortPolioBox">
 						<PortPolioComponent showState={portState} portData={portData} />
-					</PortPolioBox>
-				</DragDropContentBox>
+					</div>
+				</div>
 			</DragDropContext>
-		</Container>
+		</div>
 	);
 }
+
+export default ChangeData;
