@@ -1,5 +1,13 @@
 import './EnterprisePage.css';
 
+import contentBack from 'Image/ILER5/contentBack.svg';
+import contentDesk from 'Image/ILER5/contentDesk.svg';
+import contentChar from 'Image/ILER2/contentChar.svg';
+// import contentElement1 from 'Image/ILER5/contentElement1.svg';
+import contentElement2 from 'Image/ILER5/contentElement2.svg';
+import contentElement3 from 'Image/ILER5/contentElement3.svg';
+import contentElement4 from 'Image/ILER5/contentElement4.svg';
+
 function EnterprisePage() {
 	return (
 		<div id="EnterprisePageTotalDiv">
@@ -9,26 +17,35 @@ function EnterprisePage() {
 					<h1>문의하기 </h1>
 					<p> AOMD를 어떻게 활용할지 함께 고민해드립니다.</p>
 				</div>
+				<div className="leftTextBoxImageBox">
+					<img src={contentBack} alt="contentImage" className="img1" />
+					<img src={contentDesk} alt="contentImage" className="img2" />
+					<img src={contentChar} alt="contentImage" className="img3" />
+					{/* <img src={contentElement1} alt="contentImage" className="img4" /> */}
+					<img src={contentElement2} alt="contentImage" className="img5" />
+					<img src={contentElement3} alt="contentImage" className="img6" />
+					<img src={contentElement4} alt="contentImage" className="img7" />
+				</div>
 			</div>
 			<div id="rightBox">
 				<form>
 					<div className="oneBox" style={{ display: 'flex' }}>
 						<div style={{ marginRight: '20px' }}>
-							<p id="oneBoxName_p">이름 *</p>
-							<input
-								id="oneBoxName_input"
-								type="text"
-								placeholder="이름"
-								autoComplete="off"
-							/>
-						</div>
-						<div>
 							<p id="oneBoxName_p">성 *</p>
 
 							<input
 								id="oneBoxName_input"
 								type="text"
 								placeholder="성"
+								autoComplete="off"
+							/>
+						</div>
+						<div>
+							<p id="oneBoxName_p">이름 *</p>
+							<input
+								id="oneBoxName_input"
+								type="text"
+								placeholder="이름"
 								autoComplete="off"
 							/>
 						</div>

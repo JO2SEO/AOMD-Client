@@ -63,8 +63,8 @@ export const DarkModeButtonIMG = styled.img`
 	bottom: 30px;
 	width: 50px;
 	cursor: pointer;
-	box-shadow: 0px 0px 20px 1px #000;
-	border-radius: 100px;
+	box-shadow: 0px 0px 5px 0.1px #000;
+	border-radius: 50px;
 `;
 
 function App() {
@@ -78,11 +78,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
-				<DarkModeButtonIMG
-					src={Darkmode}
-					onClick={toggleDarkMode}
-					alt="darkmode"
-				></DarkModeButtonIMG>
+				<DarkModeButtonIMG src={Darkmode} onClick={toggleDarkMode} alt="darkmode" />
 
 				<Router basename={process.env.PUBLIC_URL}>
 					{/* 참고로, PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}

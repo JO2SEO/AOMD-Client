@@ -13,7 +13,7 @@
 }
 #rightBox {
 	width: 50%;
-	padding: 70px;
+	padding: 10% 5% 0% 4%;
 }
 
 .leftTextBox {
@@ -21,7 +21,6 @@
 	flex-direction: column;
 	color: black;
 	width: 100%;
-	height: 100%;
 	z-index: 6;
 }
 .leftTextBox h1 {
@@ -29,12 +28,78 @@
 	font-weight: 900;
 	margin-bottom: 15px;
 }
-
 .leftTextBox p {
+	margin-top: 20px;
+
 	font-size: 20px;
-	margin-bottom: 10px;
-	font-weight: bolder;
-	color: gray;
+	font-weight: 900;
+	color: rgb(36, 36, 36);
+}
+.leftTextBoxImageBox {
+	width: 100%;
+	padding-top: 50px;
+	position: relative;
+}
+.leftTextBoxImageBox .img1 {
+	width: 300px;
+	position: absolute;
+	/* top: 200; */
+	z-index: 2;
+	animation: fadeInUp 0.5s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img2 {
+	width: 300px;
+	position: absolute;
+	/* top: 200; */
+	z-index: 3;
+	animation: fadeInUp 1s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img3 {
+	width: 300px;
+	position: absolute;
+	z-index: 4;
+	animation: fadeInUp 1.5s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img4 {
+	width: 300px;
+	position: absolute;
+	z-index: 5;
+	animation: fadeInUp 2s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img5 {
+	width: 300px;
+	position: absolute;
+	z-index: 5;
+	animation: fadeInUp 2s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img6 {
+	width: 300px;
+	position: absolute;
+	z-index: 5;
+	animation: fadeInUp 2.5s ease;
+	animation-fill-mode: forwards;
+}
+.leftTextBoxImageBox .img7 {
+	width: 300px;
+	position: absolute;
+	z-index: 5;
+	animation: fadeInUp 3s ease;
+	animation-fill-mode: forwards;
+}
+@keyframes fadeInUp {
+	from {
+		transform: translateY(10%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
 }
 
 .oneBox {
@@ -44,40 +109,55 @@
 }
 
 .oneBox p {
-	width: 400px;
+	/* width: 100%; */
 	margin-bottom: 13px;
+	font-size: 18px;
+	/* margin-bottom: 10px; */
+	font-weight: 900;
+	/* color: rgb(36, 36, 36); */
 }
 .oneBox input {
 	/* margin-bottom: 10px; */
 	width: 400px;
 	height: 30px;
-	border-radius: 5px;
+	border-radius: 20px;
 	border: 1px gray solid;
+	box-sizing: border-box;
 }
 
 #oneBoxName_p {
-	width: 150px;
+	/* width: 150px; */
+	font-size: 18px;
+	margin-bottom: 10px;
+	font-weight: 900;
+	/* color: rgb(36, 36, 36); */
 }
 #oneBoxName_input {
-	width: 170px;
+	width: 190px;
+	border-radius: 20px;
+	box-sizing: border-box;
 }
 #oneBoxselect {
 	width: 400px;
-	height: 30px;
+	height: 40px;
+	border-radius: 20px;
 }
 #oneBoxtextarea {
 	width: 400px;
 	height: 100px;
 	padding: 10px;
 	box-sizing: border-box;
+	border-radius: 10px;
 }
 #submitDescription {
 	margin-top: 10px;
 }
 #submitBtn {
 	margin-top: 30px;
-	width: 150px;
-	height: 40px;
+	margin-bottom: 40px;
+
+	width: 120px;
+	height: 30px;
 
 	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
@@ -86,7 +166,6 @@
 	border-radius: 30px;
 
 	border: 0;
-	padding: 15px;
 	color: white;
 	font-size: 14px;
 	-webkit-transition: all 0.3 ease;
