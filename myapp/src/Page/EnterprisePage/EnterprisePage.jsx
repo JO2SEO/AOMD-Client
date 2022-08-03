@@ -74,12 +74,12 @@ function EnterprisePage() {
 						<textarea
 							id="oneBoxtextarea"
 							type="text"
-							placeholder="Notion을 어떻게 사용하실 계획인지 적어주셔도 좋아요."
+							placeholder="AOMD를 어떻게 사용하실 계획인지 적어주셔도 좋아요."
 							autoComplete="off"
 						/>
 					</div>
 					<div id="submitDescription">
-						<p>Notion의 개인정보 보호정책에 동의하고 이 양식을 제출합니다.</p>
+						<p>AOMD의 개인정보 보호정책에 동의하고 이 양식을 제출합니다.</p>
 						<p>별표(*)가 있는 항목은 필수항목입니다.</p>
 					</div>
 

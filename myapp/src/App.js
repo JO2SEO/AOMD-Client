@@ -10,7 +10,7 @@ import PracticePage from 'Page/PracticePage/PracticePage';
 import EnterprisePage from 'Page/EnterprisePage/EnterprisePage';
 import RegisterPage from 'Page/RegisterPage';
 import ErrorPage from 'Page/ErrorPage';
-import IntroducePage from 'Page/IntroducePage';
+import IntroducePage from 'Page/IntroducePage/IntroducePage';
 import PortPolioPage from 'Page/PortPolioPage';
 
 import { darkTheme, lightTheme } from 'Component/theme';
@@ -88,7 +88,6 @@ function App() {
 
 						<Routes>
 							<Route path="/" element={<FirstPage />} />
-							<Route path="/introducepage" element={<IntroducePage />} />
 							<Route path="/loginpage" element={<LoginPage />} />
 							<Route path="/registerpage" element={<RegisterPage />} />
 							<Route path="/portpoliopage" element={<PortPolioPage />} />
@@ -97,6 +96,7 @@ function App() {
 							<Route path="/practicepage" element={<PracticePage />} />
 							<Route path="/enterprisepage" element={<EnterprisePage />} />
 							<Route path="/portpolio" element={<PortPolio />} />
+							<Route path="/introducepage" element={<IntroducePage />} />
 						</Routes>
 					</ThemeProvider>
 				</Router>

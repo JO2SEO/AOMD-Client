@@ -5,8 +5,8 @@ import { DragDropContext } from 'react-beautiful-dnd';
 
 import { selectRawData } from './RawdataSlice';
 import { DragdataChangePort, selectPortData } from './PortdataSlice';
-import PortPolioComponent from 'Component/DragDropTestRedux/PortPolioComponent';
-import RawDataComponent from 'Component/DragDropTestRedux/RawDataComponent';
+import PortPolioComponent from 'Component/DragDropComponent/PortPolioComponent';
+import RawDataComponent from 'Component/DragDropComponent/RawDataComponent';
 
 import './ChangeData.css';
 
