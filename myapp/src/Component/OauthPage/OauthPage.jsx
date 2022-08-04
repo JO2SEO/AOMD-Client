@@ -42,6 +42,7 @@ function OauthPage() {
 			console.log('response = ', response);
 			dispatch(SuccessLogin(true));
 			navigate('/');
+			console.log('성공적으로 로그인되었습니다');
 		})
 		.catch(error => {
 			console.log('error = ', error);
@@ -51,10 +52,6 @@ function OauthPage() {
 		<div>
 			-- Oauth Page --
 			<div> 로딩 중 ...</div>
-			{/* <div class="loading-container">
-				<div class="loading"></div>
-				<div id="loading-text">loading</div>
-			</div> */}
 		</div>
 	);
 }

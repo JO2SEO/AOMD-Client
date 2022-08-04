@@ -4,30 +4,10 @@ import styled from 'styled-components';
 
 import TaskCard from './TaskCard';
 
-export const DataBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
-	padding: 5px;
-	margin-top: 10px;
-	border-radius: 10px;
-	background-color: #eceff5;
-	box-sizing: border-box;
-`;
-export const ColumnTitle1 = styled.h1`
-	font-size: 25px;
-	font-weight: 900;
-	margin-bottom: 20px;
-`;
 export const ProvidedPlaceholder = styled.span`
 	display: 'none';
 `;
-export const DataBoxh1 = styled.p`
-	font-size: 18px;
-	font-weight: 900;
-	padding: 10px;
-`;
+
 const RawDataComponent = props => {
 	const { originData } = props;
 
@@ -36,7 +16,6 @@ const RawDataComponent = props => {
 		const info1 = []; // 학력
 		const info2 = []; // 수상내역
 
-		// console.log('column = ', column);
 		for (var index = 0; index < 3; index++) {
 			if (index === 0) {
 				var innerLen = column[index].length;
@@ -60,11 +39,9 @@ const RawDataComponent = props => {
 
 		return (
 			<Fragment>
-				<DataBox>
-					<DataBoxh1> 자격증 </DataBoxh1>
-					{/* {console.log('자격증')} */}
+				<div className="DataBox">
+					<p className="DataBoxh1"> 자격증 </p>
 					{info0.map(items => {
-						// console.log('items = ', items);
 						return (
 							<TaskCard
 								key={items[0].id}
@@ -74,14 +51,10 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</DataBox>
-				<DataBox>
-					<DataBoxh1> 학력 </DataBoxh1>
-					{/* {console.log('학력')} */}
-
+				</div>
+				<div className="DataBox">
+					<p className="DataBoxh1"> 학력 </p>
 					{info1.map(items => {
-						// console.log('items = ', items);
-
 						return (
 							<TaskCard
 								key={items[0].id}
@@ -91,14 +64,10 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</DataBox>
-				<DataBox>
-					<DataBoxh1> 수상내역 </DataBoxh1>
-					{/* {console.log('수상내역')} */}
-
+				</div>
+				<div className="DataBox">
+					<p className="DataBoxh1"> 수상내역 </p>
 					{info2.map(items => {
-						// console.log('items = ', items);
-
 						return (
 							<TaskCard
 								key={items[0].id}
@@ -108,7 +77,7 @@ const RawDataComponent = props => {
 							/>
 						);
 					})}
-				</DataBox>
+				</div>
 			</Fragment>
 		);
 	}
@@ -118,77 +87,12 @@ const RawDataComponent = props => {
 			<Droppable key={originData.origin.title} droppableId={originData.origin.title}>
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
-						<ColumnTitle1>{originData.origin.title}</ColumnTitle1>
+						<h1 className="ColumnTitle1">{originData.origin.title}</h1>
 						{returnTaskCard(originData.origin.items)}
 						<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
 					</div>
 				)}
 			</Droppable>
-
-			{/* {console.log(' originData => ', originData)}
-			{
-					return (
-						<Droppable
-							key={Object.entries(originData)[0][0]}
-							droppableId={Object.entries(originData)[0][0]}
-						>
-							{(provided, snapshot) => (
-								<div ref={provided.innerRef} {...provided.droppableProps}>
-									<ColumnTitle>{Object.entries(originData)[0][1].title}</ColumnTitle>
-									{returnTaskCard(Content)}
-									<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
-								</div>
-							)}
-						</Droppable>
-					);
-			} */}
-			{/* <Droppable key={originData.title} droppableId={originData.title}>
-				{(provided, snapshot) => (
-					<div ref={provided.innerRef} {...provided.droppableProps}>
-						<ColumnTitle>{originData.title}</ColumnTitle>
-						{returnTaskCard(originData.items)}
-						<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
-					</div>
-				)}
-			</Droppable> */}
-			{/* {console.log('B => ', Object.entries(originData[1][1]))} */}
-
-			{/* {Object.entries(Object.entries(originData)).map(([title, items]) => {
-				console.log('originData => ', originData);
-
-				return (
-					<Droppable
-						key={Object.entries(originData)[0][0]}
-						droppableId={Object.entries(originData)[0][0]}
-					>
-						{(provided, snapshot) => (
-							<div ref={provided.innerRef} {...provided.droppableProps}>
-								<ColumnTitle>{Object.entries(originData)[0][1].title}</ColumnTitle>
-								{returnTaskCard(Content)}
-								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
-							</div>
-						)}
-					</Droppable>
-				);
-			})} */}
-			{/* {Object.entries(originData).map(([columnId, column]) => {
-				console.log('originData => ', originData);
-				console.log('columnId => ', columnId);
-				// origin
-				console.log('column => ', column);
-				// {title: '나의 데이터', items: Array(7)}
-				return (
-					<Droppable key={columnId} droppableId={columnId}>
-						{(provided, snapshot) => (
-							<div ref={provided.innerRef} {...provided.droppableProps}>
-								<ColumnTitle>{column.title}</ColumnTitle>
-								{returnTaskCard(column)}
-								<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>
-							</div>
-						)}
-					</Droppable>
-				);
-			})} */}
 		</Fragment>
 	);
 };

@@ -1,54 +1,9 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components';
 
 import { DeletedataChangePort, selectPortData } from 'Redux/PortdataSlice';
-
-const OriginDataBox = styled.div`
-	box-sizing: border-box;
-	width: 100%;
-	padding-top: 10px;
-`;
-const OriginDataContent = styled.div`
-	display: flex;
-	border-radius: 10px;
-
-	& p {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: #d2d8e2;
-		margin: 0px 10px 0px 10px;
-		width: 100%;
-		height: 30px;
-		border: none;
-		border-radius: 10px;
-		font-size: 13px;
-		font-weight: 900;
-	}
-	& p:hover {
-		color: white;
-		background: #203864;
-	}
-`;
-const PortItem = styled.div`
-	width: 30%;
-	height: 70px;
-	padding: 5px;
-	margin: 10px;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-	background: #ebeff4;
-	border-radius: 20px;
-
-	& button {
-		cursor: pointer;
-		border: none;
-	}
-`;
+import './DragDropComponent.css';
 
 const TaskCard = props => {
 	const { item, index, datatype } = props;
@@ -78,21 +33,22 @@ const TaskCard = props => {
 	return (
 		<>
 			{datatype === 'origin' ? (
-				<OriginDataBox>
+				<div className="OriginDataBox">
 					<Draggable key={item.id} draggableId={item.id} index={index}>
 						{provided => (
-							<OriginDataContent
+							<div
+								className="OriginDataContent"
 								ref={provided.innerRef}
 								{...provided.draggableProps}
 								{...provided.dragHandleProps}
 							>
 								<p>{item.Content}</p>
-							</OriginDataContent>
+							</div>
 						)}
 					</Draggable>
-				</OriginDataBox>
+				</div>
 			) : (
-				<PortItem>
+				<div className="PortItem">
 					<div>
 						<p style={{ fontSize: '18px', fontWeight: '900', margin: '5px' }}>
 							{item.Content}
@@ -102,26 +58,7 @@ const TaskCard = props => {
 					<div>
 						<button onClick={e => onClickDelete(item.id)}>x</button>
 					</div>
-				</PortItem>
-				// {/* <Draggable key={item.id} draggableId={item.id} index={index}>
-				// 	{provided => (
-				// 		<PortItem
-				// 			ref={provided.innerRef}
-				// 			{...provided.draggableProps}
-				// 			{...provided.dragHandleProps}
-				// 		>
-				// 			<h1>{item.Type}</h1>
-				// 		<p>{item.Content}</p>
-				// 			<div>
-				// 				<p>{item.Content}</p>
-				// 				<p>{item.Date}</p>
-				// 			</div>
-				// 			<div>
-				// 				<button onClick={e => onClickDelete(item.id)}>삭제</button>
-				// 			</div>
-				// 		</PortItem>
-				// 	)}
-				// </Draggable> */}
+				</div>
 			)}
 		</>
 	);
