@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import Footer from 'Component/Footer/Footer';
 
-// import contentImage from 'Image/contentImg.png';
-
 import contentBack from 'Image/ILER1/contentBack.svg';
 import contentChar from 'Image/ILER1/contentChar.svg';
 import contentFolder from 'Image/ILER1/contentFolder.svg';
