@@ -1,3 +1,9 @@
+.FirstPageContainer {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow-y: scroll;
+}
 .ContentBox1 {
 	display: flex;
 	flex-direction: row;
@@ -20,7 +26,6 @@
 	margin-bottom: 30px;
 	letter-spacing: 4px;
 }
-
 .TextBox p {
 	font-size: 1.3vw;
 	margin-bottom: 10px;
@@ -33,6 +38,19 @@
 	height: 40px;
 	margin-top: 20px;
 	border-radius: 20px;
+}
+
+.MovePortPolioBtn {
+	cursor: pointer;
+	font-weight: bold;
+}
+.MovePortPolioBtn:hover {
+	background: #dfdfdf;
+	color: black;
+}
+.MovePortPolioBtn img {
+	width: 40px;
+	padding: 0px 0px 3px 5px;
 }
 
 .imageBox {

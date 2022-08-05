@@ -29,15 +29,7 @@ import ArrowMovePort from 'Image/ArrowMovePort.svg';
 
 import './FirstPage.css';
 
-const FirstPageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	// height: 100vh;
-	overflow-y: scroll;
-`;
-
-const MoveTopBtn = styled.button`
+export const MoveTopBtn = styled.button`
 	display: ${({ active }) => {
 		if (active) {
 			return 'block';
@@ -61,18 +53,6 @@ const MoveTopBtn = styled.button`
 		width: 19px;
 	}
 `;
-const MovePortPolioBtn = styled.button`
-	cursor: pointer;
-	font-weight: bold;
-	&: hover {
-		background: #dfdfdf;
-		color: black;
-	}
-`;
-const MovePortPolioBtnArrowImg = styled.img`
-	width: 40px;
-	padding: 0px 0px 3px 5px;
-`;
 
 function FirstPage() {
 	const navigate = useNavigate();
@@ -90,12 +70,10 @@ function FirstPage() {
 			behavior: 'smooth',
 		});
 	};
-
 	const onClickMovePortPolioPage = () => {
 		navigate('/portpoliopage');
 	};
 	// 로그인 체크 안하고 바로 이동 => 나중에 로그인 체크하게 해야 함
-
 	const scrollCheckFunc = () => {
 		// console.log('window.pageYOffset = ', window.pageYOffset);
 		setScrollValueOfY(window.pageYOffset);
@@ -164,7 +142,7 @@ function FirstPage() {
 	});
 
 	return (
-		<FirstPageContainer>
+		<div className="FirstPageContainer">
 			<MoveTopBtn active={MoveToTopBtnStatus} onClick={moveToTopFunc}>
 				<img src={upArrow} alt="upArrow"></img>
 			</MoveTopBtn>
@@ -172,12 +150,14 @@ function FirstPage() {
 			<div className="ContentBox1">
 				<div className="TextBox">
 					<h1> 포트폴리오 관리 플랫폼 </h1>
-					<p> 자신만의 개성있고 차별성있는 포트폴리오를 작성할 수 있습니다. </p>
-					<p> 작성한 포트폴리오를 편하게 관리할 수 있습니다. </p>
-					<MovePortPolioBtn onClick={onClickMovePortPolioPage}>
-						포트폴리오 작성하러 가기{' '}
-						<MovePortPolioBtnArrowImg src={ArrowMovePort}></MovePortPolioBtnArrowImg>
-					</MovePortPolioBtn>
+					<p> 블록체인 기반의 데이터 관리 시스템 </p>
+					<p>
+						- 데이터 분산 저장과 합의 알고리즘을 통해 데이터의 위변조를 원천 차단합니다.
+					</p>
+					{/* <p> 작성한 포트폴리오를 쉽고 편하게 관리할 수 있습니다. </p> */}
+					<button className="MovePortPolioBtn" onClick={onClickMovePortPolioPage}>
+						포트폴리오 작성하러 가기 <img src={ArrowMovePort} alt="ArrowMovePort"></img>
+					</button>
 				</div>
 				<div className="imageBox">
 					<img src={contentBack} alt="contentImage" className="one" />
@@ -192,15 +172,16 @@ function FirstPage() {
 
 			<div className="contentBox2">
 				<div className="contentBox2Text">
-					<h1 className="reveal"> 포트폴리오를 한눈에 </h1>
-					<h2 className="reveal1">다양한 사람들의 포트폴리오를 한눈에 볼 수 있습니다.</h2>
+					<h1 className="reveal"> 믿을 수 있는 데이터로 </h1>
+					<h2 className="reveal1">
+						포트폴리오에 들어갈 데이터는 인증된 기업으로부터 발급된 신뢰성있는
+						데이터입니다.
+					</h2>
 					<h3 className="reveal2">
-						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
-					</h3>
-					<h3 className="reveal2">
-						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
+						더이상 입사 지원자 개인 경력에 대한 추가적인 검증이 필요하지 않습니다.
 					</h3>
 				</div>
+
 				<div className="contentBox2Img reveal3">
 					<img src={contentBack2} alt="contentImage" className="one" />
 					<img src={contentChar2} alt="contentImage" className="two" />
@@ -210,15 +191,16 @@ function FirstPage() {
 
 			<div className="contentBox2">
 				<div className="contentBox2Text">
-					<h1 className="reveal"> 쉽게 관리하는 포트폴리오 </h1>
-					<h2 className="reveal1">포트폴리오를 쉽게 관리할 수 있습니다.</h2>
+					<h1 className="reveal"> 최소한의 정보만을 이용해서 </h1>
+					<h2 className="reveal1">포트폴리오에 들어갈 데이터를 직접 선택합니다</h2>
 					<h3 className="reveal2">
-						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+						기업이 요구하는 최소한의 정보만을 노출할 수 있습니다
 					</h3>
-					<h3 className="reveal2">
-						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
-					</h3>
+					{/* <h3 className="reveal2">
+						개인정보의
+					</h3> */}
 				</div>
+
 				<div className="contentBox2Img reveal3">
 					<img src={contentBack3} alt="contentImage" className="one" />
 					<img src={contentWindow3} alt="contentImage" className="two" />
@@ -230,14 +212,15 @@ function FirstPage() {
 
 			<div className="contentBox2 ">
 				<div className="contentBox2Text">
-					<h1 className="reveal"> 블록체인 기반 관리 시스템 </h1>
-					<h2 className="reveal1">블록체인을 통해 당신의 정보를 안전하게 관리합니다.</h2>
+					<h1 className="reveal"> 간편하게 입사지원 </h1>
+					<h2 className="reveal1">URL 링크 하나만을 이용하여 간편하게 입사지원합니다.</h2>
 					<h3 className="reveal2">
-						여러가지 포트폴리오를 작성해 한번에 관리할 수 있습니다.
+						정해진 시간후 자동 소멸되는 URL 링크를 통해 기업의 개인 정보 남용을
+						방지합니다.
 					</h3>
-					<h3 className="reveal2">
+					{/* <h3 className="reveal2">
 						다양한 활동과 이야기들로 개성있는 포트폴리오를 만들어보세요.
-					</h3>
+					</h3> */}
 				</div>
 				<div className="contentBox2Img reveal3">
 					<img src={contentBack4} alt="contentImage" className="one" />
@@ -246,9 +229,10 @@ function FirstPage() {
 					<img src={contentGear4} alt="contentImage" className="four" />
 				</div>
 			</div>
+
 			<div style={{ paddingBottom: '150px' }}>.</div>
 			<Footer />
-		</FirstPageContainer>
+		</div>
 	);
 }
 
