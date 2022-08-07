@@ -83,13 +83,11 @@ function PortPolioComponent(props) {
 		navigate('/portpolio');
 	};
 	const onClickLoad = () => {
-		setQuestion(portData.port1.introductions[0].question);
-		setContent(portData.port1.introductions[0].content);
-		setTextLength1(portData.port1.introductions[0].content.length);
-
-		setQuestion2(portData.port1.introductions[1].question);
-		setContent2(portData.port1.introductions[1].content);
-		setTextLength2(portData.port1.introductions[1].content.length);
+		setQuestionData([
+			portData.port1.introductions[0].question,
+			portData.port1.introductions[0].content,
+			portData.port1.introductions[0].content.length,
+		]);
 	};
 	function returnTaskCard(column) {
 		const info0 = []; // 자격증
@@ -173,31 +171,46 @@ function PortPolioComponent(props) {
 
 	const [storingState, setStoringState] = useState(false);
 
-	const [question, setQuestion] = useState('');
-	const [content, setContent] = useState('');
-	const [textLength1, setTextLength1] = useState(0);
+	// const [question, setQuestion] = useState('');
+	// const [content, setContent] = useState('');
+	// const [textLength, setTextLength1] = useState(0);
 
-	const [question2, setQuestion2] = useState('');
-	const [content2, setContent2] = useState('');
-	const [textLength2, setTextLength2] = useState(0);
+	const [questionData, setQuestionData] = useState(['', '', 0]);
 
 	const questionChangeFunc = e => {
-		setQuestion(e.target.value);
+		setQuestionData([e.target.value, questionData[1], questionData[2]]);
 	};
 	const contentChangeFunc = e => {
-		setContent(e.target.value);
-		setTextLength1(e.target.value.length);
+		setQuestionData([questionData[0], e.target.value, e.target.value.length]);
 	};
-	const questionChangeFunc2 = e => {
-		setQuestion2(e.target.value);
-	};
-	const contentChangeFunc2 = e => {
-		setContent2(e.target.value);
-		setTextLength2(e.target.value.length);
-	};
-	const onClickAddContent = e => {
-		alert('아직 개발중인 기능입니다');
-	};
+
+	// const onClickAddContent = e => {
+	// 	var parentBox = document.getElementById('ContentBoxCanAdd');
+
+	// 	var newDiv = document.createElement('div');
+	// 	newDiv.setAttribute('class', 'IntroduceContentBox');
+
+	// 	newDiv.innerHTML +=
+	// 		'<p>' +
+	// 		'문항 ' +
+	// 		'</p>' +
+	// 		"<input type='text' placeholder='자기소개서 질문'>" +
+	// 		'</input>';
+
+	// 	var newTextarea = document.createElement('textarea');
+	// 	newTextarea.setAttribute('class', 'IntroduceText');
+	// 	newTextarea.setAttribute('type', 'text');
+	// 	newTextarea.setAttribute('placeholder', '...');
+
+	// 	var newP = document.createElement('p');
+	// 	newP.setAttribute('class', 'lengthOfContent_P');
+
+	// 	newP.innerHTML += questionData[0][2] + '자';
+
+	// 	parentBox.appendChild(newDiv);
+	// 	parentBox.appendChild(newTextarea);
+	// 	parentBox.appendChild(newP);
+	// };
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -218,46 +231,29 @@ function PortPolioComponent(props) {
 										<h1>자기소개서</h1>
 									</div>
 
-									<div className="IntroduceContentBox">
-										<p>문항 1</p>
-										<input
-											value={question}
+									<div id="ContentBoxCanAdd">
+										<div className="IntroduceContentBox">
+											<p>문항</p>
+											<input
+												value={questionData[0]}
+												type="text"
+												onChange={questionChangeFunc}
+												placeholder="자기소개서 질문"
+											></input>
+										</div>
+
+										<textarea
+											className="IntroduceText"
+											value={questionData[1]}
 											type="text"
-											onChange={questionChangeFunc}
-											placeholder="자기소개서 질문"
-										></input>
+											onChange={contentChangeFunc}
+											placeholder="..."
+										></textarea>
+										<p className="lengthOfContent_P">{questionData[2]} 자</p>
 									</div>
-
-									<textarea
-										className="IntroduceText"
-										value={content}
-										type="text"
-										onChange={contentChangeFunc}
-										placeholder="..."
-									></textarea>
-									<p className="lengthOfContent_P">{textLength1} 자</p>
-
-									<div className="IntroduceContentBox">
-										<p>문항 2</p>
-										<input
-											value={question2}
-											type="text"
-											onChange={questionChangeFunc2}
-											placeholder="자기소개서 질문"
-										></input>
-									</div>
-									<textarea
-										className="IntroduceText"
-										value={content2}
-										type="text"
-										onChange={contentChangeFunc2}
-										placeholder="..."
-									></textarea>
-									<p className="lengthOfContent_P">{textLength2} 자</p>
-
-									<button className="AddQuestionBtn" onClick={onClickAddContent}>
+									{/* <button className="AddQuestionBtn" onClick={onClickAddContent}>
 										<span>문항 추가하기</span>
-									</button>
+									</button> */}
 								</div>
 
 								<div className="SubmitBox">

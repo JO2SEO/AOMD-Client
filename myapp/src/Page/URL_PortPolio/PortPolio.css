@@ -33,11 +33,15 @@
 .PortPolioDownBox {
 	height: 70%;
 	padding: 30px;
-	background-color: gray;
+	/* background-color:; */
 }
 .PortPolioOneCategory {
 	display: flex;
 	flex-direction: column;
+}
+.PortPolioOneCategory h1 {
+	border-bottom: black 3px solid;
+	padding: 10px 0px 10px 0px;
 }
 .PortPolioOneCategoryContent {
 	display: flex;
@@ -46,5 +50,5 @@
 .PortPolioOneCategoryContentRecord {
 	margin: 10px;
 	padding: 10px;
-	border-bottom: gray 3px solid;
+	/* border-bottom: gray 3px solid; */
 }

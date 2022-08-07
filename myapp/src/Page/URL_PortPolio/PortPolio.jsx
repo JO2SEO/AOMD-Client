@@ -67,7 +67,7 @@ function PortPolio() {
 							{info0.map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items[0].Content}
+										{items[0].Content} : {items[0].Date}
 									</p>
 								);
 							})}
@@ -79,7 +79,7 @@ function PortPolio() {
 							{info1.map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items[0].Content}
+										{items[0].Content} : {items[0].Date}
 									</p>
 								);
 							})}
@@ -91,7 +91,7 @@ function PortPolio() {
 							{info2.map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items[0].Content}
+										{items[0].Content} : {items[0].Date}
 									</p>
 								);
 							})}
