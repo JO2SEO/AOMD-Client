@@ -175,42 +175,66 @@ function PortPolioComponent(props) {
 	// const [content, setContent] = useState('');
 	// const [textLength, setTextLength1] = useState(0);
 
-	const [questionData, setQuestionData] = useState(['', '', 0]);
+	const [questionData, setQuestionData] = useState([
+		{
+			question: '질문 1',
+			content: '내용 1',
+			length: 3,
+		},
+	]);
+	const [questionCount, setQuestionCount] = useState(1);
 
 	const questionChangeFunc = e => {
-		setQuestionData([e.target.value, questionData[1], questionData[2]]);
+		var arrVal = questionData;
+		arrVal[e.target.id].question = e.target.value;
+
+		setQuestionData(arrVal);
 	};
 	const contentChangeFunc = e => {
-		setQuestionData([questionData[0], e.target.value, e.target.value.length]);
+		console.log(e);
+		var arrVal = questionData;
+		arrVal[e.target.id].content = e.target.value;
+		arrVal[e.target.id].length = e.target.value.length;
+		setQuestionData(arrVal);
+
+		var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
+		lengthVar.innerText = e.target.value.length + ' 자';
 	};
 
-	// const onClickAddContent = e => {
-	// 	var parentBox = document.getElementById('ContentBoxCanAdd');
+	const onClickAddContent = e => {
+		setQuestionCount(questionCount + 1);
 
-	// 	var newDiv = document.createElement('div');
-	// 	newDiv.setAttribute('class', 'IntroduceContentBox');
+		var parentBox = document.getElementById('ContentBoxCanAdd');
 
-	// 	newDiv.innerHTML +=
-	// 		'<p>' +
-	// 		'문항 ' +
-	// 		'</p>' +
-	// 		"<input type='text' placeholder='자기소개서 질문'>" +
-	// 		'</input>';
+		var newDiv = document.createElement('div');
+		newDiv.setAttribute('class', `IntroduceContentBox`);
 
-	// 	var newTextarea = document.createElement('textarea');
-	// 	newTextarea.setAttribute('class', 'IntroduceText');
-	// 	newTextarea.setAttribute('type', 'text');
-	// 	newTextarea.setAttribute('placeholder', '...');
+		newDiv.innerHTML += '<p>' + '문항 ' + '</p>';
 
-	// 	var newP = document.createElement('p');
-	// 	newP.setAttribute('class', 'lengthOfContent_P');
+		var newInput = document.createElement('input');
+		newInput.setAttribute('id', questionCount);
+		newInput.setAttribute('type', 'text');
+		newInput.setAttribute('placeholder', '자기소개서 질문');
 
-	// 	newP.innerHTML += questionData[0][2] + '자';
+		newDiv.appendChild(newInput);
 
-	// 	parentBox.appendChild(newDiv);
-	// 	parentBox.appendChild(newTextarea);
-	// 	parentBox.appendChild(newP);
-	// };
+		var newTextarea = document.createElement('textarea');
+		newTextarea.setAttribute('class', `IntroduceText`);
+		newTextarea.setAttribute('id', questionCount);
+		newTextarea.setAttribute('type', 'text');
+		newTextarea.setAttribute('placeholder', '...');
+
+		var newP = document.createElement('p');
+		newP.setAttribute('class', 'lengthOfContent_P');
+		newP.setAttribute('id', `lengthOfContent_P${questionCount}`);
+
+		newP.innerHTML += '0 자';
+
+		parentBox.appendChild(newDiv);
+		parentBox.appendChild(newTextarea);
+		parentBox.appendChild(newP);
+	};
+
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -235,7 +259,8 @@ function PortPolioComponent(props) {
 										<div className="IntroduceContentBox">
 											<p>문항</p>
 											<input
-												value={questionData[0]}
+												id="0"
+												value={questionData.question}
 												type="text"
 												onChange={questionChangeFunc}
 												placeholder="자기소개서 질문"
@@ -243,17 +268,20 @@ function PortPolioComponent(props) {
 										</div>
 
 										<textarea
+											id="0"
 											className="IntroduceText"
-											value={questionData[1]}
+											value={questionData.content}
 											type="text"
 											onChange={contentChangeFunc}
 											placeholder="..."
 										></textarea>
-										<p className="lengthOfContent_P">{questionData[2]} 자</p>
+										<p id="lengthOfContent_P0" className="lengthOfContent_P">
+											0 자
+										</p>
 									</div>
-									{/* <button className="AddQuestionBtn" onClick={onClickAddContent}>
+									<button className="AddQuestionBtn" onClick={onClickAddContent}>
 										<span>문항 추가하기</span>
-									</button> */}
+									</button>
 								</div>
 
 								<div className="SubmitBox">
