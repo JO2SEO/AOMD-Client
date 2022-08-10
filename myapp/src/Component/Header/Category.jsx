@@ -21,15 +21,12 @@ const Category = props => {
 			<div>
 				<h1>소개</h1>
 				<ul>
-					<li onClick={onClickMoveIntroducePage}>블록체인 </li>
-					<li onClick={onClickMoveIntroducePage}>체인코드 </li>
+					<li onClick={onClickMoveIntroducePage}>플랫폼 소개</li>
 				</ul>
 			</div>
 			<div>
 				<h1>포트폴리오</h1>
 				<ul>
-					<li onClick={onClickMovePortPolioPage}>포트폴리오 목록</li>
-					<li onClick={onClickMovePortPolioPage}>포트폴리오 작성</li>
 					<li onClick={onClickMovePortPolioPage}>포트폴리오 관리</li>
 				</ul>
 			</div>
@@ -37,7 +34,6 @@ const Category = props => {
 				<h1>커뮤니티</h1>
 				<ul>
 					<li>커뮤니티</li>
-					<li>만들 수 있겠나</li>
 				</ul>
 			</div>
 			<div>
