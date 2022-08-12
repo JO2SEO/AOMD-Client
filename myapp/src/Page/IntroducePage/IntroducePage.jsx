@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import AOMD_logo from 'Image/AOMD_logo.svg';
 
 import TeamInfo from 'Image/TeamInfo.png';
-import Interview1 from 'Image/Interview1.png';
-import Interview2 from 'Image/Interview2.png';
-import Interview3 from 'Image/Interview3.png';
+// import Interview1 from 'Image/Interview1.png';
+// import Interview2 from 'Image/Interview2.png';
+// import Interview3 from 'Image/Interview3.png';
+import Interview4 from 'Image/Interview4.png';
+
 import scenario1 from 'Image/scenario1.png';
 import scenario2 from 'Image/scenario2.png';
 import BlockChain1 from 'Image/BlockChain1.svg';
@@ -66,7 +68,7 @@ function IntroducePage() {
 				<h1> AOMD 소개 </h1>
 				<div className="IntroducePageDivContent1_Box">
 					<div className="IntroducePageDivContent1_Box1">
-						<img src={AOMD_logo} />
+						<img src={AOMD_logo} alt="AOMD_logo" />
 						<p> Archive of my data</p>
 					</div>
 					<div className="IntroducePageDivContent1_Box2">
@@ -183,9 +185,11 @@ function IntroducePage() {
 			</div>
 			<div className="IntroducePageDivContent3">
 				<h1> 사용자 시나리오 </h1>
-				<img className="Interview1" src={Interview1} alt="Interview1" />
-				<img className="Interview2" src={Interview2} alt="Interview2" />
-				<img className="Interview3" src={Interview3} alt="Interview3" />
+				{/* <img className="Interview1" src={Interview1} alt="Interview1" /> */}
+				{/* <img className="Interview2" src={Interview2} alt="Interview2" /> */}
+				{/* <img className="Interview3" src={Interview3} alt="Interview3" /> */}
+				<img className="Interview4" src={Interview4} alt="Interview4" />
+
 				<img className="IntroducePage_scenario1" src={scenario1} alt="scenario1" />
 				<img className="IntroducePage_scenario2" src={scenario2} alt="scenario2" />
 				<img className="BlockChain1" src={BlockChain1} alt="BlockChain1" />
