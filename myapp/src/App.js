@@ -11,6 +11,8 @@ import EnterprisePage from 'Page/EnterprisePage/EnterprisePage';
 import RegisterPage from 'Page/LoginRegisterPage/RegisterPage';
 import ErrorPage from 'Page/ErrorPage';
 import IntroducePage from 'Page/IntroducePage/IntroducePage';
+import CommunityPage from 'Page/CommunityPage/CommunityPage';
+
 import PortPolioPage from 'Page/PortPolioPage';
 import PortPolio from 'Page/URL_PortPolio/PortPolio';
 
@@ -67,6 +69,7 @@ function App() {
 							<Route path="/enterprisepage" element={<EnterprisePage />} />
 							<Route path="/portpolio" element={<PortPolio />} />
 							<Route path="/introducepage" element={<IntroducePage />} />
+							<Route path="/communitypage" element={<CommunityPage />} />
 						</Routes>
 					</ThemeProvider>
 				</Router>

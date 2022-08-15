@@ -8,6 +8,10 @@ const Category = props => {
 		// setMenuToggle(false);
 		navigate('/introducepage');
 	};
+	const onClickMoveCommunityPage = () => {
+		// setMenuToggle(false);
+		navigate('/communitypage');
+	};
 	const onClickMovePortPolioPage = () => {
 		// setMenuToggle(false);
 		if (loginState) {
@@ -33,7 +37,7 @@ const Category = props => {
 			<div>
 				<h1>커뮤니티</h1>
 				<ul>
-					<li>커뮤니티</li>
+					<li onClick={onClickMoveCommunityPage}>커뮤니티</li>
 				</ul>
 			</div>
 			<div>
