@@ -47,7 +47,7 @@ const GoogleLoginButton = () => {
 	};
 
 	return (
-		<div style={{ width: '180px' }}>
+		<div style={{ width: '150px' }}>
 			<GoogleLogin
 				clientId={clientID}
 				buttonText="구글 로그인" // 버튼에 뜨는 텍스트

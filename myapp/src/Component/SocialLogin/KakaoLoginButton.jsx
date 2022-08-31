@@ -106,7 +106,7 @@ const KakaoLoginButton = () => {
 				src={kakaoBtn}
 				alt="kakao login"
 				onClick={kakaoLoginClickHandler}
-				style={{ width: '140px', height: '40px' }}
+				style={{ width: '130px', height: '40px' }}
 			/>
 		</button>
 	);

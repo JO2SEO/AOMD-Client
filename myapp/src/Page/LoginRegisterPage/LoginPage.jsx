@@ -43,7 +43,7 @@ export function LoginPage() {
 						onChange={e => setlogintext({ ...logintext, pwd: e.target.value })}
 					/>
 					<button className="FormButton" onClick={onClickLogin}>
-						로그인1
+						로그인
 					</button>
 					<div style={{ color: '#757575', fontSize: '12px' }}>
 						<p style={{ padding: '15px' }}>아이디가 없으신가요 ?</p>

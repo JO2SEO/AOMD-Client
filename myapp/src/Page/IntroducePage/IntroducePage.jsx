@@ -10,6 +10,10 @@ import Interview4 from 'Image/Interview4.png';
 
 import scenario1 from 'Image/scenario1.png';
 import scenario2 from 'Image/scenario2.png';
+import scenario3 from 'Image/scenario3.png';
+
+import SchoolAndCompany from 'Image/SchoolAndCompany.png';
+
 import BlockChain1 from 'Image/BlockChain1.svg';
 import IntroducePageDivContent4Img from 'Image/IntroducePageDivContent4Img.png';
 
@@ -72,10 +76,22 @@ function IntroducePage() {
 						<p> Archive of my data</p>
 					</div>
 					<div className="IntroducePageDivContent1_Box2">
-						<p> AOMD는 블록체인 기반의 포트폴리오 거래 플랫폼입니다. </p>
-						<p> AOMD는 블록체인 기반의 포트폴리오 거래 플랫폼입니다. </p>
-						<p> AOMD는 블록체인 기반의 포트폴리오 거래 플랫폼입니다. </p>
-						<p> AOMD는 블록체인 기반의 포트폴리오 거래 플랫폼입니다. </p>
+						<p>
+							저희 AOMD는 블록체인 시스템을 기반으로 한 개인 포트폴리오 관리
+							플랫폼입니다.
+						</p>
+						<p>
+							인증된 기관으로부터 발급된 신뢰성있는 데이터들로 포트폴리오를 구성하기에
+							믿을 수 있습니다.
+						</p>
+						<p>
+							학교나 기관, 대형 기업들 뿐만 아니라 일반 사용자를 대상으로
+							서비스합니다.
+						</p>
+						<p>
+							드래그 앤 드랍과 같은 기능과 감각적인 UI를 통해 편리하게 포트폴리오를
+							생성 및 관리합니다.
+						</p>
 					</div>
 				</div>
 			</div>
@@ -183,15 +199,41 @@ function IntroducePage() {
 					</div>
 				</div>
 			</div>
-			<div className="IntroducePageDivContent3">
-				<h1> 사용자 시나리오 </h1>
-				{/* <img className="Interview1" src={Interview1} alt="Interview1" /> */}
-				{/* <img className="Interview2" src={Interview2} alt="Interview2" /> */}
-				{/* <img className="Interview3" src={Interview3} alt="Interview3" /> */}
-				<img className="Interview4" src={Interview4} alt="Interview4" />
 
+			<p className="DivideBoxDot">...</p>
+
+			<div className="IntroducePageDivContent3">
+				<h1> 참여 기관 및 기업 </h1>
+				<img className="SchoolAndCompany" src={SchoolAndCompany} alt="SchoolAndCompany" />
+				<div className="IntroducePageDivContent3_SchoolAndCompany">
+					<div className="SchoolAndCompany_p1">
+						<h1>정부</h1>
+						<div>
+							<p>과학기술정보통신부</p>
+						</div>
+					</div>
+					<div className="SchoolAndCompany_p2">
+						<h1>학교</h1>
+						<div>
+							<p>부산대학교</p>
+						</div>
+					</div>
+					<div className="SchoolAndCompany_p3">
+						<h1>기업</h1>
+						<div>
+							<p>삼성전자</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<p className="DivideBoxDot">...</p>
+
+			<div className="IntroducePageDivContent3">
+				<h1> 기술의 핵심 내용 및 시나리오 </h1>
 				<img className="IntroducePage_scenario1" src={scenario1} alt="scenario1" />
 				<img className="IntroducePage_scenario2" src={scenario2} alt="scenario2" />
+				<img className="IntroducePage_scenario3" src={scenario3} alt="scenario3" />
 				<img className="BlockChain1" src={BlockChain1} alt="BlockChain1" />
 			</div>
 		</div>

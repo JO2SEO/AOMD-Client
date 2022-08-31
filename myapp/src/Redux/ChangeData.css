@@ -3,7 +3,7 @@
 	flex-direction: column;
 	margin: 0% 5% 0% 5%;
 	padding-top: 70px;
-	height: 90%;
+	/* height: 100%; */
 	box-sizing: content-box;
 }
 
@@ -12,7 +12,7 @@
 	padding: 2% 0% 0% 21%;
 	justify-content: flex-start;
 	align-items: center;
-	height: 7%;
+	/* height: 7%; */
 	box-sizing: border-box;
 	border-top: black solid 2px;
 }

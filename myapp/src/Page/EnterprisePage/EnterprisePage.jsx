@@ -8,6 +8,9 @@ import contentElement2 from 'Image/ILER5/contentElement2.svg';
 import contentElement3 from 'Image/ILER5/contentElement3.svg';
 import contentElement4 from 'Image/ILER5/contentElement4.svg';
 
+const onClickSubmitBtn = () => {
+	alert('제출되었습니다');
+};
 function EnterprisePage() {
 	return (
 		<div id="EnterprisePageTotalDiv">
@@ -83,7 +86,9 @@ function EnterprisePage() {
 						<p>별표(*)가 있는 항목은 필수항목입니다.</p>
 					</div>
 
-					<button id="submitBtn"> 제출하기 </button>
+					<button id="submitBtn" onClick={onClickSubmitBtn}>
+						제출하기
+					</button>
 				</form>
 			</div>
 		</div>

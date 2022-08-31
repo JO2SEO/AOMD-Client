@@ -28,9 +28,16 @@ import './App.css';
 
 export const GlobalStyle = createGlobalStyle`
 	${reset}  	
-	body {        
+	body, button {        
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};
+	}
+	// .HBGToggleBtn {
+	// background-color: ${props => props.theme.bgColor};
+    // color: ${props => props.theme.textColor};
+	// }
+	.OnToggleList {
+		background-color: ${props => props.theme.bgColor};
 	}
 `;
 

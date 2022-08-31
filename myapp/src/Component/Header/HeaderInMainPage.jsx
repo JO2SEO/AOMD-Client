@@ -80,7 +80,7 @@ const HeaderInMainPage = () => {
 						cursor: 'pointer',
 						display: 'flex',
 						borderRadius: '10px',
-						backgroundColor: 'white',
+						background: 'transparent',
 					}}
 				>
 					{!loginState ? (
@@ -88,7 +88,7 @@ const HeaderInMainPage = () => {
 							onClick={onClickMoveLogin}
 							style={{
 								display: 'flex',
-								background: 'white',
+								background: 'transparent',
 								border: 'none',
 								cursor: 'pointer',
 								alignItems: 'center',
@@ -108,10 +108,9 @@ const HeaderInMainPage = () => {
 								style={{
 									display: 'flex',
 									width: '50px',
-									// alignItems: 'center',
-									// textAlign: 'center',
 									fontSize: '13px',
 									marginLeft: '5px',
+									// color: 'red',
 								}}
 							>
 								로그인
@@ -122,7 +121,7 @@ const HeaderInMainPage = () => {
 							onClick={onClickLogout}
 							style={{
 								display: 'flex',
-								background: 'white',
+								background: 'transparent',
 								border: 'none',
 								cursor: 'pointer',
 								alignItems: 'center',
@@ -142,8 +141,6 @@ const HeaderInMainPage = () => {
 								style={{
 									display: 'flex',
 									width: '50px',
-									// alignItems: 'center',
-									// textAlign: 'center',
 									fontSize: '13px',
 									marginLeft: '5px',
 								}}

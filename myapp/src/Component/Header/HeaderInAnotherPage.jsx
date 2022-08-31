@@ -80,11 +80,10 @@ const HeaderInAnotherPage = () => {
 						<div
 							style={{
 								width: '110px',
-								background: 'white',
 								cursor: 'pointer',
 								display: 'flex',
 								borderRadius: '10px',
-								backgroundColor: 'white',
+								background: 'transparent',
 							}}
 						>
 							{!loginState ? (
@@ -93,7 +92,7 @@ const HeaderInAnotherPage = () => {
 										onClick={onClickMoveLogin}
 										style={{
 											display: 'flex',
-											background: 'white',
+											background: 'transparent',
 											border: 'none',
 											cursor: 'pointer',
 											alignItems: 'center',
@@ -113,8 +112,6 @@ const HeaderInAnotherPage = () => {
 											style={{
 												display: 'flex',
 												width: '50px',
-												// alignItems: 'center',
-												// textAlign: 'center',
 												fontSize: '13px',
 												marginLeft: '5px',
 											}}
@@ -129,7 +126,7 @@ const HeaderInAnotherPage = () => {
 										onClick={onClickLogout}
 										style={{
 											display: 'flex',
-											background: 'white',
+											background: 'transparent',
 											border: 'none',
 											cursor: 'pointer',
 											alignItems: 'center',
@@ -149,8 +146,6 @@ const HeaderInAnotherPage = () => {
 											style={{
 												display: 'flex',
 												width: '50px',
-												// alignItems: 'center',
-												// textAlign: 'center',
 												fontSize: '13px',
 												marginLeft: '5px',
 											}}

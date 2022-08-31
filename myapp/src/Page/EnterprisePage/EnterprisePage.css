@@ -19,7 +19,6 @@
 .leftTextBox {
 	display: flex;
 	flex-direction: column;
-	color: black;
 	width: 100%;
 	z-index: 6;
 }
@@ -33,7 +32,7 @@
 
 	font-size: 20px;
 	font-weight: 900;
-	color: rgb(36, 36, 36);
+	/* color: rgb(36, 36, 36); */
 }
 .leftTextBoxImageBox {
 	width: 100%;

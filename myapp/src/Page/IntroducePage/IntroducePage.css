@@ -4,37 +4,41 @@
 	padding-top: 5%;
 }
 .IntroducePageDivContent1 {
-	background-color: white;
+	/* background-color: white; */
 	width: 100%;
 	padding: 5% 15%;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	/* align-items: center; */
 }
 .IntroducePageDivContent1 h1 {
 	font-weight: 900;
+	color: rgb(105, 105, 105);
 	font-size: 20px;
 	margin-bottom: 50px;
 }
 .IntroducePageDivContent1_Box {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 }
 .IntroducePageDivContent1_Box1 {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 }
 .IntroducePageDivContent1_Box1 img {
 	width: 100px;
 }
 .IntroducePageDivContent1_Box1 p {
 	width: 300px;
-	margin: 20px 0px 0px 0px;
+	margin: 20px 0px 0px 30px;
 	font-weight: 900;
 }
 .IntroducePageDivContent1_Box2 {
 	display: flex;
 	flex-direction: column;
+	margin-top: 30px;
+	font-weight: 500;
+	line-height: 23px;
 }
 
 .DivideBoxDot {
@@ -175,8 +179,68 @@
 	width: 500px;
 	margin-bottom: 50px;
 }
-
+.IntroducePage_scenario3 {
+	width: 500px;
+	margin-bottom: 50px;
+}
 .BlockChain1 {
 	width: 700px;
 	background-color: white;
+}
+
+.IntroducePageDivContent3_SchoolAndCompany {
+	width: 700px;
+	height: 300px;
+	flex-direction: row;
+	display: flex;
+	justify-content: space-between;
+}
+
+.SchoolAndCompany_p1 {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+.SchoolAndCompany_p1 h1 {
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SchoolAndCompany_p1 div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SchoolAndCompany_p2 {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+.SchoolAndCompany_p2 h1 {
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SchoolAndCompany_p2 div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SchoolAndCompany_p3 {
+	width: 200px;
+	display: flex;
+	flex-direction: column;
+}
+.SchoolAndCompany_p3 h1 {
+	font-size: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.SchoolAndCompany_p3 div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
