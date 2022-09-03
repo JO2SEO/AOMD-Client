@@ -3,18 +3,16 @@ import { useState, useEffect } from 'react';
 import AOMD_logo from 'Image/AOMD_logo.svg';
 
 import TeamInfo from 'Image/TeamInfo.png';
-// import Interview1 from 'Image/Interview1.png';
-// import Interview2 from 'Image/Interview2.png';
-// import Interview3 from 'Image/Interview3.png';
-import Interview4 from 'Image/Interview4.png';
 
 import scenario1 from 'Image/scenario1.png';
 import scenario2 from 'Image/scenario2.png';
 import scenario3 from 'Image/scenario3.png';
 
-import SchoolAndCompany from 'Image/SchoolAndCompany.png';
+import School from 'Image/School.svg';
+import goverment from 'Image/goverment.png';
 
-import BlockChain1 from 'Image/BlockChain1.svg';
+import Company from 'Image/Company.svg';
+
 import IntroducePageDivContent4Img from 'Image/IntroducePageDivContent4Img.png';
 
 import IntroducePageDivContent5Img1 from 'Image/IntroducePageDivContent5Img1.svg';
@@ -69,7 +67,8 @@ function IntroducePage() {
 			</MoveTopBtn>
 
 			<div className="IntroducePageDivContent1">
-				<h1> AOMD 소개 </h1>
+				{/* <h1> AOMD 소개 </h1> */}
+
 				<div className="IntroducePageDivContent1_Box">
 					<div className="IntroducePageDivContent1_Box1">
 						<img src={AOMD_logo} alt="AOMD_logo" />
@@ -95,6 +94,7 @@ function IntroducePage() {
 					</div>
 				</div>
 			</div>
+
 			<div className="IntroducePageDivContent2">
 				<div className="IntroducePageDivContent2_Box1">
 					<p className="IntroducePageDivContent2_Box1_title">
@@ -117,10 +117,10 @@ function IntroducePage() {
 					</p>
 				</div>
 			</div>
-			<p className="DivideBoxDot">...</p>
+			{/* <p className="DivideBoxDot">...</p> */}
 
 			<div className="IntroducePageDivContent3">
-				<h1> 팀원 소개 </h1>
+				{/* <h1> 팀원 소개 </h1> */}
 				<img src={TeamInfo} alt="Team info" />
 			</div>
 			<p className="DivideBoxDot">...</p>
@@ -131,17 +131,19 @@ function IntroducePage() {
 					개인 사용자를 대상으로 만들어진 편리한 UI를 통해 손쉽게 포트폴리오를 관리하세요!
 				</p>
 				<img src={IntroducePageDivContent4Img} alt="IntroducePageDivContent4Img" />
-				<p className="IntroducePageDivContent4_Box1_content1">
-					개인정보 위,변조 문제를 해결하기 위해 자기 정보 통제 및 데이터 무결성 측면에서
-					장점을 가지는 블록체인을 활용하고 블록체인 네트워크는 프라이빗 네트워크의
-					구현체인 하이퍼레저 패브릭을 기반으로 동작합니다.
-				</p>
 				<p className="IntroducePageDivContent4_Box1_content2">
 					개인정보 위,변조 문제를 해결하기 위해 자기 정보 통제 및 데이터 무결성 측면에서
 					장점을 가지는 블록체인을 활용하고 블록체인 네트워크는 프라이빗 네트워크의
 					구현체인 하이퍼레저 패브릭을 기반으로 동작합니다.
 				</p>
+				<p className="IntroducePageDivContent4_Box1_content3">
+					개인정보 위,변조 문제를 해결하기 위해 자기 정보 통제 및 데이터 무결성 측면에서
+					장점을 가지는 블록체인을 활용하고 블록체인 네트워크는 프라이빗 네트워크의
+					구현체인 하이퍼레저 패브릭을 기반으로 동작합니다.
+				</p>
 			</div>
+			<p className="DivideBoxDot">...</p>
+
 			<div className="IntroducePageDivContent5">
 				<h1>사용자</h1>
 				<div className="IntroducePageDivContent5_Box1">
@@ -179,7 +181,7 @@ function IntroducePage() {
 						alt="IntroducePageDivContent5Img2"
 					/>
 				</div>
-				<h1>기업</h1>
+				<h1 className="IntroducePageDivContent5_Box1_h1">기업</h1>
 				<div className="IntroducePageDivContent5_Box1">
 					<img
 						className="IntroducePageDivContent5Img3"
@@ -202,25 +204,37 @@ function IntroducePage() {
 
 			<p className="DivideBoxDot">...</p>
 
-			<div className="IntroducePageDivContent3">
-				<h1> 참여 기관 및 기업 </h1>
-				<img className="SchoolAndCompany" src={SchoolAndCompany} alt="SchoolAndCompany" />
+			<div className="IntroducePageDivContent6">
+				{/* <h1> 참여 기관 및 기업 </h1> */}
+
 				<div className="IntroducePageDivContent3_SchoolAndCompany">
 					<div className="SchoolAndCompany_p1">
+						<img className="goverment" src={goverment} alt="goverment" />
+
 						<h1>정부</h1>
-						<div>
+						<div className="SchoolAndCompany_div">
+							<p>과학기술정보통신부</p>
+							<p>과학기술정보통신부</p>
 							<p>과학기술정보통신부</p>
 						</div>
 					</div>
 					<div className="SchoolAndCompany_p2">
+						<img className="School" src={School} alt="School" />
+
 						<h1>학교</h1>
-						<div>
+						<div className="SchoolAndCompany_div">
+							<p>부산대학교</p>
+							<p>부산대학교</p>
 							<p>부산대학교</p>
 						</div>
 					</div>
 					<div className="SchoolAndCompany_p3">
+						<img className="Company" src={Company} alt="Company" />
+
 						<h1>기업</h1>
-						<div>
+						<div className="SchoolAndCompany_div">
+							<p>삼성전자</p>
+							<p>삼성전자</p>
 							<p>삼성전자</p>
 						</div>
 					</div>
@@ -229,12 +243,11 @@ function IntroducePage() {
 
 			<p className="DivideBoxDot">...</p>
 
-			<div className="IntroducePageDivContent3">
-				<h1> 기술의 핵심 내용 및 시나리오 </h1>
+			<div className="IntroducePageDivContent7">
+				{/* <h1> 기술의 핵심 내용 및 시나리오 </h1> */}
 				<img className="IntroducePage_scenario1" src={scenario1} alt="scenario1" />
 				<img className="IntroducePage_scenario2" src={scenario2} alt="scenario2" />
 				<img className="IntroducePage_scenario3" src={scenario3} alt="scenario3" />
-				<img className="BlockChain1" src={BlockChain1} alt="BlockChain1" />
 			</div>
 		</div>
 	);

@@ -18,7 +18,8 @@ function Footer() {
 						<li>고객 스토리 </li>
 						<li>요금제 </li>
 						<li>보안 </li>
-						<li>이용약관 및 개인정보 보호정책 </li>
+						<li>이용약관 및 </li>
+						<li>개인정보 보호정책 </li>
 					</ul>
 				</div>
 				<div>

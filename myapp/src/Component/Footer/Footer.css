@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: row;
 	width: 100%;
-	height: 400px;
+	height: 300px;
 	box-sizing: border-box;
 	background-color: #203864;
 	color: white;
@@ -35,20 +35,22 @@
 .FooterCategory div {
 	display: flex;
 	flex-direction: column;
-	width: 200px;
+	width: 250px;
 	padding-left: 5%;
 }
 .FooterCategory div h1 {
+	width: 100%;
 	margin-bottom: 10px;
 	font-size: 17px;
 	font-weight: bolder;
 }
 .FooterCategory div ul {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 .FooterCategory div li {
-	width: 100px;
+	width: 100%;
 	text-align: left;
 	margin-top: 10px;
 	font-size: 15px;
