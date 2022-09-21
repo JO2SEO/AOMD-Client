@@ -107,6 +107,9 @@
 	padding: 20px;
 	margin-bottom: 10px;
 }
+.ColumnTitle2 button {
+	margin-left: 30px;
+}
 .TitleBox {
 	display: flex;
 	align-content: center;
@@ -176,8 +179,8 @@
 .SubmitBox {
 	display: flex;
 	width: 100%;
-	justify-content: flex-start;
-	padding: 10% 0% 5% 25%;
+	/* justify-content: flex-start; */
+	padding: 10% 10% 10% 33%;
 }
 .SubmitBoxBtn {
 	cursor: pointer;

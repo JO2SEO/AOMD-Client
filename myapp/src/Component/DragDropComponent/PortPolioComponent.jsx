@@ -195,6 +195,10 @@ function PortPolioComponent(props) {
 		parentBox.appendChild(newP);
 	};
 
+	const onClickTitleChange = e => {
+		alert('포트폴리오 제목 수정하기');
+	};
+
 	return (
 		<Fragment>
 			{showState[0] ? (
@@ -207,7 +211,11 @@ function PortPolioComponent(props) {
 								{...provided.droppableProps}
 							>
 								<div ref={provided.innerRef} {...provided.droppableProps}>
-									<h1 className="ColumnTitle2">{portData.port1.title}</h1>
+									<h1 className="ColumnTitle2">
+										{portData.port1.title}
+										<button onClick={onClickTitleChange}>수정</button>
+									</h1>
+
 									{returnTaskCard()}
 								</div>
 								<div>

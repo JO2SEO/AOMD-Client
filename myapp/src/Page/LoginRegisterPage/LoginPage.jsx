@@ -45,18 +45,18 @@ export function LoginPage() {
 					<button className="FormButton" onClick={onClickLogin}>
 						로그인
 					</button>
-					<div style={{ color: '#757575', fontSize: '12px' }}>
+					<div style={{ color: '#757575', fontSize: '12px', background: 'transparent' }}>
 						<p style={{ padding: '15px' }}>아이디가 없으신가요 ?</p>
 						<button className="FormButton" onClick={onClickSign}>
 							회원가입
 						</button>
 					</div>
 				</form>
-				<div>
-					<div style={{ color: '#757575', fontSize: '12px' }}>
+				<div style={{ background: 'transparent' }}>
+					<div style={{ color: '#757575', fontSize: '12px', background: 'transparent' }}>
 						<p style={{ padding: '15px' }}> 소셜 로그인을 통한 간편 회원가입 </p>
 					</div>
-					<div style={{ display: 'flex' }}>
+					<div style={{ display: 'flex', background: 'transparent' }}>
 						<KakaoLoginButton />
 						<GoogleLoginButton />
 					</div>

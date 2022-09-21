@@ -12,6 +12,7 @@
 	border: none;
 	display: flex;
 	justify-content: center;
+	background-color: transparent;
 	/* align-items: center; */
 }
 .FooterHomeLogo img {
@@ -26,6 +27,8 @@
 }
 .FooterCategory {
 	display: flex;
+	background-color: transparent;
+
 	flex-direction: row;
 	padding-top: 50px;
 	width: 80%;
@@ -33,6 +36,7 @@
 }
 
 .FooterCategory div {
+	background-color: transparent;
 	display: flex;
 	flex-direction: column;
 	width: 250px;
@@ -43,11 +47,13 @@
 	margin-bottom: 10px;
 	font-size: 17px;
 	font-weight: bolder;
+	color: white;
 }
 .FooterCategory div ul {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	color: white;
 }
 .FooterCategory div li {
 	width: 100%;

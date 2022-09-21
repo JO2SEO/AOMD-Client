@@ -140,7 +140,7 @@ const HeaderInMainPage = () => {
 							<p
 								style={{
 									display: 'flex',
-									width: '50px',
+									width: '70px',
 									fontSize: '13px',
 									marginLeft: '3px',
 								}}
