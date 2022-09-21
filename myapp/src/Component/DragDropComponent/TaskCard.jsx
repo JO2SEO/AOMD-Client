@@ -12,17 +12,10 @@ const TaskCard = props => {
 
 	const onClickDelete = itemID => {
 		const sourceColumn = portData.port1;
-		console.log('sourceColumn = ', sourceColumn);
-
-		console.log('클릭된 거, ItemID = ', itemID);
 
 		const sourceItemsAward = [sourceColumn.items.awardDtoList];
 		const sourceItemsEducation = [sourceColumn.items.educationDtoList];
 		const sourceItemsLicenseDtoList = [sourceColumn.items.licenseDtoList];
-
-		console.log('sourceItemsAward = ', sourceItemsAward);
-		console.log('sourceItemsEducation = ', sourceItemsEducation);
-		console.log('sourceItemsLicenseDtoList = ', sourceItemsLicenseDtoList);
 
 		let sourceItems = [];
 		let After = [];
@@ -32,18 +25,12 @@ const TaskCard = props => {
 			...sourceItemsEducation,
 			...sourceItemsLicenseDtoList
 		);
-		console.log('Array = ', Array);
-		// 6개짜리 배열
 
 		for (let i = 0; i < Array.length; i++) {
-			// console.log(Array[i].id);
-
 			if (Array[i].id == itemID) {
-				console.log('Find = ', Array[i].id);
 				let First = Array.slice(0, i);
 				let Second = Array.slice(i + 1);
 				After = [...First, ...Second];
-				console.log('After = ', After);
 				break;
 			}
 		}
@@ -53,30 +40,24 @@ const TaskCard = props => {
 
 		for (let i = 0; i < After.length; i++) {
 			if (After[i].type === 'AWARD') {
-				console.log('AWARD');
 				Array_Award.push(After[i]);
 			}
 			if (After[i].type === 'EDUCATION') {
-				console.log('EDUCATION');
 				Array_Education.push(After[i]);
 			}
 			if (After[i].type === 'LICENSE') {
-				console.log('LICENSE');
 				Array_LicenseDto.push(After[i]);
 			}
 		}
 
-		console.log('Array_Award = ', Array_Award);
-		console.log('Array_Education = ', Array_Education);
-		console.log('Array_LicenseDto = ', Array_LicenseDto);
+		const ResultArrayForSend = {};
+		ResultArrayForSend.portfolioDto = sourceColumn.items.portfolioDto;
+		ResultArrayForSend.awardDtoList = Array_Award;
+		ResultArrayForSend.educationDtoList = Array_Education;
+		ResultArrayForSend.licenseDtoList = Array_LicenseDto;
+		ResultArrayForSend.resumeDtoList = [sourceColumn.items.portfolioDto];
 
-		let ResultArray = [];
-		ResultArray.push(Array_Award);
-		ResultArray.push(Array_Education);
-		ResultArray.push(Array_LicenseDto);
-
-		console.log('ResultArray = ', ResultArray);
-		// dispatch(DeletedataChangePort(ResultArray));
+		dispatch(DeletedataChangePort(ResultArrayForSend));
 	};
 
 	return (
