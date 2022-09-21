@@ -3,12 +3,14 @@
 
 .OriginDataBox {
 	box-sizing: border-box;
+	background-color: #eceff5;
 	width: 100%;
 	padding-top: 10px;
 }
 .OriginDataContent {
 	display: flex;
-	border-radius: 10px;
+	/* border-radius: 10px; */
+	background-color: #eceff5;
 }
 .OriginDataContent p {
 	display: flex;
@@ -16,7 +18,7 @@
 	align-items: center;
 	background: #d2d8e2;
 	margin: 0px 10px 0px 10px;
-	width: 100%;
+	width: 220px;
 	height: 30px;
 	border: none;
 	border-radius: 10px;
@@ -37,6 +39,7 @@
 	justify-content: space-around;
 	align-items: center;
 	background: #ebeff4;
+
 	border-radius: 20px;
 }
 .PortItem button {

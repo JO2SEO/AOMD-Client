@@ -60,12 +60,14 @@ function PortPolioComponent(props) {
 	const { showState, portData } = props;
 	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
+
 	const onClickStore = () => {
 		setStoringState(true);
 		setTimeout(function () {
 			setStoringState(false);
 		}, 2000);
 	};
+
 	const onClickMakeURL = () => {
 		Swal.fire({
 			title: '생성된 URL',
@@ -82,55 +84,30 @@ function PortPolioComponent(props) {
 		});
 		navigate('/portpolio');
 	};
-	const onClickLoad = () => {
-		setQuestionData([
-			portData.port1.introductions[0].question,
-			portData.port1.introductions[0].content,
-			portData.port1.introductions[0].content.length,
-		]);
-	};
-	function returnTaskCard(column) {
-		const info0 = []; // 자격증
-		const info1 = []; // 학력
-		const info2 = []; // 수상내역
 
-		for (let i = 0; i < 3; i++) {
-			if (i === 0) {
-				const arrLength = column[i].length;
+	// const onClickLoad = () => {
+	// 	setQuestionData([
+	// 		portData.port1.introductions[0].question,
+	// 		portData.port1.introductions[0].content,
+	// 		portData.port1.introductions[0].content.length,
+	// 	]);
+	// };
 
-				for (let j = 0; j < arrLength; j++) {
-					info0.push([column[i][j], 1 + i + j]);
-				}
-			}
-			if (i === 1) {
-				const arrLength = column[i].length;
+	// console.log('portData.port1.title = ', portData.port1.title);
+	// console.log('portData.port1.items = ', portData.port1.items);
+	// console.log('portData.port1.introductions = ', portData.port1.introductions);
 
-				for (let j = 0; j < arrLength; j++) {
-					info1.push([column[i][j], 2 + i + j]);
-				}
-			}
-			if (i === 2) {
-				const arrLength = column[i].length;
-
-				for (let j = 0; j < arrLength; j++) {
-					info2.push([column[i][j], 3 + i + j]);
-				}
-			}
-		}
+	function returnTaskCard() {
+		const info = portData;
 
 		return (
 			<Fragment>
 				<div className="DataBox2">
-					<p className="DataBoxh2"> 자격증 </p>
+					<p className="DataBoxh2"> 수상내역 </p>
 					<div className="DataBoxContent">
-						{info0.map(items => {
+						{info.port1.items.awardDtoList.map(items => {
 							return (
-								<TaskCard
-									key={items[0].id}
-									item={items[0]}
-									index={items[1]}
-									datatype=""
-								/>
+								<TaskCard key={items.id} item={items} index={items} datatype="" />
 							);
 						})}
 					</div>
@@ -138,29 +115,19 @@ function PortPolioComponent(props) {
 				<div className="DataBox2">
 					<p className="DataBoxh2"> 학력 </p>
 					<div className="DataBoxContent">
-						{info1.map(items => {
+						{info.port1.items.educationDtoList.map(items => {
 							return (
-								<TaskCard
-									key={items[0].id}
-									item={items[0]}
-									index={items[1]}
-									datatype=""
-								/>
+								<TaskCard key={items.id} item={items} index={items} datatype="" />
 							);
 						})}
 					</div>
 				</div>
 				<div className=" DataBox2">
-					<p className="DataBoxh2"> 수상내역 </p>
+					<p className="DataBoxh2"> 자격증 </p>
 					<div className="DataBoxContent">
-						{info2.map(items => {
+						{info.port1.items.licenseDtoList.map(items => {
 							return (
-								<TaskCard
-									key={items[0].id}
-									item={items[0]}
-									index={items[1]}
-									datatype=""
-								/>
+								<TaskCard key={items.id} item={items} index={items} datatype="" />
 							);
 						})}
 					</div>
@@ -171,32 +138,25 @@ function PortPolioComponent(props) {
 
 	const [storingState, setStoringState] = useState(false);
 
-	// const [question, setQuestion] = useState('');
-	// const [content, setContent] = useState('');
-	// const [textLength, setTextLength1] = useState(0);
+	const [questionData, setQuestionData] = useState(
+		portData.port1.items.resumeDtoList[0].question
+	);
+	const [questionContent, setQuestionContent] = useState(
+		portData.port1.items.resumeDtoList[0].content
+	);
 
-	const [questionData, setQuestionData] = useState([
-		{
-			question: '질문 1',
-			content: '내용 1',
-			length: 3,
-		},
-	]);
 	const [questionCount, setQuestionCount] = useState(1);
 
 	const questionChangeFunc = e => {
-		var arrVal = questionData;
-		arrVal[e.target.id].question = e.target.value;
-
-		setQuestionData(arrVal);
+		setQuestionData(e.target.value);
 	};
+
 	const contentChangeFunc = e => {
 		console.log(e);
-		var arrVal = questionData;
+		var arrVal = questionContent;
 		arrVal[e.target.id].content = e.target.value;
 		arrVal[e.target.id].length = e.target.value.length;
-		setQuestionData(arrVal);
-
+		setQuestionContent(arrVal);
 		var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
 		lengthVar.innerText = e.target.value.length + ' 자';
 	};
@@ -248,7 +208,7 @@ function PortPolioComponent(props) {
 							>
 								<div ref={provided.innerRef} {...provided.droppableProps}>
 									<h1 className="ColumnTitle2">{portData.port1.title}</h1>
-									{returnTaskCard(portData.port1.items)}
+									{returnTaskCard()}
 								</div>
 								<div>
 									<div className="TitleBox">
@@ -257,12 +217,15 @@ function PortPolioComponent(props) {
 
 									<div id="ContentBoxCanAdd">
 										<div className="IntroduceContentBox">
-											<p>문항</p>
+											<p>
+												문항{' '}
+												{portData.port1.items.resumeDtoList[0].resumeId}
+											</p>
 											<input
 												id="0"
-												value={questionData.question}
+												value={questionData}
 												type="text"
-												onChange={questionChangeFunc}
+												onChange={e => questionChangeFunc(e.target.value)}
 												placeholder="자기소개서 질문"
 											></input>
 										</div>
@@ -270,7 +233,7 @@ function PortPolioComponent(props) {
 										<textarea
 											id="0"
 											className="IntroduceText"
-											value={questionData.content}
+											value={questionContent}
 											type="text"
 											onChange={contentChangeFunc}
 											placeholder="..."
@@ -285,14 +248,14 @@ function PortPolioComponent(props) {
 								</div>
 
 								<div className="SubmitBox">
-									<button className="SubmitBoxBtn" onClick={onClickLoad}>
+									{/* <button className="SubmitBoxBtn" onClick={onClickLoad}>
 										<span>불러오기</span>
-									</button>
+									</button> */}
 									<button className="SubmitBoxBtn" onClick={onClickStore}>
 										<span className="SubmitBoxBtnFront">저장하기</span>
 									</button>
 									<button className="SubmitBoxBtn" onClick={onClickMakeURL}>
-										<span className="SubmitBoxBtnFront">URL 생성하기</span>
+										<span className="SubmitBoxBtnFront">URL 복사하기</span>
 									</button>
 									<Storing active={storingState}>
 										<span></span>

@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
@@ -29,6 +30,10 @@ import ArrowMovePort from 'Image/ArrowMovePort.svg';
 
 import './FirstPage.css';
 
+import { useSelector } from 'react-redux';
+
+import { selectLoginData } from 'Redux/LoginCheck';
+
 export const MoveTopBtn = styled.button`
 	display: ${({ active }) => {
 		if (active) {
@@ -57,6 +62,26 @@ export const MoveTopBtn = styled.button`
 function FirstPage() {
 	const navigate = useNavigate();
 
+	const [loginState, setLoginState] = useState(false);
+
+	// const dispatch = useDispatch();
+
+	const currentLogin = useSelector(selectLoginData);
+
+	useEffect(() => {
+		if (currentLogin.loginState) {
+			// console.log('Header in main page - login state1 : ', currentLogin.loginState);
+			// console.log('Header in main page - login state2 : ', loginState);
+
+			setLoginState(true);
+		} else {
+			// console.log('Header in main page - login state1 : ', currentLogin.loginState);
+			// console.log('Header in main page - login state2 : ', loginState);
+
+			setLoginState(false);
+		}
+	}, [currentLogin.loginState]);
+
 	const [ScrollValueOfY, setScrollValueOfY] = useState(0);
 	// const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
 	const [MoveToTopBtnStatus, setMoveToTopBtnStatus] = useState(false);
@@ -71,7 +96,11 @@ function FirstPage() {
 		});
 	};
 	const onClickMovePortPolioPage = () => {
-		navigate('/portpoliopage');
+		if (loginState) {
+			navigate('/portpoliopage');
+		} else {
+			alert('로그인 후 이용가능한 기능입니다');
+		}
 	};
 	// 로그인 체크 안하고 바로 이동 => 나중에 로그인 체크하게 해야 함
 	const scrollCheckFunc = () => {

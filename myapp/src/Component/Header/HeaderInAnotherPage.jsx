@@ -113,7 +113,7 @@ const HeaderInAnotherPage = () => {
 												display: 'flex',
 												width: '50px',
 												fontSize: '13px',
-												marginLeft: '5px',
+												marginLeft: '3px',
 											}}
 										>
 											로그인
@@ -147,7 +147,7 @@ const HeaderInAnotherPage = () => {
 												display: 'flex',
 												width: '50px',
 												fontSize: '13px',
-												marginLeft: '5px',
+												marginLeft: '4px',
 											}}
 										>
 											로그아웃

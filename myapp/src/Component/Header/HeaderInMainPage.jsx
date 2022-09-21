@@ -80,7 +80,7 @@ const HeaderInMainPage = () => {
 						cursor: 'pointer',
 						display: 'flex',
 						borderRadius: '10px',
-						background: 'transparent',
+						// background: 'transparent',
 					}}
 				>
 					{!loginState ? (
@@ -88,7 +88,7 @@ const HeaderInMainPage = () => {
 							onClick={onClickMoveLogin}
 							style={{
 								display: 'flex',
-								background: 'transparent',
+								// background: 'white',
 								border: 'none',
 								cursor: 'pointer',
 								alignItems: 'center',
@@ -109,7 +109,7 @@ const HeaderInMainPage = () => {
 									display: 'flex',
 									width: '50px',
 									fontSize: '13px',
-									marginLeft: '5px',
+									marginLeft: '3px',
 									// color: 'red',
 								}}
 							>
@@ -142,7 +142,7 @@ const HeaderInMainPage = () => {
 									display: 'flex',
 									width: '50px',
 									fontSize: '13px',
-									marginLeft: '5px',
+									marginLeft: '3px',
 								}}
 							>
 								로그아웃

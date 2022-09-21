@@ -28,7 +28,7 @@ import './App.css';
 
 export const GlobalStyle = createGlobalStyle`
 	${reset}  	
-	body, button {        
+	body, button, div{        
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};
 	}
