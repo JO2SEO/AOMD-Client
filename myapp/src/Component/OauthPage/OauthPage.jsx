@@ -7,6 +7,10 @@ import { useDispatch } from 'react-redux';
 import { SuccessLogin } from 'Redux/LoginCheck';
 import './OauthPage.css';
 
+// import { TestURL } from 'domainBox';
+import { KakaoRedirectURL } from 'domainBox';
+// import { ServerURL } from 'domainBox';
+
 function OauthPage() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -25,10 +29,8 @@ function OauthPage() {
 	// 	lastName: 'Flintstone',
 	// });
 
-	Axios.post('http://aomd.kro.kr:8080/api/v1/auth/kakao', {
+	Axios.post(KakaoRedirectURL, {
 		code: qs.code,
-		// callbackUrl: 'https://jo2seo.github.io/oauth',
-		// callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
 		callbackUrl: 'http://15.164.231.60:3000/oauth',
 
 		// // http://aomd.kro.kr:8080/api/v1/auth/kakao?code=

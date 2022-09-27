@@ -20,63 +20,150 @@ const PortBtn = styled.div`
 `;
 
 function ChangeData() {
+	const [portState, setPortState] = useState([true, false, false]);
+
 	const dispatch = useDispatch();
 	const originData = useSelector(selectRawData);
+	// console.log('originData = ', originData);
 	const portData = useSelector(selectPortData);
-	const [portState, setPortState] = useState([true, false, false]);
+	// console.log('portData = ', portData);
 
 	const onDragEnd = result => {
 		if (!result.destination) return;
+		// 드래그 드랍 가능한 범위 밖이면 걍 리턴
 
 		const { source, destination } = result;
 		console.log('result = ', result);
 
 		if (source.droppableId !== destination.droppableId) {
-			const sourceColumn = originData['origin'];
-			const destColumn = portData['port1'];
+			const sourceColumn = originData.origin;
+			const destColumn = portData.port1;
 
-			const sourceItems = [...sourceColumn.items];
-			const destItems = [...destColumn.items];
+			// console.log('sourceColumn = ', sourceColumn);
+			// console.log('destColumn = ', destColumn);
 
-			for (var index_11 = 0; index_11 < 3; index_11++) {
-				var forLen11 = destItems[index_11].length;
-				for (var index_22 = 0; index_22 < forLen11; index_22++) {
-					if (destItems[index_11][index_22].id === result.draggableId) {
+			const sourceItems1 = [sourceColumn.items];
+			const destItems1 = [destColumn.items];
+
+			const sourceItems = sourceItems1[0];
+			const destItems = destItems1[0];
+
+			// console.log('sourceItems = ', sourceItems);
+			// console.log('destItems = ', destItems);
+
+			const dragItemID = result.draggableId;
+			// console.log('dragItemID = ', dragItemID);
+
+			var dragType = dragItemID.split('-');
+			dragType = dragType[0];
+			// console.log('@@@ =>', dragType);
+			// 타입이 뭐냐 => AWARD, LICENSE ~~
+
+			var awardValue = destItems.awardDtoList;
+			// console.log('awardValue = ', awardValue);
+			var awardValueLen = destItems.awardDtoList.length;
+			var educationValue = destItems.educationDtoList;
+			var educationValueLen = destItems.educationDtoList.length;
+			var licenseValue = destItems.licenseDtoList;
+			var licenseValueLen = destItems.licenseDtoList.length;
+
+			var awardValueSource = sourceItems.awardDtoList;
+			var awardValueSourceLen = sourceItems.awardDtoList.length;
+			var educationValueSource = sourceItems.educationDtoList;
+			var educationValueSourceLen = sourceItems.educationDtoList.length;
+			var licenseValueSource = sourceItems.licenseDtoList;
+			var licenseValueSourceLen = sourceItems.licenseDtoList.length;
+
+			// 드래그 한 레코드
+			var recordToAdd = {};
+
+			// 레코드 뽑아오기
+			if (dragType === 'AWARD') {
+				for (var i = 0; i < awardValueSourceLen; i++) {
+					if (result.draggableId === awardValueSource[i].id) {
+						recordToAdd = awardValueSource[i];
+						break;
+					}
+				}
+			}
+			if (dragType === 'EDUCATION') {
+				for (var i = 0; i < educationValueSourceLen; i++) {
+					if (result.draggableId === educationValueSource[i].id) {
+						recordToAdd = educationValueSource[i];
+						break;
+					}
+				}
+			}
+			if (dragType === 'LICENSE') {
+				for (var i = 0; i < licenseValueSourceLen; i++) {
+					if (result.draggableId === licenseValueSource[i].id) {
+						recordToAdd = licenseValueSource[i];
+						break;
+					}
+				}
+			}
+
+			console.log('recordToAdd = ', recordToAdd);
+
+			// 만약에 드랍하려고 하는 곳에 이미 똑같은 데이터가 있으면 ?
+			if (dragType === 'AWARD') {
+				for (var i = 0; i < awardValueLen; i++) {
+					if (result.draggableId === awardValue[i].id) {
+						alert('이미 추가한 데이터입니다.');
+						return;
+					}
+				}
+			}
+			if (dragType === 'EDUCATION') {
+				for (var i = 0; i < educationValueLen; i++) {
+					if (result.draggableId === educationValue[i].id) {
+						alert('이미 추가한 데이터입니다.');
+						return;
+					}
+				}
+			}
+			if (dragType === 'LICENSE') {
+				for (var i = 0; i < licenseValueLen; i++) {
+					if (result.draggableId === licenseValue[i].id) {
 						alert('이미 추가한 데이터입니다.');
 						return;
 					}
 				}
 			}
 
-			var findindex_1 = 0;
-			var findindex_2 = 0;
+			// 추가하기
+			let Array1 = [];
+			let Array = Array1.concat(...awardValue, ...educationValue, ...licenseValue);
 
-			for (var index_1 = 0; index_1 < 3; index_1++) {
-				var forLen = sourceItems[index_1].length;
-				for (var index_2 = 0; index_2 < forLen; index_2++) {
-					if (sourceItems[index_1][index_2].id === result.draggableId) {
-						findindex_1 = index_1;
-						findindex_2 = index_2;
-					}
+			// console.log('Array = ', Array);
+
+			const Array_Award = [...awardValue];
+			const Array_Education = [...educationValue];
+			const Array_LicenseDto = [...licenseValue];
+
+			for (let i = 0; i < Array.length; i++) {
+				if (recordToAdd.type === 'AWARD') {
+					Array_Award.push(recordToAdd);
+					break;
+				}
+				if (recordToAdd.type === 'EDUCATION') {
+					Array_Education.push(recordToAdd);
+					break;
+				}
+				if (recordToAdd.type === 'LICENSE') {
+					Array_LicenseDto.push(recordToAdd);
+					break;
 				}
 			}
 
-			const removedData = sourceItems[findindex_1][findindex_2];
-			findindex_1 = 0;
+			const ResultArrayForSend = {};
+			ResultArrayForSend.portfolioDto = destColumn.items.portfolioDto;
+			ResultArrayForSend.awardDtoList = Array_Award;
+			ResultArrayForSend.educationDtoList = Array_Education;
+			ResultArrayForSend.licenseDtoList = Array_LicenseDto;
+			ResultArrayForSend.resumeDtoList = [destColumn.items.portfolioDto];
 
-			forLen = destItems.length;
-
-			for (index_1 = 0; index_1 < forLen; index_1++) {
-				if (destItems[index_1][0].Type === removedData.Type) {
-					findindex_1 = index_1;
-				}
-			}
-
-			let Before = destItems[findindex_1];
-			let After = [...Before, removedData];
-			destItems[findindex_1] = After;
-
-			dispatch(DragdataChangePort(destItems));
+			dispatch(DragdataChangePort(ResultArrayForSend));
 		} else {
 			return;
 		}

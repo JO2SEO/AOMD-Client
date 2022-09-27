@@ -1,10 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectLoginData } from 'Redux/LoginCheck';
+
+import { TestURL } from 'domainBox';
+import { TestLoginURL } from 'domainBox';
+// import { KakaoRedirectURL } from 'domainBox';
+// import { ServerURL } from 'domainBox';
 
 export const loadBlockFromServer = {
 	awardDtoList: [
 		{
 			type: 'AWARD',
-			id: 'award-0101',
+			id: 'AWARD-0101',
 			title: '아이디어 공모전',
 			ownerId: 1,
 			publisher: 'org1',
@@ -14,7 +24,7 @@ export const loadBlockFromServer = {
 		},
 		{
 			type: 'AWARD',
-			id: 'award-0102',
+			id: 'AWARD-0102',
 			title: '졸업과제',
 			ownerId: 1,
 			publisher: 'org2',
@@ -26,7 +36,7 @@ export const loadBlockFromServer = {
 	educationDtoList: [
 		{
 			type: 'EDUCATION',
-			id: 'education-0101',
+			id: 'EDUCATION-0101',
 			title: '대학교',
 			ownerId: 1,
 			publisher: 'org11',
@@ -37,7 +47,7 @@ export const loadBlockFromServer = {
 		},
 		{
 			type: 'EDUCATION',
-			id: 'education-0102',
+			id: 'EDUCATION-0102',
 			title: '고등학교',
 			ownerId: 1,
 			publisher: 'org12',
@@ -50,7 +60,7 @@ export const loadBlockFromServer = {
 	licenseDtoList: [
 		{
 			type: 'LICENSE',
-			id: 'license-0101',
+			id: 'LICENSE-0101',
 			title: '빅분기',
 			ownerId: 1,
 			publisher: 'org31',
@@ -62,7 +72,7 @@ export const loadBlockFromServer = {
 		},
 		{
 			type: 'LICENSE',
-			id: 'license-0101',
+			id: 'LICENSE-0102',
 			title: 'OPIC',
 			ownerId: 1,
 			publisher: 'org32',
@@ -123,6 +133,55 @@ export const loadBlockFromServer = {
 // 	],
 // ];
 
+export function LoadRawData() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const [loginState, setLoginState] = useState(false);
+
+	const currentLogin = useSelector(selectLoginData);
+
+	useEffect(() => {
+		if (currentLogin.loginState) {
+			console.log('Header in main page - login state : ', currentLogin.loginState);
+			setLoginState(true);
+		} else {
+			console.log('Header in main page - login state : ', currentLogin.loginState);
+			setLoginState(false);
+		}
+	}, [currentLogin.loginState]);
+
+	console.log('여기는 LoadRawData 함수 \n 이제 리퀘스트 보낸다?');
+
+	let accessTokenFromServer = '';
+	// 테스트 할 때, 서버에서 받아올 로그인 토큰
+
+	// 테스트로그인 요청
+	Axios.post(TestLoginURL, {
+		email: 'user1@gmail.com',
+		password: 'pwpw',
+	})
+		.then(response => {
+			console.log('로그인 토큰 요청 \n test1@test1.com \n', response);
+			accessTokenFromServer = response.data.accessToken;
+			console.log('accessTokenFromServer = ', accessTokenFromServer);
+		})
+		.catch(error => {
+			console.log('error = ', error);
+		});
+
+	// 블록체인 블럭 요청, 위에서 테스트 로그인 해서 받아온 로그인 토큰 이용
+	Axios.get(TestURL, {
+		accessToken: accessTokenFromServer,
+	})
+		.then(response => {
+			console.log('블록체인 블럭 토큰 요청 \n', response);
+		})
+		.catch(error => {
+			console.log('error = ', error);
+		});
+}
+
 export const RawdataSlice = createSlice({
 	name: 'rawData',
 	initialState: {
@@ -144,7 +203,5 @@ export const RawdataSlice = createSlice({
 });
 
 export const { DragdataChange } = RawdataSlice.actions;
-
 export const selectRawData = state => state.rawData;
-
 export default RawdataSlice.reducer;

@@ -60,6 +60,92 @@ const TaskCard = props => {
 		dispatch(DeletedataChangePort(ResultArrayForSend));
 	};
 
+	const showPortData = item => {
+		if (item.type === 'LICENSE') {
+			return (
+				<div className="PortItem">
+					<div
+						style={{
+							background: 'transparent',
+						}}
+					>
+						<p
+							style={{
+								fontSize: '18px',
+								fontWeight: '900',
+								margin: '5px',
+							}}
+						>
+							{item.title}
+						</p>
+						<p style={{ fontSize: '13px', margin: '5px' }}>
+							{item.publishedAt}
+							{item.createAt}
+						</p>
+					</div>
+					<div>
+						<button onClick={e => onClickDelete(item.id)}>x</button>
+					</div>
+				</div>
+			);
+		}
+		if (item.type === 'EDUCATION') {
+			return (
+				<div className="PortItem">
+					<div
+						style={{
+							background: 'transparent',
+						}}
+					>
+						<p
+							style={{
+								fontSize: '18px',
+								fontWeight: '900',
+								margin: '5px',
+							}}
+						>
+							{item.departmentInfo}
+						</p>
+						<p style={{ fontSize: '13px', margin: '5px' }}>
+							{item.publishedAt}
+							{item.createAt}
+						</p>
+					</div>
+					<div>
+						<button onClick={e => onClickDelete(item.id)}>x</button>
+					</div>
+				</div>
+			);
+		}
+		if (item.type === 'AWARD') {
+			return (
+				<div className="PortItem">
+					<div
+						style={{
+							background: 'transparent',
+						}}
+					>
+						<p
+							style={{
+								fontSize: '18px',
+								fontWeight: '900',
+								margin: '5px',
+							}}
+						>
+							{item.title} {item.rank}
+						</p>
+						<p style={{ fontSize: '13px', margin: '5px' }}>
+							{item.publishedAt}
+							{item.createAt}
+						</p>
+					</div>
+					<div>
+						<button onClick={e => onClickDelete(item.id)}>x</button>
+					</div>
+				</div>
+			);
+		}
+	};
 	return (
 		<>
 			{datatype === 'origin' ? (
@@ -80,32 +166,7 @@ const TaskCard = props => {
 					</Draggable>
 				</div>
 			) : (
-				<div className="PortItem">
-					<div
-						style={{
-							background: 'transparent',
-						}}
-					>
-						<p
-							style={{
-								fontSize: '18px',
-								fontWeight: '900',
-								margin: '5px',
-							}}
-						>
-							<p>
-								{item.title} {item.rank}
-							</p>
-						</p>
-						<p style={{ fontSize: '13px', margin: '5px' }}>
-							<p> {item.publishedAt} </p>
-							<p> {item.createAt} </p>
-						</p>
-					</div>
-					<div>
-						<button onClick={e => onClickDelete(item.id)}>x</button>
-					</div>
-				</div>
+				showPortData(item)
 			)}
 		</>
 	);

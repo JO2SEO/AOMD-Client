@@ -19,6 +19,11 @@ export function LoginPage() {
 			dispatch(SuccessLogin(true));
 			navigate('/');
 		}
+		if (logintext.id === 'test1@test.com' && logintext.pwd === 'pwpw') {
+			dispatch(SuccessLogin(true));
+			console.log('테스트용 로그인');
+			navigate('/');
+		}
 	};
 
 	const onClickSign = () => {

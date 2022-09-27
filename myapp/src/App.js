@@ -59,7 +59,7 @@ function App() {
 					alt="darkmode"
 				/>
 
-				<Router basename={process.env.PUBLIC_URL}>
+				<Router>
 					{/* PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}
 					<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 						<GlobalStyle />

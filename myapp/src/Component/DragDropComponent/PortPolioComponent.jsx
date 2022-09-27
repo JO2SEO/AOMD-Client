@@ -4,8 +4,44 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import Axios from 'axios';
+
 import TaskCard from './TaskCard';
 import { ProvidedPlaceholder } from './RawDataComponent';
+
+import { TestURL } from 'domainBox';
+// import { KakaoRedirectURL } from 'domainBox';
+// import { ServerURL } from 'domainBox';
+
+export const requestStorePortData = {
+	title: 'newTitle',
+	sharing: true,
+	portfolioBlockList: [
+		{
+			blockId: 'opop-icic1',
+		},
+		{
+			blockId: 'opop-icic2',
+		},
+		{
+			blockId: 'opop-icic3',
+		},
+	],
+	resumeList: [
+		{
+			question: 'newQuestion1',
+			content: 'newContent1',
+		},
+		{
+			question: 'newQuestion2',
+			content: 'newContent2',
+		},
+		{
+			question: 'newQuestion3',
+			content: 'newContent3',
+		},
+	],
+};
 
 const Storing = styled.div`
 	display: ${({ active }) => {
@@ -63,6 +99,20 @@ function PortPolioComponent(props) {
 
 	const onClickStore = () => {
 		setStoringState(true);
+
+		Axios.post(TestURL, {
+			loadBlockFromServer: requestStorePortData,
+		})
+			.then(response => {
+				console.log('loadBlockFromServer = ', response);
+				// dispatch(SuccessLogin(true));
+				navigate('/');
+				// console.log('성공적으로 로그인되었습니다');
+			})
+			.catch(error => {
+				console.log('error = ', error);
+			});
+
 		setTimeout(function () {
 			setStoringState(false);
 		}, 2000);
