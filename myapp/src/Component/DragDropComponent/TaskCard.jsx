@@ -80,7 +80,11 @@ const TaskCard = props => {
 						</p>
 						<p style={{ fontSize: '13px', margin: '5px' }}>
 							{item.publishedAt}
+							{/* {console.log('item.publishedAt = ', item.publishedAt)} */}
 							{item.createAt}
+							{/* {console.log('item.createAt = ', item.createAt)} */}
+
+							{/* 생성된 날짜? */}
 						</p>
 					</div>
 					<div>

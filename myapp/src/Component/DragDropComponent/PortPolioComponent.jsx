@@ -202,11 +202,7 @@ function PortPolioComponent(props) {
 	};
 
 	const contentChangeFunc = e => {
-		console.log(e);
-		var arrVal = questionContent;
-		arrVal[e.target.id].content = e.target.value;
-		arrVal[e.target.id].length = e.target.value.length;
-		setQuestionContent(arrVal);
+		setQuestionContent(e.target.value);
 		var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
 		lengthVar.innerText = e.target.value.length + ' 자';
 	};
@@ -246,7 +242,7 @@ function PortPolioComponent(props) {
 	};
 
 	const onClickTitleChange = e => {
-		alert('포트폴리오 제목 수정하기');
+		alert('포트폴리오 제목 수정하기 \n 아직 개발중인 기능입니다. ');
 	};
 
 	return (
@@ -283,7 +279,7 @@ function PortPolioComponent(props) {
 												id="0"
 												value={questionData}
 												type="text"
-												onChange={e => questionChangeFunc(e.target.value)}
+												onChange={questionChangeFunc}
 												placeholder="자기소개서 질문"
 											></input>
 										</div>
