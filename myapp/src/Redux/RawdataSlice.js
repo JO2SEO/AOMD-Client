@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+// import { useNavigate } from 'react-router-dom';
+// import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectLoginData } from 'Redux/LoginCheck';
 
 import { TestURL } from 'domainBox';
@@ -134,8 +135,8 @@ export const loadBlockFromServer = {
 // ];
 
 export function LoadRawData() {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+	// const dispatch = useDispatch();
+	// const navigate = useNavigate();
 
 	const [loginState, setLoginState] = useState(false);
 
@@ -143,15 +144,15 @@ export function LoadRawData() {
 
 	useEffect(() => {
 		if (currentLogin.loginState) {
-			console.log('Header in main page - login state : ', currentLogin.loginState);
+			// console.log('Header in main page - login state : ', currentLogin.loginState);
 			setLoginState(true);
 		} else {
-			console.log('Header in main page - login state : ', currentLogin.loginState);
+			// console.log('Header in main page - login state : ', currentLogin.loginState);
 			setLoginState(false);
 		}
 	}, [currentLogin.loginState]);
 
-	console.log('여기는 LoadRawData 함수 \n 이제 리퀘스트 보낸다?');
+	// console.log('여기는 LoadRawData 함수 \n 이제 리퀘스트 보낸다?');
 
 	let accessTokenFromServer = '';
 	// 테스트 할 때, 서버에서 받아올 로그인 토큰
@@ -162,12 +163,12 @@ export function LoadRawData() {
 		password: 'pwpw',
 	})
 		.then(response => {
-			console.log('로그인 토큰 요청 \n test1@test1.com \n', response);
+			// console.log('로그인 토큰 요청 \n test1@test1.com \n', response);
 			accessTokenFromServer = response.data.accessToken;
-			console.log('accessTokenFromServer = ', accessTokenFromServer);
+			// console.log('accessTokenFromServer = ', accessTokenFromServer);
 		})
 		.catch(error => {
-			console.log('error = ', error);
+			// console.log('error = ', error);
 		});
 
 	// 블록체인 블럭 요청, 위에서 테스트 로그인 해서 받아온 로그인 토큰 이용
@@ -175,10 +176,10 @@ export function LoadRawData() {
 		accessToken: accessTokenFromServer,
 	})
 		.then(response => {
-			console.log('블록체인 블럭 토큰 요청 \n', response);
+			// console.log('블록체인 블럭 토큰 요청 \n', response);
 		})
 		.catch(error => {
-			console.log('error = ', error);
+			// console.log('error = ', error);
 		});
 }
 
