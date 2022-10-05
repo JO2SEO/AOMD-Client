@@ -8,6 +8,10 @@ const Category = props => {
 		// setMenuToggle(false);
 		navigate('/introducepage');
 	};
+	const onClickMoveIntroduceDetailPage = () => {
+		// setMenuToggle(false);
+		navigate('/introducedetailpage');
+	};
 	const onClickMoveCommunityPage = () => {
 		// setMenuToggle(false);
 		navigate('/communitypage');
@@ -26,6 +30,7 @@ const Category = props => {
 				<h1>소개</h1>
 				<ul>
 					<li onClick={onClickMoveIntroducePage}>플랫폼 소개</li>
+					<li onClick={onClickMoveIntroduceDetailPage}>동작방식 및 세부사항 </li>
 				</ul>
 			</div>
 			<div>

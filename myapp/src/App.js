@@ -11,6 +11,8 @@ import EnterprisePage from 'Page/EnterprisePage/EnterprisePage';
 import RegisterPage from 'Page/LoginRegisterPage/RegisterPage';
 import ErrorPage from 'Page/ErrorPage';
 import IntroducePage from 'Page/IntroducePage/IntroducePage';
+import IntroduceDetailPage from 'Page/IntroduceDetailPage/IntroduceDetailPage';
+
 import CommunityPage from 'Page/CommunityPage/CommunityPage';
 
 import PortPolioPage from 'Page/PortPolioPage';
@@ -34,10 +36,6 @@ export const GlobalStyle = createGlobalStyle`
     background-color: ${props => props.theme.bgColor};
     color: ${props => props.theme.textColor};
 	}
-	// .HBGToggleBtn {
-	// background-color: ${props => props.theme.bgColor};
-    // color: ${props => props.theme.textColor};
-	// }
 	.OnToggleList {
 		background-color: ${props => props.theme.bgColor};
 	}
@@ -45,10 +43,13 @@ export const GlobalStyle = createGlobalStyle`
 
 function App() {
 	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [logoCheck, setLogoCheck] = useState(false);
+	// 로고 화이트 블랙 체크
 
 	const toggleDarkMode = () => {
 		// console.log('is dark ? = ', isDarkMode);
 		setIsDarkMode(prev => !prev);
+		setLogoCheck(prev => !prev);
 	};
 
 	let persistor = persistStore(store);
@@ -68,7 +69,7 @@ function App() {
 						{/* PUBLIC_URL은 package.json의 homepage URL값으로 설정된다. */}
 						<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 							<GlobalStyle />
-							<Header />
+							<Header logoCheck={logoCheck} />
 
 							<Routes>
 								<Route path="/" element={<FirstPage />} />
@@ -81,6 +82,10 @@ function App() {
 								<Route path="/enterprisepage" element={<EnterprisePage />} />
 								<Route path="/portpolio" element={<PortPolio />} />
 								<Route path="/introducepage" element={<IntroducePage />} />
+								<Route
+									path="/introducedetailpage"
+									element={<IntroduceDetailPage />}
+								/>
 								<Route path="/communitypage" element={<CommunityPage />} />
 							</Routes>
 						</ThemeProvider>

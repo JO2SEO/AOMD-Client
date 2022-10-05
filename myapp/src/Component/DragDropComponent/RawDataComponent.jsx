@@ -92,7 +92,13 @@ const RawDataComponent = props => {
 			<Droppable key={originData.origin.title} droppableId={originData.origin.title}>
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
+						<div className="ColumnTitleBox">
+							{' '}
+							<p>드래그 앤 드랍 방식을 통해</p>
+							<p> 편리하게 나의 데이터를 옮겨보세요!</p>
+						</div>
 						<h1 className="ColumnTitle1">{originData.origin.title}</h1>
+
 						{returnTaskCard()}
 
 						<ProvidedPlaceholder>{provided.placeholder}</ProvidedPlaceholder>

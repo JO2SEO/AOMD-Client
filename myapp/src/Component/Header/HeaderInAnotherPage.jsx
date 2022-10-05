@@ -12,7 +12,10 @@ import './Header.css';
 import { OnToggleList } from './Header';
 import Category from './Category';
 
-const HeaderInAnotherPage = () => {
+const HeaderInAnotherPage = props => {
+	const logoCheck = props.logoCheck;
+	// console.log('logoCheck = ', logoCheck);
+
 	const [infoLocation, setInfoLocation] = useState('');
 	const [loginState, setLoginState] = useState(false);
 	const [menuToggle, setMenuToggle] = useState(false);

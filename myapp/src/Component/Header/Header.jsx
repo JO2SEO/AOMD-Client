@@ -13,7 +13,11 @@ export const OnToggleList = styled.div`
 	}};
 `;
 
-function Header() {
+function Header(props) {
+	const logoCheck = props.logoCheck;
+	// 로고 화이트 블랙 체크
+	// console.log('logoCheck = ', logoCheck);
+
 	const [infoLocation, setInfoLocation] = useState('');
 	const location = useLocation();
 
@@ -21,7 +25,15 @@ function Header() {
 		setInfoLocation(location.pathname);
 	}, [location]);
 
-	return <>{infoLocation === '/' ? <HeaderInMainPage /> : <HeaderInAnotherPage />}</>;
+	return (
+		<>
+			{infoLocation === '/' ? (
+				<HeaderInMainPage logoCheck={logoCheck} />
+			) : (
+				<HeaderInAnotherPage logoCheck={logoCheck} />
+			)}
+		</>
+	);
 }
 
 export default Header;

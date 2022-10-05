@@ -5,7 +5,7 @@
 	padding-top: 10px;
 	position: fixed;
 	z-index: 100;
-	background-color: white;
+	/* background-color: white; */
 }
 .LeftBox {
 	width: 30%;
@@ -68,23 +68,11 @@
 	border-bottom: black 3px solid;
 	justify-content: space-around;
 }
-/* .OnToggleList {
-	position: absolute;
-	flex-direction: row;
-	left: 0;
-	top: 110px;
-	z-index: 7;
-	padding: 10px;
-	width: 100vw;
-	height: 170px;
-	background-color: white;
-	border-bottom: black 3px solid;
-	justify-content: space-around;
-} */
+
 .OnToggleList div {
 	display: flex;
 	flex-direction: column;
-	width: 200px;
+	width: 230px;
 	padding-left: 5%;
 	z-index: 7;
 }
@@ -103,7 +91,7 @@
 }
 
 .OnToggleList li {
-	width: 100px;
+	width: 170px;
 	text-align: left;
 	margin-top: 10px;
 	font-size: 15px;

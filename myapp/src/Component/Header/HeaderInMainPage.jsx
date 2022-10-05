@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectLoginData, SuccessLogout } from 'Redux/LoginCheck';
 import AOMD_logo from 'Image/AOMD_logo.svg';
+import AOMD_logo_white from 'Image/AOMD_logo_white.svg';
+
 import HBGIcon from 'Image/HBGIcon.svg';
 import loginIcon from 'Image/loginIcon.svg';
 
@@ -12,7 +14,11 @@ import { OnToggleList } from './Header';
 
 import './Header.css';
 
-const HeaderInMainPage = () => {
+const HeaderInMainPage = props => {
+	const logoCheck = props.logoCheck;
+	// 로고 화이트 블랙 체크
+	// console.log('logoCheck = ', logoCheck);
+
 	const [menuToggle, setMenuToggle] = useState(false);
 	const [loginState, setLoginState] = useState(false);
 
@@ -68,7 +74,13 @@ const HeaderInMainPage = () => {
 				}}
 			>
 				<div className="MoveHomeBtn" onClick={onClickMoveHome}>
-					<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
+					<>
+						{logoCheck === true ? (
+							<img src={AOMD_logo_white} alt="logoImg" style={{ width: '50%' }} />
+						) : (
+							<img src={AOMD_logo} alt="logoImg" style={{ width: '50%' }} />
+						)}
+					</>
 				</div>
 			</div>
 
@@ -121,7 +133,7 @@ const HeaderInMainPage = () => {
 							onClick={onClickLogout}
 							style={{
 								display: 'flex',
-								background: 'transparent',
+								// background: 'transparent',
 								border: 'none',
 								cursor: 'pointer',
 								alignItems: 'center',

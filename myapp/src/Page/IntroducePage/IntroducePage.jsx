@@ -4,9 +4,9 @@ import AOMD_logo from 'Image/AOMD_logo.svg';
 
 import TeamInfo from 'Image/TeamInfo.png';
 
-import scenario1 from 'Image/scenario1.png';
-import scenario2 from 'Image/scenario2.png';
-import scenario3 from 'Image/scenario3.png';
+// import scenario1 from 'Image/scenario1.png';
+// import scenario2 from 'Image/scenario2.png';
+// import scenario3 from 'Image/scenario3.png';
 
 import School from 'Image/School.svg';
 import goverment from 'Image/goverment.png';
@@ -206,7 +206,9 @@ function IntroducePage() {
 
 			<div className="IntroducePageDivContent6">
 				{/* <h1> 참여 기관 및 기업 </h1> */}
-
+				<div className="IntroducePageDivContent4">
+					<p className="IntroducePageDivContent4_Box1_title">참여 기관 및 기업</p>
+				</div>
 				<div className="IntroducePageDivContent3_SchoolAndCompany">
 					<div className="SchoolAndCompany_p1">
 						<img className="goverment" src={goverment} alt="goverment" />
@@ -241,14 +243,13 @@ function IntroducePage() {
 				</div>
 			</div>
 
-			<p className="DivideBoxDot">...</p>
+			{/* <p className="DivideBoxDot">...</p>
 
 			<div className="IntroducePageDivContent7">
-				{/* <h1> 기술의 핵심 내용 및 시나리오 </h1> */}
 				<img className="IntroducePage_scenario1" src={scenario1} alt="scenario1" />
 				<img className="IntroducePage_scenario2" src={scenario2} alt="scenario2" />
 				<img className="IntroducePage_scenario3" src={scenario3} alt="scenario3" />
-			</div>
+			</div> */}
 		</div>
 	);
 }

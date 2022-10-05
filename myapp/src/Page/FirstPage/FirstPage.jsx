@@ -100,6 +100,7 @@ function FirstPage() {
 			navigate('/portpoliopage');
 		} else {
 			alert('로그인 후 이용가능한 기능입니다');
+			navigate('/loginpage');
 		}
 	};
 	// 로그인 체크 안하고 바로 이동 => 나중에 로그인 체크하게 해야 함
@@ -183,7 +184,6 @@ function FirstPage() {
 					<p>
 						- 데이터 분산 저장과 합의 알고리즘을 통해 데이터의 위변조를 원천 차단합니다.
 					</p>
-					{/* <p> 작성한 포트폴리오를 쉽고 편하게 관리할 수 있습니다. </p> */}
 					<button className="MovePortPolioBtn" onClick={onClickMovePortPolioPage}>
 						포트폴리오 작성하러 가기 <img src={ArrowMovePort} alt="ArrowMovePort"></img>
 					</button>
