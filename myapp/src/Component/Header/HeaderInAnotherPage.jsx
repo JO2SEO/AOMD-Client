@@ -4,8 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { selectLoginData, SuccessLogout } from 'Redux/LoginCheck';
 import AOMD_logo from 'Image/AOMD_logo.svg';
+import AOMD_logo_white from 'Image/AOMD_logo_white.svg';
+
 import HBGIcon from 'Image/HBGIcon.svg';
+import HBGIcon_white from 'Image/HBGIcon_white.svg';
+
 import loginIcon from 'Image/loginIcon.svg';
+import loginIcon_white from 'Image/loginIcon_white.svg';
 
 import './Header.css';
 
@@ -68,7 +73,17 @@ const HeaderInAnotherPage = props => {
 						}}
 					>
 						<div className="MoveHomeBtn" onClick={onClickMoveHome}>
-							<img src={AOMD_logo} alt="logoImg" style={{ width: '80%' }} />
+							<>
+								{logoCheck === true ? (
+									<img
+										src={AOMD_logo_white}
+										alt="logoImg"
+										style={{ width: '80%' }}
+									/>
+								) : (
+									<img src={AOMD_logo} alt="logoImg" style={{ width: '80%' }} />
+								)}
+							</>
 						</div>
 					</div>
 
@@ -102,15 +117,29 @@ const HeaderInAnotherPage = props => {
 											paddingLeft: '50px',
 										}}
 									>
-										<img
-											src={loginIcon}
-											alt="loginIcon"
-											style={{
-												display: 'flex',
-												width: '25px',
-												height: '25px',
-											}}
-										/>
+										<>
+											{logoCheck === true ? (
+												<img
+													src={loginIcon_white}
+													alt="loginIcon_white"
+													style={{
+														display: 'flex',
+														width: '25px',
+														height: '25px',
+													}}
+												/>
+											) : (
+												<img
+													src={loginIcon}
+													alt="loginIcon"
+													style={{
+														display: 'flex',
+														width: '25px',
+														height: '25px',
+													}}
+												/>
+											)}
+										</>
 										<p
 											style={{
 												display: 'flex',
@@ -162,7 +191,13 @@ const HeaderInAnotherPage = props => {
 
 						<div className="ToggleMenuBox">
 							<button className="HBGToggleBtn" onClick={onClickToggleMenu}>
-								<img src={HBGIcon} alt="HbgToggle"></img>
+								<>
+									{logoCheck === true ? (
+										<img src={HBGIcon_white} alt="HbgToggle_white"></img>
+									) : (
+										<img src={HBGIcon} alt="HbgToggle"></img>
+									)}
+								</>
 							</button>
 
 							<OnToggleList
