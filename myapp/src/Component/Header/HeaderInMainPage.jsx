@@ -7,7 +7,10 @@ import AOMD_logo from 'Image/AOMD_logo.svg';
 import AOMD_logo_white from 'Image/AOMD_logo_white.svg';
 
 import HBGIcon from 'Image/HBGIcon.svg';
+import HBGIcon_white from 'Image/HBGIcon_white.svg';
+
 import loginIcon from 'Image/loginIcon.svg';
+import loginIcon_white from 'Image/loginIcon_white.svg';
 
 import Category from './Category';
 import { OnToggleList } from './Header';
@@ -107,15 +110,30 @@ const HeaderInMainPage = props => {
 								paddingLeft: '50px',
 							}}
 						>
-							<img
-								src={loginIcon}
-								alt="loginIcon"
-								style={{
-									display: 'flex',
-									width: '25px',
-									height: '25px',
-								}}
-							/>
+							<>
+								{logoCheck === true ? (
+									<img
+										src={loginIcon_white}
+										alt="loginIcon_white"
+										style={{
+											display: 'flex',
+											width: '25px',
+											height: '25px',
+										}}
+									/>
+								) : (
+									<img
+										src={loginIcon}
+										alt="loginIcon"
+										style={{
+											display: 'flex',
+											width: '25px',
+											height: '25px',
+										}}
+									/>
+								)}
+							</>
+
 							<p
 								style={{
 									display: 'flex',
@@ -140,15 +158,29 @@ const HeaderInMainPage = props => {
 								paddingLeft: '50px',
 							}}
 						>
-							<img
-								src={loginIcon}
-								alt="loginIcon"
-								style={{
-									display: 'flex',
-									width: '25px',
-									height: '25px',
-								}}
-							/>
+							<>
+								{logoCheck === true ? (
+									<img
+										src={loginIcon_white}
+										alt="loginIcon_white"
+										style={{
+											display: 'flex',
+											width: '25px',
+											height: '25px',
+										}}
+									/>
+								) : (
+									<img
+										src={loginIcon}
+										alt="loginIcon"
+										style={{
+											display: 'flex',
+											width: '25px',
+											height: '25px',
+										}}
+									/>
+								)}
+							</>
 							<p
 								style={{
 									display: 'flex',
@@ -165,7 +197,13 @@ const HeaderInMainPage = props => {
 
 				<div className="ToggleMenuBox">
 					<button className="HBGToggleBtn" onClick={onClickToggleMenu}>
-						<img src={HBGIcon} alt="HbgToggle"></img>
+						<>
+							{logoCheck === true ? (
+								<img src={HBGIcon_white} alt="HbgToggle_white"></img>
+							) : (
+								<img src={HBGIcon} alt="HbgToggle"></img>
+							)}
+						</>
 					</button>
 
 					<OnToggleList
