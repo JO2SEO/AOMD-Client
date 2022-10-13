@@ -26,6 +26,8 @@ function ChangeData() {
 	const originData = useSelector(selectRawData);
 	// console.log('originData = ', originData);
 	const portData = useSelector(selectPortData);
+	console.log('portData = ', portData);
+
 	// console.log('portData = ', portData);
 
 	const onDragEnd = result => {

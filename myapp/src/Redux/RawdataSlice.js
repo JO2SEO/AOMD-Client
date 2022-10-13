@@ -19,8 +19,8 @@ export const loadBlockFromServer = {
 			title: '아이디어 공모전',
 			ownerId: 1,
 			publisher: 'org1',
-			publishedAt: "yyyy-MM-dd'T'HH:mm:ss",
-			createAt: "yyyy-MM-dd'T'HH:mm:ss",
+			publishedAt: '123123123',
+			createAt: '123123123',
 			rank: '우수',
 		},
 		{
@@ -86,54 +86,6 @@ export const loadBlockFromServer = {
 	],
 };
 
-// export const data = [
-// 	// data[0] => 자격증
-// 	[
-// 		{
-// 			id: uuidv4(),
-// 			Type: '자격증',
-// 			Content: '정보 처리 기사',
-// 			Date: '1234-56-78',
-// 		},
-// 		{
-// 			id: uuidv4(),
-// 			Type: '자격증',
-// 			Content: '컴퓨터 활용 능력 1급',
-// 			Date: '1234-56-78',
-// 		},
-// 	],
-// 	// data[1] => 학력
-// 	[
-// 		{
-// 			id: uuidv4(),
-// 			Type: '학력',
-// 			Content: '대현고등학교 졸업',
-// 			Date: '1234-56-78',
-// 		},
-// 		{
-// 			id: uuidv4(),
-// 			Type: '학력',
-// 			Content: '부산대학교 졸업',
-// 			Date: '1234-56-78',
-// 		},
-// 	],
-// 	// data[2] => 수상내역
-// 	[
-// 		{
-// 			id: uuidv4(),
-// 			Type: '수상내역',
-// 			Content: '아이디어 해커톤 1위',
-// 			Date: '1234-56-78',
-// 		},
-// 		{
-// 			id: uuidv4(),
-// 			Type: '수상내역',
-// 			Content: '졸업과제 1위',
-// 			Date: '1234-56-78',
-// 		},
-// 	],
-// ];
-
 export function LoadRawData() {
 	// const dispatch = useDispatch();
 	// const navigate = useNavigate();
@@ -158,29 +110,29 @@ export function LoadRawData() {
 	// 테스트 할 때, 서버에서 받아올 로그인 토큰
 
 	// 테스트로그인 요청
-	Axios.post(TestLoginURL, {
-		email: 'user1@gmail.com',
-		password: 'pwpw',
-	})
-		.then(response => {
-			// console.log('로그인 토큰 요청 \n test1@test1.com \n', response);
-			accessTokenFromServer = response.data.accessToken;
-			// console.log('accessTokenFromServer = ', accessTokenFromServer);
-		})
-		.catch(error => {
-			// console.log('error = ', error);
-		});
+	// Axios.post(TestLoginURL, {
+	// 	email: 'user1@gmail.com',
+	// 	password: 'pwpw',
+	// })
+	// 	.then(response => {
+	// 		// console.log('로그인 토큰 요청 \n test1@test1.com \n', response);
+	// 		accessTokenFromServer = response.data.accessToken;
+	// 		// console.log('accessTokenFromServer = ', accessTokenFromServer);
+	// 	})
+	// 	.catch(error => {
+	// 		// console.log('error = ', error);
+	// 	});
 
-	// 블록체인 블럭 요청, 위에서 테스트 로그인 해서 받아온 로그인 토큰 이용
-	Axios.get(TestURL, {
-		accessToken: accessTokenFromServer,
-	})
-		.then(response => {
-			// console.log('블록체인 블럭 토큰 요청 \n', response);
-		})
-		.catch(error => {
-			// console.log('error = ', error);
-		});
+	// // 블록체인 블럭 요청, 위에서 테스트 로그인 해서 받아온 로그인 토큰 이용
+	// Axios.get(TestURL, {
+	// 	accessToken: accessTokenFromServer,
+	// })
+	// 	.then(response => {
+	// 		// console.log('블록체인 블럭 토큰 요청 \n', response);
+	// 	})
+	// 	.catch(error => {
+	// 		// console.log('error = ', error);
+	// 	});
 }
 
 export const RawdataSlice = createSlice({

@@ -60,49 +60,47 @@ function PortPolio() {
 					<img src={personImg} alt="증명사진" />
 					<div className="PortPolioUpBoxContent">
 						<h1> 서지원 </h1>
-						<h1> 전) 현대건설 부회장 </h1>
-						<h1> 전) 삼성전자 과장 </h1>
-						<h1> 전) SK 하이닉스 부장 </h1>
+						<p> (25세)</p>
 					</div>
 				</div>
 				<div className="PortPolioDownBox">
 					<div className="PortPolioOneCategory">
-						<h1> 자격증 </h1>
+						<div className="PortPolioOneCategoryTitle"> 자격증 </div>
 						<div className="PortPolioOneCategoryContent">
 							{info0[0].map(items => {
 								return (
-									<div style={{ border: 'black 3px solid' }}>
+									<div>
 										<p className="PortPolioOneCategoryContentRecord">
-											{items.title}
+											{items.title} : {items.publishedAt}
 										</p>
-										<p>{items.publishedAt}</p>
-										<p> {items.createAt} </p>
+										<p></p>
+										{/* <p> {items.createAt} </p> */}
 									</div>
 								);
 							})}
 						</div>
 					</div>
 					<div className="PortPolioOneCategory">
-						<h1> 학력 </h1>
+						<div className="PortPolioOneCategoryTitle"> 학력 </div>
 						<div className="PortPolioOneCategoryContent">
 							{info1[0].map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items.departmentInfo} {items.publishedAt} {items.createAt}
+										{items.departmentInfo} : {items.publishedAt}
+										{/* {items.createAt} */}
 									</p>
 								);
 							})}
 						</div>
 					</div>
 					<div className="PortPolioOneCategory">
-						<h1> 수상내역 </h1>
+						<div className="PortPolioOneCategoryTitle"> 수상내역 </div>
 						<div className="PortPolioOneCategoryContent">
 							{info2[0].map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items.title} {items.rank}
-										{items.publishedAt}
-										{items.createAt}
+										{items.title} {items.rank} : {items.publishedAt}
+										{/* {items.createAt} */}
 									</p>
 								);
 							})}
