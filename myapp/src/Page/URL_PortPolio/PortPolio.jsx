@@ -18,14 +18,18 @@ function PortPolio() {
 	const portData = useSelector(selectPortData);
 
 	function returnTaskCard(column) {
-		console.log('column = ', column);
+		// console.log('column = ', column);
 
 		// const sourceItemsAward = [column.awardDtoList];
 		// const sourceItemsEducation = [column.educationDtoList];
 		// const sourceItemsLicenseDtoList = [column.licenseDtoList];
-		const info0 = [column.licenseDtoList];
-		const info1 = [column.educationDtoList];
-		const info2 = [column.awardDtoList];
+		const info0 = [column.blockCompositeDto.licenseDtoList];
+		const info1 = [column.blockCompositeDto.educationDtoList];
+		const info2 = [column.blockCompositeDto.awardDtoList];
+		// console.log('info0 = ', info0);
+		// console.log('info1 = ', info1);
+		// console.log('info2 = ', info2);
+
 		// const info0 = []; // 자격증
 		// const info1 = []; // 학력
 		// const info2 = []; // 수상내역
@@ -100,7 +104,6 @@ function PortPolio() {
 											{items.title} : {items.publishedAt}
 										</p>
 										<p></p>
-										{/* <p> {items.createAt} </p> */}
 									</div>
 								);
 							})}
@@ -112,8 +115,7 @@ function PortPolio() {
 							{info1[0].map(items => {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
-										{items.departmentInfo} : {items.publishedAt}
-										{/* {items.createAt} */}
+										{items.title} : {items.publishedAt}
 									</p>
 								);
 							})}
@@ -126,7 +128,6 @@ function PortPolio() {
 								return (
 									<p className="PortPolioOneCategoryContentRecord">
 										{items.title} {items.rank} : {items.publishedAt}
-										{/* {items.createAt} */}
 									</p>
 								);
 							})}
@@ -136,6 +137,7 @@ function PortPolio() {
 			</Fragment>
 		);
 	}
+
 	return (
 		<div className="PortPolioDiv" onContextMenu={onContextMenuFunc} onClick={onClickFunc}>
 			<div className="PortPolioMainBox">{returnTaskCard(portData.port1.items)}</div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import kakaoBtn from 'Image/kakaoBtn.png';
 
@@ -9,16 +10,16 @@ const KakaoLoginButton = () => {
 
 	const { Kakao } = window;
 	let location = useLocation();
+	const navigate = useNavigate();
 
 	const kakaoLoginClickHandler = () => {
 		console.log('location in KakaoLoginButton = ', location);
 		function loginWithKakao() {
 			Kakao.Auth.authorize({
-				// redirectUri: './oauth',
-				// redirectUri: 'http://localhost:3000/AOMD-Client/oauth',
+				// redirectUri: 'http://localhost:3000/oauth',
 				redirectUri: 'http://15.164.231.60:3000/oauth',
-				// redirectUri: 'https://jo2seo.github.io/oauth',
 			});
+			navigate('/');
 		}
 		loginWithKakao();
 

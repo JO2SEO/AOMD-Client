@@ -116,8 +116,10 @@ export function LoadPortData() {
 
 	// 테스트로그인 요청
 	Axios.post(ServerURLLogin, {
-		email: 'user1@gmail.com',
-		password: 'pwpw',
+		// email: 'zwon@gmail.com',
+		// password: '1234',
+		email: 'whquddn55@naver.com',
+		password: '1234',
 	})
 		.then(response => {
 			// console.log(
@@ -148,7 +150,7 @@ export function LoadPortData() {
 					// 	' << In PortDataSlice >> \n loadPortFromServer - Before = ',
 					// 	loadPortFromServer
 					// );
-					loadPortFromServer_items = response.data[0].blockCompositeDto;
+					loadPortFromServer_items = response.data[0];
 					loadPortFromServer_title = response.data[0].portfolioDto.title;
 
 					// console.log(
@@ -156,7 +158,7 @@ export function LoadPortData() {
 					// 	loadPortFromServer_title,
 					// 	loadPortFromServer_items
 					// );
-
+					// console.log('@@@ = ', response);
 					dispatch(LoadDataPortItems(loadPortFromServer_items));
 					dispatch(LoadDataPortTitle(loadPortFromServer_title));
 

@@ -62,7 +62,7 @@ const Storing = styled.div`
 		height: 10px;
 		background-color: gray;
 		border-radius: 50%;
-		animation: loading 1s 0s linear infinite;
+		animation: loading 0.5s 0s linear infinite;
 	}
 
 	& span:nth-child(1) {
@@ -71,12 +71,12 @@ const Storing = styled.div`
 	}
 
 	& span:nth-child(2) {
-		animation-delay: 0.2s;
+		animation-delay: 0.1s;
 		background-color: orange;
 	}
 
 	& span:nth-child(3) {
-		animation-delay: 0.4s;
+		animation-delay: 0.2s;
 		background-color: yellowgreen;
 	}
 
@@ -97,7 +97,7 @@ function PortPolioComponent(props) {
 	// console.log('<< PortPolioComponent.js >> \n');
 
 	const { showState, portData } = props;
-	// console.log('@@@ = ', portData.port1.items.awardDtoList);
+	// console.log('@@@ portData = ', portData);
 
 	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
@@ -123,9 +123,9 @@ function PortPolioComponent(props) {
 		// 		console.log('error = ', error);
 		// 	});
 
-		// setTimeout(function () {
-		// 	setStoringState(false);
-		// }, 2000);
+		setTimeout(function () {
+			setStoringState(false);
+		}, 1000);
 	};
 
 	const onClickMakeURL = () => {
@@ -159,12 +159,13 @@ function PortPolioComponent(props) {
 
 	function returnTaskCard(portData) {
 		const info = portData;
+		// console.log('123123 info = ', info);
 		return (
 			<Fragment>
 				<div className="DataBox2">
 					<p className="DataBoxh2"> 수상내역 </p>
 					<div className="DataBoxContent">
-						{info.port1.items.awardDtoList.map(items => {
+						{info.port1.items.blockCompositeDto.awardDtoList.map(items => {
 							return (
 								<TaskCard
 									key={items.id}
@@ -179,7 +180,7 @@ function PortPolioComponent(props) {
 				<div className="DataBox2">
 					<p className="DataBoxh2"> 학력 </p>
 					<div className="DataBoxContent">
-						{info.port1.items.educationDtoList.map(items => {
+						{info.port1.items.blockCompositeDto.educationDtoList.map(items => {
 							return (
 								<TaskCard
 									key={items.id}
@@ -194,7 +195,7 @@ function PortPolioComponent(props) {
 				<div className=" DataBox2">
 					<p className="DataBoxh2"> 자격증 </p>
 					<div className="DataBoxContent">
-						{info.port1.items.licenseDtoList.map(items => {
+						{info.port1.items.blockCompositeDto.licenseDtoList.map(items => {
 							return (
 								<TaskCard
 									key={items.id}
@@ -212,24 +213,27 @@ function PortPolioComponent(props) {
 
 	const [storingState, setStoringState] = useState(false);
 
-	// const [questionData, setQuestionData] = useState(
-	// 	portData.port1.items.resumeDtoList[0].question
-	// );
-	// const [questionContent, setQuestionContent] = useState(
-	// 	portData.port1.items.resumeDtoList[0].content
-	// );
+	const [questionData, setQuestionData] = useState(
+		portData.port1.items.resumeDtoList[0].question
+	);
+	const [questionContent, setQuestionContent] = useState(
+		portData.port1.items.resumeDtoList[0].content
+	);
+
+	// console.log('questionData = ', questionData);
+	// console.log('questionContent = ', questionContent);
 
 	const [questionCount, setQuestionCount] = useState(1);
 
-	// const questionChangeFunc = e => {
-	// 	setQuestionData(e.target.value);
-	// };
+	const questionChangeFunc = e => {
+		setQuestionData(e.target.value);
+	};
 
-	// const contentChangeFunc = e => {
-	// 	setQuestionContent(e.target.value);
-	// 	var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
-	// 	lengthVar.innerText = e.target.value.length + ' 자';
-	// };
+	const contentChangeFunc = e => {
+		setQuestionContent(e.target.value);
+		var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
+		lengthVar.innerText = e.target.value.length + ' 자';
+	};
 
 	const onClickAddContent = e => {
 		setQuestionCount(questionCount + 1);
@@ -301,9 +305,9 @@ function PortPolioComponent(props) {
 											</p>
 											<input
 												id="0"
-												// value={questionData}
+												value={questionData}
 												type="text"
-												// onChange={questionChangeFunc}
+												onChange={questionChangeFunc}
 												placeholder="자기소개서 질문"
 											></input>
 										</div>
@@ -311,13 +315,13 @@ function PortPolioComponent(props) {
 										<textarea
 											id="0"
 											className="IntroduceText"
-											// value={questionContent}
+											value={questionContent}
 											type="text"
-											// onChange={contentChangeFunc}
+											onChange={contentChangeFunc}
 											placeholder="..."
 										></textarea>
 										<p id="lengthOfContent_P0" className="lengthOfContent_P">
-											0 자
+											{questionContent.length} 자
 										</p>
 									</div>
 									<button className="AddQuestionBtn" onClick={onClickAddContent}>

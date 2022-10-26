@@ -15,10 +15,11 @@ const TaskCard = props => {
 
 	const onClickDelete = itemID => {
 		const sourceColumn = portData.port1;
+		// console.log('sourceColumn = ', sourceColumn);
 
-		const sourceItemsAward = [sourceColumn.items.awardDtoList];
-		const sourceItemsEducation = [sourceColumn.items.educationDtoList];
-		const sourceItemsLicenseDtoList = [sourceColumn.items.licenseDtoList];
+		const sourceItemsAward = [sourceColumn.items.blockCompositeDto.awardDtoList];
+		const sourceItemsEducation = [sourceColumn.items.blockCompositeDto.educationDtoList];
+		const sourceItemsLicenseDtoList = [sourceColumn.items.blockCompositeDto.licenseDtoList];
 
 		let sourceItems = [];
 		let After = [];
@@ -53,14 +54,32 @@ const TaskCard = props => {
 			}
 		}
 
+		const totalSend = {};
+
 		const ResultArrayForSend = {};
-		ResultArrayForSend.portfolioDto = sourceColumn.items.portfolioDto;
+
+		// ResultArrayForSend.awardDtoList = Array_Award;
+
+		// ResultArrayForSend.portfolioDto = destColumn.items.portfolioDto;
 		ResultArrayForSend.awardDtoList = Array_Award;
 		ResultArrayForSend.educationDtoList = Array_Education;
 		ResultArrayForSend.licenseDtoList = Array_LicenseDto;
-		ResultArrayForSend.resumeDtoList = [sourceColumn.items.portfolioDto];
+		// ResultArrayForSend.resumeDtoList = [destColumn.items.portfolioDto];
 
-		dispatch(DeletedataChangePort(ResultArrayForSend));
+		totalSend.blockCompositeDto = ResultArrayForSend;
+
+		// console.log('destColumn.portfolioDto = ', destColumn.portfolioDto);
+		const newObj = Object.assign({}, sourceColumn.items.portfolioDto);
+		// console.log('newObj = ', newObj);
+		totalSend.portfolioDto = newObj;
+
+		const newObj1 = Object.assign({}, sourceColumn.items.resumeDtoList);
+		totalSend.resumeDtoList = newObj1;
+
+		// console.log('After destColumn = ', totalSend);
+
+		// console.log('Result = ', ResultArrayForSend);
+		dispatch(DeletedataChangePort(totalSend));
 	};
 
 	const showPortData = item => {

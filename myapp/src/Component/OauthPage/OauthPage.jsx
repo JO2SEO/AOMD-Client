@@ -31,14 +31,9 @@ function OauthPage() {
 
 	Axios.post(KakaoRedirectURL, {
 		code: qs.code,
-		callbackUrl: 'http://15.164.231.60:3000/oauth',
 
-		// // http://aomd.kro.kr:8080/api/v1/auth/kakao?code=
-		// params: {
-		// 	code: qs.code,
-		// 	// callbackUrl: 'https://jo2seo.github.io/oauth',
-		// 	callbackUrl: 'http://localhost:3000/AOMD-Client/oauth',
-		// },
+		callbackUrl: 'http://15.164.231.60:3000/oauth',
+		// callbackUrl: 'http://localhost:3000/oauth',
 	})
 		.then(response => {
 			console.log('response = ', response);
@@ -51,7 +46,11 @@ function OauthPage() {
 		});
 
 	return (
-		<div>
+		<div
+			style={{
+				backgroundColor: 'blue',
+			}}
+		>
 			-- Oauth Page --
 			<div> 로딩 중 ...</div>
 		</div>

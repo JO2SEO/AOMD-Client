@@ -187,8 +187,10 @@ export function LoadRawData() {
 	// 테스트 할 때, 서버에서 받아올 로그인 토큰
 
 	Axios.post(ServerURLLogin, {
-		email: 'user1@gmail.com',
-		password: 'pwpw',
+		// email: 'zwon@gmail.com',
+		// password: '1234',
+		email: 'whquddn55@naver.com',
+		password: '1234',
 	})
 		.then(response => {
 			// console.log(

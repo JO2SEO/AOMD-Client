@@ -62,13 +62,13 @@ function ChangeData() {
 			const destColumn = portData.port1;
 
 			// console.log('sourceColumn = ', sourceColumn);
-			// console.log('destColumn = ', destColumn);
+			// console.log('before destColumn = ', destColumn);
 
 			const sourceItems1 = [sourceColumn.items];
 			const destItems1 = [destColumn.items];
 
 			const sourceItems = sourceItems1[0];
-			const destItems = destItems1[0];
+			const destItems = destItems1[0].blockCompositeDto;
 
 			// console.log('@@@@@@@@@@@ sourceItems = ', sourceItems);
 			// console.log('@@@@@@@@@@@ destItems = ', destItems);
@@ -94,11 +94,15 @@ function ChangeData() {
 			// console.log('@@@ =>', dragType);
 			// 타입이 뭐냐 => AWARD, LICENSE ~~
 
+			// console.log('destItems = ', destItems);
+
 			var awardValue = destItems.awardDtoList;
 			// console.log('awardValue = ', awardValue);
 			var awardValueLen = destItems.awardDtoList.length;
+
 			var educationValue = destItems.educationDtoList;
 			var educationValueLen = destItems.educationDtoList.length;
+
 			var licenseValue = destItems.licenseDtoList;
 			var licenseValueLen = destItems.licenseDtoList.length;
 
@@ -106,8 +110,10 @@ function ChangeData() {
 			// console.log('awardValueSource = ', awardValueSource);
 			var awardValueSourceLen = sourceItems.awardDtoList.length;
 			// console.log('Length = ', awardValueSourceLen);
+
 			var educationValueSource = sourceItems.educationDtoList;
 			var educationValueSourceLen = sourceItems.educationDtoList.length;
+
 			var licenseValueSource = sourceItems.licenseDtoList;
 			var licenseValueSourceLen = sourceItems.licenseDtoList.length;
 
@@ -181,29 +187,50 @@ function ChangeData() {
 			const Array_Education = [...educationValue];
 			const Array_LicenseDto = [...licenseValue];
 
-			for (let i = 0; i < Array.length; i++) {
-				if (recordToAdd.type === 'AWARD') {
+			// console.log('recordToAdd = ', recordToAdd);
+
+			for (let i = 0; i < Array.length + 1; i++) {
+				if (dragType == 'AWARD') {
 					Array_Award.push(recordToAdd);
+					// console.log('Array_Award = ', Array_Award);
 					break;
 				}
-				if (recordToAdd.type === 'EDUCATION') {
+				if (dragType === 'EDUCATION') {
 					Array_Education.push(recordToAdd);
 					break;
 				}
-				if (recordToAdd.type === 'LICENSE') {
+				if (dragType === 'LICENSE') {
 					Array_LicenseDto.push(recordToAdd);
 					break;
 				}
 			}
 
+			const totalSend = {};
+
 			const ResultArrayForSend = {};
-			ResultArrayForSend.portfolioDto = destColumn.items.portfolioDto;
+
+			// ResultArrayForSend.awardDtoList = Array_Award;
+
+			// ResultArrayForSend.portfolioDto = destColumn.items.portfolioDto;
 			ResultArrayForSend.awardDtoList = Array_Award;
 			ResultArrayForSend.educationDtoList = Array_Education;
 			ResultArrayForSend.licenseDtoList = Array_LicenseDto;
-			ResultArrayForSend.resumeDtoList = [destColumn.items.portfolioDto];
+			// ResultArrayForSend.resumeDtoList = [destColumn.items.portfolioDto];
 
-			dispatch(DragdataChangePort(ResultArrayForSend));
+			totalSend.blockCompositeDto = ResultArrayForSend;
+
+			// console.log('destColumn.portfolioDto = ', destColumn.portfolioDto);
+			const newObj = Object.assign({}, destColumn.items.portfolioDto);
+			// console.log('newObj = ', newObj);
+			totalSend.portfolioDto = newObj;
+
+			const newObj1 = Object.assign({}, destColumn.items.resumeDtoList);
+			totalSend.resumeDtoList = newObj1;
+
+			// console.log('After destColumn = ', totalSend);
+
+			// console.log('Result = ', ResultArrayForSend);
+			dispatch(DragdataChangePort(totalSend));
 		} else {
 			return;
 		}
