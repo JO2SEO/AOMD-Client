@@ -4,17 +4,19 @@ import styled from 'styled-components';
 
 import TaskCard from './TaskCard';
 
-import { LoadRawData } from 'Redux/RawdataSlice';
+// import { LoadRawData } from 'Redux/RawdataSlice';
 
 export const ProvidedPlaceholder = styled.span`
 	display: 'none';
 `;
 
 const RawDataComponent = props => {
+	// console.log('<< RawDataComponent.js >> \n');
+
 	const { originData } = props;
 
-	console.log('여기는 RawDataComponent \n LoadRawData 실행해');
-	LoadRawData();
+	// console.log('여기는 RawDataComponent \n LoadRawData 실행해');
+	// LoadRawData();
 
 	function returnTaskCard() {
 		const info0 = originData;
@@ -51,7 +53,7 @@ const RawDataComponent = props => {
 							<TaskCard
 								key={items.id}
 								item={items}
-								index={items.ownerId}
+								index={items.onumber}
 								datatype="origin"
 							/>
 						);
@@ -64,7 +66,7 @@ const RawDataComponent = props => {
 							<TaskCard
 								key={items.id}
 								item={items}
-								index={items.ownerId}
+								index={items.onumber}
 								datatype="origin"
 							/>
 						);
@@ -77,7 +79,7 @@ const RawDataComponent = props => {
 							<TaskCard
 								key={items.id}
 								item={items}
-								index={items.ownerId}
+								index={items.onumber}
 								datatype="origin"
 							/>
 						);
@@ -93,7 +95,6 @@ const RawDataComponent = props => {
 				{(provided, snapshot) => (
 					<div ref={provided.innerRef} {...provided.droppableProps}>
 						<div className="ColumnTitleBox">
-							{' '}
 							<p>드래그 앤 드랍 방식을 통해</p>
 							<p> 편리하게 나의 데이터를 옮겨보세요!</p>
 						</div>

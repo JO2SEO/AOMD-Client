@@ -14,7 +14,13 @@ const Category = props => {
 	};
 	const onClickMoveCommunityPage = () => {
 		// setMenuToggle(false);
-		navigate('/communitypage');
+		// navigate('/communitypage');
+		alert('아직 개발중인 페이지입니다. ');
+	};
+	const onClickMoveManagerPage = () => {
+		// setMenuToggle(false);
+		// navigate('/communitypage');
+		alert('관리자만 접근 가능한 페이지입니다. ');
 	};
 	const onClickMovePortPolioPage = () => {
 		// setMenuToggle(false);
@@ -48,16 +54,16 @@ const Category = props => {
 			<div>
 				<h1>설정</h1>
 				<ul>
-					<li>마이페이지</li>
-					<li>관리자 페이지</li>
+					<li onClick={onClickMoveCommunityPage}>마이페이지</li>
+					<li onClick={onClickMoveManagerPage}>관리자 페이지</li>
 				</ul>
 			</div>
 			<div>
 				<h1>고객센터</h1>
 				<ul>
-					<li>공지사항</li>
-					<li>1:1 문의</li>
-					<li>이메일 문의</li>
+					<li onClick={onClickMoveCommunityPage}> 공지사항</li>
+					<li onClick={onClickMoveCommunityPage}>1:1 문의</li>
+					<li onClick={onClickMoveCommunityPage}>이메일 문의</li>
 				</ul>
 			</div>
 		</>

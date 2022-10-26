@@ -216,8 +216,6 @@ function IntroducePage() {
 						<h1>정부</h1>
 						<div className="SchoolAndCompany_div">
 							<p>과학기술정보통신부</p>
-							<p>과학기술정보통신부</p>
-							<p>과학기술정보통신부</p>
 						</div>
 					</div>
 					<div className="SchoolAndCompany_p2">
@@ -226,8 +224,6 @@ function IntroducePage() {
 						<h1>학교</h1>
 						<div className="SchoolAndCompany_div">
 							<p>부산대학교</p>
-							<p>부산대학교</p>
-							<p>부산대학교</p>
 						</div>
 					</div>
 					<div className="SchoolAndCompany_p3">
@@ -235,9 +231,7 @@ function IntroducePage() {
 
 						<h1>기업</h1>
 						<div className="SchoolAndCompany_div">
-							<p>삼성전자</p>
-							<p>삼성전자</p>
-							<p>삼성전자</p>
+							<p> 삼성전자 </p>
 						</div>
 					</div>
 				</div>

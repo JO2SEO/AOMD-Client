@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
+
+import RawdataSlice, { LoadRawData } from './RawdataSlice';
+import PortdataSlice, { LoadPortData } from './PortdataSlice';
 
 import { selectRawData } from './RawdataSlice';
 import { DragdataChangePort, selectPortData } from './PortdataSlice';
@@ -20,22 +23,39 @@ const PortBtn = styled.div`
 `;
 
 function ChangeData() {
+	// console.log('<< ChangeData.js  >> \n');
+
 	const [portState, setPortState] = useState([true, false, false]);
 
-	const dispatch = useDispatch();
-	const originData = useSelector(selectRawData);
-	// console.log('originData = ', originData);
-	const portData = useSelector(selectPortData);
-	console.log('portData = ', portData);
+	// LoadRawData();
+	// LoadPortData();
 
-	// console.log('portData = ', portData);
+	const originData = useSelector(selectRawData);
+	const [originDataState, setOriginDataState] = useState(originData);
+
+	const portData = useSelector(selectPortData);
+	const [portDataState, setPortDataState] = useState(portData);
+
+	useEffect(() => {
+		// console.log('originData - Before / In ChangeData = ', originDataState);
+		setOriginDataState(originData);
+		// console.log('originData - After In ChangeData = ', originDataState);
+	}, [originData]);
+
+	useEffect(() => {
+		// console.log('portData - Before In ChangeData = ', portDataState);
+		setPortDataState(portData);
+		// console.log('portData - After In ChangeData = ', portDataState);
+	}, [portData]);
+
+	const dispatch = useDispatch();
 
 	const onDragEnd = result => {
 		if (!result.destination) return;
 		// 드래그 드랍 가능한 범위 밖이면 걍 리턴
 
 		const { source, destination } = result;
-		console.log('result = ', result);
+		// console.log('result = ', result);
 
 		if (source.droppableId !== destination.droppableId) {
 			const sourceColumn = originData.origin;
@@ -50,14 +70,27 @@ function ChangeData() {
 			const sourceItems = sourceItems1[0];
 			const destItems = destItems1[0];
 
-			// console.log('sourceItems = ', sourceItems);
-			// console.log('destItems = ', destItems);
+			// console.log('@@@@@@@@@@@ sourceItems = ', sourceItems);
+			// console.log('@@@@@@@@@@@ destItems = ', destItems);
 
 			const dragItemID = result.draggableId;
 			// console.log('dragItemID = ', dragItemID);
 
-			var dragType = dragItemID.split('-');
-			dragType = dragType[0];
+			var dragType = '';
+
+			if (dragItemID >= 10 && dragItemID < 20) {
+				dragType = 'AWARD';
+			}
+
+			if (dragItemID >= 20 && dragItemID < 30) {
+				dragType = 'EDUCATION';
+			}
+
+			if (dragItemID >= 30 && dragItemID < 40) {
+				dragType = 'LICENSE';
+			}
+
+			// dragType = dragType[0];
 			// console.log('@@@ =>', dragType);
 			// 타입이 뭐냐 => AWARD, LICENSE ~~
 
@@ -70,7 +103,9 @@ function ChangeData() {
 			var licenseValueLen = destItems.licenseDtoList.length;
 
 			var awardValueSource = sourceItems.awardDtoList;
+			// console.log('awardValueSource = ', awardValueSource);
 			var awardValueSourceLen = sourceItems.awardDtoList.length;
+			// console.log('Length = ', awardValueSourceLen);
 			var educationValueSource = sourceItems.educationDtoList;
 			var educationValueSourceLen = sourceItems.educationDtoList.length;
 			var licenseValueSource = sourceItems.licenseDtoList;
@@ -81,8 +116,11 @@ function ChangeData() {
 
 			// 레코드 뽑아오기
 			if (dragType === 'AWARD') {
+				// alert('!');
 				for (var i = 0; i < awardValueSourceLen; i++) {
-					if (result.draggableId === awardValueSource[i].id) {
+					// console.log('1 => ', result.draggableId);
+					// console.log('2 => ', awardValueSource[i].onumber);
+					if (result.draggableId == awardValueSource[i].onumber) {
 						recordToAdd = awardValueSource[i];
 						break;
 					}
@@ -90,7 +128,7 @@ function ChangeData() {
 			}
 			if (dragType === 'EDUCATION') {
 				for (var i = 0; i < educationValueSourceLen; i++) {
-					if (result.draggableId === educationValueSource[i].id) {
+					if (result.draggableId == educationValueSource[i].onumber) {
 						recordToAdd = educationValueSource[i];
 						break;
 					}
@@ -98,19 +136,19 @@ function ChangeData() {
 			}
 			if (dragType === 'LICENSE') {
 				for (var i = 0; i < licenseValueSourceLen; i++) {
-					if (result.draggableId === licenseValueSource[i].id) {
+					if (result.draggableId == licenseValueSource[i].onumber) {
 						recordToAdd = licenseValueSource[i];
 						break;
 					}
 				}
 			}
 
-			console.log('recordToAdd = ', recordToAdd);
+			// console.log('recordToAdd = ', recordToAdd);
 
 			// 만약에 드랍하려고 하는 곳에 이미 똑같은 데이터가 있으면 ?
 			if (dragType === 'AWARD') {
 				for (var i = 0; i < awardValueLen; i++) {
-					if (result.draggableId === awardValue[i].id) {
+					if (result.draggableId == awardValue[i].onumber) {
 						alert('이미 추가한 데이터입니다.');
 						return;
 					}
@@ -118,7 +156,7 @@ function ChangeData() {
 			}
 			if (dragType === 'EDUCATION') {
 				for (var i = 0; i < educationValueLen; i++) {
-					if (result.draggableId === educationValue[i].id) {
+					if (result.draggableId == educationValue[i].onumber) {
 						alert('이미 추가한 데이터입니다.');
 						return;
 					}
@@ -126,7 +164,7 @@ function ChangeData() {
 			}
 			if (dragType === 'LICENSE') {
 				for (var i = 0; i < licenseValueLen; i++) {
-					if (result.draggableId === licenseValue[i].id) {
+					if (result.draggableId == licenseValue[i].onumber) {
 						alert('이미 추가한 데이터입니다.');
 						return;
 					}
@@ -206,10 +244,10 @@ function ChangeData() {
 			<DragDropContext onDragEnd={result => onDragEnd(result)}>
 				<div className="DragDropContentBox">
 					<div className="RawDataBox">
-						<RawDataComponent originData={originData} />
+						<RawDataComponent originData={originDataState} />
 					</div>
 					<div className="PortPolioBox">
-						<PortPolioComponent showState={portState} portData={portData} />
+						<PortPolioComponent showState={portState} portData={portDataState} />
 					</div>
 				</div>
 			</DragDropContext>

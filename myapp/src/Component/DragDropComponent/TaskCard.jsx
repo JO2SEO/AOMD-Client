@@ -7,6 +7,9 @@ import './DragDropComponent.css';
 
 const TaskCard = props => {
 	const { item, index, datatype } = props;
+	var i_index = String(index);
+
+	// console.log('!!!!!!!!!!! item = ', item);
 	const dispatch = useDispatch();
 	const portData = useSelector(selectPortData);
 
@@ -61,100 +64,131 @@ const TaskCard = props => {
 	};
 
 	const showPortData = item => {
-		if (item.type === 'LICENSE') {
-			return (
-				<div className="PortItem">
-					<div
+		return (
+			<div className="PortItem">
+				<div
+					style={{
+						background: 'transparent',
+					}}
+				>
+					<p
 						style={{
-							background: 'transparent',
+							fontSize: '18px',
+							fontWeight: '900',
+							margin: '5px',
+							color: 'black',
 						}}
 					>
-						<p
-							style={{
-								fontSize: '18px',
-								fontWeight: '900',
-								margin: '5px',
-							}}
-						>
-							{item.title}
-						</p>
-						<p style={{ fontSize: '13px', margin: '5px' }}>
-							{item.publishedAt}
-							{/* {console.log('item.publishedAt = ', item.publishedAt)} */}
-							{item.createAt}
-							{/* {console.log('item.createAt = ', item.createAt)} */}
+						{item.title}
+					</p>
+					<p style={{ fontSize: '13px', margin: '5px', color: 'black' }}>
+						{item.publishedAt}
+						{item.createAt}
+						{/* 생성된 날짜? */}
+					</p>
+				</div>
+				<div>
+					<button onClick={e => onClickDelete(item.id)}>x</button>
+				</div>
+			</div>
+		);
 
-							{/* 생성된 날짜? */}
-						</p>
-					</div>
-					<div>
-						<button onClick={e => onClickDelete(item.id)}>x</button>
-					</div>
-				</div>
-			);
-		}
-		if (item.type === 'EDUCATION') {
-			return (
-				<div className="PortItem">
-					<div
-						style={{
-							background: 'transparent',
-						}}
-					>
-						<p
-							style={{
-								fontSize: '18px',
-								fontWeight: '900',
-								margin: '5px',
-							}}
-						>
-							{item.departmentInfo}
-						</p>
-						<p style={{ fontSize: '13px', margin: '5px' }}>
-							{item.publishedAt}
-							{item.createAt}
-						</p>
-					</div>
-					<div>
-						<button onClick={e => onClickDelete(item.id)}>x</button>
-					</div>
-				</div>
-			);
-		}
-		if (item.type === 'AWARD') {
-			return (
-				<div className="PortItem">
-					<div
-						style={{
-							background: 'transparent',
-						}}
-					>
-						<p
-							style={{
-								fontSize: '18px',
-								fontWeight: '900',
-								margin: '5px',
-							}}
-						>
-							{item.title} {item.rank}
-						</p>
-						<p style={{ fontSize: '13px', margin: '5px' }}>
-							{item.publishedAt}
-							{item.createAt}
-						</p>
-					</div>
-					<div>
-						<button onClick={e => onClickDelete(item.id)}>x</button>
-					</div>
-				</div>
-			);
-		}
+		// 이걸 원래 해뒀었는데 type 컬럼이 없어져버렸어
+
+		// if (item.type === 'LICENSE') {
+		// 	return (
+		// 		<div className="PortItem">
+		// 			<div
+		// 				style={{
+		// 					background: 'transparent',
+		// 				}}
+		// 			>
+		// 				<p
+		// 					style={{
+		// 						fontSize: '18px',
+		// 						fontWeight: '900',
+		// 						margin: '5px',
+		// 					}}
+		// 				>
+		// 					{item.title}
+		// 				</p>
+		// 				<p style={{ fontSize: '13px', margin: '5px' }}>
+		// 					{item.publishedAt}
+		// 					{/* {console.log('item.publishedAt = ', item.publishedAt)} */}
+		// 					{item.createAt}
+		// 					{/* {console.log('item.createAt = ', item.createAt)} */}
+
+		// 					{/* 생성된 날짜? */}
+		// 				</p>
+		// 			</div>
+		// 			<div>
+		// 				<button onClick={e => onClickDelete(item.id)}>x</button>
+		// 			</div>
+		// 		</div>
+		// 	);
+		// }
+		// if (item.type === 'EDUCATION') {
+		// 	return (
+		// 		<div className="PortItem">
+		// 			<div
+		// 				style={{
+		// 					background: 'transparent',
+		// 				}}
+		// 			>
+		// 				<p
+		// 					style={{
+		// 						fontSize: '18px',
+		// 						fontWeight: '900',
+		// 						margin: '5px',
+		// 					}}
+		// 				>
+		// 					{item.departmentInfo}
+		// 				</p>
+		// 				<p style={{ fontSize: '13px', margin: '5px' }}>
+		// 					{item.publishedAt}
+		// 					{item.createAt}
+		// 				</p>
+		// 			</div>
+		// 			<div>
+		// 				<button onClick={e => onClickDelete(item.id)}>x</button>
+		// 			</div>
+		// 		</div>
+		// 	);
+		// }
+		// if (item.type === 'AWARD') {
+		// 	return (
+		// 		<div className="PortItem">
+		// 			<div
+		// 				style={{
+		// 					background: 'transparent',
+		// 				}}
+		// 			>
+		// 				<p
+		// 					style={{
+		// 						fontSize: '18px',
+		// 						fontWeight: '900',
+		// 						margin: '5px',
+		// 					}}
+		// 				>
+		// 					{item.title} {item.rank}
+		// 				</p>
+		// 				<p style={{ fontSize: '13px', margin: '5px' }}>
+		// 					{item.publishedAt}
+		// 					{item.createAt}
+		// 				</p>
+		// 			</div>
+		// 			<div>
+		// 				<button onClick={e => onClickDelete(item.id)}>x</button>
+		// 			</div>
+		// 		</div>
+		// 	);
+		// }
 	};
 	return (
 		<>
 			{datatype === 'origin' ? (
 				<div className="OriginDataBox">
-					<Draggable key={item.id} draggableId={item.id} index={index}>
+					<Draggable key={index} draggableId={i_index} index={index} type={item.type}>
 						{provided => (
 							<div
 								className="OriginDataContent"
@@ -163,7 +197,8 @@ const TaskCard = props => {
 								{...provided.dragHandleProps}
 							>
 								<p>
-									{item.title} {item.rank}
+									{item.title}
+									{/* {item.rank} */}
 								</p>
 							</div>
 						)}

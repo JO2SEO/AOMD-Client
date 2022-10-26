@@ -8,39 +8,40 @@ import Axios from 'axios';
 
 import TaskCard from './TaskCard';
 import { ProvidedPlaceholder } from './RawDataComponent';
+import { LoadPortData } from 'Redux/PortdataSlice';
 
-import { TestURL } from 'domainBox';
+// import { TestURL } from 'domainBox';
 // import { KakaoRedirectURL } from 'domainBox';
-// import { ServerURL } from 'domainBox';
+import { ServerURL_port } from 'domainBox';
 
 export const requestStorePortData = {
-	title: 'newTitle',
-	sharing: true,
-	portfolioBlockList: [
-		{
-			blockId: 'opop-icic1',
-		},
-		{
-			blockId: 'opop-icic2',
-		},
-		{
-			blockId: 'opop-icic3',
-		},
-	],
-	resumeList: [
-		{
-			question: 'newQuestion1',
-			content: 'newContent1',
-		},
-		{
-			question: 'newQuestion2',
-			content: 'newContent2',
-		},
-		{
-			question: 'newQuestion3',
-			content: 'newContent3',
-		},
-	],
+	// title: 'newTitle',
+	// sharing: true,
+	// portfolioBlockList: [
+	// 	{
+	// 		blockId: 'opop-icic1',
+	// 	},
+	// 	{
+	// 		blockId: 'opop-icic2',
+	// 	},
+	// 	{
+	// 		blockId: 'opop-icic3',
+	// 	},
+	// ],
+	// resumeList: [
+	// 	{
+	// 		question: 'newQuestion1',
+	// 		content: 'newContent1',
+	// 	},
+	// 	{
+	// 		question: 'newQuestion2',
+	// 		content: 'newContent2',
+	// 	},
+	// 	{
+	// 		question: 'newQuestion3',
+	// 		content: 'newContent3',
+	// 	},
+	// ],
 };
 
 const Storing = styled.div`
@@ -93,29 +94,38 @@ const Storing = styled.div`
 `;
 
 function PortPolioComponent(props) {
+	// console.log('<< PortPolioComponent.js >> \n');
+
 	const { showState, portData } = props;
+	// console.log('@@@ = ', portData.port1.items.awardDtoList);
+
 	const Swal = require('sweetalert2');
 	const navigate = useNavigate();
+
+	// console.log('여기는 PortPolioComponent \n LoadPortData 실행해');
+
+	// LoadPortData();
+	// 다시 불러오기
 
 	const onClickStore = () => {
 		setStoringState(true);
 
-		Axios.post(TestURL, {
-			loadBlockFromServer: requestStorePortData,
-		})
-			.then(response => {
-				console.log('loadBlockFromServer = ', response);
-				// dispatch(SuccessLogin(true));
-				navigate('/');
-				// console.log('성공적으로 로그인되었습니다');
-			})
-			.catch(error => {
-				console.log('error = ', error);
-			});
+		// Axios.post(ServerURL_port, {
+		// 	loadBlockFromServer: requestStorePortData,
+		// })
+		// 	.then(response => {
+		// 		console.log('loadBlockFromServer = ', response);
+		// 		// dispatch(SuccessLogin(true));
+		// 		navigate('/');
+		// 		// console.log('성공적으로 로그인되었습니다');
+		// 	})
+		// 	.catch(error => {
+		// 		console.log('error = ', error);
+		// 	});
 
-		setTimeout(function () {
-			setStoringState(false);
-		}, 2000);
+		// setTimeout(function () {
+		// 	setStoringState(false);
+		// }, 2000);
 	};
 
 	const onClickMakeURL = () => {
@@ -147,9 +157,8 @@ function PortPolioComponent(props) {
 	// console.log('portData.port1.items = ', portData.port1.items);
 	// console.log('portData.port1.introductions = ', portData.port1.introductions);
 
-	function returnTaskCard() {
+	function returnTaskCard(portData) {
 		const info = portData;
-
 		return (
 			<Fragment>
 				<div className="DataBox2">
@@ -157,7 +166,12 @@ function PortPolioComponent(props) {
 					<div className="DataBoxContent">
 						{info.port1.items.awardDtoList.map(items => {
 							return (
-								<TaskCard key={items.id} item={items} index={items} datatype="" />
+								<TaskCard
+									key={items.id}
+									item={items}
+									index={items.onumber}
+									datatype=""
+								/>
 							);
 						})}
 					</div>
@@ -167,7 +181,12 @@ function PortPolioComponent(props) {
 					<div className="DataBoxContent">
 						{info.port1.items.educationDtoList.map(items => {
 							return (
-								<TaskCard key={items.id} item={items} index={items} datatype="" />
+								<TaskCard
+									key={items.id}
+									item={items}
+									index={items.onumber}
+									datatype=""
+								/>
 							);
 						})}
 					</div>
@@ -177,7 +196,12 @@ function PortPolioComponent(props) {
 					<div className="DataBoxContent">
 						{info.port1.items.licenseDtoList.map(items => {
 							return (
-								<TaskCard key={items.id} item={items} index={items} datatype="" />
+								<TaskCard
+									key={items.id}
+									item={items}
+									index={items.onumber}
+									datatype=""
+								/>
 							);
 						})}
 					</div>
@@ -188,24 +212,24 @@ function PortPolioComponent(props) {
 
 	const [storingState, setStoringState] = useState(false);
 
-	const [questionData, setQuestionData] = useState(
-		portData.port1.items.resumeDtoList[0].question
-	);
-	const [questionContent, setQuestionContent] = useState(
-		portData.port1.items.resumeDtoList[0].content
-	);
+	// const [questionData, setQuestionData] = useState(
+	// 	portData.port1.items.resumeDtoList[0].question
+	// );
+	// const [questionContent, setQuestionContent] = useState(
+	// 	portData.port1.items.resumeDtoList[0].content
+	// );
 
 	const [questionCount, setQuestionCount] = useState(1);
 
-	const questionChangeFunc = e => {
-		setQuestionData(e.target.value);
-	};
+	// const questionChangeFunc = e => {
+	// 	setQuestionData(e.target.value);
+	// };
 
-	const contentChangeFunc = e => {
-		setQuestionContent(e.target.value);
-		var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
-		lengthVar.innerText = e.target.value.length + ' 자';
-	};
+	// const contentChangeFunc = e => {
+	// 	setQuestionContent(e.target.value);
+	// 	var lengthVar = document.getElementById(`lengthOfContent_P${e.target.id}`);
+	// 	lengthVar.innerText = e.target.value.length + ' 자';
+	// };
 
 	const onClickAddContent = e => {
 		setQuestionCount(questionCount + 1);
@@ -262,7 +286,7 @@ function PortPolioComponent(props) {
 										<button onClick={onClickTitleChange}>수정</button>
 									</h1>
 
-									{returnTaskCard()}
+									{returnTaskCard(portData)}
 								</div>
 								<div>
 									<div className="TitleBox">
@@ -273,13 +297,13 @@ function PortPolioComponent(props) {
 										<div className="IntroduceContentBox">
 											<p>
 												문항{' '}
-												{portData.port1.items.resumeDtoList[0].resumeId}
+												{/* {portData.port1.items.resumeDtoList[0].resumeId} */}
 											</p>
 											<input
 												id="0"
-												value={questionData}
+												// value={questionData}
 												type="text"
-												onChange={questionChangeFunc}
+												// onChange={questionChangeFunc}
 												placeholder="자기소개서 질문"
 											></input>
 										</div>
@@ -287,9 +311,9 @@ function PortPolioComponent(props) {
 										<textarea
 											id="0"
 											className="IntroduceText"
-											value={questionContent}
+											// value={questionContent}
 											type="text"
-											onChange={contentChangeFunc}
+											// onChange={contentChangeFunc}
 											placeholder="..."
 										></textarea>
 										<p id="lengthOfContent_P0" className="lengthOfContent_P">
