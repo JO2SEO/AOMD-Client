@@ -19,7 +19,6 @@ const KakaoLoginButton = () => {
 				// redirectUri: 'http://localhost:3000/oauth',
 				redirectUri: 'http://15.164.231.60:3000/oauth',
 			});
-			navigate('/');
 		}
 		loginWithKakao();
 

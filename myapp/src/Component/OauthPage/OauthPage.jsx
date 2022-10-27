@@ -38,8 +38,8 @@ function OauthPage() {
 		.then(response => {
 			console.log('response = ', response);
 			dispatch(SuccessLogin(true));
-			navigate('/');
 			console.log('성공적으로 로그인되었습니다');
+			navigate('/');
 		})
 		.catch(error => {
 			console.log('error = ', error);
