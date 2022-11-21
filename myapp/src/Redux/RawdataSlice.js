@@ -226,15 +226,16 @@ export function LoadRawData() {
 					// 	'  << In RawDataSlice >> \n loadBlockFromServer_items - After  =  ',
 					// 	loadBlockFromServer_items
 					// );
-					console.log('왼쪽 / 블록 데이터 받아오기 완료');
+					// console.log('왼쪽 / 블록 데이터 받아오기 완료');
 					dispatch(LoadDataBlockItems(loadBlockFromServer_items));
+					// console.log('왼쪽 / 블록 데이터 받아오기');
 				})
 				.catch(error => {
-					console.log('error in requst Block= ', error);
+					// console.log('error in requst Block= ', error);
 				});
 		})
 		.catch(error => {
-			console.log('error in request login token = ', error);
+			// console.log('error in request login token = ', error);
 		});
 }
 
@@ -244,12 +245,14 @@ export const RawdataSlice = createSlice({
 		origin: {
 			title: '나의 데이터',
 			items: loadBlockFromServer,
+			// 왼쪽 블록체인으로부터 불러온 데이터
 		},
 	},
 	reducers: {
 		LoadDataBlockItems: (state, action) => {
 			state.origin.items = action.payload;
 		},
+		// 로드데이터 블럭아이템 => 디스패치 받아왔을 때 이전 아이템 그대로 두고 업데이트
 		DragdataChange: (state, action) => {
 			state.origin.items = action.payload;
 			// state.items = action.payload;
